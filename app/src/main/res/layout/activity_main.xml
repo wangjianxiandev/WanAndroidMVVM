@@ -12,27 +12,32 @@
 
         <include layout="@layout/layout_toolbar" />
 
-        <FrameLayout
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/mFabAdd"
+                android:id="@+id/fab_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|bottom"
-                android:src="@drawable/ic_add"
                 android:layout_marginEnd="@dimen/dp_10"
-                android:layout_marginBottom="@dimen/dp_10" />
-        </FrameLayout>
+                android:layout_marginBottom="@dimen/dp_72"
+                android:src="@drawable/ic_fab"
+                app:fabSize="auto"
+                app:layout_behavior=".Custom.behavior.ScrollAwareFabBehavior"
+                app:tint="@color/white" />
 
-        <com.ashokvarma.bottomnavigation.BottomNavigationBar
-            android:id="@+id/mBottomNavigationBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom" />
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
+                app:menu="@menu/navigation_bottom_menu" />
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </LinearLayout>
 
 

@@ -1,5 +1,6 @@
 package com.wjx.android.wanandroidmvvm.base.BaseArticle
 
+import android.content.Intent
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
@@ -9,6 +10,7 @@ import com.wjx.android.wanandroidmvvm.base.state.callback.CollectListener
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessListener
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessState
 import com.wjx.android.wanandroidmvvm.base.utils.SpeedLayoutManager
+import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import kotlinx.android.synthetic.main.fragment_article_list.*
 
 /**
@@ -39,6 +41,10 @@ abstract class BaseArticleListFragment<VM : BaseArticleViewModel<*>> : BaseLifeC
             val article = mAdapter.getItem(position)
 
             article?.let {
+                val intent : Intent = Intent(activity, ArticleDetailActivity::class.java)
+                intent.putExtra("url", it.link)
+                intent.putExtra("title", it.title)
+                startActivity(intent)
             }
         }
         mAdapter.setEnableLoadMore(true)

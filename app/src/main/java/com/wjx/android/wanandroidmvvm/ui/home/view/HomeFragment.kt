@@ -1,17 +1,18 @@
-package com.wjx.android.wanandroidmvvm.ui.home
+package com.wjx.android.wanandroidmvvm.ui.home.view
 
+import android.content.Intent
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleListFragment
 import com.wjx.android.wanandroidmvvm.base.utils.GlideImageLoader
+import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import com.wjx.android.wanandroidmvvm.ui.home.data.bean.BannerResponse
 import com.wjx.android.wanandroidmvvm.ui.home.viewmodel.HomeViewModel
 import com.youth.banner.Banner
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
-import kotlinx.android.synthetic.main.home_headview.view.*
+import kotlinx.android.synthetic.main.layout_home_headview.view.*
 import java.util.ArrayList
 
 /**
@@ -37,23 +38,24 @@ class HomeFragment : BaseArticleListFragment<HomeViewModel>(){
 
     override fun initView() {
         super.initView()
-        val headView = View.inflate(activity, R.layout.home_headview, null)
+        val headView = View.inflate(activity, R.layout.layout_home_headview, null)
         mBanner = headView.mBanner
         mBanner.setOnBannerListener { position ->
-           Toast.makeText(activity, urls[position] + "/" + titles[position], Toast.LENGTH_SHORT)
+            val intent : Intent = Intent(activity, ArticleDetailActivity::class.java)
+            intent.putExtra("url", urls[position])
+            intent.putExtra("title", titles[position])
+            startActivity(intent)
         }
-        mAdapter.addHeaderView(headView)
         mBanner.setImageLoader(GlideImageLoader())
         mBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)
         mBanner.setDelayTime(2000)
         mBanner.setBannerAnimation(Transformer.DepthPage)
+        mAdapter.addHeaderView(headView)
     }
 
     override fun initData() {
         page = 0
-
         mViewModel.loadBanner()
-
         mViewModel.loadHomeArticleData(page)
     }
 

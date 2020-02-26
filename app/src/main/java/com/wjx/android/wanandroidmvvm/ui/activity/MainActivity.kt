@@ -1,34 +1,25 @@
-package com.wjx.android.wanandroidmvvm.ui
+package com.wjx.android.wanandroidmvvm.ui.activity
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import com.ashokvarma.bottomnavigation.BottomNavigationBar
-import com.ashokvarma.bottomnavigation.BottomNavigationItem
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseActivity
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessListener
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessState
 import com.wjx.android.wanandroidmvvm.base.utils.Constant
 import com.wjx.android.wanandroidmvvm.base.utils.Preference
-import com.wjx.android.wanandroidmvvm.ui.home.HomeFragment
+import com.wjx.android.wanandroidmvvm.ui.home.view.HomeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
 class MainActivity : BaseActivity(), LoginSuccessListener {
-    private var clickTime: Long = 0
-
-    private val mNotLogin: String = "未登录"
     // 委托属性   将实现委托给了 -> Preference
-    private var mUsername: String by Preference(Constant.USERNAME_KEY, mNotLogin)
-
+    private var mUsername: String by Preference(Constant.USERNAME_KEY, "未登录")
     private val mHomeFragment by lazy { HomeFragment() }
 //    private val mWeChatFragment by lazy { WeChatFragment() }
 //    private val mSystemFragment by lazy { SystemFragment() }
@@ -43,7 +34,7 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
     override fun initView() {
         initToolBar()
         initDrawerLayout()
-        initNavigationBar()
+        initBottomNavigation()
         initFloatButton()
         setDefaultFragment()
     }
@@ -53,18 +44,10 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
 
         //设置导航图标、按钮有旋转特效
         val toggle = ActionBarDrawerToggle(
-            this, mDrawerMain, toolbar, R.string.app_name, R.string.app_name)
+            this, mDrawerMain, toolbar, R.string.app_name, R.string.app_name
+        )
         mDrawerMain.addDrawerListener(toggle)
         toggle.syncState()
-
-        toolbar.setOnClickListener {
-            val nowTime = System.currentTimeMillis()
-            if (nowTime - clickTime > 1000) {
-                clickTime = nowTime
-            } else {
-
-            }
-        }
     }
 
     private fun initDrawerLayout() {
@@ -104,33 +87,38 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
 //        }
     }
 
-    private fun initNavigationBar() {
-        with(mBottomNavigationBar) {
-            setMode(BottomNavigationBar.MODE_FIXED)
-
-            addItem(BottomNavigationItem(R.mipmap.navigation_home, "首页"))
-            addItem(BottomNavigationItem(R.mipmap.navigation_wechat, "微信"))
-            addItem(BottomNavigationItem(R.mipmap.navigation_system, "体系"))
-            addItem(BottomNavigationItem(R.mipmap.navigation_navigation, "导航"))
-            addItem(BottomNavigationItem(R.mipmap.nagivation_project, "项目"))
-
-            // 设置底部 BottomBar 默认选中 home
-            setFirstSelectedPosition(Constant.HOME)
-            // 初始化
-            initialise()
-
-            setTabSelectedListener(object : BottomNavigationBar.OnTabSelectedListener {
-                override fun onTabReselected(position: Int) {}
-                override fun onTabUnselected(position: Int) {}
-
-                override fun onTabSelected(position: Int) = switchFragment(position)
-            })
+    private fun initBottomNavigation() {
+        bottom_navigation.setOnNavigationItemSelectedListener { menuItem: MenuItem ->
+            when (menuItem.itemId) {
+                R.id.menu_home -> {
+                    switchFragment(Constant.HOME)
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.menu_system -> {
+                    switchFragment(Constant.SYSTEM)
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.menu_navigation -> {
+                    switchFragment(Constant.NAVIGATION)
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.menu_wechat -> {
+                    switchFragment(Constant.WECHAT)
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.menu_project -> {
+                    switchFragment(Constant.PROJECT)
+                    return@setOnNavigationItemSelectedListener true
+                }
+                else -> return@setOnNavigationItemSelectedListener false
+            }
         }
     }
 
     private fun initFloatButton() {
-        mFabAdd.setOnClickListener {
-            Log.e("WJX", "fab")}
+        fab_add.setOnClickListener {
+
+        }
     }
 
     /**
