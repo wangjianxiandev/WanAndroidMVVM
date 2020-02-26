@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LikeView">
+        <attr name="like_state" format="boolean"/>
+        <attr name="like" format="reference"/>
+        <attr name="unLike" format="reference"/>
+    </declare-styleable>
+</resources>

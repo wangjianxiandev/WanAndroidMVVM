@@ -1,0 +1,77 @@
+ext {
+
+    android = [
+            compileSdkVersion: 29,
+            buildToolsVersion: "29.0.2",
+            minSdkVersion    : 23,
+            targetSdkVersion : 29,
+            versionCode      : 1,
+            versionName      : "1.0",
+    ]
+
+    retrofit_version    = '2.5.0'
+    okhttp_version      = '3.4.1'
+    rx_kotlin_version   = '2.3.0'
+    rx_android_version  = '2.1.1'
+    anko_version        = '0.10.5'
+    bottom_bar_version  = '2.0.5'
+    loadSir_version     = '1.3.6'
+    lifecycle_version   = '2.2.0-rc02'
+    glide_version       = '4.9.0'
+    banner_version      = '1.4.10'
+    agentweb_version    = '4.1.2'
+    flexbox_version     = '1.0.0'
+    room_version        = '2.2.2'
+    circleimageview_version = '2.2.0'
+    about_fragment_version  = '6.1.0'
+    material_dialog_version = '0.9.6.0'
+    coroutines_version = "1.3.2"
+    live_event_bus_version = "1.5.4"
+    adapter_helper_version = "2.9.30"
+
+    appId = [
+            "app"     : "com.wjx.android.wanandroidmvvm",
+    ]
+
+    dependencies = [
+            "appcompat"      : "androidx.appcompat:appcompat:1.1.0",
+            "recyclerview"   : "com.android.support:recyclerview-v7:29.0.0",
+            "constraint"     : "androidx.constraintlayout:constraintlayout:1.1.3",
+            "kotlin"         : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            "design"         : "com.android.support:design:29.0.0",
+            "retrofit"       : "com.squareup.retrofit2:retrofit:$retrofit_version",
+            "retrofit-converter-gson"         : "com.squareup.retrofit2:converter-gson:${retrofit_version}",
+            "retrofit-adapter-rxjava2"        : "com.squareup.retrofit2:adapter-rxjava2:${retrofit_version}",
+            "okhttp3"                         : "com.squareup.okhttp3:okhttp:${okhttp_version}",
+            "okhttp3-logging-interceptor"     : "com.squareup.okhttp3:logging-interceptor:${okhttp_version}",
+            "rxkotlin"       : "io.reactivex.rxjava2:rxkotlin:$rx_kotlin_version",
+            "rxandroid"      : "io.reactivex.rxjava2:rxandroid:$rx_android_version",
+            "v4_anko"        : "org.jetbrains.anko:anko-support-v4-commons:$anko_version",
+            "anko"           : "org.jetbrains.anko:anko-commons:$anko_version",
+            "bottomnavigationbar"             : "com.ashokvarma.android:bottom-navigation-bar:$bottom_bar_version",
+            "circle_imageview"                : "de.hdodenhof:circleimageview:$circleimageview_version",
+            "loadSir"                         : "com.kingja.loadsir:loadsir:$loadSir_version",
+            "lifecycle"                       : "androidx.lifecycle:lifecycle-extensions:$lifecycle_version",
+            "glide"                           : "com.github.bumptech.glide:glide:$glide_version",
+            "banner"                          : "com.youth.banner:banner:$banner_version",
+            "agentweb"                        : "com.just.agentweb:agentweb:$agentweb_version",
+            "room"                            : "androidx.room:room-runtime:$room_version",
+            "license-fragment"                : "com.mikepenz:aboutlibraries:$about_fragment_version",
+            "material_dialog"                 : "com.afollestad.material-dialogs:core:$material_dialog_version",
+            "defaultlifecycleobserver"        : "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version",
+            "lifecycle-viewmodel"             : "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version",
+            "lifecycler-livedata"             : "androidx.lifecycle:lifecycle-livedata:$lifecycle_version",
+            "lifecycle-viewmodel-ktx"         : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",
+            "lifecycle-runtime-ktx"           : "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version",
+            "lifecycle-livedata-ktx"          : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version",
+            "live-event-bus"                  : "com.jeremyliao:live-event-bus-x:$live_event_bus_version",
+            "coroutines"                      : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version",
+            "adapter_helper"                  : "com.github.CymChad:BaseRecyclerViewAdapterHelper:$adapter_helper_version",
+            "material"                        : "com.google.android.material:material:1.1.0-alpha05"
+    ]
+
+    processor = [
+            "lifecycle"             : "androidx.lifecycle:lifecycle-compiler:$lifecycle_version",
+            "glide_compiler"        : "com.github.bumptech.glide:compiler:$glide_version"
+    ]
+}
