@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -14,15 +15,21 @@ import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessState
 import com.wjx.android.wanandroidmvvm.base.utils.Constant
 import com.wjx.android.wanandroidmvvm.base.utils.Preference
 import com.wjx.android.wanandroidmvvm.ui.home.view.HomeFragment
+import com.wjx.android.wanandroidmvvm.ui.system.view.SystemFragment
+import com.wjx.android.wanandroidmvvm.ui.wechat.view.WeChatFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.layout_drawer_header.view.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
 class MainActivity : BaseActivity(), LoginSuccessListener {
     // 委托属性   将实现委托给了 -> Preference
     private var mUsername: String by Preference(Constant.USERNAME_KEY, "未登录")
+
+    private lateinit var headView : View
+
     private val mHomeFragment by lazy { HomeFragment() }
-//    private val mWeChatFragment by lazy { WeChatFragment() }
-//    private val mSystemFragment by lazy { SystemFragment() }
+    private val mWeChatFragment by lazy { WeChatFragment() }
+    private val mSystemFragment by lazy { SystemFragment() }
 //    private val mNavigationFragment by lazy { NavigationFragment() }
 //    private val mProjectFragment by lazy { ProjectFragment() }
 
@@ -41,12 +48,12 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
 
     private fun initToolBar() {
         // 设置标题
-
+        setToolBarTitle(toolbar, getString(R.string.navigation_home))
         //设置导航图标、按钮有旋转特效
         val toggle = ActionBarDrawerToggle(
-            this, mDrawerMain, toolbar, R.string.app_name, R.string.app_name
+            this, drawer_main, toolbar, R.string.app_name, R.string.app_name
         )
-        mDrawerMain.addDrawerListener(toggle)
+        drawer_main.addDrawerListener(toggle)
         toggle.syncState()
     }
 
@@ -55,36 +62,36 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
         // 设置 登录成功 监听
         LoginSuccessState.addListener(this)
 
-//        // 直接获取报错   error -> mNavMain.mTvName
-//        headView = mNavMain.getHeaderView(0)
-//        headView.mTvName.text = mUsername
-//
-//        // 点击 登录
-//        headView.mCivIcon.setOnClickListener { UserContext.instance.login(this) }
-//
-//        mNavMain.setNavigationItemSelectedListener {
-//            when (it.itemId) {
-//                R.id.nav_menu_collect -> {
+        // 直接获取报错   error -> mNavMain.mTvName
+        headView = navigation_draw.getHeaderView(0)
+        headView.circle_image_name.text = mUsername
+
+        // 点击 登录
+//        headView.circle_image.setOnClickListener { UserContext.instance.login(this) }
+
+        navigation_draw.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.nav_menu_collect -> {
 //                    UserContext.instance.goCollectActivity(this)
-//                }
-//                R.id.nav_menu_todo -> {
+                }
+                R.id.nav_menu_todo -> {
 //                    UserContext.instance.goTodoActivity(this)
-//                }
-//                R.id.nav_menu_about -> {
+                }
+                R.id.nav_menu_about -> {
 //                    startActivity<AboutActivity>()
-//                }
-//                R.id.nav_menu_setting -> {
+                }
+                R.id.nav_menu_setting -> {
 //                    toast(getString(R.string.setting))
-//                }
-//                R.id.nav_menu_logout -> {
+                }
+                R.id.nav_menu_logout -> {
 //                    UserContext.instance.logoutSuccess()
-//                }
-//            }
-//
-//            // 关闭侧边栏
-//            mDrawerMain.closeDrawers()
-//            true
-//        }
+                }
+            }
+
+            // 关闭侧边栏
+            drawer_main.closeDrawers()
+            true
+        }
     }
 
     private fun initBottomNavigation() {
@@ -94,16 +101,16 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
                     switchFragment(Constant.HOME)
                     return@setOnNavigationItemSelectedListener true
                 }
+                R.id.menu_wechat -> {
+                    switchFragment(Constant.WECHAT)
+                    return@setOnNavigationItemSelectedListener true
+                }
                 R.id.menu_system -> {
                     switchFragment(Constant.SYSTEM)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.menu_navigation -> {
                     switchFragment(Constant.NAVIGATION)
-                    return@setOnNavigationItemSelectedListener true
-                }
-                R.id.menu_wechat -> {
-                    switchFragment(Constant.WECHAT)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.menu_project -> {
@@ -143,16 +150,20 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
     private fun switchFragment(position: Int) {
         when (position) {
             Constant.HOME -> {
-                goTo(mHomeFragment)
+                toolbar.visibility = View.VISIBLE
+                setToolBarTitle(toolbar, getString(R.string.navigation_home))
+                switchFragment(mHomeFragment)
             }
-//            Constant.WECHAT -> {
-//                goTo(mWeChatFragment)
-//            }
-//
-//            Constant.SYSTEM -> {
-//
-//                goTo(mSystemFragment)
-//            }
+            Constant.WECHAT -> {
+                toolbar.visibility = View.VISIBLE
+                setToolBarTitle(toolbar, getString(R.string.navigation_wechat))
+                switchFragment(mWeChatFragment)
+            }
+
+            Constant.SYSTEM -> {
+                toolbar.visibility = View.GONE
+                switchFragment(mSystemFragment)
+            }
 //            Constant.NAVIGATION -> {
 //
 //                goTo(mNavigationFragment)
@@ -164,7 +175,7 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
     }
 
     // 复用 fragment
-    private fun goTo(to: Fragment) {
+    private fun switchFragment(to: Fragment) {
         if (mCurrentFragment != to) {
             val transaction = supportFragmentManager.beginTransaction()
             if (to.isAdded)
@@ -181,7 +192,7 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
         when (item?.itemId) {
             //将滑动菜单显示出来
             android.R.id.home -> {
-                mDrawerMain.openDrawer(Gravity.START)
+                drawer_main.openDrawer(Gravity.START)
                 return true
             }
         }

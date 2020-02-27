@@ -10,6 +10,4 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     app:titleTextColor="@color/white">
-
-
 </androidx.appcompat.widget.Toolbar>

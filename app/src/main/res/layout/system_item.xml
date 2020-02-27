@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/CutCardViewStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/safe_padding"
+    android:background="@color/white"
+    app:cardBackgroundColor="@color/white"
+    app:cardElevation="4dp"
+    app:rippleColor="@color/color_b388ff"
+    app:strokeColor="@color/color_6200ea"
+    app:strokeWidth="0.5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/item_system_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/safe_padding"
+            android:layout_marginTop="@dimen/safe_padding"
+            android:ellipsize="end"
+            android:maxEms="14"
+            android:maxLines="2"
+            android:textColor="@color/text_333333"
+            android:textSize="12dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/item_system_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/safe_padding"
+            android:backgroundTint="@color/white"
+            android:src="@mipmap/ic_chevron_right_black_18dp"
+            android:tint="@color/color_b388ff" />
+
+        <com.zhy.view.flowlayout.TagFlowLayout
+            android:id="@+id/item_tag_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_system_title"
+            android:layout_alignStart="@+id/item_system_title"
+            android:layout_marginTop="4dp"
+            android:layout_toStartOf="@+id/item_system_btn"
+            app:alignItems="flex_start"
+            app:max_select="0"/>
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

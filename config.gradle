@@ -20,7 +20,6 @@ ext {
     glide_version       = '4.9.0'
     banner_version      = '1.4.10'
     agentweb_version    = '4.1.2'
-    flexbox_version     = '1.0.0'
     room_version        = '2.2.2'
     circleimageview_version = '2.2.0'
     about_fragment_version  = '6.1.0'
@@ -28,6 +27,8 @@ ext {
     coroutines_version = "1.3.2"
     live_event_bus_version = "1.5.4"
     adapter_helper_version = "2.9.30"
+    tab_layout_version = "2.1.2@aar"
+    flex_box = "2.0.1"
 
     appId = [
             "app"     : "com.wjx.android.wanandroidmvvm",
@@ -48,7 +49,6 @@ ext {
             "rxandroid"      : "io.reactivex.rxjava2:rxandroid:$rx_android_version",
             "v4_anko"        : "org.jetbrains.anko:anko-support-v4-commons:$anko_version",
             "anko"           : "org.jetbrains.anko:anko-commons:$anko_version",
-            "bottomnavigationbar"             : "com.ashokvarma.android:bottom-navigation-bar:$bottom_bar_version",
             "circle_imageview"                : "de.hdodenhof:circleimageview:$circleimageview_version",
             "loadSir"                         : "com.kingja.loadsir:loadsir:$loadSir_version",
             "lifecycle"                       : "androidx.lifecycle:lifecycle-extensions:$lifecycle_version",
@@ -67,7 +67,10 @@ ext {
             "live-event-bus"                  : "com.jeremyliao:live-event-bus-x:$live_event_bus_version",
             "coroutines"                      : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version",
             "adapter_helper"                  : "com.github.CymChad:BaseRecyclerViewAdapterHelper:$adapter_helper_version",
-            "material"                        : "com.google.android.material:material:1.1.0-alpha05"
+            "material"                        : "com.google.android.material:material:1.1.0-alpha05",
+            "tab_layout"                      : "com.flyco.tablayout:FlycoTabLayout_Lib:$tab_layout_version",
+            "flexbox"                         : "com.google.android:flexbox:$flex_box",
+            "flow_layout"                     : "com.hyman:flowlayout-lib:1.1.2"
     ]
 
     processor = [
