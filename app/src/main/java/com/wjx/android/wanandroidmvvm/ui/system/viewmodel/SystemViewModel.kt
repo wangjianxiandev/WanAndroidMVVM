@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.viewmodel.BaseArticleViewModel
 import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemArticleResponse
-import com.wjx.android.wanandroidmvvm.ui.system.data.SystemTabResponse
+import com.wjx.android.wanandroidmvvm.ui.system.data.SystemTabNameResponse
 import com.wjx.android.wanandroidmvvm.ui.system.repository.SystemRepository
 
 /**
@@ -16,11 +16,11 @@ import com.wjx.android.wanandroidmvvm.ui.system.repository.SystemRepository
  * Time: 17:09
  */
 class SystemViewModel (application: Application) : BaseArticleViewModel<SystemRepository>(application) {
-    val mSystemTabData : MutableLiveData<BaseResponse<List<SystemTabResponse>>> = MutableLiveData()
+    val mSystemTabNameData : MutableLiveData<BaseResponse<List<SystemTabNameResponse>>> = MutableLiveData()
     val mSystemArticleData : MutableLiveData<BaseResponse<SystemArticleResponse>> = MutableLiveData()
 
     fun loadSystemTab() {
-        mRepository.loadSystemTab(mSystemTabData)
+        mRepository.loadSystemTab(mSystemTabNameData)
     }
 
     fun loadSystemArticle(pageNun : Int, cid : Int) {

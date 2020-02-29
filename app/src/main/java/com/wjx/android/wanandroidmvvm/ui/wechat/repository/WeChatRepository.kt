@@ -19,14 +19,14 @@ import io.reactivex.schedulers.Schedulers
  */
 class WeChatRepository (loadState : MutableLiveData<State>) : BaseArticleRepository(loadState) {
     fun loadWeChatTabName(liveData: MutableLiveData<BaseResponse<List<WeChatTabNameResponse>>>) {
-        apiService.loadWeChatName()
+        apiService.loadWeChatTab()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(BaseObserver(liveData, loadState, this))
     }
 
     fun loadWeChatArticle(cid : Int, pageNum : Int, liveData: MutableLiveData<BaseResponse<WeChatArticleResponse>>) {
-        apiService.loadWeChatArticle(cid, pageNum)
+        apiService.loadWeChatArticles(cid, pageNum)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(BaseObserver(liveData, loadState, this))

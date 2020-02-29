@@ -12,7 +12,7 @@ import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleFragment
 import com.wjx.android.wanandroidmvvm.ui.system.adapter.SystemAdapter
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemLabelResponse
-import com.wjx.android.wanandroidmvvm.ui.system.data.SystemTabResponse
+import com.wjx.android.wanandroidmvvm.ui.system.data.SystemTabNameResponse
 import com.wjx.android.wanandroidmvvm.ui.system.viewmodel.SystemViewModel
 import kotlinx.android.synthetic.main.layout_system.*
 
@@ -29,7 +29,7 @@ class SystemFragment : BaseLifeCycleFragment<SystemViewModel>() {
     private val fragments by lazy { arrayListOf<Fragment>() }
 
     override fun initDataObserver() {
-        mViewModel.mSystemTabData.observe(this, Observer {response ->
+        mViewModel.mSystemTabNameData.observe(this, Observer { response ->
             response?.let {
                 setSystemTabData(it.data)
             }
@@ -58,7 +58,7 @@ class SystemFragment : BaseLifeCycleFragment<SystemViewModel>() {
 
     private fun initStatusColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            activity!!.window.statusBarColor = ContextCompat.getColor(context!!, R.color.color_6200ea)
+            activity!!.window.statusBarColor = ContextCompat.getColor(context!!, R.color.colorPrimaryDark)
         }
         if (ColorUtils.calculateLuminance(Color.TRANSPARENT) >= 0.5) { // 设置状态栏中字体的颜色为黑色
             activity!!.window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
@@ -74,7 +74,7 @@ class SystemFragment : BaseLifeCycleFragment<SystemViewModel>() {
 
     private fun initRefresh() {
         // 设置下拉刷新的loading颜色
-        system_refresh.setColorSchemeResources(R.color.color_6200ea)
+        system_refresh.setColorSchemeResources(R.color.colorPrimary)
         system_refresh.setOnRefreshListener { onRefreshData() }
     }
 
@@ -82,10 +82,10 @@ class SystemFragment : BaseLifeCycleFragment<SystemViewModel>() {
         mViewModel.loadSystemTab()
     }
 
-    private fun setSystemTabData(systemList : List<SystemTabResponse>) {
+    private fun setSystemTabData(systemListName : List<SystemTabNameResponse>) {
         val chileItems = arrayListOf<SystemLabelResponse>()
         // 返回列表为空显示加载完毕
-        if (systemList.isEmpty()) {
+        if (systemListName.isEmpty()) {
             mAdapter.loadMoreEnd()
             return
         }
@@ -93,13 +93,13 @@ class SystemFragment : BaseLifeCycleFragment<SystemViewModel>() {
         // 如果是下拉刷新状态，直接设置数据
         if (system_refresh.isRefreshing) {
             system_refresh.isRefreshing = false
-            mAdapter.setNewData(systemList)
+            mAdapter.setNewData(systemListName)
             mAdapter.loadMoreComplete()
             return
         }
 
         // 初始化状态直接加载数据
-        mAdapter.addData(systemList)
+        mAdapter.addData(systemListName)
         mAdapter.loadMoreComplete()
     }
 }

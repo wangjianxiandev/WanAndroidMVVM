@@ -1,7 +1,13 @@
 package com.wjx.android.wanandroidmvvm.base.BaseArticle
 
+import android.os.Build
+import android.text.Html
+import androidx.annotation.RequiresApi
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
+import com.wjx.android.wanandroidmvvm.Custom.DrawableScaleFadeFactory
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
 import com.wjx.android.wanandroidmvvm.base.BaseViewModel
@@ -19,15 +25,24 @@ class BaseArticleAdapter (layoutId : Int, listData : MutableList<Article>?)
         viewHolder?.let {
             holder ->
             article?.let {
-                holder.setText(R.id.item_home_author, handleAuthor(it))
-                    .setText(R.id.item_home_content, it.title)
-                    .setText(R.id.item_home_date, it.niceDate)
-                    .setText(R.id.item_article_type, handleCategory(it))
-                    .setImageResource(R.id.item_list_collect, isCollect(it))
-                    .addOnClickListener(R.id.item_list_collect)
-                    .setVisible(R.id.item_home_top_article, it.isTop)
-                    .setVisible(R.id.item_home_new, it.isFresh)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    holder.setText(R.id.item_home_author, handleAuthor(it))
+                        .setText(R.id.item_home_content, handleTitle(it))
+                        .setText(R.id.item_home_date, it.niceDate)
+                        .setText(R.id.item_article_type, handleCategory(it))
+                        .setImageResource(R.id.item_list_collect, isCollect(it))
+                        .addOnClickListener(R.id.item_list_collect)
+                        .setVisible(R.id.item_home_top_article, it.isTop)
+                        .setVisible(R.id.item_home_new, it.isFresh)
+                }
             }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    private fun handleTitle(article: Article) : String {
+        article.let {
+            return Html.fromHtml(it.title, Html.FROM_HTML_MODE_COMPACT).toString()
         }
     }
 

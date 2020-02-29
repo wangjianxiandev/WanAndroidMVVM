@@ -7,7 +7,7 @@ package com.wjx.android.wanandroidmvvm.ui.system.data
  * @date: 2020/02/27
  * Time: 17:06
  */
-data class SystemTabResponse(
+data class SystemTabNameResponse(
     var children : List<SystemLabelResponse>,
     var name : String
 )

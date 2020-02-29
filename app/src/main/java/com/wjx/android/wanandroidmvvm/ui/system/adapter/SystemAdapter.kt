@@ -2,6 +2,7 @@ package com.wjx.android.wanandroidmvvm.ui.system.adapter
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
@@ -10,8 +11,9 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.wjx.android.wanandroidmvvm.Custom.interpolator.CustomScaleInterpolator
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.ui.activity.TreeListActivity
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemLabelResponse
-import com.wjx.android.wanandroidmvvm.ui.system.data.SystemTabResponse
+import com.wjx.android.wanandroidmvvm.ui.system.data.SystemTabNameResponse
 import com.zhy.view.flowlayout.FlowLayout
 import com.zhy.view.flowlayout.TagAdapter
 import kotlinx.android.synthetic.main.system_item.view.*
@@ -23,10 +25,10 @@ import kotlinx.android.synthetic.main.system_item.view.*
  * @date: 2020/02/27
  * Time: 17:32
  */
-class SystemAdapter (layoutId : Int, listData : MutableList<SystemTabResponse>?)
-    :BaseQuickAdapter<SystemTabResponse, BaseViewHolder>(layoutId, listData) {
+class SystemAdapter (layoutId : Int, listData : MutableList<SystemTabNameResponse>?)
+    :BaseQuickAdapter<SystemTabNameResponse, BaseViewHolder>(layoutId, listData) {
 
-    override fun convert(viewHolder: BaseViewHolder?, item: SystemTabResponse?) {
+    override fun convert(viewHolder: BaseViewHolder?, item: SystemTabNameResponse?) {
         viewHolder?.let {
             holder ->
             item?.let {
@@ -43,6 +45,15 @@ class SystemAdapter (layoutId : Int, listData : MutableList<SystemTabResponse>?)
                         tagView.setTextColor(Util.randomColor())
                         return tagView
                     }
+                }
+
+                holder.itemView.item_tag_layout.setOnTagClickListener{_, position,_ ->
+                    val intent = Intent(mContext, TreeListActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                    intent.putExtra("id", it.children[position].id)
+                    intent.putExtra("name", it.children[position].name)
+                    mContext.startActivity(intent)
+                    return@setOnTagClickListener true
                 }
             }
         }

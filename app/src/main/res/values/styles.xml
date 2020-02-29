@@ -13,11 +13,11 @@
     </style>
     <style name="MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
         <item name="cornerFamily">cut</item>
-        <item name="cornerSize">10dp</item>
+        <item name="cornerSize">5dp</item>
     </style>
 
     <style name="ExpandText">
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">30dp</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
@@ -27,9 +27,32 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
+
     <style name="ToolbarTheme">
         <item name="colorControlHighlight">@color/color_b388ff</item>
         <item name="android:colorControlHighlight">@color/color_b388ff</item>
+    </style>
+
+    <style name="AnimAlpha" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/alpha_in</item>
+        <item name="android:windowExitAnimation">@anim/alpha_out</item>
+    </style>
+
+    <style name="AnimBottom" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
+
+    <style name="FullScreenBottomSheet" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:statusBarColor">@color/transparent</item>
+    </style>
+
+    <style name="LeftRightAnim">
+        <item name="android:windowEnterAnimation">@anim/anim_right_in</item>
+        <item name="android:windowExitAnimation">@anim/anim_left_out</item>
     </style>
 
 </resources>

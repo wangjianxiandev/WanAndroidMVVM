@@ -2,8 +2,11 @@ package com.wjx.android.wanandroidmvvm.base.https
 
 import com.wjx.android.wanandroidmvvm.ui.home.data.bean.BannerResponse
 import com.wjx.android.wanandroidmvvm.ui.home.data.bean.HomeArticleResponse
+import com.wjx.android.wanandroidmvvm.ui.navigation.data.NavigationTabNameResponse
+import com.wjx.android.wanandroidmvvm.ui.project.data.ProjectResponse
+import com.wjx.android.wanandroidmvvm.ui.project.data.ProjectTabResponse
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemArticleResponse
-import com.wjx.android.wanandroidmvvm.ui.system.data.SystemTabResponse
+import com.wjx.android.wanandroidmvvm.ui.system.data.SystemTabNameResponse
 import com.wjx.android.wanandroidmvvm.ui.wechat.data.WeChatArticleResponse
 import com.wjx.android.wanandroidmvvm.ui.wechat.data.WeChatTabNameResponse
 import io.reactivex.Observable
@@ -34,15 +37,24 @@ interface ApiService {
     fun loadHomeArticle(@Path("pageNum") pageNum: Int): Observable<BaseResponse<HomeArticleResponse>>
 
     @GET("/wxarticle/chapters/json")
-    fun loadWeChatName(): Observable<BaseResponse<List<WeChatTabNameResponse>>>
+    fun loadWeChatTab(): Observable<BaseResponse<List<WeChatTabNameResponse>>>
 
     @GET("/wxarticle/list/{cid}/{pageNum}/json")
-    fun loadWeChatArticle(@Path("cid") cid: Int, @Path("pageNum") page: Int)
+    fun loadWeChatArticles(@Path("cid") cid: Int, @Path("pageNum") page: Int)
             : Observable<BaseResponse<WeChatArticleResponse>>
 
     @GET("/tree/json")
-    fun loadSystem(): Observable<BaseResponse<List<SystemTabResponse>>>
+    fun loadSystemTab(): Observable<BaseResponse<List<SystemTabNameResponse>>>
 
     @GET("/article/list/{pageNum}/json")
-    fun loadSystemArticle(@Path("pageNum") pageNum: Int, @Query("cid") id: Int): Observable<BaseResponse<SystemArticleResponse>>
+    fun loadSystemArticles(@Path("pageNum") pageNum: Int, @Query("cid") id: Int): Observable<BaseResponse<SystemArticleResponse>>
+
+    @GET("/project/tree/json")
+    fun loadProjectTab(): Observable<BaseResponse<List<ProjectTabResponse>>>
+
+    @GET("/project/list/{pageNum}/json")
+    fun loadProjectArticles(@Path("pageNum") pageNum: Int, @Query("cid") cid: Int): Observable<BaseResponse<ProjectResponse>>
+
+    @GET("/navi/json")
+    fun loadNavigationTab(): Observable<BaseResponse<List<NavigationTabNameResponse>>>
 }

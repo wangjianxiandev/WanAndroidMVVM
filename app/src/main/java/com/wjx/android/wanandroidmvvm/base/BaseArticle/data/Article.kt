@@ -20,5 +20,6 @@ data class Article(
     var superChapterName: String?,
     var niceDate: String,
     var isFresh: Boolean,
-    var isTop: Boolean
+    var isTop: Boolean,
+    var envelopePic : String
 )

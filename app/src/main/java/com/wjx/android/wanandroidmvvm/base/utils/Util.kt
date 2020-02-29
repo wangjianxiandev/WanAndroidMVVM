@@ -1,7 +1,9 @@
 package com.wjx.android.wanandroidmvvm.base.utils
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
+import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import java.lang.reflect.ParameterizedType
 import java.util.*
 
@@ -34,5 +36,18 @@ object Util {
     fun px2sp(context: Context, pxValue: Float): Float {
         val fontScale = context.resources.displayMetrics.scaledDensity
         return (pxValue / fontScale + 0.5f)
+    }
+
+    fun startWebView(
+        context: Context,
+        title: String?,
+        url: String?
+    ) {
+        val intent = Intent()
+        intent.setClass(context, ArticleDetailActivity::class.java)
+        intent.putExtra("title", title)
+        intent.putExtra("url", url)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        context.startActivity(intent)
     }
 }

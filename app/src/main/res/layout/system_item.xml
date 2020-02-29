@@ -9,9 +9,9 @@
     android:background="@color/white"
     app:cardBackgroundColor="@color/white"
     app:cardElevation="4dp"
-    app:rippleColor="@color/color_b388ff"
-    app:strokeColor="@color/color_6200ea"
-    app:strokeWidth="0.5dp">
+    app:rippleColor="@color/colorPrimary"
+    app:strokeColor="@color/colorPrimaryDark"
+    app:strokeWidth="2dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -39,7 +39,7 @@
             android:layout_marginEnd="@dimen/safe_padding"
             android:backgroundTint="@color/white"
             android:src="@mipmap/ic_chevron_right_black_18dp"
-            android:tint="@color/color_b388ff" />
+            android:tint="@color/colorPrimaryDark" />
 
         <com.zhy.view.flowlayout.TagFlowLayout
             android:id="@+id/item_tag_layout"

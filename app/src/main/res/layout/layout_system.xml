@@ -6,54 +6,17 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/system_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/barLayout"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="103dp"
-            android:background="@color/color_6200ea"
-            app:elevation="0dp">
+            android:layout_height="match_parent"
+            android:layoutAnimation="@anim/layout_animator_fall_down" />
 
-            <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:collapsedTitleGravity="start|center"
-                app:collapsedTitleTextAppearance="@style/CollapsedText"
-                app:expandedTitleGravity="bottom"
-                app:expandedTitleTextAppearance="@style/ExpandText"
-                app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
-                app:title="知识体系">
-
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/bar"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:backgroundTint="@color/color_6200ea"
-                    android:theme="@style/ToolbarTheme"
-                    app:layout_collapseMode="pin"
-                    app:navigationIcon="@mipmap/baseline_search_white_24"
-                    app:title="知识体系"
-                    app:titleTextColor="@color/white">
-
-                </androidx.appcompat.widget.Toolbar>
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/system_refresh"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layoutAnimation="@anim/layout_animator_fall_down" />
-
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </LinearLayout>

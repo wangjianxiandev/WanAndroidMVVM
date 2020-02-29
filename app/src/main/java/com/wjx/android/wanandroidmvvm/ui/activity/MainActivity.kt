@@ -15,6 +15,8 @@ import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessState
 import com.wjx.android.wanandroidmvvm.base.utils.Constant
 import com.wjx.android.wanandroidmvvm.base.utils.Preference
 import com.wjx.android.wanandroidmvvm.ui.home.view.HomeFragment
+import com.wjx.android.wanandroidmvvm.ui.navigation.view.NavigationFragment
+import com.wjx.android.wanandroidmvvm.ui.project.view.ProjectFragment
 import com.wjx.android.wanandroidmvvm.ui.system.view.SystemFragment
 import com.wjx.android.wanandroidmvvm.ui.wechat.view.WeChatFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -30,8 +32,8 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
     private val mHomeFragment by lazy { HomeFragment() }
     private val mWeChatFragment by lazy { WeChatFragment() }
     private val mSystemFragment by lazy { SystemFragment() }
-//    private val mNavigationFragment by lazy { NavigationFragment() }
-//    private val mProjectFragment by lazy { ProjectFragment() }
+    private val mNavigationFragment by lazy { NavigationFragment() }
+    private val mProjectFragment by lazy { ProjectFragment() }
 
     // 当前显示的 fragment
     private lateinit var mCurrentFragment: Fragment
@@ -150,27 +152,31 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
     private fun switchFragment(position: Int) {
         when (position) {
             Constant.HOME -> {
-                toolbar.visibility = View.VISIBLE
+                fab_add.visibility = View.VISIBLE
                 setToolBarTitle(toolbar, getString(R.string.navigation_home))
                 switchFragment(mHomeFragment)
             }
             Constant.WECHAT -> {
-                toolbar.visibility = View.VISIBLE
+                fab_add.visibility = View.VISIBLE
                 setToolBarTitle(toolbar, getString(R.string.navigation_wechat))
                 switchFragment(mWeChatFragment)
             }
 
             Constant.SYSTEM -> {
-                toolbar.visibility = View.GONE
+                fab_add.visibility = View.VISIBLE
+                setToolBarTitle(toolbar, getString(R.string.navigation_system))
                 switchFragment(mSystemFragment)
             }
-//            Constant.NAVIGATION -> {
-//
-//                goTo(mNavigationFragment)
-//            }
-//            Constant.PROJECT -> {
-//                goTo(mProjectFragment)
-//            }
+            Constant.NAVIGATION -> {
+                fab_add.visibility = View.VISIBLE
+                setToolBarTitle(toolbar, getString(R.string.navigation_navigation))
+                switchFragment(mNavigationFragment)
+            }
+            Constant.PROJECT -> {
+                fab_add.visibility = View.GONE
+                setToolBarTitle(toolbar, getString(R.string.navigation_project))
+                switchFragment(mProjectFragment)
+            }
         }
     }
 
