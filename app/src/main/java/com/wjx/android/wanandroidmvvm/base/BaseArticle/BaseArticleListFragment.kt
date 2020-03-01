@@ -6,6 +6,7 @@ import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.viewmodel.BaseArticleViewModel
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleFragment
+import com.wjx.android.wanandroidmvvm.base.state.UserInfo
 import com.wjx.android.wanandroidmvvm.base.state.callback.CollectListener
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessListener
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessState
@@ -47,6 +48,9 @@ abstract class BaseArticleListFragment<VM : BaseArticleViewModel<*>> : BaseLifeC
                 intent.putExtra("title", it.title)
                 startActivity(intent)
             }
+        }
+        mAdapter.setOnItemChildClickListener{_, _, position ->
+            UserInfo.instance.collect(activity, position, this)
         }
         mAdapter.setEnableLoadMore(true)
         mAdapter.setOnLoadMoreListener({ onLoadMoreData() }, mRvArticle)

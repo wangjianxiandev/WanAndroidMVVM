@@ -1,5 +1,7 @@
 package com.wjx.android.wanandroidmvvm.base.https
 
+import com.wjx.android.wanandroidmvvm.ui.account.data.LoginResponse
+import com.wjx.android.wanandroidmvvm.ui.account.data.RegisterResponse
 import com.wjx.android.wanandroidmvvm.ui.home.data.bean.BannerResponse
 import com.wjx.android.wanandroidmvvm.ui.home.data.bean.HomeArticleResponse
 import com.wjx.android.wanandroidmvvm.ui.navigation.data.NavigationTabNameResponse
@@ -24,6 +26,15 @@ import retrofit2.http.Query
  */
 
 interface ApiService {
+
+    @POST("/user/login")
+    fun onLogin(@Query("username") username: String,
+                 @Query("password") password: String): Observable<BaseResponse<LoginResponse>>
+
+    @POST("/user/register")
+    fun onRegister(@Query("username") username: String, @Query("password") password: String,
+                    @Query("repassword") repassword: String): Observable<BaseResponse<RegisterResponse>>
+
     @POST("/lg/collect/{id}/json")
     fun collect(@Path("id") id: Int): Observable<BaseResponse<EmptyResponse>>
 

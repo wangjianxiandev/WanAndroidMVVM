@@ -7,7 +7,7 @@ import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleListActivity
 import com.wjx.android.wanandroidmvvm.ui.system.viewmodel.SystemViewModel
 import kotlinx.android.synthetic.main.custom_bar.view.*
 
-class SystemListActivity : BaseArticleListActivity<SystemViewModel>() {
+class SystemArticleListActivity : BaseArticleListActivity<SystemViewModel>() {
     private var mCurrentPageNum : Int = 0
 
     private val mTitle: String? by lazy { intent?.getStringExtra("title") }

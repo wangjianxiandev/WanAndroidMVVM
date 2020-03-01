@@ -1,5 +1,7 @@
 package com.wjx.android.wanandroidmvvm.base.state
 
+import androidx.annotation.StringRes
+
 /**
  * Created with Android Studio.
  * Description: 状态类
@@ -7,4 +9,4 @@ package com.wjx.android.wanandroidmvvm.base.state
  * @date: 2020/02/22
  * Time: 15:28
  */
-data class State(var code : StateType, var message : String = "")
+data class State(var code : StateType, var message : String = "", @StringRes var tip : Int = 0)

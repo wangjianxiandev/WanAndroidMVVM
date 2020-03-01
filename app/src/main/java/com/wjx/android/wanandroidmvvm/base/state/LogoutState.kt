@@ -1,0 +1,40 @@
+package com.wjx.android.wanandroidmvvm.base.state
+
+import android.content.Context
+import com.wjx.android.wanandroidmvvm.R
+import com.wjx.android.wanandroidmvvm.base.state.callback.CollectListener
+import com.wjx.android.wanandroidmvvm.ui.account.view.LoginActivity
+import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
+
+/**
+ * Created with Android Studio.
+ * Description:
+ * @author: Wangjianxian
+ * @date: 2020/03/01
+ * Time: 19:39
+ */
+class LogoutState :UserState {
+    override fun collect(context: Context?, position: Int, listener: CollectListener) {
+        startLoginActivity(context)
+    }
+
+    override fun login(context: Context?) {
+        startLoginActivity(context)
+    }
+
+    override fun startCollectActivity(context: Context?) {
+        startLoginActivity(context)
+    }
+
+    override fun startTodoActivity(context: Context?) {
+        startLoginActivity(context)
+    }
+
+    private fun startLoginActivity(context: Context?) {
+        context?.let {
+            it.toast(it.getString(R.string.please_login))
+            it.startActivity<LoginActivity>()
+        }
+    }
+}

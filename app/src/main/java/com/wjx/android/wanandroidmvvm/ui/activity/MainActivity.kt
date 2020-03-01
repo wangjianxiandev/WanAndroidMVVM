@@ -7,9 +7,9 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.Fragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseActivity
+import com.wjx.android.wanandroidmvvm.base.state.UserInfo
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessListener
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessState
 import com.wjx.android.wanandroidmvvm.base.utils.Constant
@@ -22,6 +22,7 @@ import com.wjx.android.wanandroidmvvm.ui.wechat.view.WeChatFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_drawer_header.view.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
+import org.jetbrains.anko.toast
 
 class MainActivity : BaseActivity(), LoginSuccessListener {
     // 委托属性   将实现委托给了 -> Preference
@@ -69,24 +70,24 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
         headView.circle_image_name.text = mUsername
 
         // 点击 登录
-//        headView.circle_image.setOnClickListener { UserContext.instance.login(this) }
+        headView.circle_image.setOnClickListener { UserInfo.instance.login(this) }
 
         navigation_draw.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_menu_collect -> {
-//                    UserContext.instance.goCollectActivity(this)
+                    UserInfo.instance.startCollectActivity(this)
                 }
                 R.id.nav_menu_todo -> {
-//                    UserContext.instance.goTodoActivity(this)
+                    UserInfo.instance.startTodoActivity(this)
                 }
                 R.id.nav_menu_about -> {
 //                    startActivity<AboutActivity>()
                 }
                 R.id.nav_menu_setting -> {
-//                    toast(getString(R.string.setting))
+                    toast(getString(R.string.setting))
                 }
                 R.id.nav_menu_logout -> {
-//                    UserContext.instance.logoutSuccess()
+                    UserInfo.instance.logoutSuccess()
                 }
             }
 
@@ -130,19 +131,11 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
         }
     }
 
-    /**
-     *  创建 search 搜索 icon
-     */
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        // 设置 toolbar   search 图标
-        // search 图标大小 -> 通过 drawable-hdpi 文件夹  还有 原图片大小来设置这里 32dp
-        // 如果直接放入 drawable 会偏大
-//        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        menuInflater.inflate(R.menu.search_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
-
-    // 设置默认选中 fragment
     private fun setDefaultFragment() {
         mCurrentFragment = mHomeFragment
         val transaction = supportFragmentManager.beginTransaction()
@@ -209,7 +202,7 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
     override fun loginSuccess(username: String, collectIds: List<Int>?) {
         // 进行 SharedPreference 存储
         mUsername = username
-//        headView.mTvName.text = username
+        headView.circle_image_name.text = username
     }
 
     override fun onDestroy() {

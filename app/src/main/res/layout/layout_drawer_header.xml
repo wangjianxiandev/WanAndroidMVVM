@@ -11,7 +11,8 @@
         android:layout_height="200dp"
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_mine_bg" />
+        android:src="@drawable/ic_mine_bg"
+        tools:ignore="MissingConstraints" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circle_image"

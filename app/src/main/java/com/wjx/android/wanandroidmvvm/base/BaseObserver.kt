@@ -6,6 +6,7 @@ import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
 import com.wjx.android.wanandroidmvvm.base.repository.BaseRepository
 import com.wjx.android.wanandroidmvvm.base.state.State
 import com.wjx.android.wanandroidmvvm.base.state.StateType
+import com.wjx.android.wanandroidmvvm.base.state.UserInfo
 import com.wjx.android.wanandroidmvvm.base.utils.Constant
 import io.reactivex.disposables.Disposable
 
@@ -17,21 +18,30 @@ import io.reactivex.disposables.Disposable
  * Time: 20:44
  */
 
-class BaseObserver<T : BaseResponse<*>>(val liveData : MutableLiveData<T>,
-                                        val loadState : MutableLiveData<State>,
-                                        val repository: BaseRepository) : Observer<T> {
+class BaseObserver<T : BaseResponse<*>>(
+    val liveData: MutableLiveData<T>,
+    val loadState: MutableLiveData<State>,
+    val repository: BaseRepository
+) : Observer<T> {
     override fun onNext(response: T) {
-        when(response.errorCode) {
+        when (response.errorCode) {
             Constant.SUCCESS -> {
                 if (response.data is List<*>) {
                     if ((response.data as List<*>).isEmpty()) {
                         loadState.postValue(State(StateType.EMPTY))
+                        return
                     }
                 }
                 loadState.postValue(State(StateType.SUCCESS))
                 liveData.postValue(response)
             }
-
+            Constant.NOT_LOGIN -> {
+                UserInfo.instance.logoutSuccess()
+                loadState.postValue(State(StateType.ERROR, message = "请重新登录"))
+            }
+            else -> {
+                loadState.postValue(State(StateType.ERROR, message = response.errorMessage))
+            }
         }
     }
 
@@ -43,7 +53,5 @@ class BaseObserver<T : BaseResponse<*>>(val liveData : MutableLiveData<T>,
         loadState.postValue(State(StateType.ERROR))
     }
 
-    override fun onComplete() {
-    }
-
+    override fun onComplete() {}
 }
