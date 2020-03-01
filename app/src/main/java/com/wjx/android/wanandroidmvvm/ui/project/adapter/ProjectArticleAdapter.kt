@@ -59,5 +59,5 @@ class ProjectArticleAdapter(layoutId: Int, listData: MutableList<Article>?) :
     }
 
     private fun isCollect(article: Article): Int =
-        if (article.isCollect) R.drawable.collect_selector_icon else R.drawable.uncollect_selector_icon
+        if (article.collect) R.drawable.collect_selector_icon else R.drawable.uncollect_selector_icon
 }

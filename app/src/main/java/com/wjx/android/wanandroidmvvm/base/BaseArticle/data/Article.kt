@@ -16,10 +16,10 @@ data class Article(
     var link: String,
     var originId: Int,
     var title: String,
-    var isCollect: Boolean,
+    var collect: Boolean,
     var superChapterName: String?,
     var niceDate: String,
-    var isFresh: Boolean,
-    var isTop: Boolean,
+    var fresh: Boolean,
+    var top: Boolean,
     var envelopePic : String
 )

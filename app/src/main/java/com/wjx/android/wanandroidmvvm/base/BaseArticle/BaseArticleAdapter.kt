@@ -32,8 +32,8 @@ class BaseArticleAdapter (layoutId : Int, listData : MutableList<Article>?)
                         .setText(R.id.item_article_type, handleCategory(it))
                         .setImageResource(R.id.item_list_collect, isCollect(it))
                         .addOnClickListener(R.id.item_list_collect)
-                        .setVisible(R.id.item_home_top_article, it.isTop)
-                        .setVisible(R.id.item_home_new, it.isFresh)
+                        .setVisible(R.id.item_home_top_article, it.top)
+                        .setVisible(R.id.item_home_new, it.fresh)
                 }
             }
         }
@@ -68,5 +68,5 @@ class BaseArticleAdapter (layoutId : Int, listData : MutableList<Article>?)
         }
     }
 
-    private fun isCollect(article: Article) :Int = if (article.isCollect) R.drawable.collect_selector_icon else R.drawable.uncollect_selector_icon
+    private fun isCollect(article: Article) :Int = if (article.collect) R.drawable.collect_selector_icon else R.drawable.uncollect_selector_icon
 }

@@ -12,5 +12,5 @@ data class RegisterResponse(
     var id : Int,
     var icon : String,
     var type : Int,
-    var collectIds : MutableList<Int>
+    var collectIds : List<Int>
 )

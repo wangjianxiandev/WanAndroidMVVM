@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleFragment
+import com.wjx.android.wanandroidmvvm.base.state.UserInfo
 import com.wjx.android.wanandroidmvvm.base.state.callback.CollectListener
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessListener
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessState
@@ -68,6 +69,9 @@ class ProjectArticleFragment : BaseLifeCycleFragment<ProjectViewModel>() , Login
                 startActivity(intent)
             }
         }
+        mAdapter.setOnItemChildClickListener{_,_,position ->
+            UserInfo.instance.collect(activity, position, this)
+        }
         mAdapter.setEnableLoadMore(true)
         mAdapter.setOnLoadMoreListener({ onLoadMoreData() }, mRvArticle)
         LoginSuccessState.addListener(this)
@@ -95,7 +99,7 @@ class ProjectArticleFragment : BaseLifeCycleFragment<ProjectViewModel>() , Login
         mViewModel.mCollectData.observe(this, Observer {
             var article = mAdapter.getItem(mCurrentItem)
             article?.let {
-                it.isCollect = !mCollectState
+                it.collect = !mCollectState
                 mAdapter.notifyDataSetChanged()
             }
         })
@@ -106,7 +110,7 @@ class ProjectArticleFragment : BaseLifeCycleFragment<ProjectViewModel>() , Login
 
         article?.let {
             mCurrentItem = position
-            mCollectState = it.isCollect
+            mCollectState = it.collect
             if (mCollectState) mViewModel.unCollect(it.id) else mViewModel.collect(it.id)
         }
     }
@@ -116,14 +120,14 @@ class ProjectArticleFragment : BaseLifeCycleFragment<ProjectViewModel>() , Login
             it.forEach { id ->
                 mAdapter.data.forEach { article ->
                     if (article.id == id) {
-                        article.isCollect = true
+                        article.collect = true
                     }
                 }
             }
         } ?: let {
             mAdapter.data.forEach { article ->
                 if (article.id == id) {
-                    article.isCollect = false
+                    article.collect = false
                 }
             }
         }

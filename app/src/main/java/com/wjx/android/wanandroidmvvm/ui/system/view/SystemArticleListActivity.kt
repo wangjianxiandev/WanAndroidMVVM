@@ -4,6 +4,7 @@ import android.view.View
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleListActivity
+import com.wjx.android.wanandroidmvvm.base.state.UserInfo
 import com.wjx.android.wanandroidmvvm.ui.system.viewmodel.SystemViewModel
 import kotlinx.android.synthetic.main.custom_bar.view.*
 
@@ -17,11 +18,13 @@ class SystemArticleListActivity : BaseArticleListActivity<SystemViewModel>() {
     override fun initView() {
         super.initView()
         initHeaderView()
+        mAdapter.setOnItemChildClickListener{_,_,position ->
+            UserInfo.instance.collect(this, position, this)
+        }
     }
 
     private fun initHeaderView() {
         val headView = View.inflate(this, R.layout.custom_bar, null)
-
         headView.detail_title.text = mTitle
         headView.detail_back.visibility = View.VISIBLE
         headView.detail_back.setOnClickListener { finish() }
@@ -35,6 +38,7 @@ class SystemArticleListActivity : BaseArticleListActivity<SystemViewModel>() {
         mViewModel.loadSystemArticle(mCurrentPageNum, mCid)
     }
     override fun initDataObserver() {
+        super.initDataObserver()
         mViewModel.mSystemArticleData.observe(this, Observer { response ->
             response?.let { addData(it.data.datas) }
         })

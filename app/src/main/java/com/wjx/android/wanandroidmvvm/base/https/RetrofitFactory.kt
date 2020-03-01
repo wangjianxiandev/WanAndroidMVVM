@@ -54,7 +54,7 @@ class RetrofitFactory private constructor() {
             val requestUrl = request.url().toString()
             val domain = request.url().host()
             //只保存登录或者注册
-            if(requestUrl.contains(Constant.LOGIN_KEY) || requestUrl.contains(Constant.SAVE_USER_REGISTER_KEY)){
+            if(requestUrl.contains(Constant.SAVE_USER_LOGIN_KEY) || requestUrl.contains(Constant.SAVE_USER_REGISTER_KEY)){
                 val mCookie = response.headers(Constant.SET_COOKIE_KEY)
                 mCookie?.let {
                     saveCookie(domain,parseCookie(it))

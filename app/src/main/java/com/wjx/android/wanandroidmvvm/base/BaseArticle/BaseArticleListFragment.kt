@@ -99,7 +99,7 @@ abstract class BaseArticleListFragment<VM : BaseArticleViewModel<*>> : BaseLifeC
         mViewModel.mCollectData.observe(this, Observer {
             var article = mAdapter.getItem(mCurrentItem)
             article?.let {
-                it.isCollect = !mCollectState
+                it.collect = !mCollectState
                 mAdapter.notifyDataSetChanged()
             }
         })
@@ -110,7 +110,7 @@ abstract class BaseArticleListFragment<VM : BaseArticleViewModel<*>> : BaseLifeC
 
         article?.let {
             mCurrentItem = position
-            mCollectState = it.isCollect
+            mCollectState = it.collect
             if (mCollectState) mViewModel.unCollect(it.id) else mViewModel.collect(it.id)
         }
     }
@@ -120,14 +120,14 @@ abstract class BaseArticleListFragment<VM : BaseArticleViewModel<*>> : BaseLifeC
             it.forEach { id ->
                 mAdapter.data.forEach { article ->
                     if (article.id == id) {
-                        article.isCollect = true
+                        article.collect = true
                     }
                 }
             }
         } ?: let {
             mAdapter.data.forEach { article ->
                 if (article.id == id) {
-                    article.isCollect = false
+                    article.collect = false
                 }
             }
         }

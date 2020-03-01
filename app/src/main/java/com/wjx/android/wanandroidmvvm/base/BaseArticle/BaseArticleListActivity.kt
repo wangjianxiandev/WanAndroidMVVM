@@ -96,7 +96,7 @@ abstract class BaseArticleListActivity <VM : BaseArticleViewModel<*>> : BaseLife
         mViewModel.mCollectData.observe(this, Observer {
             var article = mAdapter.getItem(mCurrentItem)
             article?.let {
-                it.isCollect = !mCollectState
+                it.collect = !mCollectState
                 mAdapter.notifyDataSetChanged()
             }
         })
@@ -107,7 +107,7 @@ abstract class BaseArticleListActivity <VM : BaseArticleViewModel<*>> : BaseLife
 
         article?.let {
             mCurrentItem = position
-            mCollectState = it.isCollect
+            mCollectState = it.collect
             if (mCollectState) mViewModel.unCollect(it.id) else mViewModel.collect(it.id)
         }
     }
