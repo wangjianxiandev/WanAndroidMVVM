@@ -1,17 +1,11 @@
 package com.wjx.android.wanandroidmvvm.ui.system.view
 
-import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleAdapter
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleListActivity
-import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
-import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.ui.system.viewmodel.SystemViewModel
 import kotlinx.android.synthetic.main.custom_bar.view.*
-import java.lang.ArithmeticException
 
 class SystemListActivity : BaseArticleListActivity<SystemViewModel>() {
     private var mCurrentPageNum : Int = 0
@@ -53,6 +47,11 @@ class SystemListActivity : BaseArticleListActivity<SystemViewModel>() {
 
     override fun onLoadMoreData() {
         mViewModel.loadSystemArticle(++mCurrentPageNum, mCid)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 
 }
