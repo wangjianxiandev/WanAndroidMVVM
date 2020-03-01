@@ -13,7 +13,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.wjx.android.wanandroidmvvm.Custom.interpolator.CustomScaleInterpolator
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.utils.Util
-import com.wjx.android.wanandroidmvvm.ui.activity.TreeListActivity
+import com.wjx.android.wanandroidmvvm.ui.system.view.SystemListActivity
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemLabelResponse
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemTabNameResponse
 import com.zhy.view.flowlayout.FlowLayout
@@ -59,10 +59,10 @@ class SystemAdapter (layoutId : Int, listData : MutableList<SystemTabNameRespons
                 holder.itemView.system_card.setBackgroundDrawable(gradientDrawable)
 
                 holder.itemView.item_tag_layout.setOnTagClickListener{_, position,_ ->
-                    val intent = Intent(mContext, TreeListActivity::class.java)
+                    val intent = Intent(mContext, SystemListActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                     intent.putExtra("id", it.children[position].id)
-                    intent.putExtra("name", it.children[position].name)
+                    intent.putExtra("title", it.children[position].name)
                     mContext.startActivity(intent)
                     return@setOnTagClickListener true
                 }

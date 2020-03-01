@@ -25,7 +25,7 @@ class SystemRepository (loadState : MutableLiveData<State>) : BaseArticleReposit
             .subscribe(BaseObserver(liveData, loadState, this))
     }
 
-    fun loadSystemArticle(pageNum : Int, cid : Int, liveData: MutableLiveData<BaseResponse<SystemArticleResponse>>) {
+    fun loadSystemArticle(pageNum : Int, cid : Int?, liveData: MutableLiveData<BaseResponse<SystemArticleResponse>>) {
         apiService.loadSystemArticles(pageNum, cid)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

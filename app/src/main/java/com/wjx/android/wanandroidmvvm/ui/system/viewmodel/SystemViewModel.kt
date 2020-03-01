@@ -23,7 +23,7 @@ class SystemViewModel (application: Application) : BaseArticleViewModel<SystemRe
         mRepository.loadSystemTab(mSystemTabNameData)
     }
 
-    fun loadSystemArticle(pageNun : Int, cid : Int) {
-        mRepository.loadSystemArticle(pageNun, cid, mSystemArticleData)
+    fun loadSystemArticle(pageNum : Int, cid : Int?) {
+        mRepository.loadSystemArticle(pageNum, cid, mSystemArticleData)
     }
 }

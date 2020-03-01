@@ -47,7 +47,7 @@ interface ApiService {
     fun loadSystemTab(): Observable<BaseResponse<List<SystemTabNameResponse>>>
 
     @GET("/article/list/{pageNum}/json")
-    fun loadSystemArticles(@Path("pageNum") pageNum: Int, @Query("cid") id: Int): Observable<BaseResponse<SystemArticleResponse>>
+    fun loadSystemArticles(@Path("pageNum") pageNum: Int, @Query("cid") id: Int?): Observable<BaseResponse<SystemArticleResponse>>
 
     @GET("/project/tree/json")
     fun loadProjectTab(): Observable<BaseResponse<List<ProjectTabResponse>>>
