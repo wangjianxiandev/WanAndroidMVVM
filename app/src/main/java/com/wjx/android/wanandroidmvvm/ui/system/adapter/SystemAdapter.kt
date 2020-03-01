@@ -3,6 +3,8 @@ package com.wjx.android.wanandroidmvvm.ui.system.adapter
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
@@ -46,6 +48,15 @@ class SystemAdapter (layoutId : Int, listData : MutableList<SystemTabNameRespons
                         return tagView
                     }
                 }
+
+                val gradientDrawable = GradientDrawable(
+                    GradientDrawable.Orientation.BR_TL,
+                    intArrayOf(
+                        Util.evaluate(0.5f, Util.randomColor(), Color.WHITE),
+                        Color.WHITE
+                    )
+                )
+                holder.itemView.system_card.setBackgroundDrawable(gradientDrawable)
 
                 holder.itemView.item_tag_layout.setOnTagClickListener{_, position,_ ->
                     val intent = Intent(mContext, TreeListActivity::class.java)

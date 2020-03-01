@@ -14,6 +14,7 @@
     app:strokeWidth="2dp">
 
     <RelativeLayout
+        android:id="@+id/system_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -30,25 +31,13 @@
             android:textSize="12dp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/item_system_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="@dimen/safe_padding"
-            android:backgroundTint="@color/white"
-            android:src="@mipmap/ic_chevron_right_black_18dp"
-            android:tint="@color/colorPrimaryDark" />
-
         <com.zhy.view.flowlayout.TagFlowLayout
             android:id="@+id/item_tag_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/item_system_title"
-            android:layout_alignStart="@+id/item_system_title"
+            android:layout_alignParentStart="true"
             android:layout_marginTop="4dp"
-            android:layout_toStartOf="@+id/item_system_btn"
             app:alignItems="flex_start"
             app:max_select="0"/>
     </RelativeLayout>

@@ -168,7 +168,7 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
                 switchFragment(mSystemFragment)
             }
             Constant.NAVIGATION -> {
-                fab_add.visibility = View.VISIBLE
+                fab_add.visibility = View.GONE
                 setToolBarTitle(toolbar, getString(R.string.navigation_navigation))
                 switchFragment(mNavigationFragment)
             }

@@ -50,4 +50,32 @@ object Util {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         context.startActivity(intent)
     }
+
+    /**
+     * 计算渐变颜色值 ARGB
+     *
+     * @param fraction
+     * 变化比率 0~1
+     * @param startValue
+     * 初始色值
+     * @param endValue
+     * 结束色值
+     * @return
+     */
+    fun evaluate(fraction: Float, startValue: Any, endValue: Int): Int {
+        val startInt = startValue as Int
+        val startA = startInt shr 24 and 0xff
+        val startR = startInt shr 16 and 0xff
+        val startG = startInt shr 8 and 0xff
+        val startB = startInt and 0xff
+        val endInt = endValue
+        val endA = endInt shr 24 and 0xff
+        val endR = endInt shr 16 and 0xff
+        val endG = endInt shr 8 and 0xff
+        val endB = endInt and 0xff
+        return ((startA + (fraction * (endA - startA)).toInt() shl 24)
+                or (startR + (fraction * (endR - startR)).toInt() shl 16)
+                or (startG + (fraction * (endG - startG)).toInt() shl 8)
+                or (startB + (fraction * (endB - startB)).toInt()))
+    }
 }
