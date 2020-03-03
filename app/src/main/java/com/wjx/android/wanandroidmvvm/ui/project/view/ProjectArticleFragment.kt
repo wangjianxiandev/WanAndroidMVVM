@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
-import androidx.recyclerview.widget.PagerSnapHelper
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleFragment
@@ -16,7 +15,6 @@ import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessListener
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessState
 import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import com.wjx.android.wanandroidmvvm.ui.project.adapter.ProjectArticleAdapter
-import com.wjx.android.wanandroidmvvm.ui.project.data.Project
 import com.wjx.android.wanandroidmvvm.ui.project.viewmodel.ProjectViewModel
 import kotlinx.android.synthetic.main.fragment_article_list.*
 
@@ -137,7 +135,7 @@ class ProjectArticleFragment : BaseLifeCycleFragment<ProjectViewModel>() , Login
 
     override fun onDestroy() {
         super.onDestroy()
-        LoginSuccessState.removeListsner(this)
+        LoginSuccessState.removeListener(this)
     }
 
     fun onRefreshData() {

@@ -20,6 +20,7 @@ import com.wjx.android.wanandroidmvvm.ui.project.view.ProjectFragment
 import com.wjx.android.wanandroidmvvm.ui.system.view.SystemFragment
 import com.wjx.android.wanandroidmvvm.ui.wechat.view.WeChatFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_article_list.*
 import kotlinx.android.synthetic.main.layout_drawer_header.view.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import org.jetbrains.anko.toast
@@ -28,7 +29,7 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
     // 委托属性   将实现委托给了 -> Preference
     private var mUsername: String by Preference(Constant.USERNAME_KEY, "未登录")
 
-    private lateinit var headView : View
+    private lateinit var headView: View
 
     private val mHomeFragment by lazy { HomeFragment() }
     private val mWeChatFragment by lazy { WeChatFragment() }
@@ -44,8 +45,8 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
     override fun initView() {
         initToolBar()
         initDrawerLayout()
+        initFabButton()
         initBottomNavigation()
-        initFloatButton()
         setDefaultFragment()
     }
 
@@ -97,6 +98,12 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
         }
     }
 
+    private fun initFabButton() {
+        fab_add.setOnClickListener {
+            UserInfo.instance.startTodoActivity(this)
+        }
+    }
+
     private fun initBottomNavigation() {
         bottom_navigation.setOnNavigationItemSelectedListener { menuItem: MenuItem ->
             when (menuItem.itemId) {
@@ -122,12 +129,6 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
                 }
                 else -> return@setOnNavigationItemSelectedListener false
             }
-        }
-    }
-
-    private fun initFloatButton() {
-        fab_add.setOnClickListener {
-
         }
     }
 
@@ -207,6 +208,6 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
 
     override fun onDestroy() {
         super.onDestroy()
-        LoginSuccessState.removeListsner(this)
+        LoginSuccessState.removeListener(this)
     }
 }

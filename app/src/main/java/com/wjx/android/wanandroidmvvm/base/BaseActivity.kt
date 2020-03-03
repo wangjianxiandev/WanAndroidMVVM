@@ -2,11 +2,15 @@ package com.wjx.android.wanandroidmvvm.base
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import com.wjx.android.wanandroidmvvm.R
+import com.wjx.android.wanandroidmvvm.base.utils.Util.circularFinishReveal
+import com.wjx.android.wanandroidmvvm.base.utils.Util.setReveal
 import io.reactivex.disposables.Disposable
 import org.jetbrains.anko.toast
 
@@ -19,9 +23,11 @@ import org.jetbrains.anko.toast
  */
 abstract class BaseActivity : AppCompatActivity() {
 
-    private var exitTime : Long = 0
+    private var mExitTime : Long = 0
 
-    protected var disposable : Disposable? = null
+    protected var mDisposable : Disposable? = null
+
+    lateinit var mRootView : View
 
     val loadService : LoadService<*> by lazy {
         LoadSir.getDefault().register(this) {
@@ -32,11 +38,19 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())
+        mRootView = (findViewById(android.R.id.content) as ViewGroup).getChildAt(0)
         AppManager.instance.addActivity(this)
         initView()
         initData()
+        if (showCreateReveal()) {
+            setUpReveal(savedInstanceState)
+        }
     }
 
+    open fun showCreateReveal() : Boolean = true
+    
+    open fun showDestroyReveal() : Boolean = false
+    
     open fun initView() {}
     open fun initData() {}
 
@@ -47,12 +61,17 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onBackPressed() {
         val time = System.currentTimeMillis()
 
-        if (time - exitTime > 2000) {
+        if (time - mExitTime > 2000) {
             toast(getString(R.string.exit_app))
-            exitTime = time
+            mExitTime = time
         } else {
             AppManager.instance.exitApp(this)
         }
+    }
+
+
+    fun setUpReveal(savedInstanceState: Bundle?) {
+        setReveal(savedInstanceState)
     }
 
     /**
@@ -84,7 +103,19 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        disposable?.dispose()
+        mDisposable?.dispose()
         AppManager.instance.removeActivity(this)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (showDestroyReveal()) {
+            circularFinishReveal(mRootView)
+        }
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out)
     }
 }

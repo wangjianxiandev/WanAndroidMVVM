@@ -1,7 +1,9 @@
 package com.wjx.android.wanandroidmvvm.base.https
 
+import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
 import com.wjx.android.wanandroidmvvm.ui.account.data.LoginResponse
 import com.wjx.android.wanandroidmvvm.ui.account.data.RegisterResponse
+import com.wjx.android.wanandroidmvvm.ui.collect.data.CollectResponse
 import com.wjx.android.wanandroidmvvm.ui.home.data.bean.BannerResponse
 import com.wjx.android.wanandroidmvvm.ui.home.data.bean.HomeArticleResponse
 import com.wjx.android.wanandroidmvvm.ui.navigation.data.NavigationTabNameResponse
@@ -44,6 +46,9 @@ interface ApiService {
     @GET("/banner/json")
     fun loadBanner(): Observable<BaseResponse<List<BannerResponse>>>
 
+    @GET("/article/top/json")
+    fun loadTopArticle(): Observable<BaseResponse<List<Article>>>
+
     @GET("/article/list/{pageNum}/json")
     fun loadHomeArticle(@Path("pageNum") pageNum: Int): Observable<BaseResponse<HomeArticleResponse>>
 
@@ -68,4 +73,10 @@ interface ApiService {
 
     @GET("/navi/json")
     fun loadNavigationTab(): Observable<BaseResponse<List<NavigationTabNameResponse>>>
+
+    @GET("/lg/collect/list/{pageNum}/json")
+    fun loadCollectArticle(@Path("pageNum") page: Int): Observable<BaseResponse<CollectResponse>>
+
+    @POST("/lg/uncollect/{id}/json")
+    fun unCollect(@Path("id") id: Int, @Query("originId") originId: Int): Observable<BaseResponse<EmptyResponse>>
 }

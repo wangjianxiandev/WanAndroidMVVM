@@ -2,6 +2,7 @@ package com.wjx.android.wanandroidmvvm.base
 
 
 import android.text.TextUtils
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.kingja.loadsir.callback.SuccessCallback
@@ -11,6 +12,7 @@ import com.wjx.android.wanandroidmvvm.base.callback.LoadingCallBack
 import com.wjx.android.wanandroidmvvm.base.state.State
 import com.wjx.android.wanandroidmvvm.base.state.StateType
 import com.wjx.android.wanandroidmvvm.base.utils.Util
+import org.jetbrains.anko.toast
 
 /**
  * Created with Android Studio.
@@ -46,12 +48,14 @@ abstract class BaseLifeCycleFragment<VM : BaseViewModel<*>> : BaseFragment() {
 
     private fun showError(msg: String) {
         if (!TextUtils.isEmpty(msg)) {
+            Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
         }
         loadService.showCallback(ErrorCallBack::class.java)
     }
 
     open fun showTip(msg: String) {
         if (!TextUtils.isEmpty(msg)) {
+            Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
         }
         loadService.showCallback(SuccessCallback::class.java)
     }

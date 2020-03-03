@@ -2,6 +2,7 @@ package com.wjx.android.wanandroidmvvm.ui.home.data.repository
 
 import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleRepository
+import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
 import com.wjx.android.wanandroidmvvm.base.BaseObserver
 import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
 import com.wjx.android.wanandroidmvvm.base.state.State
@@ -27,6 +28,13 @@ class HomeRepository (loadState : MutableLiveData<State>) : BaseArticleRepositor
 
     fun loadHomeArticle(pageNum : Int, liveData: MutableLiveData<BaseResponse<HomeArticleResponse>>) {
         apiService.loadHomeArticle(pageNum)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(BaseObserver(liveData, loadState, this))
+    }
+
+    fun loadTopArticle(liveData: MutableLiveData<BaseResponse<List<Article>>>) {
+        apiService.loadTopArticle()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(BaseObserver(liveData, loadState, this))

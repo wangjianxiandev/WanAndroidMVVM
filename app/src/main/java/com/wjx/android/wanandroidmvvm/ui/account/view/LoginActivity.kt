@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.base.state.UserInfo
+import com.wjx.android.wanandroidmvvm.base.utils.Util
 import com.wjx.android.wanandroidmvvm.ui.account.viewmodel.AccountViewModel
 import com.wjx.android.wanandroidmvvm.ui.todo.TodoActivity
 import kotlinx.android.synthetic.main.activity_login.*
@@ -15,8 +16,9 @@ class LoginActivity : BaseLifeCycleActivity<AccountViewModel>(), View.OnClickLis
 
     override fun initView() {
         super.initView()
-        mBtnLogin.setOnClickListener(this)
-        mTvRegister.setOnClickListener(this)
+        button_login.setOnClickListener(this)
+        register_text.setOnClickListener(this)
+        ivBack.setOnClickListener(this)
         showSuccess()
     }
 
@@ -30,18 +32,25 @@ class LoginActivity : BaseLifeCycleActivity<AccountViewModel>(), View.OnClickLis
         })
     }
 
+    override fun showCreateReveal(): Boolean = true
+
+    override fun showDestroyReveal(): Boolean = true
+
     override fun onBackPressed() {
         finish()
     }
 
     override fun onClick(v: View?) {
         when(v?.id) {
-            R.id.mBtnLogin -> {
-                mViewModel.login(mTieAccount.text.toString(), mTiePassword.text.toString())
+            R.id.button_login -> {
+                mViewModel.login(account_text.text.toString(), password_text.text.toString())
             }
-            R.id.mTvRegister -> {
+            R.id.register_text -> {
                 startActivity<TodoActivity>()
                 finish()
+            }
+            R.id.ivBack -> {
+                onBackPressed()
             }
         }
     }

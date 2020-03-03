@@ -11,7 +11,6 @@ import com.wjx.android.wanandroidmvvm.base.state.callback.CollectListener
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessListener
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessState
 import com.wjx.android.wanandroidmvvm.base.utils.SpeedLayoutManager
-import com.wjx.android.wanandroidmvvm.base.utils.Util
 import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import kotlinx.android.synthetic.main.fragment_article_list.*
 
@@ -22,13 +21,14 @@ import kotlinx.android.synthetic.main.fragment_article_list.*
  * @date: 2020/02/25
  * Time: 20:59
  */
-abstract class BaseArticleListFragment<VM : BaseArticleViewModel<*>> : BaseLifeCycleFragment<VM>(), LoginSuccessListener, CollectListener {
+abstract class BaseArticleListFragment<VM : BaseArticleViewModel<*>> : BaseLifeCycleFragment<VM>(),
+    LoginSuccessListener, CollectListener {
 
-    private var mCollectState : Boolean = false
+    private var mCollectState: Boolean = false
 
-    private var mCurrentItem : Int = 0
+    private var mCurrentItem: Int = 0
 
-    protected lateinit var mAdapter : BaseArticleAdapter
+    protected lateinit var mAdapter: BaseArticleAdapter
 
     override fun getLayoutId(): Int = R.layout.fragment_article_list
 
@@ -37,19 +37,19 @@ abstract class BaseArticleListFragment<VM : BaseArticleViewModel<*>> : BaseLifeC
         initRefresh()
         mRvArticle?.layoutManager = SpeedLayoutManager(context, 10f)
         mAdapter = BaseArticleAdapter(R.layout.article_item, null)
-        mRvArticle?.adapter  = mAdapter
+        mRvArticle?.adapter = mAdapter
 
         mAdapter.setOnItemClickListener { _, _, position ->
             val article = mAdapter.getItem(position)
 
             article?.let {
-                val intent : Intent = Intent(activity, ArticleDetailActivity::class.java)
+                val intent: Intent = Intent(activity, ArticleDetailActivity::class.java)
                 intent.putExtra("url", it.link)
                 intent.putExtra("title", it.title)
                 startActivity(intent)
             }
         }
-        mAdapter.setOnItemChildClickListener{_, _, position ->
+        mAdapter.setOnItemChildClickListener { _, _, position ->
             UserInfo.instance.collect(activity, position, this)
         }
         mAdapter.setEnableLoadMore(true)
@@ -74,14 +74,12 @@ abstract class BaseArticleListFragment<VM : BaseArticleViewModel<*>> : BaseLifeC
      */
     abstract fun onLoadMoreData()
 
-    fun addData(articleList : List<Article>) {
-
+    fun addData(articleList: List<Article>) {
         // 返回列表为空显示加载完毕
         if (articleList.isEmpty()) {
             mAdapter.loadMoreEnd()
             return
         }
-
         // 如果是下拉刷新状态，直接设置数据
         if (mSrlRefresh.isRefreshing) {
             mSrlRefresh.isRefreshing = false
@@ -126,17 +124,14 @@ abstract class BaseArticleListFragment<VM : BaseArticleViewModel<*>> : BaseLifeC
             }
         } ?: let {
             mAdapter.data.forEach { article ->
-                if (article.id == id) {
-                    article.collect = false
-                }
+                article.collect = false
             }
         }
         mAdapter.notifyDataSetChanged()
     }
 
-
     override fun onDestroy() {
         super.onDestroy()
-        LoginSuccessState.removeListsner(this)
+        LoginSuccessState.removeListener(this)
     }
 }

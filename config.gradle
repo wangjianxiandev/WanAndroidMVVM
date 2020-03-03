@@ -70,7 +70,8 @@ ext {
             "material"                        : "com.google.android.material:material:1.1.0-alpha05",
             "tab_layout"                      : "com.flyco.tablayout:FlycoTabLayout_Lib:$tab_layout_version",
             "flexbox"                         : "com.google.android:flexbox:$flex_box",
-            "flow_layout"                     : "com.hyman:flowlayout-lib:1.1.2"
+            "flow_layout"                     : "com.hyman:flowlayout-lib:1.1.2",
+            "float_button"                    : "com.getbase:floatingactionbutton:1.10.1"
     ]
 
     processor = [

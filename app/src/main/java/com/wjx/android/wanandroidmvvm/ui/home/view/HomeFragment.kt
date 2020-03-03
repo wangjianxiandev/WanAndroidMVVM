@@ -9,6 +9,7 @@ import androidx.core.graphics.ColorUtils
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleListFragment
+import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
 import com.wjx.android.wanandroidmvvm.base.utils.GlideImageLoader
 import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import com.wjx.android.wanandroidmvvm.ui.home.data.bean.BannerResponse
@@ -26,9 +27,9 @@ import java.util.ArrayList
  * @date: 2020/02/22
  * Time: 19:59
  */
-class HomeFragment : BaseArticleListFragment<HomeViewModel>(){
+class HomeFragment : BaseArticleListFragment<HomeViewModel>() {
 
-    private lateinit var mBanner : Banner
+    private lateinit var mBanner: Banner
 
     private val urls by lazy {
         arrayListOf<String>()
@@ -46,7 +47,7 @@ class HomeFragment : BaseArticleListFragment<HomeViewModel>(){
         val headView = View.inflate(activity, R.layout.layout_home_headview, null)
         mBanner = headView.mBanner
         mBanner.setOnBannerListener { position ->
-            val intent : Intent = Intent(activity, ArticleDetailActivity::class.java)
+            val intent: Intent = Intent(activity, ArticleDetailActivity::class.java)
             intent.putExtra("url", urls[position])
             intent.putExtra("title", titles[position])
             startActivity(intent)
@@ -60,7 +61,8 @@ class HomeFragment : BaseArticleListFragment<HomeViewModel>(){
 
     private fun initStatusColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            activity!!.window.statusBarColor = ContextCompat.getColor(context!!, R.color.colorPrimaryDark)
+            activity!!.window.statusBarColor =
+                ContextCompat.getColor(context!!, R.color.colorPrimaryDark)
         }
         if (ColorUtils.calculateLuminance(Color.TRANSPARENT) >= 0.5) { // 设置状态栏中字体的颜色为黑色
             activity!!.window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
@@ -76,6 +78,7 @@ class HomeFragment : BaseArticleListFragment<HomeViewModel>(){
 
     override fun initData() {
         page = 0
+        mViewModel.loadTopArticle()
         mViewModel.loadBanner()
         mViewModel.loadHomeArticleData(page)
     }
@@ -84,11 +87,28 @@ class HomeFragment : BaseArticleListFragment<HomeViewModel>(){
         super.initDataObserver()
         mViewModel.mBannerData.observe(this, Observer { response ->
             response?.let {
-                setBannerData(it.data) }
+                setBannerData(it.data)
+            }
         })
+
+        mViewModel.mTopArticleData.observe(this, Observer { response ->
+            response?.let {
+                handleTopArticle(it.data)
+                addData(it.data)
+            }
+        })
+
         mViewModel.mHomeArticleData.observe(this, Observer { response ->
-            response?.let { addData(it.data.datas) }
+            response?.let {
+                addData(it.data.datas)
+            }
         })
+    }
+
+    private fun handleTopArticle(articleList: List<Article>) {
+        for (article in articleList) {
+            article.top = true
+        }
     }
 
     private fun setBannerData(bannerList: List<BannerResponse>) {
@@ -108,6 +128,7 @@ class HomeFragment : BaseArticleListFragment<HomeViewModel>(){
     override fun onRefreshData() {
         page = 0
         mViewModel.loadHomeArticleData(page)
+        mViewModel.loadTopArticle()
         mViewModel.loadBanner()
     }
 

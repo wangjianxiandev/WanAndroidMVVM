@@ -32,8 +32,9 @@ class BaseArticleAdapter (layoutId : Int, listData : MutableList<Article>?)
                         .setText(R.id.item_article_type, handleCategory(it))
                         .setImageResource(R.id.item_list_collect, isCollect(it))
                         .addOnClickListener(R.id.item_list_collect)
-                        .setVisible(R.id.item_home_top_article, it.top)
                         .setVisible(R.id.item_home_new, it.fresh)
+                        .setVisible(R.id.item_home_top_article, it.top)
+                        .setGone(R.id.item_home_top_article, it.top)
                 }
             }
         }

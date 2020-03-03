@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
+import com.wjx.android.wanandroidmvvm.base.utils.Util
 
 /**
  * Created with Android Studio.

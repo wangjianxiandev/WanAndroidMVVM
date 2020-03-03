@@ -31,6 +31,8 @@ class ArticleDetailActivity : BaseActivity() {
             .go(url)
     }
 
+    override fun showDestroyReveal(): Boolean = true
+
     override fun onBackPressed() {
         finish()
     }

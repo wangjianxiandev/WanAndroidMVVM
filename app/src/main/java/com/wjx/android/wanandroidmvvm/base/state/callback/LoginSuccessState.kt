@@ -15,7 +15,7 @@ object LoginSuccessState {
         listeners.add(listener)
     }
 
-    fun removeListsner(listener: LoginSuccessListener) {
+    fun removeListener(listener: LoginSuccessListener) {
         listeners.remove(listener)
     }
 

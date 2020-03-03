@@ -2,6 +2,7 @@ package com.wjx.android.wanandroidmvvm.ui.home.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
+import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.viewmodel.BaseArticleViewModel
 import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
 import com.wjx.android.wanandroidmvvm.ui.home.data.bean.BannerResponse
@@ -19,6 +20,7 @@ class HomeViewModel(application: Application) :
     BaseArticleViewModel<HomeRepository>(application) {
     val mBannerData : MutableLiveData<BaseResponse<List<BannerResponse>>> = MutableLiveData()
     val mHomeArticleData : MutableLiveData<BaseResponse<HomeArticleResponse>> = MutableLiveData()
+    val mTopArticleData : MutableLiveData<BaseResponse<List<Article>>> = MutableLiveData()
 
     fun loadBanner() {
         mRepository.loadBanner(mBannerData)
@@ -26,5 +28,9 @@ class HomeViewModel(application: Application) :
 
     fun loadHomeArticleData(pageNum : Int) {
         mRepository.loadHomeArticle(pageNum, mHomeArticleData)
+    }
+
+    fun loadTopArticle() {
+        mRepository.loadTopArticle(mTopArticleData)
     }
 }
