@@ -105,32 +105,4 @@ class NavigationFragment : BaseLifeCycleFragment<NavigationViewModel>() {
         mNavigationTabAdapter.selectedPosition = position
         mNavigationTabAdapter.notifyDataSetChanged()
     }
-
-
-    // Reyclerview移动到中间位置的方法
-    fun moveToMiddle(
-        recyclerView: RecyclerView,
-        position: Int
-    ) { //先从RecyclerView的LayoutManager中获取当前第一项和最后一项的Position
-        val firstItem =
-            (recyclerView.layoutManager as LinearLayoutManager?)!!.findFirstVisibleItemPosition()
-        val lastItem =
-            (recyclerView.layoutManager as LinearLayoutManager?)!!.findLastVisibleItemPosition()
-        //中间位置
-        val middle = (firstItem + lastItem) / 2
-        // 取绝对值，index下标是当前的位置和中间位置的差，下标为index的view的top就是需要滑动的距离
-        val index =
-            if (position - middle >= 0) position - middle else -(position - middle)
-        //左侧列表一共有getChildCount个Item，如果>这个值会返回null，程序崩溃，如果>getChildCount直接滑到指定位置,或者,都一样啦
-        if (index >= recyclerView.childCount) {
-            recyclerView.scrollToPosition(position)
-        } else { //如果当前位置在中间位置上面，往下移动，这里为了防止越界
-            if (position < middle) {
-                recyclerView.scrollBy(0, -recyclerView.getChildAt(index).top)
-                // 在中间位置的下面，往上移动
-            } else {
-                recyclerView.scrollBy(0, recyclerView.getChildAt(index).top)
-            }
-        }
-    }
 }

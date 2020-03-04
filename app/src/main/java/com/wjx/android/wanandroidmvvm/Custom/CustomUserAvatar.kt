@@ -22,6 +22,8 @@ class CustomUserAvatar : ImageView {
     private var mRect: Rect? = null
     private var mCircleName: String? = null
     private var mColor = 0
+    private var mCount = 0
+    private var mIsShowBlurMask: Boolean = false
 
     constructor(context: Context?) : super(context) {
         init()
@@ -59,7 +61,9 @@ class CustomUserAvatar : ImageView {
         mPaintBackground!!.color = mColor
         mPaintBackground!!.style = Paint.Style.STROKE
         mPaintBackground!!.strokeWidth = 5f
-//        mPaintBackground!!.maskFilter = BlurMaskFilter(10.0f, BlurMaskFilter.Blur.SOLID)
+        if (mIsShowBlurMask) {
+            mPaintBackground!!.maskFilter = BlurMaskFilter(10.0f, BlurMaskFilter.Blur.SOLID)
+        }
         canvas.drawCircle(
             width / 2.toFloat(),
             width / 2.toFloat(),
@@ -119,8 +123,8 @@ class CustomUserAvatar : ImageView {
      */
     fun setCircleName(circleName: String) { // 中文名字取后两个
         if (isChineseString(circleName)) {
-            mCircleName = if (circleName.length > 2) {
-                circleName.substring(0, 2)
+            mCircleName = if (circleName.length > mCount) {
+                circleName.substring(0, mCount)
             } else {
                 circleName
             }
@@ -134,6 +138,14 @@ class CustomUserAvatar : ImageView {
             }
         }
         invalidate()
+    }
+
+    fun setIsShowBlurMask(isShow: Boolean) {
+        mIsShowBlurMask = isShow
+    }
+
+    fun setShowNameCount(count: Int) {
+        mCount = count
     }
 
     fun setColor(color: Int) {

@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseActivity
@@ -69,6 +70,10 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
         // 直接获取报错   error -> mNavMain.mTvName
         headView = navigation_draw.getHeaderView(0)
         headView.circle_image_name.text = mUsername
+        headView.circle_image.setColor(ContextCompat.getColor(this, R.color.colorPrimary))
+        headView.circle_image.setIsShowBlurMask(true)
+        headView.circle_image.setShowNameCount(1)
+        headView.circle_image.setCircleName(mUsername)
 
         // 点击 登录
         headView.circle_image.setOnClickListener { UserInfo.instance.login(this) }
@@ -204,6 +209,7 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
         // 进行 SharedPreference 存储
         mUsername = username
         headView.circle_image_name.text = username
+        headView.circle_image.setCircleName(mUsername)
     }
 
     override fun onDestroy() {
