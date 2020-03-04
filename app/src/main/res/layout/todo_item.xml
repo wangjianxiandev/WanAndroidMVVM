@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/CutCardViewStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/safe_padding"
+    android:background="@color/white"
+    app:cardBackgroundColor="@color/white"
+    app:cardElevation="4dp"
+    app:rippleColor="@color/colorPrimary"
+    app:strokeColor="@color/colorPrimaryDark"
+    app:strokeWidth="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/todo_card"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/item_todo_tag"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/todo_tag"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_todo_title"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginRight="12dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLength="4"
+            android:singleLine="true"
+            android:text="完成项目"
+            android:textColor="@color/item_text"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="@id/item_todo_tag"
+            app:layout_constraintEnd_toStartOf="@id/item_todo_more"
+            app:layout_constraintStart_toEndOf="@id/item_todo_tag"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/item_todo_more"
+            android:layout_width="36dp"
+            android:layout_height="50dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:src="@drawable/todo_more"
+            app:layout_constraintBottom_toBottomOf="@+id/item_todo_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/item_todo_title" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="@dimen/safe_padding"
+            android:layout_marginRight="@dimen/safe_padding"
+            android:background="@color/item_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_todo_title" />
+
+        <TextView
+            android:id="@+id/item_todo_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/safe_padding"
+            android:layout_marginEnd="@dimen/safe_padding"
+            android:layout_marginRight="@dimen/safe_padding"
+            android:layout_marginBottom="@dimen/safe_padding"
+            android:ellipsize="end"
+            android:lineSpacingMultiplier="1.2"
+            android:maxLines="3"
+            android:text="完成Todo"
+            android:textColor="@color/item_text"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toTopOf="@id/view_bottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/item_todo_tag"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <ImageView
+            android:id="@+id/item_todo_status"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="@dimen/safe_padding"
+            android:src="@drawable/todo_done"
+            app:layout_constraintBottom_toBottomOf="@id/item_todo_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view"
+            app:layout_constraintTop_toTopOf="@id/item_todo_content" />
+
+        <View
+            android:id="@+id/view_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="@dimen/safe_padding"
+            android:layout_marginRight="@dimen/safe_padding"
+            android:background="@color/item_text"
+            app:layout_constraintBottom_toTopOf="@id/item_todo_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_todo_content" />
+
+        <TextView
+            android:id="@+id/item_todo_priority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/safe_padding"
+            android:layout_marginTop="@dimen/safe_padding"
+            android:background="@drawable/title_lable_red"
+            android:paddingStart="3dp"
+            android:paddingEnd="3dp"
+            android:text="重要"
+            android:textColor="@color/holo_red_light"
+            android:textSize="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/item_todo_date"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/item_todo_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/safe_padding"
+            android:layout_marginLeft="@dimen/safe_padding"
+            android:background="@drawable/title_lable_green"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:text="学习"
+            android:textColor="@color/holo_green_dark"
+            android:textSize="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/item_todo_date"
+            app:layout_constraintStart_toEndOf="@+id/item_todo_priority"
+            app:layout_constraintTop_toTopOf="@+id/item_todo_priority" />
+
+        <TextView
+            android:id="@+id/item_todo_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/safe_padding"
+            android:layout_marginRight="@dimen/safe_padding"
+            android:layout_marginBottom="@dimen/safe_padding"
+            android:text="2020-02-25"
+            android:textColor="@color/item_text"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_bottom" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
+

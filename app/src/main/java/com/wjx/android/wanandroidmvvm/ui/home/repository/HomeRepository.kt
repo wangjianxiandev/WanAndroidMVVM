@@ -1,4 +1,4 @@
-package com.wjx.android.wanandroidmvvm.ui.home.data.repository
+package com.wjx.android.wanandroidmvvm.ui.home.repository
 
 import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleRepository
@@ -6,8 +6,8 @@ import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
 import com.wjx.android.wanandroidmvvm.base.BaseObserver
 import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
 import com.wjx.android.wanandroidmvvm.base.state.State
-import com.wjx.android.wanandroidmvvm.ui.home.data.bean.BannerResponse
-import com.wjx.android.wanandroidmvvm.ui.home.data.bean.HomeArticleResponse
+import com.wjx.android.wanandroidmvvm.ui.home.data.BannerResponse
+import com.wjx.android.wanandroidmvvm.ui.home.data.HomeArticleResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 

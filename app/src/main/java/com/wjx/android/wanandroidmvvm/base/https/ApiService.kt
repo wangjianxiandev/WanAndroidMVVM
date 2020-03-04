@@ -4,13 +4,15 @@ import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
 import com.wjx.android.wanandroidmvvm.ui.account.data.LoginResponse
 import com.wjx.android.wanandroidmvvm.ui.account.data.RegisterResponse
 import com.wjx.android.wanandroidmvvm.ui.collect.data.CollectResponse
-import com.wjx.android.wanandroidmvvm.ui.home.data.bean.BannerResponse
-import com.wjx.android.wanandroidmvvm.ui.home.data.bean.HomeArticleResponse
+import com.wjx.android.wanandroidmvvm.ui.home.data.BannerResponse
+import com.wjx.android.wanandroidmvvm.ui.home.data.HomeArticleResponse
 import com.wjx.android.wanandroidmvvm.ui.navigation.data.NavigationTabNameResponse
 import com.wjx.android.wanandroidmvvm.ui.project.data.ProjectResponse
 import com.wjx.android.wanandroidmvvm.ui.project.data.ProjectTabResponse
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemArticleResponse
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemTabNameResponse
+import com.wjx.android.wanandroidmvvm.ui.todo.data.TodoPageResponse
+import com.wjx.android.wanandroidmvvm.ui.todo.data.TodoResponse
 import com.wjx.android.wanandroidmvvm.ui.wechat.data.WeChatArticleResponse
 import com.wjx.android.wanandroidmvvm.ui.wechat.data.WeChatTabNameResponse
 import io.reactivex.Observable
@@ -79,4 +81,32 @@ interface ApiService {
 
     @POST("/lg/uncollect/{id}/json")
     fun unCollect(@Path("id") id: Int, @Query("originId") originId: Int): Observable<BaseResponse<EmptyResponse>>
+
+    @GET("/lg/todo/v2/list/{pageNum}/json")
+    fun loadTodoData(@Path("pageNum") pageNum: Int): Observable<BaseResponse<TodoPageResponse>>
+
+    @POST("/lg/todo/add/json")
+    fun addTodo(
+        @Query("title") title: String,
+        @Query("content") content: String,
+        @Query("date") date: String,
+        @Query("type") type: Int,
+        @Query("priority") priority: Int
+    ): Observable<BaseResponse<EmptyResponse>>
+
+    @POST("/lg/todo/delete/{id}/json")
+    fun deleteTodo(@Path("id") id: Int): Observable<BaseResponse<EmptyResponse>>
+
+    @POST("/lg/todo/update/{id}/json")
+    fun updateTodo(
+        @Path("id") id: Int,
+        @Query("title") title: String,
+        @Query("content") content: String,
+        @Query("date") date: String,
+        @Query("type") type: Int,
+        @Query("priority") priority: Int
+    ): Observable<BaseResponse<EmptyResponse>>
+
+    @POST("/lg/todo/done/{id}/json")
+    fun finishTodo(@Path("id") id: Int, @Query("status") status: Int): Observable<BaseResponse<EmptyResponse>>
 }

@@ -1,4 +1,4 @@
-package com.wjx.android.wanandroidmvvm.ui.home.data.bean
+package com.wjx.android.wanandroidmvvm.ui.home.data
 
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
 

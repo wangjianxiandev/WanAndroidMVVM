@@ -12,7 +12,7 @@ import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleListFragment
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
 import com.wjx.android.wanandroidmvvm.base.utils.GlideImageLoader
 import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
-import com.wjx.android.wanandroidmvvm.ui.home.data.bean.BannerResponse
+import com.wjx.android.wanandroidmvvm.ui.home.data.BannerResponse
 import com.wjx.android.wanandroidmvvm.ui.home.viewmodel.HomeViewModel
 import com.youth.banner.Banner
 import com.youth.banner.BannerConfig

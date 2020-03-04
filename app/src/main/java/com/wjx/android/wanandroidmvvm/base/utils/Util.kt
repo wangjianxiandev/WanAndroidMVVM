@@ -11,16 +11,15 @@ import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.view.animation.LinearInterpolator
 import android.widget.FrameLayout
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.fragment.app.Fragment
 import com.google.android.material.circularreveal.CircularRevealCompat
 import com.google.android.material.circularreveal.CircularRevealFrameLayout
 import com.google.android.material.circularreveal.CircularRevealWidget
-import com.google.android.material.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout
 import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import java.lang.reflect.ParameterizedType
+import java.text.ParseException
+import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.jvm.internal.Intrinsics
 import kotlin.math.hypot
 
 
@@ -160,4 +159,37 @@ object Util {
         circularReveal.start()
     }
 
+    /**
+     * 获取当前时刻
+     *
+     * @return
+     */
+    fun getNowTime(): Date? {
+        return formatDate("yyyy-MM-dd", Date(Date().time))
+    }
+
+    /**
+     * 日期格式化
+     *
+     * @param formatStyle
+     * @param date
+     * @return
+     */
+    fun formatDate(formatStyle: String, date: Date?): Date? {
+        Intrinsics.checkParameterIsNotNull(formatStyle, "formatStyle")
+        return if (date != null) {
+            val sdf = SimpleDateFormat(formatStyle)
+            val formatDate = sdf.format(date)
+            try {
+                val var10000 = sdf.parse(formatDate)
+                Intrinsics.checkExpressionValueIsNotNull(var10000, "sdf.parse(formatDate)")
+                var10000
+            } catch (var6: ParseException) {
+                var6.printStackTrace()
+                Date()
+            }
+        } else {
+            Date()
+        }
+    }
 }

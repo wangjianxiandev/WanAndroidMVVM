@@ -5,9 +5,8 @@ import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.base.state.UserInfo
-import com.wjx.android.wanandroidmvvm.base.utils.Util
 import com.wjx.android.wanandroidmvvm.ui.account.viewmodel.AccountViewModel
-import com.wjx.android.wanandroidmvvm.ui.todo.TodoActivity
+import com.wjx.android.wanandroidmvvm.ui.todo.view.TodoActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
 

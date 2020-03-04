@@ -2,10 +2,9 @@ package com.wjx.android.wanandroidmvvm.base.state
 
 import android.content.Context
 import android.content.Intent
-import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.state.callback.CollectListener
 import com.wjx.android.wanandroidmvvm.ui.collect.view.CollectArticleListActivity
-import com.wjx.android.wanandroidmvvm.ui.todo.TodoActivity
+import com.wjx.android.wanandroidmvvm.ui.todo.view.TodoActivity
 
 /**
  * Created with Android Studio.

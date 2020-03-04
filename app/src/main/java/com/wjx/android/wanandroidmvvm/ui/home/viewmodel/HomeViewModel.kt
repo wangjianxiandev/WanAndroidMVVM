@@ -5,9 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.viewmodel.BaseArticleViewModel
 import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
-import com.wjx.android.wanandroidmvvm.ui.home.data.bean.BannerResponse
-import com.wjx.android.wanandroidmvvm.ui.home.data.bean.HomeArticleResponse
-import com.wjx.android.wanandroidmvvm.ui.home.data.repository.HomeRepository
+import com.wjx.android.wanandroidmvvm.ui.home.data.BannerResponse
+import com.wjx.android.wanandroidmvvm.ui.home.data.HomeArticleResponse
+import com.wjx.android.wanandroidmvvm.ui.home.repository.HomeRepository
 
 /**
  * Created with Android Studio.

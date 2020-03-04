@@ -123,8 +123,8 @@ class CustomUserAvatar : ImageView {
      */
     fun setCircleName(circleName: String) { // 中文名字取后两个
         if (isChineseString(circleName)) {
-            mCircleName = if (circleName.length > mCount) {
-                circleName.substring(0, mCount)
+            mCircleName = if (circleName.length > if(mCount == 0)  2 else mCount) {
+                circleName.substring(0, if(mCount == 0)  2 else mCount)
             } else {
                 circleName
             }

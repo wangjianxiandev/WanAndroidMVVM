@@ -1,4 +1,4 @@
-package com.wjx.android.wanandroidmvvm.ui.home.data.bean
+package com.wjx.android.wanandroidmvvm.ui.home.data
 
 /**
  * Created with Android Studio.

@@ -58,7 +58,7 @@ class CollectArticleListActivity : BaseArticleListActivity<CollectViewModel>() {
         mAdapter.addHeaderView(headerView)
     }
 
-    override fun showDestroyReveal(): Boolean = false
+    override fun showDestroyReveal(): Boolean = true
 
     override fun onBackPressed() = finish()
 
