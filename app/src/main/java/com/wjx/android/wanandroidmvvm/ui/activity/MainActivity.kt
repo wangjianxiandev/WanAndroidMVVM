@@ -15,16 +15,16 @@ import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessListener
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessState
 import com.wjx.android.wanandroidmvvm.base.utils.Constant
 import com.wjx.android.wanandroidmvvm.base.utils.Preference
+import org.jetbrains.anko.startActivity
 import com.wjx.android.wanandroidmvvm.ui.home.view.HomeFragment
 import com.wjx.android.wanandroidmvvm.ui.navigation.view.NavigationFragment
 import com.wjx.android.wanandroidmvvm.ui.project.view.ProjectFragment
+import com.wjx.android.wanandroidmvvm.ui.setting.SettingActivity
 import com.wjx.android.wanandroidmvvm.ui.system.view.SystemFragment
 import com.wjx.android.wanandroidmvvm.ui.wechat.view.WeChatFragment
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_article_list.*
 import kotlinx.android.synthetic.main.layout_drawer_header.view.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
-import org.jetbrains.anko.toast
 
 class MainActivity : BaseActivity(), LoginSuccessListener {
     // 委托属性   将实现委托给了 -> Preference
@@ -86,11 +86,8 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
                 R.id.nav_menu_todo -> {
                     UserInfo.instance.startTodoActivity(this)
                 }
-                R.id.nav_menu_about -> {
-//                    startActivity<AboutActivity>()
-                }
                 R.id.nav_menu_setting -> {
-                    toast(getString(R.string.setting))
+                    startActivity<SettingActivity>()
                 }
                 R.id.nav_menu_logout -> {
                     UserInfo.instance.logoutSuccess()

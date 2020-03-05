@@ -91,4 +91,10 @@
         <item name="android:windowExitAnimation">@anim/translate_dialog_out</item>
 
     </style>
+
+    <style name="App.Theme.Launch" parent="AppTheme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
 </resources>

@@ -34,4 +34,28 @@
     <string name="accountOrpasswordempty">请输入账号/密码~</string>
     <string name="account">账户</string>
     <string name="password">密码</string>
+
+    <!--设置-->
+    <string name="title">温馨提示</string>
+    <string name="done">确定</string>
+    <string name="cancel">取消</string>
+    <string name="setting_about">关于</string>
+    <string name="setting_project">开源项目</string>
+    <string name="setting_version">版本</string>
+    <string name="setting_exit">退出</string>
+    <string name="night_mode">夜间模式</string>
+    <string name="clear_cache">清除缓存</string>
+    <string name="clear_success">清理成功</string>
+    <string name="setting_mode">列表动画</string>
+    <string name="setting_modetip">无</string>
+    <string name="copyright">版权声明</string>
+    <string name="copyright_tip"></string>
+    <string name="copyright_summary">仅作个人学习及非商业用途</string>
+    <string name="auther">作者</string>
+    <string name="auther_name">WjxBless</string>
+    <string name="project_address">项目源码</string>
+    <string name="csdn博客">个人博客</string>
+    <string name="github_url">https://github.com/wangjianxiandev/WanAndroidMvvm</string>
+    <string name="open_project">感谢优秀的开源项目</string>
+    <string name="open_project_tips">项目中开源库</string>
 </resources>

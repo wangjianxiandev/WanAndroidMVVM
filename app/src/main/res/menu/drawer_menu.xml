@@ -15,11 +15,6 @@
                 android:title="@string/mine_todo" />
 
             <item
-                android:id="@+id/nav_menu_about"
-                android:icon="@drawable/ic_about"
-                android:title="@string/mine_about" />
-
-            <item
                 android:id="@+id/nav_menu_setting"
                 android:icon="@drawable/ic_setting"
                 android:title="@string/setting" />

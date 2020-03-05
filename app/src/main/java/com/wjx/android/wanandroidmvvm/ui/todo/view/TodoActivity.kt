@@ -17,7 +17,6 @@ import com.wjx.android.wanandroidmvvm.ui.todo.data.TodoResponse
 import com.wjx.android.wanandroidmvvm.ui.todo.viewmodel.TodoViewModel
 import kotlinx.android.synthetic.main.activity_todo.*
 import kotlinx.android.synthetic.main.custom_bar.view.*
-import kotlinx.android.synthetic.main.fragment_article_list.*
 
 class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
 
