@@ -1,6 +1,5 @@
 package com.wjx.android.wanandroidmvvm.ui.setting
 
-import android.content.Intent
 import android.content.SharedPreferences
 
 import androidx.preference.PreferenceFragmentCompat
@@ -11,7 +10,6 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.utils.DataCleanManager
 import com.wjx.android.wanandroidmvvm.base.utils.Util
-import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 
 
 /**
