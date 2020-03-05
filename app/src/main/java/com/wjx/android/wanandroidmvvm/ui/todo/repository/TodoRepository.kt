@@ -46,7 +46,7 @@ class TodoRepository(var loadState: MutableLiveData<State>) : ApiRepository() {
     }
 
     fun updateTodo(
-        id: Int, title: String, content: String, date: String, type: Int, priority: Int,
+        id: Int?, title: String, content: String, date: String, type: Int, priority: Int,
         liveData: MutableLiveData<BaseResponse<EmptyResponse>>
     ) {
         apiService.updateTodo(id, title, content, date, type, priority)

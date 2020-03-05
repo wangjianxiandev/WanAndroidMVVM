@@ -30,6 +30,10 @@ class TodoViewModel(application: Application) : BaseViewModel<TodoRepository>(ap
         mRepository.loadTodoList(pageNum, mTodoListData)
     }
 
+    fun refreshTodoList() {
+        mRepository.loadTodoList(1, mTodoListData)
+    }
+
     fun addTodo(title: String, content: String, date: String, type: Int, priority: Int) {
         if (title.isNullOrEmpty() || content.isNullOrEmpty() || type == 0) {
             loadState.postValue(State(StateType.TIP, tip = R.string.todo_empty))
@@ -42,7 +46,7 @@ class TodoViewModel(application: Application) : BaseViewModel<TodoRepository>(ap
     }
 
     fun updateTodo(
-        id: Int,
+        id: Int?,
         title: String,
         content: String,
         date: String,

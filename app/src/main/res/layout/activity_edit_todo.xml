@@ -5,18 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/edit_todo_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:titleTextColor="@color/always_white_text" />
-    </com.google.android.material.appbar.AppBarLayout>
+    <include
+        android:id="@+id/todo_bar"
+        layout="@layout/custom_bar"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -148,10 +139,4 @@
 
         </LinearLayout>
     </ScrollView>
-
-    <com.wjx.android.wanandroidmvp.Custom.loading.LoadingView
-        android:id="@+id/loading_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone" />
 </LinearLayout>

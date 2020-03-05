@@ -61,7 +61,7 @@
         <item name="android:textColor">@color/textTipColor</item>
     </style>
 
-    <style name="AnimActivity"  parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="AnimActivity" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -73,5 +73,22 @@
         <item name="android:activityOpenExitAnimation">@anim/alpha_out</item>
         <item name="android:activityCloseEnterAnimation">@anim/alpha_in</item>
         <item name="android:activityCloseExitAnimation">@anim/alpha_out</item>
+    </style>
+
+    <style name="BottomDialog" parent="@style/Base.V7.Theme.AppCompat.Light.Dialog">
+
+        <item name="android:windowNoTitle">true</item>
+
+        <item name="android:windowBackground">@android:color/transparent</item>
+
+    </style>
+
+
+    <style name="BottomDialog.Animation" parent="Animation.AppCompat.Dialog">
+
+        <item name="android:windowEnterAnimation">@anim/translate_dialog_in</item>
+
+        <item name="android:windowExitAnimation">@anim/translate_dialog_out</item>
+
     </style>
 </resources>

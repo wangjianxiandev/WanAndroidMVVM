@@ -48,6 +48,19 @@ object Util {
         return Color.rgb(red, green, blue)
     }
 
+    /**
+     * dp与px转换
+     *
+     * @param context
+     * @param dp
+     * @return
+     */
+    fun dp2Px(context: Context, dp: Int): Int {
+        val density: Float
+        density = context.resources.displayMetrics.density
+        return Math.round(dp.toFloat() * density)
+    }
+
     fun px2sp(context: Context, pxValue: Float): Float {
         val fontScale = context.resources.displayMetrics.scaledDensity
         return (pxValue / fontScale + 0.5f)

@@ -22,8 +22,11 @@ class TodoAdapter(layoutId: Int, listData: MutableList<TodoResponse>?) :
         helper?.let { holder ->
             item?.let {
                 holder.setText(R.id.item_todo_title, it.title)
-                holder.setText(R.id.item_todo_content, it.content)
-                holder.setText(R.id.item_todo_date, it.dateStr)
+                    .setText(R.id.item_todo_content, it.content)
+                    .setText(R.id.item_todo_date, it.dateStr)
+                    .addOnClickListener(R.id.item_todo_more)
+                    .setText(R.id.item_todo_priority, handlePriority(it.priority))
+                    .setText(R.id.item_todo_type, handleStatus(it.type))
 
                 val gradientDrawable = GradientDrawable(
                     GradientDrawable.Orientation.BR_TL,
@@ -33,10 +36,6 @@ class TodoAdapter(layoutId: Int, listData: MutableList<TodoResponse>?) :
                     )
                 )
                 holder.itemView.todo_card.setBackgroundDrawable(gradientDrawable)
-
-                holder.setText(R.id.item_todo_priority, handlePriority(it.priority))
-
-                holder.setText(R.id.item_todo_type, handleStatus(it.type))
 
                 if (it.status == 1) {
                     holder.setVisible(R.id.item_todo_status, true)

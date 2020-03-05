@@ -3,7 +3,9 @@ package com.wjx.android.wanandroidmvvm.base.state
 import android.content.Context
 import android.content.Intent
 import com.wjx.android.wanandroidmvvm.base.state.callback.CollectListener
+import com.wjx.android.wanandroidmvvm.base.utils.Constant
 import com.wjx.android.wanandroidmvvm.ui.collect.view.CollectArticleListActivity
+import com.wjx.android.wanandroidmvvm.ui.todo.view.EditTodoActivity
 import com.wjx.android.wanandroidmvvm.ui.todo.view.TodoActivity
 
 /**
@@ -28,6 +30,12 @@ class LoginState : UserState {
 
     override fun startTodoActivity(context: Context?) {
         val intent = Intent(context, TodoActivity::class.java)
+        context?.startActivity(intent)
+    }
+
+    override fun startEditTodoActivity(context: Context?) {
+        val intent = Intent(context, EditTodoActivity::class.java)
+        intent.putExtra(Constant.KEY_TODO_HANDLE_TYPE, Constant.ADD_TODO)
         context?.startActivity(intent)
     }
 }

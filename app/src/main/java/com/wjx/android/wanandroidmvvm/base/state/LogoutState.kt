@@ -37,4 +37,8 @@ class LogoutState :UserState {
             it.startActivity<LoginActivity>()
         }
     }
+
+    override fun startEditTodoActivity(context: Context?) {
+        startLoginActivity(context)
+    }
 }

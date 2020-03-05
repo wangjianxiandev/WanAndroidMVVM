@@ -12,6 +12,12 @@
     <string name="search">搜索</string>
     <string name="exit_app">再按一次退出程序</string>
     <string name="todo_empty">必填内容不可为空</string>
+    <string name="add_todo">添加待办</string>
+    <string name="edit_todo">编辑待办</string>
+    <string name="todo_work">工作</string>
+    <string name="todo_study">学习</string>
+    <string name="todo_piority_important">重要</string>
+    <string name="todo_piority_normal">非紧急</string>
 
     <!--mine-->
     <string name="mine_collect">我的收藏</string>

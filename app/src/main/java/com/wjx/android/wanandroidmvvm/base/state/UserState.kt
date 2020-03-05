@@ -18,4 +18,6 @@ interface UserState {
     fun startTodoActivity(context: Context?)
 
     fun startCollectActivity(context: Context?)
+
+    fun startEditTodoActivity(context: Context?)
 }

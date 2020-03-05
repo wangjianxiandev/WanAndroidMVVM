@@ -44,6 +44,10 @@ class UserInfo private constructor() {
         mState.startTodoActivity(context)
     }
 
+    fun startEditTodoActivity(context: Context?) {
+        mState.startEditTodoActivity(context)
+    }
+
     // 跳转去登录
     fun login(context: Activity?) {
         mState.login(context)

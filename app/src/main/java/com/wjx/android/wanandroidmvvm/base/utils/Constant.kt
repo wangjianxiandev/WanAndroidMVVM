@@ -27,23 +27,29 @@ object Constant {
     const val SUCCESS = 0
     const val NOT_LOGIN = -1001
 
-
-    const val STATUS = "status"
-    const val TODO_STATUS = 0
-    const val FINISH_STATUS = 1
-
     const val TODO = 0
-    const val FINISH = 1
-
     const val ALL = 0
-    const val WORK = 1
-    const val STUDY = 2
-    const val LIFE = 3
-    const val SWIPE_TITLE = "swipeTitle"
-    const val SWIPE_COLOR = "swipeColor"
 
-    // todo重要（1），一般（2）
-    const val TODO_IMPORTANT = 1
-    const val TODO_COMMON = 0
-    const val TODO_TYPE = "type"
+    const val ADD_TODO = 1.toString() + ""
+
+    const val EDIT_TODO = 2.toString() + ""
+
+    const val TODO_WORK = 1
+
+    const val TODO_STUDY = 2
+
+    const val KEY_TODO_TITLE = "todo_title"
+
+    const val KEY_TODO_CONTENT = "todo_content"
+
+    const val KEY_TODO_DATE = "todo_date"
+
+
+    const val KEY_TODO_PRIORITY = "todo_priority"
+
+    const val KEY_TODO_ID = "todo_id"
+
+    const val KEY_TODO_TYPE = "todo_type"
+
+    const val KEY_TODO_HANDLE_TYPE = "todo_handle"
 }

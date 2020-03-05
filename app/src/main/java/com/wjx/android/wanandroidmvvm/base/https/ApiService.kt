@@ -99,7 +99,7 @@ interface ApiService {
 
     @POST("/lg/todo/update/{id}/json")
     fun updateTodo(
-        @Path("id") id: Int,
+        @Path("id") id: Int?,
         @Query("title") title: String,
         @Query("content") content: String,
         @Query("date") date: String,

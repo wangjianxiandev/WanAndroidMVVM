@@ -105,7 +105,7 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
 
     private fun initFabButton() {
         fab_add.setOnClickListener {
-            UserInfo.instance.startTodoActivity(this)
+            UserInfo.instance.startEditTodoActivity(this)
         }
     }
 
