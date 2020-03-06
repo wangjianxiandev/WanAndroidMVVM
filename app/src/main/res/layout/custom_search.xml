@@ -14,7 +14,6 @@
         android:contentDescription="@string/app_name"
         android:paddingStart="@dimen/dp_10"
         android:paddingEnd="@dimen/dp_10"
-        android:rotation="180"
         android:src="@drawable/ic_back" />
 
     <RelativeLayout

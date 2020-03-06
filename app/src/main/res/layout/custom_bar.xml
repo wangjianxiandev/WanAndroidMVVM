@@ -12,7 +12,6 @@
         android:layout_height="20dp"
         android:clickable="true"
         android:contentDescription="@string/app_name"
-        android:rotation="180"
         android:src="@drawable/ic_back"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"

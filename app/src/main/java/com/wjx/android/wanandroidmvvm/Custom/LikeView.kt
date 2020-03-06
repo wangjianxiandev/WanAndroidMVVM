@@ -45,8 +45,8 @@ class LikeView @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
     private var percentage = 0.5f
     private var widthDis =0
     private var heightDis =0
-    private var likeImg  = R.drawable.heart
-    private var unLikeImg  = R.drawable.heart_1
+    private var likeImg  = R.drawable.collect_selector_icon
+    private var unLikeImg  = R.drawable.uncollect_selector_icon
 
     init {
         init(context,attrs)
@@ -62,8 +62,8 @@ class LikeView @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
     private fun initType(context: Context, attrs: AttributeSet?) {
         val arrary = context.obtainStyledAttributes(attrs!!, R.styleable.LikeView)
         isLike = arrary.getBoolean(R.styleable.LikeView_like_state,false)
-        likeImg = arrary.getResourceId(R.styleable.LikeView_like,R.drawable.heart)
-        unLikeImg =  arrary.getResourceId(R.styleable.LikeView_unLike,R.drawable.heart_1)
+        likeImg = arrary.getResourceId(R.styleable.LikeView_like,R.drawable.collect_selector_icon)
+        unLikeImg =  arrary.getResourceId(R.styleable.LikeView_unLike,R.drawable.uncollect_selector_icon)
         arrary.recycle()
     }
 

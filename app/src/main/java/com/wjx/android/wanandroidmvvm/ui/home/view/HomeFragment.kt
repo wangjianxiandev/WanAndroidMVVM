@@ -91,16 +91,14 @@ class HomeFragment : BaseArticleListFragment<HomeViewModel>() {
             }
         })
 
-        mViewModel.mTopArticleData.observe(this, Observer { response ->
-            response?.let {
-                handleTopArticle(it.data)
-                addData(it.data)
-            }
-        })
-
-        mViewModel.mHomeArticleData.observe(this, Observer { response ->
-            response?.let {
-                addData(it.data.datas)
+        mViewModel.mTopArticleData.observe(this, Observer { responseTop ->
+            responseTop?.let {
+                handleTopArticle(responseTop.data)
+                mViewModel.mHomeArticleData.observe(this, Observer { responseArticle ->
+                    responseArticle?.let {
+                        addData(responseTop.data + responseArticle.data.datas)
+                    }
+                })
             }
         })
     }
