@@ -34,6 +34,7 @@ ext {
     lottie_version = "2.8.0"
     preference_version = "1.1.0-alpha04"
     material_dialog_version = "3.1.1"
+    litepal_version = '3.0.0'
 
 
 
@@ -83,7 +84,8 @@ ext {
             "float_button"                    : "com.getbase:floatingactionbutton:$float_button_version",
             "lottie"                          : "com.airbnb.android:lottie:$lottie_version",
             "preference"                      : "androidx.preference:preference:$preference_version",
-            "material_dialog"                 : "com.afollestad.material-dialogs:core:$material_dialog_version"
+            "material_dialog"                 : "com.afollestad.material-dialogs:core:$material_dialog_version",
+            "litepal"                         : "org.litepal.android:kotlin:$litepal_version"
     ]
 
     processor = [

@@ -6,6 +6,7 @@ import com.wjx.android.wanandroidmvvm.base.callback.EmptyCallBack
 import com.wjx.android.wanandroidmvvm.base.callback.ErrorCallBack
 import com.wjx.android.wanandroidmvvm.base.callback.LoadingCallBack
 import com.wjx.android.wanandroidmvvm.base.utils.Preference
+import org.litepal.LitePal
 
 /**
  * Created with Android Studio.
@@ -17,6 +18,7 @@ import com.wjx.android.wanandroidmvvm.base.utils.Preference
 open class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+        LitePal.initialize(this)
         Preference.setContext(applicationContext)
         LoadSir.beginBuilder()
             .addCallback(ErrorCallBack())

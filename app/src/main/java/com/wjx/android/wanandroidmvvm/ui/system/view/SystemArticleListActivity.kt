@@ -53,6 +53,8 @@ class SystemArticleListActivity : BaseArticleListActivity<SystemViewModel>() {
         mViewModel.loadSystemArticle(++mCurrentPageNum, mCid)
     }
 
+    override fun showDestroyReveal(): Boolean = true
+
     override fun onBackPressed() {
         super.onBackPressed()
         finish()

@@ -31,11 +31,13 @@ class SettingActivity : BaseActivity(), View.OnClickListener{
 
     override fun onClick(v: View?) {
         when(v?.id) {
-            R.id.ivBack -> {
+            R.id.detail_back -> {
                 finish()
             }
         }
     }
+
+    override fun showDestroyReveal(): Boolean = true
 
     override fun onBackPressed() {
         finish()

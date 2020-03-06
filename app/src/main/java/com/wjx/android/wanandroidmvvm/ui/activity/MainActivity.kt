@@ -19,6 +19,7 @@ import org.jetbrains.anko.startActivity
 import com.wjx.android.wanandroidmvvm.ui.home.view.HomeFragment
 import com.wjx.android.wanandroidmvvm.ui.navigation.view.NavigationFragment
 import com.wjx.android.wanandroidmvvm.ui.project.view.ProjectFragment
+import com.wjx.android.wanandroidmvvm.ui.search.SearchActivity
 import com.wjx.android.wanandroidmvvm.ui.setting.SettingActivity
 import com.wjx.android.wanandroidmvvm.ui.system.view.SystemFragment
 import com.wjx.android.wanandroidmvvm.ui.wechat.view.WeChatFragment
@@ -195,6 +196,10 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
             //将滑动菜单显示出来
             android.R.id.home -> {
                 drawer_main.openDrawer(Gravity.START)
+                return true
+            }
+            R.id.action_search -> {
+                startActivity<SearchActivity>()
                 return true
             }
         }

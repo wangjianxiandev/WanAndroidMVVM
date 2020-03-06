@@ -10,6 +10,7 @@ import android.view.ViewAnimationUtils
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.view.animation.LinearInterpolator
+import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
 import com.google.android.material.circularreveal.CircularRevealCompat
 import com.google.android.material.circularreveal.CircularRevealFrameLayout
@@ -204,5 +205,12 @@ object Util {
         } else {
             Date()
         }
+    }
+
+    // 关闭软键盘
+    fun Activity.hideKeyboard() {
+        // 当前焦点的 View
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
     }
 }

@@ -5,6 +5,7 @@
     <string name="empty_message">没有数据哎~</string>
 
     <string name="navigation_home">首页</string>
+    <string name="search_input_tips">请输入搜索内容</string>
     <string name="navigation_wechat">公众号</string>
     <string name="navigation_system">体系</string>
     <string name="navigation_navigation">导航</string>

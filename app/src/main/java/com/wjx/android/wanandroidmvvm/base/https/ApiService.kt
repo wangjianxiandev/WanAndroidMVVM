@@ -9,6 +9,8 @@ import com.wjx.android.wanandroidmvvm.ui.home.data.HomeArticleResponse
 import com.wjx.android.wanandroidmvvm.ui.navigation.data.NavigationTabNameResponse
 import com.wjx.android.wanandroidmvvm.ui.project.data.ProjectResponse
 import com.wjx.android.wanandroidmvvm.ui.project.data.ProjectTabResponse
+import com.wjx.android.wanandroidmvvm.ui.search.data.HotKeyResponse
+import com.wjx.android.wanandroidmvvm.ui.search.data.SearchResultResponse
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemArticleResponse
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemTabNameResponse
 import com.wjx.android.wanandroidmvvm.ui.todo.data.TodoPageResponse
@@ -109,4 +111,11 @@ interface ApiService {
 
     @POST("/lg/todo/done/{id}/json")
     fun finishTodo(@Path("id") id: Int, @Query("status") status: Int): Observable<BaseResponse<EmptyResponse>>
+
+    @GET("hotkey/json")
+    fun loadHotKey() : Observable<BaseResponse<List<HotKeyResponse>>>
+
+    @POST("/article/query/{pageNum}/json")
+    fun loadSearchResult(@Path("pageNum") pageNum: Int, @Query("k") key: String): Observable<BaseResponse<SearchResultResponse>>
+
 }
