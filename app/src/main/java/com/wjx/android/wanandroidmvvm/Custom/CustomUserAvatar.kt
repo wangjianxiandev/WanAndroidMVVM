@@ -6,6 +6,8 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import android.widget.ImageView
+import androidx.core.content.ContextCompat.getColor
+import com.wjx.android.wanandroidmvvm.R
 
 /**
  * Created with Android Studio.
@@ -45,7 +47,7 @@ class CustomUserAvatar : ImageView {
     }
 
     private fun init() {
-        setLayerType(View.LAYER_TYPE_SOFTWARE, null)
+//        setLayerType(View.LAYER_TYPE_SOFTWARE, null)
         mPaintText = Paint(Paint.ANTI_ALIAS_FLAG)
         mPaintBackground = Paint(Paint.ANTI_ALIAS_FLAG)
         mRect = Rect()
