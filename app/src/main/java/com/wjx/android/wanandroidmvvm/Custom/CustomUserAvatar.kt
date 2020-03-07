@@ -25,6 +25,8 @@ class CustomUserAvatar : ImageView {
     private var mCircleName: String? = null
     private var mColor = 0
     private var mCount = 0
+    private var mStyle = 0
+    private var mShadowRadius= 0f
     private var mIsShowBlurMask: Boolean = false
 
     constructor(context: Context?) : super(context) {
@@ -61,7 +63,7 @@ class CustomUserAvatar : ImageView {
         super.onDraw(canvas)
         // 绘制发光效果
         mPaintBackground!!.color = mColor
-        mPaintBackground!!.style = Paint.Style.STROKE
+        mPaintBackground!!.style = if (mStyle == 0) Paint.Style.STROKE else Paint.Style.FILL
         mPaintBackground!!.strokeWidth = 5f
         if (mIsShowBlurMask) {
             mPaintBackground!!.maskFilter = BlurMaskFilter(10.0f, BlurMaskFilter.Blur.SOLID)
@@ -75,11 +77,11 @@ class CustomUserAvatar : ImageView {
         // 设置文本大小
         mPaintText!!.textSize = width / 3.toFloat()
         // 设置文本颜色跟随应用主题颜色
-        mPaintText!!.color = mColor
+        mPaintText!!.color = if (mStyle == 0) mColor else context.getColor(R.color.always_white_text)
         // 设置画笔粗细
         mPaintText!!.strokeWidth = 5f
         // 设置阴影半径
-        mPaintText!!.setShadowLayer(5f, 5f, 5f, Color.BLACK)
+        mPaintText!!.setShadowLayer(mShadowRadius, mShadowRadius, mShadowRadius, Color.BLACK)
         // 绘制文字的最小矩形
         mPaintText!!.getTextBounds(mCircleName, 0, 1, mRect)
         val fontMetricsInt = mPaintText!!.fontMetricsInt
@@ -152,5 +154,13 @@ class CustomUserAvatar : ImageView {
 
     fun setColor(color: Int) {
         mColor = color
+    }
+
+    fun setStyle(style : Int) {
+        mStyle = style
+    }
+
+    fun setShadowRadius(radius : Float) {
+        mShadowRadius = radius
     }
 }

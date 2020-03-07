@@ -20,6 +20,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:layout_marginEnd="@dimen/dp_10"
         android:paddingTop="10dp"
         android:paddingBottom="10dp">
 
@@ -46,11 +47,15 @@
             android:src="@drawable/ic_close" />
     </RelativeLayout>
 
-    <Button
+    <TextView
         android:id="@+id/search_button"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:background="@null"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:layout_marginEnd="@dimen/dp_10"
         android:text="@string/search"
-        android:textColor="@color/white" />
+        android:background="@drawable/text_selector"
+        android:clickable="true"
+        android:textSize="14sp"
+        android:textColor="@color/black" />
 </LinearLayout>

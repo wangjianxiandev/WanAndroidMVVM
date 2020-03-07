@@ -28,7 +28,6 @@
         <activity
             android:name=".ui.activity.SplashActivity"
             android:configChanges="orientation|keyboardHidden|navigation|locale"
-            android:launchMode="singleTask"
             android:theme="@style/App.Theme.Launch">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

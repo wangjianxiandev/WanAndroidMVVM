@@ -18,6 +18,7 @@ import com.wjx.android.wanandroidmvvm.ui.search.viewmodel.SearchViewModel
 import com.zhy.view.flowlayout.FlowLayout
 import com.zhy.view.flowlayout.TagAdapter
 import kotlinx.android.synthetic.main.activity_search.*
+import kotlinx.android.synthetic.main.activity_search.mSrlRefresh
 import kotlinx.android.synthetic.main.custom_search.*
 import kotlinx.android.synthetic.main.custom_search.view.*
 import kotlinx.android.synthetic.main.history_foot.view.*
@@ -60,8 +61,8 @@ class SearchActivity : BaseArticleListActivity<SearchViewModel>() {
 
     override fun initDataObserver() {
         super.initDataObserver()
-        mViewModel.mHotKeyData.observe(this, Observer { resonse ->
-            resonse?.let {
+        mViewModel.mHotKeyData.observe(this, Observer { response ->
+            response?.let {
                 showHotKeyTags(it.data)
             }
         })
@@ -122,7 +123,7 @@ class SearchActivity : BaseArticleListActivity<SearchViewModel>() {
             }
         }
         mSearchHistoryAdapter.setOnItemClickListener { _, _, position ->
-            initSearchKey(mSearchHistoryAdapter.data[position])
+            loadSearchResultByHistory(mSearchHistoryAdapter.data[position])
         }
     }
 
@@ -130,7 +131,11 @@ class SearchActivity : BaseArticleListActivity<SearchViewModel>() {
        mViewModel.loadSearchResult(++mCurrentPageNum, search_input.text.toString())
     }
 
-    override fun onRefreshData() {}
+    override fun onRefreshData() {
+        if (mSrlRefresh.isRefreshing) {
+            mSrlRefresh.isRefreshing = false
+        }
+    }
 
     private fun initSearch() {
         search_back.setOnClickListener { finish() }
@@ -140,18 +145,18 @@ class SearchActivity : BaseArticleListActivity<SearchViewModel>() {
             hideKeyboard()
         }
         search_button.setOnClickListener { view ->
-            initSearchKey(search_input.text.toString())
+            loadSearchResultByHistory(search_input.text.toString())
         }
         search_input.setOnEditorActionListener(TextView.OnEditorActionListener { view, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                initSearchKey(search_input.text.toString())
+                loadSearchResultByHistory(search_input.text.toString())
                 return@OnEditorActionListener true
             }
             false
         })
     }
 
-    private fun initSearchKey(key: String) {
+    private fun loadSearchResultByHistory(key: String) {
         if (key.isEmpty()) {
             displaySearchView()
             toast("请输入关键词")
@@ -163,6 +168,9 @@ class SearchActivity : BaseArticleListActivity<SearchViewModel>() {
         mViewModel.loadSearchResult(mCurrentPageNum, key)
     }
 
+    /**
+     * 展示热门搜索等搜索记录也的view
+     */
     private fun displaySearchView() {
         if (isShow) {
             return
@@ -175,6 +183,9 @@ class SearchActivity : BaseArticleListActivity<SearchViewModel>() {
         isShow = true
     }
 
+    /**
+     * 隐藏热门搜索等搜索记录也的view
+     */
     private fun hideSearchView() {
         if (!isShow) return
         search_text_top.visibility = View.GONE
@@ -199,7 +210,7 @@ class SearchActivity : BaseArticleListActivity<SearchViewModel>() {
             }
         }
         search_flowlayout.setOnTagClickListener { view, position, _ ->
-            initSearchKey(tags[position])
+            loadSearchResultByHistory(tags[position])
             true
         }
     }
@@ -210,25 +221,21 @@ class SearchActivity : BaseArticleListActivity<SearchViewModel>() {
     }
 
     private fun updateRecordPosition(name: String) {
-
         val records = mSearchHistoryAdapter.data
-
-        // 判断是否存在一个同样的搜索记录
         val index = records.indexOf(name)
         if (index == -1) {
-
+            // 不存在相同记录但是记录条数为10条，删除最后一条
             if (records.size >= mMaxHistory) {
-                // 删除最后一条
                 mSearchHistoryAdapter.remove(mMaxHistory - 1)
             }
-
-            // 不存在就添加
+            // 如果不存在，直接把数据添加到列表首
             mSearchHistoryAdapter.addData(0, name)
             return
         }
 
+        // 如果存在相同数据
         if (index != 0) {
-            // 存在就调整该记录到第一条。
+            // 删除原来记录中的数据，并把当前数据放到列表首
             mSearchHistoryAdapter.remove(index)
             mSearchHistoryAdapter.addData(0, name)
         }

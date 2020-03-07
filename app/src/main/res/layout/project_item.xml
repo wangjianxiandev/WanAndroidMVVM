@@ -58,9 +58,9 @@
             android:textColor="@color/holo_red_light"
             android:textSize="10dp"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/item_home_author"
-            app:layout_constraintStart_toEndOf="@+id/item_home_top_article"
-            app:layout_constraintTop_toTopOf="@+id/item_home_author" />
+            app:layout_constraintBottom_toBottomOf="@+id/item_project_author"
+            app:layout_constraintStart_toEndOf="@+id/item_project_top_article"
+            app:layout_constraintTop_toTopOf="@+id/item_project_author" />
 
         <TextView
             android:id="@+id/item_project_question"

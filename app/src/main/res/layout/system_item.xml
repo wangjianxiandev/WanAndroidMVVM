@@ -28,7 +28,7 @@
             android:maxEms="14"
             android:maxLines="2"
             android:textColor="@color/text_333333"
-            android:textSize="12dp"
+            android:textSize="18dp"
             android:textStyle="bold" />
 
         <com.zhy.view.flowlayout.TagFlowLayout

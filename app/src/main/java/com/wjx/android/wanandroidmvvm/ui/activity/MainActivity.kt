@@ -72,7 +72,7 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
         headView = navigation_draw.getHeaderView(0)
         headView.circle_image_name.text = mUsername
         headView.circle_image.setColor(ContextCompat.getColor(this, R.color.colorPrimary))
-        headView.circle_image.setIsShowBlurMask(true)
+        headView.circle_image.setIsShowBlurMask(false)
         headView.circle_image.setShowNameCount(1)
         headView.circle_image.setCircleName(mUsername)
 

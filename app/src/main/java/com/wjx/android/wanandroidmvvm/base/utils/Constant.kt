@@ -52,4 +52,6 @@ object Constant {
     const val KEY_TODO_TYPE = "todo_type"
 
     const val KEY_TODO_HANDLE_TYPE = "todo_handle"
+
+    const val PAINT_STYLE_STROKE_FULL = 1
 }

@@ -6,7 +6,7 @@
         <menu>
             <item
                 android:id="@+id/nav_menu_collect"
-                android:icon="@drawable/collect_selector_icon"
+                android:icon="@drawable/ic_collect"
                 android:title="@string/mine_collect" />
 
             <item
