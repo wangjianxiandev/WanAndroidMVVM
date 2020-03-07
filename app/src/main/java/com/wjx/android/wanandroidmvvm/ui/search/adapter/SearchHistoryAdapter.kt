@@ -1,4 +1,4 @@
-package com.wjx.android.wanandroidmvvm.ui.search
+package com.wjx.android.wanandroidmvvm.ui.search.adapter
 
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder

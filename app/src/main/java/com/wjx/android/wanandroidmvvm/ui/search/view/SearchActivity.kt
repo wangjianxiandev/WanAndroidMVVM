@@ -13,6 +13,7 @@ import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleListActivity
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
 import com.wjx.android.wanandroidmvvm.base.utils.Util
 import com.wjx.android.wanandroidmvvm.base.utils.Util.hideKeyboard
+import com.wjx.android.wanandroidmvvm.ui.search.adapter.SearchHistoryAdapter
 import com.wjx.android.wanandroidmvvm.ui.search.data.HotKeyResponse
 import com.wjx.android.wanandroidmvvm.ui.search.viewmodel.SearchViewModel
 import com.zhy.view.flowlayout.FlowLayout
@@ -132,6 +133,7 @@ class SearchActivity : BaseArticleListActivity<SearchViewModel>() {
     }
 
     override fun onRefreshData() {
+        mViewModel.loadHotkey()
         if (mSrlRefresh.isRefreshing) {
             mSrlRefresh.isRefreshing = false
         }

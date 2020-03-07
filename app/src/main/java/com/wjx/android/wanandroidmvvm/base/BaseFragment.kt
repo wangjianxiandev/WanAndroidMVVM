@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
-import com.wjx.android.wanandroidmvvm.base.utils.Util
 
 /**
  * Created with Android Studio.
@@ -26,7 +25,7 @@ abstract class BaseFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val rootView = inflater.inflate(getLayoutId(), container, false)
+        val rootView = inflater.inflate(getLayoutId(), null)
         loadService = LoadSir.getDefault().register(rootView) {reLoad()}
         return loadService.loadLayout
     }

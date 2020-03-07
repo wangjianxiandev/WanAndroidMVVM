@@ -111,4 +111,10 @@ abstract class BaseArticleListActivity <VM : BaseArticleViewModel<*>> : BaseLife
             if (mCollectState) mViewModel.unCollect(it.id) else mViewModel.collect(it.id)
         }
     }
+
+    override fun reLoad() {
+        showLoading()
+        onRefreshData()
+        super.reLoad()
+    }
 }

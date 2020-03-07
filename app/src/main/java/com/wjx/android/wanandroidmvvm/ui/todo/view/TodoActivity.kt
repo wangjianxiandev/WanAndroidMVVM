@@ -133,8 +133,7 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
         // 设置下拉刷新的loading颜色
         todo_refresh.setColorSchemeResources(R.color.colorPrimary)
         todo_refresh.setOnRefreshListener {
-            mCurrentPageNum = 1
-            mViewModel.loadTodoList(mCurrentPageNum)
+            onRefreshData()
         }
     }
 
@@ -156,6 +155,17 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
         // 初始化状态直接加载数据
         mAdapter.addData(systemListName)
         mAdapter.loadMoreComplete()
+    }
+
+    private fun onRefreshData() {
+        mCurrentPageNum = 1
+        mViewModel.loadTodoList(mCurrentPageNum)
+    }
+
+    override fun reLoad() {
+        showLoading()
+        onRefreshData()
+        super.reLoad()
     }
 
     override fun onBackPressed() {

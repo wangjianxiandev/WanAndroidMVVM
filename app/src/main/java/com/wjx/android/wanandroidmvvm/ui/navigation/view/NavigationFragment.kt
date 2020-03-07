@@ -1,21 +1,19 @@
 package com.wjx.android.wanandroidmvvm.ui.navigation.view
 
-import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleFragment
-import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import com.wjx.android.wanandroidmvvm.ui.navigation.adapter.NavigationLabelAdapter
 import com.wjx.android.wanandroidmvvm.ui.navigation.adapter.NavigationTabAdapter
 import com.wjx.android.wanandroidmvvm.ui.navigation.data.NavigationTabNameResponse
 import com.wjx.android.wanandroidmvvm.ui.navigation.viewmodel.NavigationViewModel
+import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.fragment_article_list.*
+import kotlinx.android.synthetic.main.fragment_article_list.mSrlRefresh
 import kotlinx.android.synthetic.main.layout_navigation.*
-import kotlinx.android.synthetic.main.navigation_label_item.*
-import kotlinx.android.synthetic.main.navigation_label_item.view.*
 
 
 /**
@@ -34,7 +32,7 @@ class NavigationFragment : BaseLifeCycleFragment<NavigationViewModel>() {
 
     private val mNavigationTabNames = arrayListOf<String>()
 
-    private lateinit var mLinearSnapHelper : LinearSnapHelper
+    private lateinit var mLinearSnapHelper: LinearSnapHelper
 
     override fun getLayoutId(): Int = R.layout.layout_navigation
 
@@ -53,6 +51,7 @@ class NavigationFragment : BaseLifeCycleFragment<NavigationViewModel>() {
 
     override fun initView() {
         super.initView()
+        initRefresh()
         nav_circle_recycler?.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         mNavigationTabAdapter = NavigationTabAdapter(R.layout.navigation_item, null)
@@ -79,10 +78,19 @@ class NavigationFragment : BaseLifeCycleFragment<NavigationViewModel>() {
             ) { //获取右侧列表的第一个可见Item的position
                 val nowPosition =
                     (nav_card_recycler.getLayoutManager() as LinearLayoutManager).findFirstVisibleItemPosition()
-                (nav_circle_recycler.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(nowPosition, 0)
+                (nav_circle_recycler.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(
+                    nowPosition,
+                    0
+                )
                 switchTab(nowPosition)
             }
         })
+    }
+
+    private fun initRefresh() {
+        // 设置下拉刷新的loading颜色
+        nav_refresh.setColorSchemeResources(R.color.colorPrimary)
+        nav_refresh.setOnRefreshListener { onRefreshData() }
     }
 
     private fun initNavigationTabData(navTabResponse: List<NavigationTabNameResponse>) {
@@ -104,5 +112,12 @@ class NavigationFragment : BaseLifeCycleFragment<NavigationViewModel>() {
     private fun switchTab(position: Int) {
         mNavigationTabAdapter.selectedPosition = position
         mNavigationTabAdapter.notifyDataSetChanged()
+    }
+
+    private fun onRefreshData() {
+        mViewModel.loadNavigationTab()
+        if (nav_refresh.isRefreshing) {
+            nav_refresh.isRefreshing = false
+        }
     }
 }

@@ -23,7 +23,7 @@ import org.jetbrains.anko.toast
  */
 
 abstract class BaseLifeCycleFragment<VM : BaseViewModel<*>> : BaseFragment() {
-    lateinit var mViewModel: VM
+    protected lateinit var mViewModel: VM
 
     override fun initView() {
 
@@ -73,6 +73,7 @@ abstract class BaseLifeCycleFragment<VM : BaseViewModel<*>> : BaseFragment() {
                     StateType.ERROR -> showTip(it.message)
                     StateType.NETWORK_ERROR -> showError("网络异常")
                     StateType.TIP -> showTip(it.message)
+                    StateType.EMPTY -> showEmpty()
                 }
             }
         }

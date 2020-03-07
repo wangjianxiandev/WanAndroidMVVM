@@ -50,7 +50,7 @@ class BaseObserver<T : BaseResponse<*>>(
     }
 
     override fun onError(p0: Throwable) {
-        loadState.postValue(State(StateType.ERROR))
+        loadState.postValue(State(StateType.NETWORK_ERROR))
     }
 
     override fun onComplete() {}

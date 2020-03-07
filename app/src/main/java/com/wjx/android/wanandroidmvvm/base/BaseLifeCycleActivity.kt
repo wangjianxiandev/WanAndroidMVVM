@@ -5,6 +5,7 @@ import android.text.TextUtils
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.kingja.loadsir.callback.SuccessCallback
+import com.wjx.android.wanandroidmvvm.base.callback.EmptyCallBack
 import com.wjx.android.wanandroidmvvm.base.callback.ErrorCallBack
 import com.wjx.android.wanandroidmvvm.base.callback.LoadingCallBack
 import com.wjx.android.wanandroidmvvm.base.state.State
@@ -20,7 +21,7 @@ import org.jetbrains.anko.toast
  * Time: 16:30
  */
 abstract class BaseLifeCycleActivity <VM : BaseViewModel<*>> : BaseActivity() {
-    lateinit var mViewModel: VM
+    protected lateinit var mViewModel: VM
 
     override fun initView() {
         showLoading()
@@ -58,6 +59,10 @@ abstract class BaseLifeCycleActivity <VM : BaseViewModel<*>> : BaseActivity() {
         loadService.showCallback(SuccessCallback::class.java)
     }
 
+    open fun showEmpty() {
+        loadService.showCallback(EmptyCallBack::class.java)
+    }
+
     /**
      * 分发应用状态
      */
@@ -70,6 +75,7 @@ abstract class BaseLifeCycleActivity <VM : BaseViewModel<*>> : BaseActivity() {
                     StateType.ERROR -> showTip(it.message)
                     StateType.NETWORK_ERROR -> showError("网络出现问题啦")
                     StateType.TIP -> showTip(it.message)
+                    StateType.EMPTY -> showEmpty()
                 }
             }
         }
