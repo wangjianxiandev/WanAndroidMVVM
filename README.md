@@ -6,7 +6,7 @@
 [WanAndroid(github)](https://github.com/wangjianxiandev/WanAndroidMvvm)  （**欢迎大佬们star**)
 ## 下载体验
 ## 当前版本（1.0）
-
+[下载链接](https://github.com/wangjianxiandev/WanAndroidMVVM/releases/download/v1.0/app-release.apk)
 ## 项目展示
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200306155603650.gif)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200306155729951.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70)
@@ -73,13 +73,9 @@
 - [网络请求的框架-Okhttp](https://github.com/square/okhttp)
 - [网络加载框架-Retrofit](https://github.com/square/retrofit)
 - [转换json数据的官方框架-Gson](https://github.com/google/gson)
-- [事件发布-Eventbus](https://github.com/greenrobot/EventBus)
 - [可扩展的对话框-Material-dialogs](https://github.com/afollestad/material-dialogs)
 - [WebView的一个强大的库-Agentweb](https://github.com/Justson/AgentWeb)
 - [Android流式布局-FlowLayout](https://github.com/hongyangAndroid/FlowLayout)
 - [图片加载-Glide4](https://github.com/bumptech/glide)
 - [下拉刷新-SmartRefreshLayout](https://github.com/scwang90/SmartRefreshLayout)
 - [轮播图-banner](https://github.com/youth5201314/banner)
-- [控件绑定-butterknife](https://github.com/JakeWharton/butterknife)
-- [纵向导航-verticalTabLayout](https://note.youdao.com/)
-
