@@ -1,0 +1,57 @@
+package com.wjx.android.wanandroidmvvm.base.utils
+
+/**
+ * Created with Android Studio.
+ * Description:
+ * @author: Wangjianxian
+ * @date: 2020/02/24
+ * Time: 17:36
+ */
+object Constant {
+    const val BASE_URL = "https://www.wanandroid.com"
+
+    const val USERNAME_KEY = "username"
+    const val LOGIN_KEY = "login"
+
+    const val SAVE_USER_LOGIN_KEY = "user/login"
+    const val SAVE_USER_REGISTER_KEY = "user/register"
+    const val SET_COOKIE_KEY = "set-cookie"
+    const val COOKIE_NAME = "Cookie"
+
+    const val HOME = 0
+    const val WECHAT = 1
+    const val SYSTEM = 2
+    const val NAVIGATION = 3
+    const val PROJECT = 4
+
+    const val SUCCESS = 0
+    const val NOT_LOGIN = -1001
+
+    const val TODO = 0
+    const val ALL = 0
+
+    const val ADD_TODO = 1.toString() + ""
+
+    const val EDIT_TODO = 2.toString() + ""
+
+    const val TODO_WORK = 1
+
+    const val TODO_STUDY = 2
+
+    const val KEY_TODO_TITLE = "todo_title"
+
+    const val KEY_TODO_CONTENT = "todo_content"
+
+    const val KEY_TODO_DATE = "todo_date"
+
+
+    const val KEY_TODO_PRIORITY = "todo_priority"
+
+    const val KEY_TODO_ID = "todo_id"
+
+    const val KEY_TODO_TYPE = "todo_type"
+
+    const val KEY_TODO_HANDLE_TYPE = "todo_handle"
+
+    const val PAINT_STYLE_STROKE_FULL = 1
+}
