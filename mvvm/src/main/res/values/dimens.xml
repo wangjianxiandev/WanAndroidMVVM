@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="safe_padding">8dp</dimen>
+    <dimen name="card_corner_radius">8dp</dimen>
+    <dimen name="card_elevation">4dp</dimen>
+    <dimen name="item_margin_top">12dp</dimen>
+    <dimen name="tab_layout_height">48dp</dimen>
+    <dimen name="tab_layout_divider_padding">10dp</dimen>
+    <dimen name="safe_top">48dp</dimen>
+    <dimen name="me_padding">16dp</dimen>
+    <dimen name="toolbar_radius">16dp</dimen>
+</resources>

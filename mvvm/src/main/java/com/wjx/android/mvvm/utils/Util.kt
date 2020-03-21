@@ -15,7 +15,6 @@ import android.widget.FrameLayout
 import com.google.android.material.circularreveal.CircularRevealCompat
 import com.google.android.material.circularreveal.CircularRevealFrameLayout
 import com.google.android.material.circularreveal.CircularRevealWidget
-import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import java.lang.reflect.ParameterizedType
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -65,19 +64,6 @@ object Util {
     fun px2sp(context: Context, pxValue: Float): Float {
         val fontScale = context.resources.displayMetrics.scaledDensity
         return (pxValue / fontScale + 0.5f)
-    }
-
-    fun startWebView(
-        context: Context,
-        title: String?,
-        url: String?
-    ) {
-        val intent = Intent()
-        intent.setClass(context, ArticleDetailActivity::class.java)
-        intent.putExtra("title", title)
-        intent.putExtra("url", url)
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        context.startActivity(intent)
     }
 
     /**

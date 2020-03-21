@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="102dp"
+    android:orientation="vertical">
+
+    <com.wjx.android.wanandroidmvvm.Custom.CustomUserAvatar
+        android:id="@+id/circle_imageView"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_margin="@dimen/safe_padding"
+        android:scaleType="center"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"/>
+
+    <TextView
+        android:id="@+id/nav_tab_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14dp"
+        android:text="常用网站"
+        android:textColor="@color/textTipColor"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

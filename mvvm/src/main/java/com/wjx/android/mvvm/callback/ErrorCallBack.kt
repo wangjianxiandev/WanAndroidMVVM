@@ -1,7 +1,7 @@
 package com.wjx.android.wanandroidmvvm.base.callback
 
 import com.kingja.loadsir.callback.Callback
-import com.wjx.android.wanandroidmvvm.R
+import com.wjx.android.mvvm.R
 
 /**
  * Created with Android Studio.

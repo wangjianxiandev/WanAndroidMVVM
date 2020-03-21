@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/todo_bar"
+        layout="@layout/custom_bar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadeScrollbars="true"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="标题"
+                android:textColor="@color/textTipColor"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/edit_todo_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit_shap"
+                android:hint="标题"
+                android:inputType="text"
+                android:lines="1"
+                android:maxLength="10"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="内容"
+                android:textColor="@color/textTipColor"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/edit_todo_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit_shap"
+                android:gravity="top|left"
+                android:hint="内容描述"
+                android:maxLength="100"
+                android:minLines="4"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="预定完成时间"
+                android:textColor="@color/textTipColor"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/edit_todo_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit_shap"
+                android:hint="选择预定完成时间"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="类型"
+                android:textColor="@color/textTipColor"
+                android:textSize="20dp" />
+
+
+            <TextView
+                android:id="@+id/edit_todo_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit_shap"
+                android:hint="工作"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="优先级"
+                android:textColor="@color/textTipColor"
+                android:textSize="20dp" />
+
+
+            <TextView
+                android:id="@+id/edit_todo_priority"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit_shap"
+                android:hint="重要或紧急"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <Button
+                android:id="@+id/edit_todo_submit"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/edit_shap"
+                android:gravity="center"
+                android:text="提交"
+                android:textColor="@color/always_white_text"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

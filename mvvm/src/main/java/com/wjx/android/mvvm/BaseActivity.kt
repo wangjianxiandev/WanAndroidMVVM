@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
-import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.utils.Util.circularFinishReveal
 import com.wjx.android.wanandroidmvvm.base.utils.Util.setReveal
 import io.reactivex.disposables.Disposable
