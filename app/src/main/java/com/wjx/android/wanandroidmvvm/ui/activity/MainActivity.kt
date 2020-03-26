@@ -1,10 +1,12 @@
 package com.wjx.android.wanandroidmvvm.ui.activity
 
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.animation.AlphaAnimation
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.Fragment
 import com.wjx.android.wanandroidmvvm.R
@@ -14,7 +16,6 @@ import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessListener
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessState
 import com.wjx.android.wanandroidmvvm.base.utils.Constant
 import com.wjx.android.wanandroidmvvm.base.utils.Preference
-import org.jetbrains.anko.startActivity
 import com.wjx.android.wanandroidmvvm.ui.home.view.HomeFragment
 import com.wjx.android.wanandroidmvvm.ui.navigation.view.NavigationFragment
 import com.wjx.android.wanandroidmvvm.ui.project.view.ProjectFragment
@@ -25,15 +26,15 @@ import com.wjx.android.wanandroidmvvm.ui.square.view.SquareActivity
 import com.wjx.android.wanandroidmvvm.ui.system.view.SystemFragment
 import com.wjx.android.wanandroidmvvm.ui.wechat.view.WeChatFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.layout_drawer_header.view.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
+import org.jetbrains.anko.startActivity
 
 class MainActivity : BaseActivity(), LoginSuccessListener {
     // 委托属性   将实现委托给了 -> Preference
     private var mUsername: String by Preference(Constant.USERNAME_KEY, "未登录")
-
     private lateinit var headView: View
-
     private val mHomeFragment by lazy { HomeFragment() }
     private val mWeChatFragment by lazy { WeChatFragment() }
     private val mSystemFragment by lazy { SystemFragment() }
@@ -110,7 +111,7 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
 
     private fun initFabButton() {
         fab_add.setOnClickListener {
-            UserInfo.instance.startEditTodoActivity(this)
+            mCurrentFragment!!.mRvArticle!!.smoothScrollToPosition(0)
         }
     }
 
@@ -156,12 +157,12 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
     private fun switchFragment(position: Int) {
         when (position) {
             Constant.HOME -> {
-                fab_add.visibility = View.VISIBLE
+                fab_add.visibility = View.INVISIBLE
                 setToolBarTitle(toolbar, getString(R.string.navigation_home))
                 switchFragment(mHomeFragment)
             }
             Constant.WECHAT -> {
-                fab_add.visibility = View.GONE
+                fab_add.visibility = View.INVISIBLE
                 setToolBarTitle(toolbar, getString(R.string.navigation_wechat))
                 switchFragment(mWeChatFragment)
             }

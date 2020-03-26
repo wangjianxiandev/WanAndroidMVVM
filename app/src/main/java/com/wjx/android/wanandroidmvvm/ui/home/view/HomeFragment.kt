@@ -17,6 +17,8 @@ import com.wjx.android.wanandroidmvvm.ui.home.viewmodel.HomeViewModel
 import com.youth.banner.Banner
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.layout_home_headview.view.*
 import java.util.ArrayList
 

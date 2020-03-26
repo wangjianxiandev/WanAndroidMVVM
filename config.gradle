@@ -38,9 +38,6 @@ ext {
     circular_avatar = 'v1.0.0'
 
 
-
-
-
     appId = [
             "app"     : "com.wjx.android.wanandroidmvvm",
     ]
