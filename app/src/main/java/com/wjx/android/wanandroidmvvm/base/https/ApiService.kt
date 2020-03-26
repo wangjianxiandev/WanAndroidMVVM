@@ -6,11 +6,15 @@ import com.wjx.android.wanandroidmvvm.ui.account.data.RegisterResponse
 import com.wjx.android.wanandroidmvvm.ui.collect.data.CollectResponse
 import com.wjx.android.wanandroidmvvm.ui.home.data.BannerResponse
 import com.wjx.android.wanandroidmvvm.ui.home.data.HomeArticleResponse
+import com.wjx.android.wanandroidmvvm.ui.meshare.data.MeShareArticleResponse
+import com.wjx.android.wanandroidmvvm.ui.meshare.data.MeShareResponse
 import com.wjx.android.wanandroidmvvm.ui.navigation.data.NavigationTabNameResponse
 import com.wjx.android.wanandroidmvvm.ui.project.data.ProjectResponse
 import com.wjx.android.wanandroidmvvm.ui.project.data.ProjectTabResponse
+import com.wjx.android.wanandroidmvvm.ui.question.data.QuestionResponse
 import com.wjx.android.wanandroidmvvm.ui.search.data.HotKeyResponse
 import com.wjx.android.wanandroidmvvm.ui.search.data.SearchResultResponse
+import com.wjx.android.wanandroidmvvm.ui.square.data.SquareResponse
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemArticleResponse
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemTabNameResponse
 import com.wjx.android.wanandroidmvvm.ui.todo.data.TodoPageResponse
@@ -118,4 +122,12 @@ interface ApiService {
     @POST("/article/query/{pageNum}/json")
     fun loadSearchResult(@Path("pageNum") pageNum: Int, @Query("k") key: String): Observable<BaseResponse<SearchResultResponse>>
 
+    @GET("wenda/list/{pageNum}/json")
+    fun loadQuestionList(@Path("pageNum") pageNum: Int): Observable<BaseResponse<QuestionResponse>>
+
+    @GET("user/lg/private_articles/{pageNum}/json")
+    fun loadMeShareArticle(@Path("pageNum") pageNum: Int): Observable<BaseResponse<MeShareResponse<MeShareArticleResponse>>>
+
+    @GET("user_article/list/{pageNum}/json")
+    fun loadSquareArticle(@Path("pageNum") pageNum: Int) : Observable<BaseResponse<SquareResponse>>
 }

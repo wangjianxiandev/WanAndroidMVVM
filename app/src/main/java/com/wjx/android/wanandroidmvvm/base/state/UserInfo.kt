@@ -40,6 +40,10 @@ class UserInfo private constructor() {
         mState.startCollectActivity(context)
     }
 
+    fun startShareActivity(context: Context?) {
+        mState.startShareActivity(context)
+    }
+
     fun startTodoActivity(context: Context?) {
         mState.startTodoActivity(context)
     }

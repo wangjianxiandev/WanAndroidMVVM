@@ -3,7 +3,7 @@ ext {
     android = [
             compileSdkVersion: 29,
             buildToolsVersion: "29.0.2",
-            minSdkVersion    : 24,
+            minSdkVersion    : 26,
             targetSdkVersion : 29,
             versionCode      : 1,
             versionName      : "1.0",
@@ -35,6 +35,7 @@ ext {
     preference_version = "1.1.0-alpha04"
     material_dialog_version = "3.1.1"
     litepal_version = '3.0.0'
+    circular_avatar = 'v1.0.0'
 
 
 
@@ -85,7 +86,8 @@ ext {
             "lottie"                          : "com.airbnb.android:lottie:$lottie_version",
             "preference"                      : "androidx.preference:preference:$preference_version",
             "material_dialog"                 : "com.afollestad.material-dialogs:core:$material_dialog_version",
-            "litepal"                         : "org.litepal.android:kotlin:$litepal_version"
+            "litepal"                         : "org.litepal.android:kotlin:$litepal_version",
+            "circular_avatar"                 : "com.github.wangjianxiandev:CircularAvatar:$circular_avatar"
     ]
 
     processor = [

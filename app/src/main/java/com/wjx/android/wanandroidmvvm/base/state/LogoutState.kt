@@ -27,6 +27,10 @@ class LogoutState :UserState {
         startLoginActivity(context)
     }
 
+    override fun startShareActivity(context: Context?) {
+        startLoginActivity(context)
+    }
+
     override fun startTodoActivity(context: Context?) {
         startLoginActivity(context)
     }

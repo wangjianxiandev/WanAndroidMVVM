@@ -6,7 +6,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseActivity
@@ -19,8 +18,10 @@ import org.jetbrains.anko.startActivity
 import com.wjx.android.wanandroidmvvm.ui.home.view.HomeFragment
 import com.wjx.android.wanandroidmvvm.ui.navigation.view.NavigationFragment
 import com.wjx.android.wanandroidmvvm.ui.project.view.ProjectFragment
+import com.wjx.android.wanandroidmvvm.ui.question.view.QuestionArticleListActivity
 import com.wjx.android.wanandroidmvvm.ui.search.SearchActivity
 import com.wjx.android.wanandroidmvvm.ui.setting.SettingActivity
+import com.wjx.android.wanandroidmvvm.ui.square.view.SquareActivity
 import com.wjx.android.wanandroidmvvm.ui.system.view.SystemFragment
 import com.wjx.android.wanandroidmvvm.ui.wechat.view.WeChatFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -70,19 +71,25 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
 
         // 直接获取报错   error -> mNavMain.mTvName
         headView = navigation_draw.getHeaderView(0)
-        headView.circle_image_name.text = mUsername
-        headView.circle_image.setColor(ContextCompat.getColor(this, R.color.colorPrimary))
-        headView.circle_image.setIsShowBlurMask(false)
-        headView.circle_image.setShowNameCount(1)
-        headView.circle_image.setCircleName(mUsername)
+        headView.me_name.text = mUsername
+        headView.me_image.setCircleName(mUsername)
 
         // 点击 登录
-        headView.circle_image.setOnClickListener { UserInfo.instance.login(this) }
+        headView.me_image.setOnClickListener { UserInfo.instance.login(this) }
 
         navigation_draw.setNavigationItemSelectedListener {
             when (it.itemId) {
+                R.id.nav_menu_square -> {
+                    startActivity<SquareActivity>()
+                }
                 R.id.nav_menu_collect -> {
                     UserInfo.instance.startCollectActivity(this)
+                }
+                R.id.nav_menu_share -> {
+                    UserInfo.instance.startShareActivity(this)
+                }
+                R.id.nav_menu_question -> {
+                    startActivity<QuestionArticleListActivity>()
                 }
                 R.id.nav_menu_todo -> {
                     UserInfo.instance.startTodoActivity(this)
@@ -154,13 +161,13 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
                 switchFragment(mHomeFragment)
             }
             Constant.WECHAT -> {
-                fab_add.visibility = View.VISIBLE
+                fab_add.visibility = View.GONE
                 setToolBarTitle(toolbar, getString(R.string.navigation_wechat))
                 switchFragment(mWeChatFragment)
             }
 
             Constant.SYSTEM -> {
-                fab_add.visibility = View.VISIBLE
+                fab_add.visibility = View.GONE
                 setToolBarTitle(toolbar, getString(R.string.navigation_system))
                 switchFragment(mSystemFragment)
             }
@@ -210,8 +217,8 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
     override fun loginSuccess(username: String, collectIds: List<Int>?) {
         // 进行 SharedPreference 存储
         mUsername = username
-        headView.circle_image_name.text = username
-        headView.circle_image.setCircleName(mUsername)
+        headView.me_name.text = username
+        headView.me_image.setCircleName(mUsername)
     }
 
     override fun onDestroy() {
