@@ -1,36 +1,33 @@
-package com.wjx.android.wanandroidmvvm.base.BaseArticle
+package com.wjx.android.wanandroidmvvm.ui.meshare.adapter
 
 import android.os.Build
 import android.text.Html
 import androidx.annotation.RequiresApi
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
-import com.wjx.android.wanandroidmvvm.Custom.DrawableScaleFadeFactory
 import com.wjx.android.wanandroidmvvm.R
+import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleAdapter
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
-import com.wjx.android.wanandroidmvvm.base.BaseViewModel
 
 /**
  * Created with Android Studio.
  * Description:
  * @author: Wangjianxian
- * @date: 2020/02/25
- * Time: 21:09
+ * @date: 2020/03/26
+ * Time: 19:07
  */
-open class BaseArticleAdapter (layoutId : Int, listData : MutableList<Article>?)
-    : BaseQuickAdapter<Article, BaseViewHolder>(layoutId, listData) {
+class MeShareAdapter(layoutId: Int, listData: MutableList<Article>?) :
+    BaseQuickAdapter<Article, BaseViewHolder>(layoutId, listData) {
     override fun convert(viewHolder: BaseViewHolder, article: Article?) {
         viewHolder?.let {
-            holder ->
+                holder ->
             article?.let {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     holder.setText(R.id.item_home_author, handleAuthor(it))
                         .setText(R.id.item_home_content, handleTitle(it))
                         .setText(R.id.item_home_date, it.niceDate)
                         .setText(R.id.item_article_type, handleCategory(it))
-                        .setImageResource(R.id.item_list_collect, isCollect(it))
+                        .setImageResource(R.id.item_list_collect, handleDelete())
                         .addOnClickListener(R.id.item_list_collect)
                         .setVisible(R.id.item_home_new, it.fresh)
                         .setVisible(R.id.item_home_top_article, it.top)
@@ -46,6 +43,7 @@ open class BaseArticleAdapter (layoutId : Int, listData : MutableList<Article>?)
             return Html.fromHtml(it.title, Html.FROM_HTML_MODE_COMPACT).toString()
         }
     }
+
 
     private fun handleAuthor(article: Article) : String {
         article.let {
@@ -69,5 +67,5 @@ open class BaseArticleAdapter (layoutId : Int, listData : MutableList<Article>?)
         }
     }
 
-    private fun isCollect(article: Article) :Int = if (article.collect) R.drawable.collect_selector_icon else R.drawable.uncollect_selector_icon
+    private fun handleDelete() : Int = R.drawable.ic_delete_share
 }

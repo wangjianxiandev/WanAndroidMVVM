@@ -130,4 +130,7 @@ interface ApiService {
 
     @GET("user_article/list/{pageNum}/json")
     fun loadSquareArticle(@Path("pageNum") pageNum: Int) : Observable<BaseResponse<SquareResponse>>
+
+    @POST("lg/user_article/delete/{id}/json")
+    fun deleteShareArticle(@Path("id")id : Int): Observable<BaseResponse<EmptyResponse>>
 }
