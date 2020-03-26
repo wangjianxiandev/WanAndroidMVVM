@@ -1,11 +1,17 @@
 package com.wjx.android.wanandroidmvvm.base
 
 
+import android.graphics.Color
+import android.os.Build
 import android.text.TextUtils
+import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.kingja.loadsir.callback.SuccessCallback
+import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.callback.EmptyCallBack
 import com.wjx.android.wanandroidmvvm.base.callback.ErrorCallBack
 import com.wjx.android.wanandroidmvvm.base.callback.LoadingCallBack
@@ -34,6 +40,13 @@ abstract class BaseLifeCycleFragment<VM : BaseViewModel<*>> : BaseFragment() {
         mViewModel.loadState.observe(this, observer)
 
         initDataObserver()
+
+        initStatusColor()
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        initStatusColor()
     }
 
     abstract fun initDataObserver()
@@ -76,6 +89,18 @@ abstract class BaseLifeCycleFragment<VM : BaseViewModel<*>> : BaseFragment() {
                     StateType.EMPTY -> showEmpty()
                 }
             }
+        }
+    }
+
+    private fun initStatusColor() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            activity!!.window.statusBarColor =
+                ContextCompat.getColor(context!!, R.color.colorPrimaryDark)
+        }
+        if (ColorUtils.calculateLuminance(Color.TRANSPARENT) >= 0.5) { // 设置状态栏中字体的颜色为黑色
+            activity!!.window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        } else { // 跟随系统
+            activity!!.window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
         }
     }
 

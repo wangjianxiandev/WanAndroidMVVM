@@ -45,7 +45,6 @@ class SystemFragment : BaseLifeCycleFragment<SystemViewModel>() {
     override fun initView() {
         super.initView()
         initRefresh()
-        initStatusColor()
         recycler_view?.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         mAdapter = SystemAdapter(R.layout.system_item, null)
         recycler_view.adapter = mAdapter
@@ -54,22 +53,6 @@ class SystemFragment : BaseLifeCycleFragment<SystemViewModel>() {
             item?.let {
             }
         }
-    }
-
-    private fun initStatusColor() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            activity!!.window.statusBarColor = ContextCompat.getColor(context!!, R.color.colorPrimaryDark)
-        }
-        if (ColorUtils.calculateLuminance(Color.TRANSPARENT) >= 0.5) { // 设置状态栏中字体的颜色为黑色
-            activity!!.window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-        } else { // 跟随系统
-            activity!!.window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-        }
-    }
-
-    override fun onHiddenChanged(hidden: Boolean) {
-        super.onHiddenChanged(hidden)
-        initStatusColor()
     }
 
     private fun initRefresh() {

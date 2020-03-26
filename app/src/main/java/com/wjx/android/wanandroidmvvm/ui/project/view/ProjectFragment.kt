@@ -24,31 +24,11 @@ import kotlinx.android.synthetic.main.layout_project.*
 class ProjectFragment : BaseLifeCycleFragment<ProjectViewModel>() {
     override fun getLayoutId(): Int = R.layout.layout_project
 
-    override fun initView() {
-        super.initView()
-        initStatusColor()
-    }
-
     override fun initData() {
         super.initData()
         mViewModel.loadProjectTab()
     }
 
-    override fun onHiddenChanged(hidden: Boolean) {
-        super.onHiddenChanged(hidden)
-        initStatusColor()
-    }
-
-    private fun initStatusColor() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            activity!!.window.statusBarColor = ContextCompat.getColor(context!!, R.color.colorPrimaryDark)
-        }
-        if (ColorUtils.calculateLuminance(Color.TRANSPARENT) >= 0.5) { // 设置状态栏中字体的颜色为黑色
-            activity!!.window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-        } else { // 跟随系统
-            activity!!.window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-        }
-    }
     override fun initDataObserver() {
         mViewModel.mProjectTabData.observe(this, Observer { response ->
             response?.let {
