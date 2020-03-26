@@ -6,6 +6,7 @@ import com.wjx.android.wanandroidmvvm.base.state.callback.CollectListener
 import com.wjx.android.wanandroidmvvm.base.utils.Constant
 import com.wjx.android.wanandroidmvvm.ui.collect.view.CollectArticleListActivity
 import com.wjx.android.wanandroidmvvm.ui.meshare.view.MeShareActivity
+import com.wjx.android.wanandroidmvvm.ui.square.view.ShareArticleActivity
 import com.wjx.android.wanandroidmvvm.ui.todo.view.EditTodoActivity
 import com.wjx.android.wanandroidmvvm.ui.todo.view.TodoActivity
 
@@ -31,6 +32,11 @@ class LoginState : UserState {
 
     override fun startShareActivity(context: Context?) {
         val intent = Intent(context, MeShareActivity::class.java)
+        context?.startActivity(intent)
+    }
+
+    override fun startAddShareActivity(context: Context?) {
+        val intent = Intent(context, ShareArticleActivity::class.java)
         context?.startActivity(intent)
     }
 

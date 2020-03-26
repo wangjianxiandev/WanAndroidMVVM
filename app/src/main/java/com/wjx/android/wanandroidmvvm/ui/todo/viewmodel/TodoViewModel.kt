@@ -1,16 +1,14 @@
 package com.wjx.android.wanandroidmvvm.ui.todo.viewmodel
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseViewModel
 import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
 import com.wjx.android.wanandroidmvvm.base.https.EmptyResponse
-import com.wjx.android.wanandroidmvvm.base.state.State
-import com.wjx.android.wanandroidmvvm.base.state.StateType
 import com.wjx.android.wanandroidmvvm.ui.todo.data.TodoPageResponse
 import com.wjx.android.wanandroidmvvm.ui.todo.repository.TodoRepository
-import kotlin.time.milliseconds
 
 /**
  * Created with Android Studio.
@@ -30,14 +28,7 @@ class TodoViewModel(application: Application) : BaseViewModel<TodoRepository>(ap
         mRepository.loadTodoList(pageNum, mTodoListData)
     }
 
-    fun refreshTodoList() {
-        mRepository.loadTodoList(1, mTodoListData)
-    }
-
     fun addTodo(title: String, content: String, date: String, type: Int, priority: Int) {
-        if (title.isNullOrEmpty() || content.isNullOrEmpty() || type == 0) {
-            loadState.postValue(State(StateType.TIP, tip = R.string.todo_empty))
-        }
         mRepository.addTodo(title, content, date, type, priority, mTodoAddData)
     }
 

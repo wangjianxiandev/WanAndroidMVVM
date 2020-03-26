@@ -21,5 +21,7 @@ interface UserState {
 
     fun startShareActivity(context: Context?)
 
+    fun startAddShareActivity(context: Context?)
+
     fun startEditTodoActivity(context: Context?)
 }

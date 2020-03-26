@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleRepository
 import com.wjx.android.wanandroidmvvm.base.BaseObserver
 import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
+import com.wjx.android.wanandroidmvvm.base.https.EmptyResponse
 import com.wjx.android.wanandroidmvvm.base.state.State
 import com.wjx.android.wanandroidmvvm.ui.square.data.SquareResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -19,6 +20,13 @@ import io.reactivex.schedulers.Schedulers
 class SquareRepository(loadState: MutableLiveData<State>) : BaseArticleRepository(loadState) {
     fun loadSquareArticle(pageNum : Int, liveData : MutableLiveData<BaseResponse<SquareResponse>>) {
         apiService.loadSquareArticle(pageNum)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(BaseObserver(liveData, loadState, this))
+    }
+
+    fun addShareArticle(title : String, link : String, liveData: MutableLiveData<BaseResponse<EmptyResponse>>) {
+        apiService.addShareArticle(title, link)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(BaseObserver(liveData, loadState, this))

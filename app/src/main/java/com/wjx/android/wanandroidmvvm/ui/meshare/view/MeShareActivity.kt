@@ -107,5 +107,7 @@ class MeShareActivity : BaseLifeCycleActivity<MeShareViewModel>() {
         mAdapter.loadMoreComplete()
     }
 
+    override fun showDestroyReveal(): Boolean = true
+
     override fun onBackPressed() = finish()
 }

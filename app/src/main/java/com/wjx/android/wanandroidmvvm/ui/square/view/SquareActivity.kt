@@ -4,12 +4,13 @@ import android.view.View
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleListActivity
+import com.wjx.android.wanandroidmvvm.base.state.UserInfo
 import com.wjx.android.wanandroidmvvm.ui.square.viewmodel.SquareViewModel
 import kotlinx.android.synthetic.main.custom_bar.view.*
 
 class SquareActivity : BaseArticleListActivity<SquareViewModel>() {
 
-    private var mCurrentPage : Int = 0
+    private var mCurrentPage: Int = 0
     override fun initView() {
         super.initView()
         initHeaderView()
@@ -44,12 +45,18 @@ class SquareActivity : BaseArticleListActivity<SquareViewModel>() {
         val headerView = View.inflate(this, R.layout.custom_bar, null)
         headerView.detail_title.text = "广场"
         headerView.detail_back.visibility = View.VISIBLE
-        headerView.detail_search.visibility = View.GONE
+        headerView.detail_search.visibility = View.VISIBLE
+        headerView.detail_search.setImageResource(R.drawable.ic_share_square)
         headerView.detail_back.setOnClickListener { onBackPressed() }
+        headerView.detail_search.setOnClickListener { onShareArticle() }
         mAdapter.addHeaderView(headerView)
     }
 
     override fun onBackPressed() = finish()
 
     override fun showDestroyReveal(): Boolean = true
+
+    private fun onShareArticle() {
+        UserInfo.instance.startAddShareActivity(this)
+    }
 }

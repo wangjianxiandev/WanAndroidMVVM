@@ -44,6 +44,10 @@ class UserInfo private constructor() {
         mState.startShareActivity(context)
     }
 
+    fun startAddShareActivity(context: Context?) {
+        mState.startAddShareActivity(context)
+    }
+
     fun startTodoActivity(context: Context?) {
         mState.startTodoActivity(context)
     }

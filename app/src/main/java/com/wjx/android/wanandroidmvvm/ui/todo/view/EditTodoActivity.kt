@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup.MarginLayoutParams
 import android.widget.DatePicker
 import android.widget.TextView
+import android.widget.Toast
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.base.utils.Constant
@@ -170,24 +171,33 @@ class EditTodoActivity : BaseLifeCycleActivity<TodoViewModel>(), View.OnClickLis
             }
             R.id.edit_todo_submit -> {
                 if (mActivityType == Constant.EDIT_TODO.toInt()) {
-                    mViewModel.updateTodo(
-                        mTodoId,
-                        edit_todo_title.text.toString(),
-                        edit_todo_content.text.toString(),
-                        edit_todo_date.text.toString(),
-                        todoType,
-                        todoPriority
-                    )
+                    if (edit_todo_title.text.toString().isNullOrEmpty() || edit_todo_content.text.toString().isNullOrEmpty()
+                        || edit_todo_date.text.toString().isNullOrEmpty()) {
+                        Toast.makeText(this, R.string.todo_empty, Toast.LENGTH_SHORT).show()
+                    } else {
+                        mViewModel.updateTodo(
+                            mTodoId,
+                            edit_todo_title.text.toString(),
+                            edit_todo_content.text.toString(),
+                            edit_todo_date.text.toString(),
+                            todoType,
+                            todoPriority
+                        )
+                    }
                 } else if (mActivityType == Constant.ADD_TODO.toInt()) {
-                    mViewModel.addTodo(
-                        edit_todo_title.text.toString(),
-                        edit_todo_content.text.toString(),
-                        edit_todo_date.text.toString(),
-                        todoType,
-                        todoPriority
-                    )
+                    if (edit_todo_title.text.toString().isNullOrEmpty() || edit_todo_content.text.toString().isNullOrEmpty()
+                        || edit_todo_date.text.toString().isNullOrEmpty()) {
+                        Toast.makeText(this, R.string.todo_empty, Toast.LENGTH_SHORT).show()
+                    } else {
+                        mViewModel.addTodo(
+                            edit_todo_title.text.toString(),
+                            edit_todo_content.text.toString(),
+                            edit_todo_date.text.toString(),
+                            todoType,
+                            todoPriority
+                        )
+                    }
                 }
-                finish()
             }
 
             R.id.detail_back -> {

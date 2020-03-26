@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
+import com.wjx.android.wanandroidmvvm.base.state.UserInfo
 import com.wjx.android.wanandroidmvvm.base.utils.Constant
 import com.wjx.android.wanandroidmvvm.base.utils.Util
 import com.wjx.android.wanandroidmvvm.ui.todo.adapter.TodoAdapter
@@ -124,7 +125,9 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
         val headerView = View.inflate(this, R.layout.custom_bar, null)
         headerView.detail_title.text = "待办事项"
         headerView.detail_back.visibility = View.VISIBLE
-        headerView.detail_search.visibility = View.GONE
+        headerView.detail_search.visibility = View.VISIBLE
+        headerView.detail_search.setImageResource(R.drawable.ic_add)
+        headerView.detail_search.setOnClickListener { onAddTodo() }
         headerView.detail_back.setOnClickListener { onBackPressed() }
         mAdapter.addHeaderView(headerView)
     }
@@ -170,5 +173,9 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
 
     override fun onBackPressed() {
         finish()
+    }
+
+    private fun onAddTodo() {
+        UserInfo.instance.startEditTodoActivity(this)
     }
 }

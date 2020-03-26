@@ -133,4 +133,10 @@ interface ApiService {
 
     @POST("lg/user_article/delete/{id}/json")
     fun deleteShareArticle(@Path("id")id : Int): Observable<BaseResponse<EmptyResponse>>
+
+    @POST("lg/user_article/add/json")
+    fun addShareArticle(
+        @Query("title") title: String,
+        @Query("link") link: String
+    ): Observable<BaseResponse<EmptyResponse>>
 }

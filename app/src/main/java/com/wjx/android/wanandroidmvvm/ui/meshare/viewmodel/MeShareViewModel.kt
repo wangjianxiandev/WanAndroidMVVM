@@ -21,6 +21,7 @@ class MeShareViewModel(application: Application) :
     var mMeShareData: MutableLiveData<BaseResponse<MeShareResponse<MeShareArticleResponse>>> =
         MutableLiveData()
     var mDeleteMeShareData: MutableLiveData<BaseResponse<EmptyResponse>> = MutableLiveData()
+
     fun loadMeShareArticle(pageNum: Int) {
         mRepository.loadShareArticle(pageNum, mMeShareData)
     }
