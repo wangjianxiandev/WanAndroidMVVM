@@ -1,14 +1,20 @@
 package com.wjx.android.wanandroidmvvm.ui.activity
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.AlphaAnimation
+import android.view.animation.AnimationSet
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.Fragment
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.color.colorChooser
+import com.wjx.android.wanandroidmvvm.Custom.interpolator.CustomScaleInterpolator
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseActivity
 import com.wjx.android.wanandroidmvvm.base.state.UserInfo
@@ -137,7 +143,16 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
     private fun initFabButton() {
         fab_add.setOnClickListener {
             mCurrentFragment!!.mRvArticle!!.smoothScrollToPosition(0)
-            fab_add.visibility = View.INVISIBLE
+            val objectAnimatorX =
+                ObjectAnimator.ofFloat(fab_add, "scaleX", 1.0f, 1.2f,0.0f)
+            objectAnimatorX.interpolator = AccelerateDecelerateInterpolator()
+            val objectAnimatorY =
+                ObjectAnimator.ofFloat(fab_add, "scaleY", 1.0f, 1.2f, 0.0f)
+            objectAnimatorY.interpolator = AccelerateDecelerateInterpolator()
+            val animatorSet = AnimatorSet()
+            animatorSet.playTogether(objectAnimatorX, objectAnimatorY)
+            animatorSet.duration = 1000
+            animatorSet.start()
         }
     }
 
