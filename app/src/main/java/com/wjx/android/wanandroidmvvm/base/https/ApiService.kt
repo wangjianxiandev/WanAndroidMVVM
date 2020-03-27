@@ -18,7 +18,6 @@ import com.wjx.android.wanandroidmvvm.ui.square.data.SquareResponse
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemArticleResponse
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemTabNameResponse
 import com.wjx.android.wanandroidmvvm.ui.todo.data.TodoPageResponse
-import com.wjx.android.wanandroidmvvm.ui.todo.data.TodoResponse
 import com.wjx.android.wanandroidmvvm.ui.wechat.data.WeChatArticleResponse
 import com.wjx.android.wanandroidmvvm.ui.wechat.data.WeChatTabNameResponse
 import io.reactivex.Observable

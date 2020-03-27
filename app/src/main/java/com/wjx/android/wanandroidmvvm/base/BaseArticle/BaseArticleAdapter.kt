@@ -3,14 +3,10 @@ package com.wjx.android.wanandroidmvvm.base.BaseArticle
 import android.os.Build
 import android.text.Html
 import androidx.annotation.RequiresApi
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
-import com.wjx.android.wanandroidmvvm.Custom.DrawableScaleFadeFactory
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
-import com.wjx.android.wanandroidmvvm.base.BaseViewModel
 
 /**
  * Created with Android Studio.
