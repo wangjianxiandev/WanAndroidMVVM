@@ -5,12 +5,18 @@ import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleListActivity
 import com.wjx.android.wanandroidmvvm.base.state.UserInfo
+import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
+import com.wjx.android.wanandroidmvvm.base.utils.Util
 import com.wjx.android.wanandroidmvvm.ui.square.viewmodel.SquareViewModel
+import kotlinx.android.synthetic.main.custom_bar.*
 import kotlinx.android.synthetic.main.custom_bar.view.*
+import kotlinx.android.synthetic.main.custom_bar.view.custom_bar
+import org.greenrobot.eventbus.Subscribe
 
 class SquareActivity : BaseArticleListActivity<SquareViewModel>() {
 
     private var mCurrentPage: Int = 0
+    private lateinit var headerView: View
     override fun initView() {
         super.initView()
         initHeaderView()
@@ -31,7 +37,6 @@ class SquareActivity : BaseArticleListActivity<SquareViewModel>() {
         })
     }
 
-
     override fun onRefreshData() {
         mCurrentPage = 0
         mViewModel.loadSquareArticle(mCurrentPage)
@@ -42,7 +47,7 @@ class SquareActivity : BaseArticleListActivity<SquareViewModel>() {
     }
 
     private fun initHeaderView() {
-        val headerView = View.inflate(this, R.layout.custom_bar, null)
+        headerView = View.inflate(this, R.layout.custom_bar, null)
         headerView.detail_title.text = "广场"
         headerView.detail_back.visibility = View.VISIBLE
         headerView.detail_search.visibility = View.VISIBLE
@@ -50,6 +55,11 @@ class SquareActivity : BaseArticleListActivity<SquareViewModel>() {
         headerView.detail_back.setOnClickListener { onBackPressed() }
         headerView.detail_search.setOnClickListener { onShareArticle() }
         mAdapter.addHeaderView(headerView)
+        initColor()
+    }
+
+    private fun initColor() {
+        headerView.setBackgroundColor(Util.getColor(this))
     }
 
     override fun onBackPressed() = finish()
@@ -58,5 +68,10 @@ class SquareActivity : BaseArticleListActivity<SquareViewModel>() {
 
     private fun onShareArticle() {
         UserInfo.instance.startAddShareActivity(this)
+    }
+
+    @Subscribe
+    fun settingEvent(event: ChangeThemeEvent) {
+        initColor()
     }
 }

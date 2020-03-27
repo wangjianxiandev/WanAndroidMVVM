@@ -3,6 +3,7 @@
 
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/article_material_card"
     style="@style/CutCardViewStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,7 +11,6 @@
     android:background="@color/white"
     app:cardBackgroundColor="@color/white"
     app:cardElevation="4dp"
-    app:rippleColor="@color/colorPrimary"
     app:strokeColor="@color/colorPrimaryDark"
     app:strokeWidth="2dp">
 
@@ -25,8 +25,8 @@
             android:layout_marginStart="@dimen/safe_padding"
             android:layout_marginTop="@dimen/item_margin_top"
             android:layout_marginEnd="@dimen/safe_padding"
-            android:textColor="@color/colorGray666"
             android:text="作者：wjx"
+            android:textColor="@color/colorGray666"
             android:textSize="13dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

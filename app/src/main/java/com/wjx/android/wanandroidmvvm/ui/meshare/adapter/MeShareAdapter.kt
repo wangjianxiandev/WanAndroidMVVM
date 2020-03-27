@@ -6,8 +6,9 @@ import androidx.annotation.RequiresApi
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleAdapter
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
+import com.wjx.android.wanandroidmvvm.base.utils.Util
+import kotlinx.android.synthetic.main.article_item.view.*
 
 /**
  * Created with Android Studio.
@@ -21,6 +22,8 @@ class MeShareAdapter(layoutId: Int, listData: MutableList<Article>?) :
     override fun convert(viewHolder: BaseViewHolder, article: Article?) {
         viewHolder?.let {
                 holder ->
+            holder.itemView.article_material_card.rippleColor = Util.getOneColorStateList(mContext)
+            holder.itemView.article_material_card.strokeColor = Util.getColor(mContext)
             article?.let {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     holder.setText(R.id.item_home_author, handleAuthor(it))

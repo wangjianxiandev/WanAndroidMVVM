@@ -28,6 +28,8 @@ class NavigationLabelAdapter (layoutId : Int, listData : MutableList<NavigationT
         viewHolder?.let {
                 holder ->
             item?.let {
+                holder.itemView.nav_label_material_card.rippleColor = Util.getOneColorStateList(mContext)
+                holder.itemView.nav_label_material_card.strokeColor = Util.getColor(mContext)
                 holder.itemView.nav_label_layout.adapter = object : TagAdapter<NavigationLabelResponse>(it.articles) {
                     override fun getView(
                         parent: FlowLayout?,

@@ -8,6 +8,7 @@
     android:orientation="vertical"
     tools:context=".ui.activity.ArticleDetailActivity">
 
-    <include layout="@layout/custom_bar"/>
+    <include
+        layout="@layout/custom_bar"/>
 
 </LinearLayout>

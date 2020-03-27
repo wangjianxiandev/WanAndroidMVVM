@@ -11,19 +11,25 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.base.state.UserInfo
+import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.base.utils.Constant
 import com.wjx.android.wanandroidmvvm.base.utils.Util
 import com.wjx.android.wanandroidmvvm.ui.todo.adapter.TodoAdapter
 import com.wjx.android.wanandroidmvvm.ui.todo.data.TodoResponse
 import com.wjx.android.wanandroidmvvm.ui.todo.viewmodel.TodoViewModel
 import kotlinx.android.synthetic.main.activity_todo.*
+import kotlinx.android.synthetic.main.custom_bar.*
 import kotlinx.android.synthetic.main.custom_bar.view.*
+import kotlinx.android.synthetic.main.custom_bar.view.custom_bar
+import org.greenrobot.eventbus.Subscribe
 
 class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
 
     private lateinit var mAdapter: TodoAdapter
 
     private var mCurrentPageNum: Int = 1
+
+    private lateinit var headerView : View
 
     override fun initDataObserver() {
         mViewModel.mTodoListData.observe(this, Observer { response ->
@@ -122,7 +128,7 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
     override fun getLayoutId(): Int = R.layout.activity_todo
 
     private fun initHeadView() {
-        val headerView = View.inflate(this, R.layout.custom_bar, null)
+        headerView = View.inflate(this, R.layout.custom_bar, null)
         headerView.detail_title.text = "待办事项"
         headerView.detail_back.visibility = View.VISIBLE
         headerView.detail_search.visibility = View.VISIBLE
@@ -130,11 +136,16 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
         headerView.detail_search.setOnClickListener { onAddTodo() }
         headerView.detail_back.setOnClickListener { onBackPressed() }
         mAdapter.addHeaderView(headerView)
+        initColor()
+    }
+
+    private fun initColor() {
+        headerView.setBackgroundColor(Util.getColor(this))
     }
 
     private fun initRefresh() {
         // 设置下拉刷新的loading颜色
-        todo_refresh.setColorSchemeResources(R.color.colorPrimary)
+        todo_refresh.setColorSchemeResources(Util.getColor(this))
         todo_refresh.setOnRefreshListener {
             onRefreshData()
         }
@@ -177,5 +188,10 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
 
     private fun onAddTodo() {
         UserInfo.instance.startEditTodoActivity(this)
+    }
+
+    @Subscribe
+    fun settingEvent(event: ChangeThemeEvent) {
+        initColor()
     }
 }

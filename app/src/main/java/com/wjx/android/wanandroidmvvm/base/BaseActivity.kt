@@ -1,17 +1,24 @@
 package com.wjx.android.wanandroidmvvm.base
 
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.graphics.ColorUtils
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import com.wjx.android.wanandroidmvvm.R
+import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
+import com.wjx.android.wanandroidmvvm.base.utils.Util
 import com.wjx.android.wanandroidmvvm.base.utils.Util.circularFinishReveal
 import com.wjx.android.wanandroidmvvm.base.utils.Util.setReveal
 import io.reactivex.disposables.Disposable
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
 import org.jetbrains.anko.toast
 
 /**
@@ -40,11 +47,13 @@ abstract class BaseActivity : AppCompatActivity() {
         setContentView(getLayoutId())
         mRootView = (findViewById(android.R.id.content) as ViewGroup).getChildAt(0)
         AppManager.instance.addActivity(this)
+        initStatusColor()
         initView()
         initData()
         if (showCreateReveal()) {
             setUpReveal(savedInstanceState)
         }
+        EventBus.getDefault().register(this)
     }
 
     open fun showCreateReveal() : Boolean = true
@@ -104,6 +113,7 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         mDisposable?.dispose()
+        EventBus.getDefault().unregister(this)
         AppManager.instance.removeActivity(this)
     }
 
@@ -117,5 +127,21 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun finish() {
         super.finish()
         overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out)
+    }
+
+    private fun initStatusColor() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            window.statusBarColor = Util.getColor(this)
+        }
+        if (ColorUtils.calculateLuminance(Color.TRANSPARENT) >= 0.5) { // 设置状态栏中字体的颜色为黑色
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        } else { // 跟随系统
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+        }
+    }
+
+    @Subscribe
+    fun changeThemeEvent(event: ChangeThemeEvent) {
+        initStatusColor()
     }
 }

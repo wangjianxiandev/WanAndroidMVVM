@@ -10,10 +10,13 @@ import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleFragment
+import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
+import com.wjx.android.wanandroidmvvm.base.utils.Util
 import com.wjx.android.wanandroidmvvm.ui.wechat.adapter.WeChatTabAdapter
 import com.wjx.android.wanandroidmvvm.ui.wechat.data.WeChatTabNameResponse
 import com.wjx.android.wanandroidmvvm.ui.wechat.viewmodel.WeChatViewModel
 import kotlinx.android.synthetic.main.layout_wechat.*
+import org.greenrobot.eventbus.Subscribe
 
 /**
  * Created with Android Studio.
@@ -25,6 +28,16 @@ import kotlinx.android.synthetic.main.layout_wechat.*
 class WeChatFragment : BaseLifeCycleFragment<WeChatViewModel>() {
 
     override fun getLayoutId(): Int = R.layout.layout_wechat
+
+    override fun initView() {
+        super.initView()
+        initColor()
+    }
+
+    private fun initColor() {
+        wechat_tab.dividerColor = Util.getColor(activity!!)
+        wechat_tab.indicatorColor = Util.getColor(activity!!)
+    }
 
     override fun initData() {
         super.initData()
@@ -50,5 +63,10 @@ class WeChatFragment : BaseLifeCycleFragment<WeChatViewModel>() {
         }
         wechat_viewpager.adapter = WeChatTabAdapter(childFragmentManager, tabs, fragments)
         wechat_tab.setViewPager(wechat_viewpager)
+    }
+
+    @Subscribe
+    fun settingEvent(event: ChangeThemeEvent) {
+        initColor()
     }
 }

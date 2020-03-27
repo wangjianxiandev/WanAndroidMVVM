@@ -9,10 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleFragment
+import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
+import com.wjx.android.wanandroidmvvm.base.utils.Util
 import com.wjx.android.wanandroidmvvm.ui.project.adapter.ProjectTabAdapter
 import com.wjx.android.wanandroidmvvm.ui.project.data.ProjectTabResponse
 import com.wjx.android.wanandroidmvvm.ui.project.viewmodel.ProjectViewModel
 import kotlinx.android.synthetic.main.layout_project.*
+import org.greenrobot.eventbus.Subscribe
 
 /**
  * Created with Android Studio.
@@ -23,6 +26,16 @@ import kotlinx.android.synthetic.main.layout_project.*
  */
 class ProjectFragment : BaseLifeCycleFragment<ProjectViewModel>() {
     override fun getLayoutId(): Int = R.layout.layout_project
+
+    override fun initView() {
+        super.initView()
+        initColor()
+    }
+
+    private fun initColor() {
+        project_tab.dividerColor = Util.getColor(activity!!)
+        project_tab.indicatorColor = Util.getColor(activity!!)
+    }
 
     override fun initData() {
         super.initData()
@@ -48,4 +61,8 @@ class ProjectFragment : BaseLifeCycleFragment<ProjectViewModel>() {
         project_tab.setViewPager(project_viewpager)
     }
 
+    @Subscribe
+    fun settingEvent(event: ChangeThemeEvent) {
+        initColor()
+    }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/project_material_card"
     style="@style/CutCardViewStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -99,8 +100,8 @@
             android:layout_marginStart="@dimen/safe_padding"
             android:layout_marginTop="@dimen/item_margin_top"
             android:layout_marginEnd="@dimen/safe_padding"
-            android:text="这是一个根据MVPArms框架开发玩Android的一个APP，仅供个人使用，禁止商用"
             android:maxLines="2"
+            android:text="这是一个根据MVPArms框架开发玩Android的一个APP，仅供个人使用，禁止商用"
             android:textColor="@color/colorBlack333"
             android:textSize="14dp"
             android:textStyle="bold"

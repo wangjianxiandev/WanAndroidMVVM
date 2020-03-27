@@ -8,6 +8,8 @@ import com.wjx.android.wanandroidmvvm.Custom.DrawableScaleFadeFactory
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
 import com.wjx.android.wanandroidmvvm.base.BaseViewModel
+import com.wjx.android.wanandroidmvvm.base.utils.Util
+import kotlinx.android.synthetic.main.project_item.view.*
 
 /**
  * Created with Android Studio.
@@ -20,6 +22,8 @@ class ProjectArticleAdapter(layoutId: Int, listData: MutableList<Article>?) :
     BaseQuickAdapter<Article, BaseViewHolder>(layoutId, listData) {
     override fun convert(viewHolder: BaseViewHolder, article: Article?) {
         viewHolder?.let { holder ->
+            holder.itemView.project_material_card.rippleColor = Util.getOneColorStateList(mContext)
+            holder.itemView.project_material_card.strokeColor = Util.getColor(mContext)
             article?.let {
                 holder.setText(R.id.item_project_author, handleAuthor(it))
                     .setText(R.id.item_project_content, it.title)

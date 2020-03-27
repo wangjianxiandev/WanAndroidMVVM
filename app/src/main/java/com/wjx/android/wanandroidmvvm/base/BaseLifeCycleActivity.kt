@@ -16,7 +16,9 @@ import com.wjx.android.wanandroidmvvm.base.callback.ErrorCallBack
 import com.wjx.android.wanandroidmvvm.base.callback.LoadingCallBack
 import com.wjx.android.wanandroidmvvm.base.state.State
 import com.wjx.android.wanandroidmvvm.base.state.StateType
+import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.base.utils.Util
+import org.greenrobot.eventbus.Subscribe
 import org.jetbrains.anko.toast
 
 /**
@@ -38,7 +40,6 @@ abstract class BaseLifeCycleActivity<VM : BaseViewModel<*>> : BaseActivity() {
 
         // 初始化View的Observer
         initDataObserver()
-        initStatusColor()
     }
 
     abstract fun initDataObserver()
@@ -85,18 +86,6 @@ abstract class BaseLifeCycleActivity<VM : BaseViewModel<*>> : BaseActivity() {
                     StateType.EMPTY -> showEmpty()
                 }
             }
-        }
-    }
-
-    private fun initStatusColor() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            window.statusBarColor =
-                ContextCompat.getColor(this, R.color.colorPrimaryDark)
-        }
-        if (ColorUtils.calculateLuminance(Color.TRANSPARENT) >= 0.5) { // 设置状态栏中字体的颜色为黑色
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-        } else { // 跟随系统
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
         }
     }
 }

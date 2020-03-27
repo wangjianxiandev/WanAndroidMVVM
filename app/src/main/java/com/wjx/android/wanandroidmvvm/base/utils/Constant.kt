@@ -11,6 +11,7 @@ object Constant {
     const val BASE_URL = "https://www.wanandroid.com"
 
     const val USERNAME_KEY = "username"
+    const val USERID_KEY = "userid"
     const val LOGIN_KEY = "login"
 
     const val SAVE_USER_LOGIN_KEY = "user/login"

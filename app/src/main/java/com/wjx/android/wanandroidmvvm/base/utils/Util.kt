@@ -3,6 +3,7 @@ package com.wjx.android.wanandroidmvvm.base.utils
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
@@ -12,9 +13,12 @@ import android.view.ViewTreeObserver
 import android.view.animation.LinearInterpolator
 import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
+import androidx.core.content.ContextCompat
+import androidx.preference.PreferenceManager
 import com.google.android.material.circularreveal.CircularRevealCompat
 import com.google.android.material.circularreveal.CircularRevealFrameLayout
 import com.google.android.material.circularreveal.CircularRevealWidget
+import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import java.lang.reflect.ParameterizedType
 import java.text.ParseException
@@ -108,6 +112,69 @@ object Util {
                 or (startB + (fraction * (endB - startB)).toInt()))
     }
 
+    /**
+     * 获取主题颜色
+     *
+     * @param context
+     * @return
+     */
+    fun getColor(context: Context): Int {
+        val setting =
+            PreferenceManager.getDefaultSharedPreferences(context)
+        val defaultColor = ContextCompat.getColor(context!!, R.color.colorPrimaryDark)
+        val color = setting.getInt("color", defaultColor)
+        return if (color != 0 && Color.alpha(color) != 255) {
+            defaultColor
+        } else {
+            color
+        }
+    }
+
+    /**
+     * 设置主题颜色
+     *
+     * @param context
+     * @param color
+     */
+    fun setColor(context: Context, color: Int) {
+        val setting =
+            PreferenceManager.getDefaultSharedPreferences(context)
+        setting.edit().putInt("color", color).apply()
+    }
+
+    /**
+     * BottomNavigation 适配颜色
+     *
+     * @param context
+     * @return
+     */
+    fun getColorStateList(context: Context): ColorStateList {
+        Intrinsics.checkParameterIsNotNull(context, "context")
+        val colors = intArrayOf(getColor(context),
+            ContextCompat.getColor(context!!, R.color.colorGray)
+        )
+        val states = arrayOf(
+            intArrayOf(
+                android.R.attr.state_checked,
+                android.R.attr.state_checked
+            ), IntArray(0)
+        )
+        return ColorStateList(states, colors)
+    }
+
+    /**
+     * Float button 适配颜色
+     *
+     * @param context
+     * @return
+     */
+    fun getOneColorStateList(context: Context): ColorStateList {
+        Intrinsics.checkParameterIsNotNull(context, "context")
+        val colors =
+            intArrayOf(getColor(context))
+        val states = arrayOf(IntArray(0))
+        return ColorStateList(states, colors)
+    }
 
     fun Activity.setReveal(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {

@@ -33,6 +33,8 @@ class SystemAdapter (layoutId : Int, listData : MutableList<SystemTabNameRespons
     override fun convert(viewHolder: BaseViewHolder?, item: SystemTabNameResponse?) {
         viewHolder?.let {
             holder ->
+            holder.itemView.system_material_card.rippleColor = Util.getOneColorStateList(mContext)
+            holder.itemView.system_material_card.strokeColor = Util.getColor(mContext)
             item?.let {
                 holder.setText(R.id.item_system_title, it.name)
                 holder.itemView.item_tag_layout.adapter = object : TagAdapter<SystemLabelResponse>(it.children) {

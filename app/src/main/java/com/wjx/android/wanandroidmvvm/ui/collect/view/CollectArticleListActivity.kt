@@ -4,13 +4,20 @@ import android.view.View
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleListActivity
+import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
+import com.wjx.android.wanandroidmvvm.base.utils.Util
 import com.wjx.android.wanandroidmvvm.ui.collect.viewmodel.CollectViewModel
+import kotlinx.android.synthetic.main.custom_bar.*
 import kotlinx.android.synthetic.main.custom_bar.view.*
+import kotlinx.android.synthetic.main.custom_bar.view.custom_bar
+import org.greenrobot.eventbus.Subscribe
 
 class CollectArticleListActivity : BaseArticleListActivity<CollectViewModel>() {
-    private var mCurrentItem : Int = -1
+    private var mCurrentItem: Int = -1
 
     private var mCurrentPage = 0
+
+    private lateinit var headerView : View
 
     override fun initView() {
         super.initView()
@@ -50,12 +57,17 @@ class CollectArticleListActivity : BaseArticleListActivity<CollectViewModel>() {
     }
 
     private fun initHeaderView() {
-        val headerView = View.inflate(this, R.layout.custom_bar, null)
+        headerView = View.inflate(this, R.layout.custom_bar, null)
         headerView.detail_title.text = "收藏"
         headerView.detail_back.visibility = View.VISIBLE
         headerView.detail_search.visibility = View.GONE
         headerView.detail_back.setOnClickListener { onBackPressed() }
         mAdapter.addHeaderView(headerView)
+        initColor()
+    }
+
+    private fun initColor() {
+        headerView.setBackgroundColor(Util.getColor(this))
     }
 
     override fun showDestroyReveal(): Boolean = true
@@ -71,5 +83,8 @@ class CollectArticleListActivity : BaseArticleListActivity<CollectViewModel>() {
         }
     }
 
-
+    @Subscribe
+    fun settingEvent(event: ChangeThemeEvent) {
+        initColor()
+    }
 }

@@ -7,13 +7,14 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.Fragment
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.color.colorChooser
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseActivity
 import com.wjx.android.wanandroidmvvm.base.state.UserInfo
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessListener
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessState
-import com.wjx.android.wanandroidmvvm.base.utils.Constant
-import com.wjx.android.wanandroidmvvm.base.utils.Preference
+import com.wjx.android.wanandroidmvvm.base.utils.*
 import com.wjx.android.wanandroidmvvm.ui.home.view.HomeFragment
 import com.wjx.android.wanandroidmvvm.ui.navigation.view.NavigationFragment
 import com.wjx.android.wanandroidmvvm.ui.project.view.ProjectFragment
@@ -27,11 +28,13 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.layout_drawer_header.view.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
+import org.greenrobot.eventbus.Subscribe
 import org.jetbrains.anko.startActivity
 
 class MainActivity : BaseActivity(), LoginSuccessListener {
     // 委托属性   将实现委托给了 -> Preference
     private var mUsername: String by Preference(Constant.USERNAME_KEY, "未登录")
+    private var mUserId : String by Preference(Constant.USERID_KEY, "--")
     private lateinit var headView: View
     private val mHomeFragment by lazy { HomeFragment() }
     private val mWeChatFragment by lazy { WeChatFragment() }
@@ -48,6 +51,7 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
         initToolBar()
         initDrawerLayout()
         initFabButton()
+        initColor()
         initBottomNavigation()
         setDefaultFragment()
     }
@@ -63,6 +67,14 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
         toggle.syncState()
     }
 
+    private fun initColor() {
+        toolbar.setBackgroundColor(Util.getColor(this))
+        headView.setBackgroundColor(Util.getColor(this))
+        bottom_navigation.setItemIconTintList(Util.getColorStateList(this))
+        bottom_navigation.setItemTextColor(Util.getColorStateList(this))
+        fab_add.setBackgroundTintList(Util.getOneColorStateList(this))
+    }
+
     private fun initDrawerLayout() {
 
         // 设置 登录成功 监听
@@ -72,6 +84,7 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
         headView = navigation_draw.getHeaderView(0)
         headView.me_name.text = mUsername
         headView.me_image.setCircleName(mUsername)
+        headView.me_info.text = "账户id: " + mUserId
 
         // 点击 登录
         headView.me_image.setOnClickListener { UserInfo.instance.login(this) }
@@ -93,6 +106,20 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
                 R.id.nav_menu_todo -> {
                     UserInfo.instance.startTodoActivity(this)
                 }
+                R.id.nav_menu_theme -> {
+                    MaterialDialog(this).show {
+                        title(R.string.theme_color)
+                        cornerRadius(16.0f)
+                        colorChooser(ColorUtil.ACCENT_COLORS, initialSelection = Util.getColor(this@MainActivity),
+                            subColors = ColorUtil.PRIMARY_COLORS_SUB) { dialog, color ->
+                            Util.setColor(this@MainActivity, color)
+                            ChangeThemeEvent().post()
+                        }
+                        positiveButton(R.string.done)
+                        negativeButton(R.string.cancel)
+                    }
+                    false
+                }
                 R.id.nav_menu_setting -> {
                     startActivity<SettingActivity>()
                 }
@@ -110,6 +137,7 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
     private fun initFabButton() {
         fab_add.setOnClickListener {
             mCurrentFragment!!.mRvArticle!!.smoothScrollToPosition(0)
+            fab_add.visibility = View.INVISIBLE
         }
     }
 
@@ -218,11 +246,17 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
         mUsername = username
         headView.me_name.text = username
         headView.me_image.setCircleName(mUsername)
-        headView.me_info.text = "账户id: " + userId
+        mUserId = userId
+        headView.me_info.text = "账户id: " + mUserId
     }
 
     override fun onDestroy() {
         super.onDestroy()
         LoginSuccessState.removeListener(this)
+    }
+
+    @Subscribe
+    fun settingEvent(event: ChangeThemeEvent) {
+        initColor()
     }
 }

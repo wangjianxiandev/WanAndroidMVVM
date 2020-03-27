@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleListActivity
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
+import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.base.utils.Util
 import com.wjx.android.wanandroidmvvm.base.utils.Util.hideKeyboard
 import com.wjx.android.wanandroidmvvm.ui.search.adapter.SearchHistoryAdapter
@@ -20,9 +21,11 @@ import com.zhy.view.flowlayout.FlowLayout
 import com.zhy.view.flowlayout.TagAdapter
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.activity_search.mSrlRefresh
+import kotlinx.android.synthetic.main.custom_bar.*
 import kotlinx.android.synthetic.main.custom_search.*
 import kotlinx.android.synthetic.main.custom_search.view.*
 import kotlinx.android.synthetic.main.history_foot.view.*
+import org.greenrobot.eventbus.Subscribe
 import org.jetbrains.anko.toast
 
 class SearchActivity : BaseArticleListActivity<SearchViewModel>() {
@@ -44,9 +47,14 @@ class SearchActivity : BaseArticleListActivity<SearchViewModel>() {
         super.initView()
         initSearch()
         initHistory()
+        initColor()
         search_back.setOnClickListener{
             finish()
         }
+    }
+
+    private fun initColor() {
+        search_bar.setBackgroundColor(Util.getColor(this))
     }
 
     override fun onBackPressed() {
@@ -241,5 +249,10 @@ class SearchActivity : BaseArticleListActivity<SearchViewModel>() {
             mSearchHistoryAdapter.remove(index)
             mSearchHistoryAdapter.addData(0, name)
         }
+    }
+
+    @Subscribe
+    fun settingEvent(event: ChangeThemeEvent) {
+        initColor()
     }
 }

@@ -3,8 +3,11 @@ package com.wjx.android.wanandroidmvvm.ui.setting
 import android.view.View
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseActivity
+import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
+import com.wjx.android.wanandroidmvvm.base.utils.Util
 import kotlinx.android.synthetic.main.activity_setting.*
 import kotlinx.android.synthetic.main.custom_bar.view.*
+import org.greenrobot.eventbus.Subscribe
 
 class SettingActivity : BaseActivity(), View.OnClickListener{
     override fun getLayoutId(): Int = R.layout.activity_setting
@@ -27,6 +30,11 @@ class SettingActivity : BaseActivity(), View.OnClickListener{
         setting_bar.detail_back.visibility = View.VISIBLE
         setting_bar.detail_search.visibility = View.GONE
         setting_bar.detail_back.setOnClickListener(this)
+        initColor()
+    }
+
+    private fun initColor() {
+        setting_bar.setBackgroundColor(Util.getColor(this))
     }
 
     override fun onClick(v: View?) {
@@ -43,4 +51,8 @@ class SettingActivity : BaseActivity(), View.OnClickListener{
         finish()
     }
 
+    @Subscribe
+    fun settingEvent(event: ChangeThemeEvent) {
+        initColor()
+    }
 }

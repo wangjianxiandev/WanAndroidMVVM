@@ -14,11 +14,13 @@ import android.widget.TextView
 import android.widget.Toast
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
+import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.base.utils.Constant
 import com.wjx.android.wanandroidmvvm.base.utils.Util
 import com.wjx.android.wanandroidmvvm.ui.todo.viewmodel.TodoViewModel
 import kotlinx.android.synthetic.main.activity_edit_todo.*
 import kotlinx.android.synthetic.main.custom_bar.view.*
+import org.greenrobot.eventbus.Subscribe
 import java.util.*
 
 class EditTodoActivity : BaseLifeCycleActivity<TodoViewModel>(), View.OnClickListener {
@@ -73,6 +75,12 @@ class EditTodoActivity : BaseLifeCycleActivity<TodoViewModel>(), View.OnClickLis
         todo_bar.detail_back.visibility = View.VISIBLE
         todo_bar.detail_search.visibility = View.GONE
         todo_bar.detail_back.setOnClickListener(this)
+        initColor()
+    }
+
+    private fun initColor() {
+        todo_bar.setBackgroundColor(Util.getColor(this))
+        edit_todo_submit.setBackgroundColor(Util.getColor(this))
     }
 
     private fun initContentView() {
@@ -210,4 +218,8 @@ class EditTodoActivity : BaseLifeCycleActivity<TodoViewModel>(), View.OnClickLis
         finish()
     }
 
+    @Subscribe
+    fun settingEvent(event: ChangeThemeEvent) {
+        initColor()
+    }
 }

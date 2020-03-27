@@ -8,6 +8,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.wjx.android.wanandroidmvvm.Custom.interpolator.CustomScaleInterpolator
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.utils.Constant
+import com.wjx.android.wanandroidmvvm.base.utils.Util
 import kotlinx.android.synthetic.main.navigation_item.view.*
 
 /**
@@ -28,6 +29,7 @@ class NavigationTabAdapter (layoutId : Int, listData : MutableList<String>?)
                 addOnClickListener(R.id.circle_imageView)
                 setText(R.id.nav_tab_name, item)
                 itemView.circle_imageView.setCircleName(item.toString())
+                itemView.circle_imageView.setmBackgroundColor(Util.getColor(mContext))
                 if (adapterPosition == selectedPosition) {
                     val animatorX =
                         ObjectAnimator.ofFloat(viewHolder.itemView.circle_imageView, "scaleX", 1.0f, 1.2f, 1.0f)

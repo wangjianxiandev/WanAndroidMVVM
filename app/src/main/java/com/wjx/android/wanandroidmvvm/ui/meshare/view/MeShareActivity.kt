@@ -9,17 +9,24 @@ import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleListActivity
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.base.state.UserInfo
+import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.base.utils.SpeedLayoutManager
+import com.wjx.android.wanandroidmvvm.base.utils.Util
 import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import com.wjx.android.wanandroidmvvm.ui.meshare.adapter.MeShareAdapter
 import com.wjx.android.wanandroidmvvm.ui.meshare.viewmodel.MeShareViewModel
+import kotlinx.android.synthetic.main.custom_bar.*
 import kotlinx.android.synthetic.main.custom_bar.view.*
+import kotlinx.android.synthetic.main.custom_bar.view.custom_bar
 import kotlinx.android.synthetic.main.fragment_article_list.*
+import org.greenrobot.eventbus.Subscribe
 
 class MeShareActivity : BaseLifeCycleActivity<MeShareViewModel>() {
     private var mCurrentPage: Int = 1
 
     private lateinit var mAdapter: MeShareAdapter
+
+    private lateinit var headerView : View
 
     override fun getLayoutId(): Int = R.layout.fragment_article_list
 
@@ -72,12 +79,17 @@ class MeShareActivity : BaseLifeCycleActivity<MeShareViewModel>() {
     }
 
     private fun initHeaderView() {
-        val headerView = View.inflate(this, R.layout.custom_bar, null)
+        headerView = View.inflate(this, R.layout.custom_bar, null)
         headerView.detail_title.text = "我的分享"
         headerView.detail_back.visibility = View.VISIBLE
         headerView.detail_search.visibility = View.GONE
         headerView.detail_back.setOnClickListener { onBackPressed() }
         mAdapter.addHeaderView(headerView)
+        initColor()
+    }
+
+    private fun initColor() {
+        headerView.setBackgroundColor(Util.getColor(this))
     }
 
     private fun initRefresh() {
@@ -110,4 +122,9 @@ class MeShareActivity : BaseLifeCycleActivity<MeShareViewModel>() {
     override fun showDestroyReveal(): Boolean = true
 
     override fun onBackPressed() = finish()
+
+    @Subscribe
+    fun settingEvent(event: ChangeThemeEvent) {
+        initColor()
+    }
 }

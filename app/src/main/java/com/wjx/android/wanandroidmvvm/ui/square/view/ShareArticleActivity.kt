@@ -5,9 +5,12 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
+import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
+import com.wjx.android.wanandroidmvvm.base.utils.Util
 import com.wjx.android.wanandroidmvvm.ui.square.viewmodel.SquareViewModel
 import kotlinx.android.synthetic.main.activity_share_article.*
 import kotlinx.android.synthetic.main.custom_bar.view.*
+import org.greenrobot.eventbus.Subscribe
 
 class ShareArticleActivity : BaseLifeCycleActivity<SquareViewModel>(), View.OnClickListener {
 
@@ -23,6 +26,11 @@ class ShareArticleActivity : BaseLifeCycleActivity<SquareViewModel>(), View.OnCl
         share_bar.detail_back.visibility = View.VISIBLE
         share_bar.detail_search.visibility = View.GONE
         share_bar.detail_back.setOnClickListener(this)
+        initColor()
+    }
+
+    private fun initColor() {
+        share_bar.setBackgroundColor(Util.getColor(this))
     }
 
     override fun initDataObserver() {
@@ -53,4 +61,8 @@ class ShareArticleActivity : BaseLifeCycleActivity<SquareViewModel>(), View.OnCl
 
     override fun getLayoutId(): Int = R.layout.activity_share_article
 
+    @Subscribe
+    fun settingEvent(event: ChangeThemeEvent) {
+        initColor()
+    }
 }
