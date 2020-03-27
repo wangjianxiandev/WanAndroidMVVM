@@ -167,9 +167,10 @@ object Util {
         )
         circularReveal.duration = 500
         circularReveal.interpolator = LinearInterpolator()
-        rootLayout.postDelayed({
-            rootLayout.alpha = 0.8f
-        },250)
+//        给背景增加0.8f的alpha值
+//        rootLayout.postDelayed({
+//            rootLayout.alpha = 0.8f
+//        },250)
         circularReveal.start()
     }
 
