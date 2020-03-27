@@ -113,7 +113,7 @@ class ProjectArticleFragment : BaseLifeCycleFragment<ProjectViewModel>() , Login
         }
     }
 
-    override fun loginSuccess(userName: String, collectArticleIds: List<Int>?) {
+    override fun loginSuccess(userName: String, userId : String, collectArticleIds: List<Int>?) {
         collectArticleIds?.let {
             it.forEach { id ->
                 mAdapter.data.forEach { article ->
@@ -131,7 +131,6 @@ class ProjectArticleFragment : BaseLifeCycleFragment<ProjectViewModel>() , Login
         }
         mAdapter.notifyDataSetChanged()
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

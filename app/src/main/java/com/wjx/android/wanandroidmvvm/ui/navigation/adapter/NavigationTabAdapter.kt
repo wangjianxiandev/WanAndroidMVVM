@@ -27,8 +27,6 @@ class NavigationTabAdapter (layoutId : Int, listData : MutableList<String>?)
             with(it) {
                 addOnClickListener(R.id.circle_imageView)
                 setText(R.id.nav_tab_name, item)
-                itemView.circle_imageView.setColor(ContextCompat.getColor(mContext, R.color.colorPrimary))
-                itemView.circle_imageView.setStyle(Constant.PAINT_STYLE_STROKE_FULL)
                 itemView.circle_imageView.setCircleName(item.toString())
                 if (adapterPosition == selectedPosition) {
                     val animatorX =

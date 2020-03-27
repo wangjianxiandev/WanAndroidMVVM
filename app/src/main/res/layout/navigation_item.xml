@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="102dp"
     android:orientation="vertical">
 
-    <com.wjx.android.wanandroidmvvm.Custom.CustomUserAvatar
+    <com.wjx.android.lib_circularavatar.CustomUserAvatar
         android:id="@+id/circle_imageView"
         android:layout_width="72dp"
         android:layout_height="72dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_margin="@dimen/safe_padding"
         android:scaleType="center"
-        android:layout_alignParentStart="true"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"/>
+        app:background_color="@color/colorPrimaryDark"
+        app:background_style="1"
+        app:chinese_name="2"
+        app:show_blur_Mask="false"
+        app:text_color="@color/always_white_text" />
 
     <TextView
         android:id="@+id/nav_tab_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:text="常用网站"
         android:textColor="@color/textTipColor"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"/>
+        android:textSize="14dp" />
 </RelativeLayout>

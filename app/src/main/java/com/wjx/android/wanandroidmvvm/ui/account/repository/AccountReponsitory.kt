@@ -4,11 +4,9 @@ import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.base.BaseObserver
 import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
 import com.wjx.android.wanandroidmvvm.base.repository.ApiRepository
-import com.wjx.android.wanandroidmvvm.base.repository.BaseRepository
 import com.wjx.android.wanandroidmvvm.base.state.State
 import com.wjx.android.wanandroidmvvm.ui.account.data.LoginResponse
 import com.wjx.android.wanandroidmvvm.ui.account.data.RegisterResponse
-import com.wjx.android.wanandroidmvvm.ui.account.viewmodel.AccountViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 

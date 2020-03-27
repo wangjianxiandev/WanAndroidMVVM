@@ -113,7 +113,7 @@ abstract class BaseArticleListFragment<VM : BaseArticleViewModel<*>> : BaseLifeC
         }
     }
 
-    override fun loginSuccess(userName: String, collectArticleIds: List<Int>?) {
+    override fun loginSuccess(userName: String, userId: String, collectArticleIds: List<Int>?) {
         collectArticleIds?.let {
             it.forEach { id ->
                 mAdapter.data.forEach { article ->

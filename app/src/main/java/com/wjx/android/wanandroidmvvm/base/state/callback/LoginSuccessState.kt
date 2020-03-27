@@ -19,9 +19,9 @@ object LoginSuccessState {
         listeners.remove(listener)
     }
 
-    fun notifyLoginState(name : String, collectIds : List<Int>?) {
+    fun notifyLoginState(name : String, userId : String, collectIds : List<Int>?) {
         for (listener in listeners) {
-            listener.loginSuccess(name, collectIds)
+            listener.loginSuccess(name, userId, collectIds)
         }
     }
 }

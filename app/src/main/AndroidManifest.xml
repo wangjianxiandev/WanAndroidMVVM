@@ -16,6 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/AnimActivity">
         <activity
+            android:name=".ui.account.view.RegisterActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|locale"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
             android:name=".ui.square.view.ShareArticleActivity"
             android:configChanges="orientation|keyboardHidden|navigation|locale"
             android:launchMode="singleTask"
@@ -50,10 +56,8 @@
             android:name=".ui.activity.SplashActivity"
             android:configChanges="orientation|keyboardHidden|navigation|locale"
             android:theme="@style/App.Theme.Launch">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -100,11 +104,13 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
-            <!--            <intent-filter>-->
-            <!--                <action android:name="android.intent.action.MAIN" />-->
 
-            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-            <!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
     </application>
 

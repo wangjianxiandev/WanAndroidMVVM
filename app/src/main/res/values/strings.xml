@@ -28,8 +28,10 @@
     <string name="setting">设置</string>
     <string name="mine_about">关于我的</string>
     <string name="login">登录</string>
+    <string name="register">注册</string>
     <string name="logout">未登录</string>
     <string name="register_tips">没有帐户，快去注册</string>
+    <string name="login_tips">已有账户，快去登录</string>
     <string name="project">项目</string>
     <string name="clear_history">清除历史记录</string>
     <string name="mine_todo">待办清单</string>

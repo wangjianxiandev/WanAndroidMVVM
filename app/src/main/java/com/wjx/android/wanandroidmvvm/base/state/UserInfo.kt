@@ -61,19 +61,19 @@ class UserInfo private constructor() {
         mState.login(context)
     }
 
-    fun loginSuccess(username: String, collectIds: List<Int>?) {
+    fun loginSuccess(username: String, userId : String, collectIds: List<Int>?) {
         // 改变 sharedPreferences   isLogin值
         isLogin = true
         UserInfo.instance.mState = LoginState()
 
         // 登录成功 回调 -> DrawerLayout -> 个人信息更新状态
-        LoginSuccessState.notifyLoginState(username, collectIds)
+        LoginSuccessState.notifyLoginState(username, userId, collectIds)
     }
 
     fun logoutSuccess() {
         UserInfo.instance.mState = LogoutState()
         // 清除 cookie、登录缓存
         Preference.clear()
-        LoginSuccessState.notifyLoginState("未登录", null)
+        LoginSuccessState.notifyLoginState("未登录", "--",null)
     }
 }

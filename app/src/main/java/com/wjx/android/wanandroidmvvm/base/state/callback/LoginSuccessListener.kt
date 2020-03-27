@@ -8,5 +8,5 @@ package com.wjx.android.wanandroidmvvm.base.state.callback
  * Time: 21:01
  */
 interface LoginSuccessListener {
-    fun loginSuccess(userName : String, collectArticleIds : List<Int>?)
+    fun loginSuccess(userName : String, userId : String, collectArticleIds : List<Int>?)
 }

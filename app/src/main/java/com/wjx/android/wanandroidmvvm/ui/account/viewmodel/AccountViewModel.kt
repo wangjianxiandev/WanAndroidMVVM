@@ -1,13 +1,11 @@
 package com.wjx.android.wanandroidmvvm.ui.account.viewmodel
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
-import com.chad.library.adapter.base.BaseViewHolder
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseViewModel
 import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
-import com.wjx.android.wanandroidmvvm.base.state.State
-import com.wjx.android.wanandroidmvvm.base.state.StateType
 import com.wjx.android.wanandroidmvvm.ui.account.data.LoginResponse
 import com.wjx.android.wanandroidmvvm.ui.account.data.RegisterResponse
 import com.wjx.android.wanandroidmvvm.ui.account.repository.AccountReponsitory
@@ -20,12 +18,12 @@ import com.wjx.android.wanandroidmvvm.ui.account.repository.AccountReponsitory
  * Time: 19:58
  */
 class AccountViewModel(application: Application) : BaseViewModel<AccountReponsitory>(application) {
-    val mLoginData = MutableLiveData<BaseResponse<LoginResponse>>()
-    val mRegisterData = MutableLiveData<BaseResponse<RegisterResponse>>()
+    val mLoginData : MutableLiveData<BaseResponse<LoginResponse>> = MutableLiveData()
+    val mRegisterData : MutableLiveData<BaseResponse<RegisterResponse>> = MutableLiveData()
 
     fun login(username: String, password: String) {
         if (username.isNullOrEmpty() || password.isNullOrEmpty()) {
-            loadState.postValue(State(StateType.TIP, tip = R.string.accountOrpasswordempty))
+            Toast.makeText(getApplication(), R.string.accountOrpasswordempty, Toast.LENGTH_SHORT).show()
         } else {
             mRepository.login(username, password, mLoginData)
         }
@@ -33,7 +31,7 @@ class AccountViewModel(application: Application) : BaseViewModel<AccountReponsit
 
     fun register(username: String, password: String, repassword: String) {
         if (username.isNullOrEmpty() || password.isNullOrEmpty() || password != repassword) {
-            loadState.postValue(State(StateType.TIP, tip = R.string.accountOrpasswordempty))
+            Toast.makeText(getApplication(), R.string.accountOrpasswordempty, Toast.LENGTH_SHORT).show()
         } else {
             mRepository.register(username, password, repassword, mRegisterData)
         }

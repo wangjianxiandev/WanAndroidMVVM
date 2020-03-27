@@ -1,21 +1,21 @@
 package com.wjx.android.wanandroidmvvm.ui.activity
 
-import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.view.animation.AlphaAnimation
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.Fragment
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseActivity
+import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.base.state.UserInfo
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessListener
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessState
 import com.wjx.android.wanandroidmvvm.base.utils.Constant
 import com.wjx.android.wanandroidmvvm.base.utils.Preference
+import com.wjx.android.wanandroidmvvm.ui.account.viewmodel.AccountViewModel
 import com.wjx.android.wanandroidmvvm.ui.home.view.HomeFragment
 import com.wjx.android.wanandroidmvvm.ui.navigation.view.NavigationFragment
 import com.wjx.android.wanandroidmvvm.ui.project.view.ProjectFragment
@@ -215,11 +215,12 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
     }
 
     // 登录成功 回调
-    override fun loginSuccess(username: String, collectIds: List<Int>?) {
+    override fun loginSuccess(username: String, userId : String, collectIds: List<Int>?) {
         // 进行 SharedPreference 存储
         mUsername = username
         headView.me_name.text = username
         headView.me_image.setCircleName(mUsername)
+        headView.me_info.text = "账户id: " + userId
     }
 
     override fun onDestroy() {

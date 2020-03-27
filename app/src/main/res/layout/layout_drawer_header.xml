@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
-        android:text="积分 : --　排名 : --"
+        android:text="账户id : --"
         android:textColor="@color/always_white_text"
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="@+id/me_image"
