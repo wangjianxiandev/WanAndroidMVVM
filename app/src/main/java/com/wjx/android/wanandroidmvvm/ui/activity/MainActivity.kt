@@ -10,6 +10,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -41,6 +42,7 @@ import org.jetbrains.anko.startActivity
 class MainActivity : BaseActivity(), LoginSuccessListener {
     // 委托属性   将实现委托给了 -> Preference
     private var mUsername: String by SPreference(Constant.USERNAME_KEY, "未登录")
+    private var isNightMode: Boolean by SPreference(Constant.NIGHT_MODE, false)
     private var mUserId: String by SPreference(Constant.USERID_KEY, "--")
     private lateinit var headView: View
     private var mLastIndex: Int = -1
@@ -133,19 +135,23 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
                     UserInfo.instance.startTodoActivity(this)
                 }
                 R.id.nav_menu_theme -> {
-                    MaterialDialog(this).show {
-                        title(R.string.theme_color)
-                        cornerRadius(16.0f)
-                        colorChooser(
-                            ColorUtil.ACCENT_COLORS,
-                            initialSelection = Util.getColor(this@MainActivity),
-                            subColors = ColorUtil.PRIMARY_COLORS_SUB
-                        ) { dialog, color ->
-                            Util.setColor(this@MainActivity, color)
-                            ChangeThemeEvent().post()
+                    if (!isNightMode) {
+                        MaterialDialog(this).show {
+                            title(R.string.theme_color)
+                            cornerRadius(16.0f)
+                            colorChooser(
+                                ColorUtil.ACCENT_COLORS,
+                                initialSelection = Util.getColor(this@MainActivity),
+                                subColors = ColorUtil.PRIMARY_COLORS_SUB
+                            ) { dialog, color ->
+                                Util.setColor(this@MainActivity, color)
+                                ChangeThemeEvent().post()
+                            }
+                            positiveButton(R.string.done)
+                            negativeButton(R.string.cancel)
                         }
-                        positiveButton(R.string.done)
-                        negativeButton(R.string.cancel)
+                    } else {
+                        Toast.makeText(this, "夜间模式无法更换主题嗷", Toast.LENGTH_SHORT).show()
                     }
                     false
                 }

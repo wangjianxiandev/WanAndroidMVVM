@@ -14,16 +14,13 @@ ext {
     rx_kotlin_version = '2.3.0'
     rx_android_version = '2.1.1'
     anko_version = '0.10.5'
-    bottom_bar_version = '2.0.5'
     loadSir_version = '1.3.6'
     lifecycle_version = '2.2.0-rc02'
     glide_version = '4.9.0'
     banner_version = '1.4.10'
     agentweb_version = '4.1.2'
     room_version = '2.2.2'
-    circleimageview_version = '2.2.0'
     about_fragment_version = '6.1.0'
-    material_dialog_version = '0.9.6.0'
     coroutines_version = "1.3.2"
     event_bus_version = "3.1.1"
     adapter_helper_version = "2.9.30"
@@ -58,7 +55,6 @@ ext {
             "rxandroid"                  : "io.reactivex.rxjava2:rxandroid:$rx_android_version",
             "v4_anko"                    : "org.jetbrains.anko:anko-support-v4-commons:$anko_version",
             "anko"                       : "org.jetbrains.anko:anko-commons:$anko_version",
-            "circle_imageview"           : "de.hdodenhof:circleimageview:$circleimageview_version",
             "loadSir"                    : "com.kingja.loadsir:loadsir:$loadSir_version",
             "lifecycle"                  : "androidx.lifecycle:lifecycle-extensions:$lifecycle_version",
             "glide"                      : "com.github.bumptech.glide:glide:$glide_version",
@@ -66,7 +62,6 @@ ext {
             "agentweb"                   : "com.just.agentweb:agentweb:$agentweb_version",
             "room"                       : "androidx.room:room-runtime:$room_version",
             "license-fragment"           : "com.mikepenz:aboutlibraries:$about_fragment_version",
-            "material_dialog"            : "com.afollestad.material-dialogs:core:$material_dialog_version",
             "defaultlifecycleobserver"   : "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version",
             "lifecycle-viewmodel"        : "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version",
             "lifecycler-livedata"        : "androidx.lifecycle:lifecycle-livedata:$lifecycle_version",
