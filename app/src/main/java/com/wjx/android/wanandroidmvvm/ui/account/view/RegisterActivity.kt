@@ -6,8 +6,11 @@ import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.base.state.UserInfo
+import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
+import com.wjx.android.wanandroidmvvm.base.utils.Util
 import com.wjx.android.wanandroidmvvm.ui.account.viewmodel.AccountViewModel
 import kotlinx.android.synthetic.main.activity_register.*
+import org.greenrobot.eventbus.Subscribe
 import org.jetbrains.anko.startActivity
 
 class RegisterActivity : BaseLifeCycleActivity<AccountViewModel>(), View.OnClickListener {
@@ -18,7 +21,13 @@ class RegisterActivity : BaseLifeCycleActivity<AccountViewModel>(), View.OnClick
         button_register.setOnClickListener(this)
         login_text.setOnClickListener(this)
         ivBack.setOnClickListener(this)
+        initColor()
         showSuccess()
+    }
+
+    private fun initColor() {
+        register_background.setBackgroundColor(Util.getColor(this))
+        button_register.setTextColor(Util.getColor(this))
     }
 
     override fun initDataObserver() {
@@ -38,9 +47,13 @@ class RegisterActivity : BaseLifeCycleActivity<AccountViewModel>(), View.OnClick
     override fun onBackPressed() = finish()
 
     override fun onClick(v: View?) {
-        when(v?.id) {
+        when (v?.id) {
             R.id.button_register -> {
-                mViewModel.register(account_text.text.toString(), password_text.text.toString(), repassword_text.text.toString())
+                mViewModel.register(
+                    account_text.text.toString(),
+                    password_text.text.toString(),
+                    repassword_text.text.toString()
+                )
             }
             R.id.login_text -> {
                 startActivity<LoginActivity>()
@@ -52,4 +65,8 @@ class RegisterActivity : BaseLifeCycleActivity<AccountViewModel>(), View.OnClick
         }
     }
 
+    @Subscribe
+    fun settingEvent(event: ChangeThemeEvent) {
+        initColor()
+    }
 }

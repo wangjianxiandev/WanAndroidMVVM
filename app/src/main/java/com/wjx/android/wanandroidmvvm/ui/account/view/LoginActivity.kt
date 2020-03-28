@@ -5,8 +5,11 @@ import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.base.state.UserInfo
+import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
+import com.wjx.android.wanandroidmvvm.base.utils.Util
 import com.wjx.android.wanandroidmvvm.ui.account.viewmodel.AccountViewModel
 import kotlinx.android.synthetic.main.activity_login.*
+import org.greenrobot.eventbus.Subscribe
 import org.jetbrains.anko.startActivity
 
 class LoginActivity : BaseLifeCycleActivity<AccountViewModel>(), View.OnClickListener {
@@ -17,7 +20,13 @@ class LoginActivity : BaseLifeCycleActivity<AccountViewModel>(), View.OnClickLis
         button_login.setOnClickListener(this)
         register_text.setOnClickListener(this)
         ivBack.setOnClickListener(this)
+        initColor()
         showSuccess()
+    }
+
+    private fun initColor() {
+        login_background.setBackgroundColor(Util.getColor(this))
+        button_login.setTextColor(Util.getColor(this))
     }
 
     override fun initDataObserver() {
@@ -49,5 +58,10 @@ class LoginActivity : BaseLifeCycleActivity<AccountViewModel>(), View.OnClickLis
                 onBackPressed()
             }
         }
+    }
+
+    @Subscribe
+    fun settingEvent(event: ChangeThemeEvent) {
+        initColor()
     }
 }
