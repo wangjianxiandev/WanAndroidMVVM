@@ -71,7 +71,8 @@ class SquareActivity : BaseArticleListActivity<SquareViewModel>() {
     }
 
     @Subscribe
-    fun settingEvent(event: ChangeThemeEvent) {
+    override fun settingEvent(event: ChangeThemeEvent) {
+        super.settingEvent(event)
         initColor()
     }
 }

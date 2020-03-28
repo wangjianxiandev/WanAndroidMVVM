@@ -18,11 +18,15 @@ import com.wjx.android.wanandroidmvvm.ui.collect.repository.CollectRepository
 class CollectViewModel(application: Application) :
     BaseArticleViewModel<CollectRepository>(application) {
     val mCollectArticleData: MutableLiveData<BaseResponse<CollectResponse>> = MutableLiveData()
-
+    val mAddCollectData: MutableLiveData<BaseResponse<EmptyResponse>> = MutableLiveData()
     val mUnCollectData: MutableLiveData<BaseResponse<EmptyResponse>> = MutableLiveData()
 
     fun loadCollectArticle(pageNum: Int) {
         mRepository.loadCollectArticle(pageNum, mCollectArticleData)
+    }
+
+    fun addCollectArticle(title: String, author: String, link: String) {
+        mRepository.addCollectArticle(title, author, link, mAddCollectData)
     }
 
     fun unCollect(id: Int, originId: Int) {

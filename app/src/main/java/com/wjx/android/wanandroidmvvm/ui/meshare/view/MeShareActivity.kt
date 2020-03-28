@@ -1,6 +1,7 @@
 package com.wjx.android.wanandroidmvvm.ui.meshare.view
 
 import android.content.Intent
+import android.graphics.Color
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -94,7 +95,8 @@ class MeShareActivity : BaseLifeCycleActivity<MeShareViewModel>() {
 
     private fun initRefresh() {
         // 设置下拉刷新的loading颜色
-        mSrlRefresh.setColorSchemeResources(R.color.colorPrimary)
+        mSrlRefresh.setProgressBackgroundColorSchemeColor(Util.getColor(this))
+        mSrlRefresh.setColorSchemeColors(Color.WHITE)
         mSrlRefresh.setOnRefreshListener { onRefreshData() }
     }
 

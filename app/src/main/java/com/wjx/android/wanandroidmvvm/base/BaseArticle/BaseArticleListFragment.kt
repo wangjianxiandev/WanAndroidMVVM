@@ -1,6 +1,7 @@
 package com.wjx.android.wanandroidmvvm.base.BaseArticle
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
@@ -10,9 +11,12 @@ import com.wjx.android.wanandroidmvvm.base.state.UserInfo
 import com.wjx.android.wanandroidmvvm.base.state.callback.CollectListener
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessListener
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessState
+import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.base.utils.SpeedLayoutManager
+import com.wjx.android.wanandroidmvvm.base.utils.Util
 import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import kotlinx.android.synthetic.main.fragment_article_list.*
+import org.greenrobot.eventbus.Subscribe
 
 /**
  * Created with Android Studio.
@@ -60,7 +64,8 @@ abstract class BaseArticleListFragment<VM : BaseArticleViewModel<*>> : BaseLifeC
 
     private fun initRefresh() {
         // 设置下拉刷新的loading颜色
-        mSrlRefresh.setColorSchemeResources(R.color.colorPrimary)
+        mSrlRefresh.setProgressBackgroundColorSchemeColor(Util.getColor(activity!!))
+        mSrlRefresh.setColorSchemeColors(Color.WHITE)
         mSrlRefresh.setOnRefreshListener { onRefreshData() }
     }
 
@@ -133,5 +138,12 @@ abstract class BaseArticleListFragment<VM : BaseArticleViewModel<*>> : BaseLifeC
     override fun onDestroy() {
         super.onDestroy()
         LoginSuccessState.removeListener(this)
+    }
+
+    @Subscribe
+    fun settingEvent(event: ChangeThemeEvent) {
+        mSrlRefresh.setProgressBackgroundColorSchemeColor(Util.getColor(activity!!))
+        mSrlRefresh.setColorSchemeColors(Color.WHITE)
+        mAdapter.notifyDataSetChanged()
     }
 }

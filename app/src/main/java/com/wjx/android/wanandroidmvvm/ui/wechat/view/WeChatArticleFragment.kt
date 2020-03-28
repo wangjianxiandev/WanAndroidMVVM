@@ -51,10 +51,4 @@ class WeChatArticleFragment : BaseArticleListFragment<WeChatViewModel>() {
             }
         })
     }
-
-    @Subscribe
-    fun settingEvent(event: ChangeThemeEvent) {
-        mAdapter.notifyDataSetChanged()
-    }
-
 }

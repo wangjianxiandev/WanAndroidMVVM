@@ -6,12 +6,15 @@ import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleListActivity
 import com.wjx.android.wanandroidmvvm.base.state.UserInfo
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
+import com.wjx.android.wanandroidmvvm.base.utils.Util
 import com.wjx.android.wanandroidmvvm.ui.system.viewmodel.SystemViewModel
 import kotlinx.android.synthetic.main.custom_bar.view.*
 import org.greenrobot.eventbus.Subscribe
 
 class SystemArticleListActivity : BaseArticleListActivity<SystemViewModel>() {
     private var mCurrentPageNum : Int = 0
+
+    private lateinit var headView : View
 
     private val mTitle: String? by lazy { intent?.getStringExtra("title") }
     private val mCid: Int? by lazy { intent?.getIntExtra("id", 0) }
@@ -26,11 +29,12 @@ class SystemArticleListActivity : BaseArticleListActivity<SystemViewModel>() {
     }
 
     private fun initHeaderView() {
-        val headView = View.inflate(this, R.layout.custom_bar, null)
+        headView = View.inflate(this, R.layout.custom_bar, null)
         headView.detail_title.text = mTitle
         headView.detail_back.visibility = View.VISIBLE
         headView.detail_back.setOnClickListener { finish() }
         headView.detail_search.visibility = View.GONE
+        headView.setBackgroundColor(Util.getColor(this))
         mAdapter.addHeaderView(headView)
     }
 
@@ -63,8 +67,8 @@ class SystemArticleListActivity : BaseArticleListActivity<SystemViewModel>() {
     }
 
     @Subscribe
-    fun settingEvent(event: ChangeThemeEvent) {
-        mAdapter.notifyDataSetChanged()
+    override fun settingEvent(event: ChangeThemeEvent) {
+        super.settingEvent(event)
+        headView.setBackgroundColor(Util.getColor(this))
     }
-
 }

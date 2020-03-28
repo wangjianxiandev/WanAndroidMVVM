@@ -31,6 +31,7 @@ class ShareArticleActivity : BaseLifeCycleActivity<SquareViewModel>(), View.OnCl
 
     private fun initColor() {
         share_bar.setBackgroundColor(Util.getColor(this))
+        edit_share_submit.setBackgroundColor(Util.getColor(this))
     }
 
     override fun initDataObserver() {

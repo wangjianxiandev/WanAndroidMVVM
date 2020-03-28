@@ -1,20 +1,19 @@
 package com.wjx.android.wanandroidmvvm.ui.system.view
 
 import android.graphics.Color
-import android.os.Build
-import android.view.View
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.ColorUtils
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleFragment
+import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
+import com.wjx.android.wanandroidmvvm.base.utils.Util
 import com.wjx.android.wanandroidmvvm.ui.system.adapter.SystemAdapter
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemLabelResponse
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemTabNameResponse
 import com.wjx.android.wanandroidmvvm.ui.system.viewmodel.SystemViewModel
+import kotlinx.android.synthetic.main.fragment_article_list.*
 import kotlinx.android.synthetic.main.layout_system.*
+import org.greenrobot.eventbus.Subscribe
 
 /**
  * Created with Android Studio.
@@ -55,7 +54,8 @@ class SystemFragment : BaseLifeCycleFragment<SystemViewModel>() {
 
     private fun initRefresh() {
         // 设置下拉刷新的loading颜色
-        system_refresh.setColorSchemeResources(R.color.colorPrimary)
+        system_refresh.setProgressBackgroundColorSchemeColor(Util.getColor(activity!!))
+        system_refresh.setColorSchemeColors(Color.WHITE)
         system_refresh.setOnRefreshListener { onRefreshData() }
     }
 
@@ -82,5 +82,12 @@ class SystemFragment : BaseLifeCycleFragment<SystemViewModel>() {
         // 初始化状态直接加载数据
         mAdapter.addData(systemListName)
         mAdapter.loadMoreComplete()
+    }
+
+    @Subscribe
+    fun settingEvent(event: ChangeThemeEvent) {
+        system_refresh.setProgressBackgroundColorSchemeColor(Util.getColor(activity!!))
+        system_refresh.setColorSchemeColors(Color.WHITE)
+        mAdapter.notifyDataSetChanged()
     }
 }

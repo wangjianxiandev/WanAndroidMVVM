@@ -252,7 +252,8 @@ class SearchActivity : BaseArticleListActivity<SearchViewModel>() {
     }
 
     @Subscribe
-    fun settingEvent(event: ChangeThemeEvent) {
+    override fun settingEvent(event: ChangeThemeEvent) {
+        super.settingEvent(event)
         initColor()
     }
 }

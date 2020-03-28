@@ -65,7 +65,8 @@ class QuestionArticleListActivity : BaseArticleListActivity<QuestionViewModel>()
     override fun onBackPressed() = finish()
 
     @Subscribe
-    fun settingEvent(event: ChangeThemeEvent) {
+    override fun settingEvent(event: ChangeThemeEvent) {
+        super.settingEvent(event)
         initColor()
     }
 }

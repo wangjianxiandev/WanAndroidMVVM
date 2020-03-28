@@ -26,6 +26,18 @@ class CollectRepository(loadState: MutableLiveData<State>) : BaseArticleReposito
             .subscribe(BaseObserver(liveData, loadState, this))
     }
 
+    fun addCollectArticle(
+        title: String,
+        author: String,
+        link: String,
+        liveData: MutableLiveData<BaseResponse<EmptyResponse>>
+    ) {
+        apiService.addCollectArticle(title, author, link)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(BaseObserver(liveData, loadState, this))
+    }
+
     fun unCollect(id: Int, originId: Int, liveData: MutableLiveData<BaseResponse<EmptyResponse>>) {
         apiService.unCollect(id, originId)
             .subscribeOn(Schedulers.io())

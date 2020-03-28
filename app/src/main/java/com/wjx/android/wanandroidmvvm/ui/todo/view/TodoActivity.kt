@@ -2,6 +2,7 @@ package com.wjx.android.wanandroidmvvm.ui.todo.view
 
 import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -145,7 +146,8 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
 
     private fun initRefresh() {
         // 设置下拉刷新的loading颜色
-        todo_refresh.setColorSchemeResources(Util.getColor(this))
+        todo_refresh.setProgressBackgroundColorSchemeColor(Util.getColor(this))
+        todo_refresh.setColorSchemeColors(Color.WHITE)
         todo_refresh.setOnRefreshListener {
             onRefreshData()
         }
@@ -192,6 +194,8 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
 
     @Subscribe
     fun settingEvent(event: ChangeThemeEvent) {
+        todo_refresh.setProgressBackgroundColorSchemeColor(Util.getColor(this))
+        todo_refresh.setColorSchemeColors(Color.WHITE)
         initColor()
     }
 }

@@ -1,6 +1,7 @@
 package com.wjx.android.wanandroidmvvm.ui.project.view
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -14,6 +15,7 @@ import com.wjx.android.wanandroidmvvm.base.state.callback.CollectListener
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessListener
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessState
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
+import com.wjx.android.wanandroidmvvm.base.utils.Util
 import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import com.wjx.android.wanandroidmvvm.ui.project.adapter.ProjectArticleAdapter
 import com.wjx.android.wanandroidmvvm.ui.project.viewmodel.ProjectViewModel
@@ -86,7 +88,8 @@ class ProjectArticleFragment : BaseLifeCycleFragment<ProjectViewModel>() , Login
 
     private fun initRefresh() {
         // 设置下拉刷新的loading颜色
-        mSrlRefresh.setColorSchemeResources(R.color.colorPrimary)
+        mSrlRefresh.setProgressBackgroundColorSchemeColor(Util.getColor(activity!!))
+        mSrlRefresh.setColorSchemeColors(Color.WHITE)
         mSrlRefresh.setOnRefreshListener { onRefreshData() }
     }
 
@@ -171,6 +174,8 @@ class ProjectArticleFragment : BaseLifeCycleFragment<ProjectViewModel>() , Login
 
     @Subscribe
     fun settingEvent(event: ChangeThemeEvent) {
+        mSrlRefresh.setProgressBackgroundColorSchemeColor(Util.getColor(activity!!))
+        mSrlRefresh.setColorSchemeColors(Color.WHITE)
         mAdapter.notifyDataSetChanged()
     }
 }

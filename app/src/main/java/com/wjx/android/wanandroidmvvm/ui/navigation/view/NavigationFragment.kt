@@ -1,5 +1,6 @@
 package com.wjx.android.wanandroidmvvm.ui.navigation.view
 
+import android.graphics.Color
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleFragment
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
+import com.wjx.android.wanandroidmvvm.base.utils.Util
 import com.wjx.android.wanandroidmvvm.ui.navigation.adapter.NavigationLabelAdapter
 import com.wjx.android.wanandroidmvvm.ui.navigation.adapter.NavigationTabAdapter
 import com.wjx.android.wanandroidmvvm.ui.navigation.data.NavigationTabNameResponse
@@ -91,7 +93,8 @@ class NavigationFragment : BaseLifeCycleFragment<NavigationViewModel>() {
 
     private fun initRefresh() {
         // 设置下拉刷新的loading颜色
-        nav_refresh.setColorSchemeResources(R.color.colorPrimary)
+        nav_refresh.setProgressBackgroundColorSchemeColor(Util.getColor(activity!!))
+        nav_refresh.setColorSchemeColors(Color.WHITE)
         nav_refresh.setOnRefreshListener { onRefreshData() }
     }
 
@@ -125,6 +128,8 @@ class NavigationFragment : BaseLifeCycleFragment<NavigationViewModel>() {
 
     @Subscribe
     fun settingEvent(event: ChangeThemeEvent) {
+        nav_refresh.setProgressBackgroundColorSchemeColor(Util.getColor(activity!!))
+        nav_refresh.setColorSchemeColors(Color.WHITE)
         mNavigationTabAdapter.notifyDataSetChanged()
         mNavigationLabelAdapter.notifyDataSetChanged()
     }

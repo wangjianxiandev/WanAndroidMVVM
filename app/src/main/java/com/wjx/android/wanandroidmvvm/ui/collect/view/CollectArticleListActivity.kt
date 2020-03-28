@@ -1,5 +1,6 @@
 package com.wjx.android.wanandroidmvvm.ui.collect.view
 
+import android.content.Intent
 import android.view.View
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
@@ -60,7 +61,9 @@ class CollectArticleListActivity : BaseArticleListActivity<CollectViewModel>() {
         headerView = View.inflate(this, R.layout.custom_bar, null)
         headerView.detail_title.text = "收藏"
         headerView.detail_back.visibility = View.VISIBLE
-        headerView.detail_search.visibility = View.GONE
+        headerView.detail_search.visibility = View.VISIBLE
+        headerView.detail_search.setImageResource(R.drawable.ic_add)
+        headerView.detail_search.setOnClickListener { onAddCollectArticle() }
         headerView.detail_back.setOnClickListener { onBackPressed() }
         mAdapter.addHeaderView(headerView)
         initColor()
@@ -83,8 +86,14 @@ class CollectArticleListActivity : BaseArticleListActivity<CollectViewModel>() {
         }
     }
 
+    private fun onAddCollectArticle() {
+        val intent = Intent(this, AddCollectActivity::class.java)
+        startActivity(intent)
+    }
+
     @Subscribe
-    fun settingEvent(event: ChangeThemeEvent) {
+    override fun settingEvent(event: ChangeThemeEvent) {
+        super.settingEvent(event)
         initColor()
     }
 }

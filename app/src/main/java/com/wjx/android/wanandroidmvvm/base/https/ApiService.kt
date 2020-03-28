@@ -87,6 +87,12 @@ interface ApiService {
     @POST("/lg/uncollect/{id}/json")
     fun unCollect(@Path("id") id: Int, @Query("originId") originId: Int): Observable<BaseResponse<EmptyResponse>>
 
+    @POST("lg/collect/add/json")
+    fun addCollectArticle(@Query("title") title: String,
+                          @Query("author") author: String,
+                          @Query("link") link: String
+    ): Observable<BaseResponse<EmptyResponse>>
+
     @GET("/lg/todo/v2/list/{pageNum}/json")
     fun loadTodoData(@Path("pageNum") pageNum: Int): Observable<BaseResponse<TodoPageResponse>>
 

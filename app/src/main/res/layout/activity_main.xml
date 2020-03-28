@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:fab="http://schemas.android.com/tools"
     android:id="@+id/drawer_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -27,8 +26,8 @@
                 android:layout_marginEnd="@dimen/dp_10"
                 android:layout_marginBottom="@dimen/dp_72"
                 android:src="@drawable/ic_up"
-                app:backgroundTint="@color/color_304ffe"
                 android:visibility="invisible"
+                app:backgroundTint="@color/color_304ffe"
                 app:fabSize="auto"
                 app:layout_behavior=".Custom.behavior.FloatScrollBehavior"
                 app:tint="@color/white" />
@@ -43,14 +42,15 @@
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </LinearLayout>
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigation_draw"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="@color/white"
-        app:headerLayout="@layout/layout_drawer_header"
-        app:menu="@menu/drawer_menu" />
 
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigation_draw"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="start"
+            android:background="@color/white"
+            app:headerLayout="@layout/layout_drawer_header"
+            app:menu="@menu/drawer_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
