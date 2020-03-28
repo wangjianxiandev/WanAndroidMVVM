@@ -4,6 +4,12 @@
     <androidx.preference.PreferenceCategory
         android:key="base"
         android:title="基本设置">
+        <SwitchPreference
+            android:key="night"
+            android:summaryOn="切换日间模式"
+            android:summaryOff="切换夜间模式"
+            android:defaultValue="false"
+            android:title="@string/night_mode"/>
         <Preference
             android:key="clearCache"
             android:title="@string/clear_cache" />

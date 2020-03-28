@@ -1,7 +1,7 @@
 package com.wjx.android.wanandroidmvvm.base.https
 
 import com.wjx.android.wanandroidmvvm.base.utils.Constant
-import com.wjx.android.wanandroidmvvm.base.utils.Preference
+import com.wjx.android.wanandroidmvvm.base.utils.SPreference
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -72,7 +72,7 @@ class RetrofitFactory private constructor() {
             val domain = request.url().host()
 
             if(domain.isNotEmpty()){
-                val mCookie by Preference(domain,"")
+                val mCookie by SPreference(domain,"")
                 if(mCookie.isNotEmpty()){
                     builder.addHeader(Constant.COOKIE_NAME,mCookie)
                 }
@@ -114,7 +114,7 @@ class RetrofitFactory private constructor() {
 
     private fun saveCookie(domain: String?, parseCookie: String) {
         domain?.let {
-            var resutl :String by Preference(it,parseCookie)
+            var resutl :String by SPreference(it,parseCookie)
             resutl = parseCookie
         }
     }

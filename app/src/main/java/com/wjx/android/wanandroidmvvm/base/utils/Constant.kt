@@ -19,6 +19,9 @@ object Constant {
     const val SET_COOKIE_KEY = "set-cookie"
     const val COOKIE_NAME = "Cookie"
 
+
+    const val NIGHT_MODE = "night_mode"
+
     const val HOME = 0
     const val WECHAT = 1
     const val SYSTEM = 2

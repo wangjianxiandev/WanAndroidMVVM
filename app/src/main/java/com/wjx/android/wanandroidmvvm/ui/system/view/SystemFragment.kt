@@ -25,6 +25,12 @@ import org.greenrobot.eventbus.Subscribe
 class SystemFragment : BaseLifeCycleFragment<SystemViewModel>() {
     protected lateinit var mAdapter: SystemAdapter
 
+    companion object {
+        fun getInstance(): SystemFragment? {
+            return SystemFragment()
+        }
+    }
+
     override fun initDataObserver() {
         mViewModel.mSystemTabNameData.observe(this, Observer { response ->
             response?.let {

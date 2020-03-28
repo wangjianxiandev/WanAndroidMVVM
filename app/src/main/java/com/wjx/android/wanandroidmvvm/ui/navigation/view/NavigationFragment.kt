@@ -38,6 +38,12 @@ class NavigationFragment : BaseLifeCycleFragment<NavigationViewModel>() {
 
     private lateinit var mLinearSnapHelper: LinearSnapHelper
 
+    companion object {
+        fun getInstance(): NavigationFragment? {
+            return NavigationFragment()
+        }
+    }
+
     override fun getLayoutId(): Int = R.layout.layout_navigation
 
     override fun initDataObserver() {

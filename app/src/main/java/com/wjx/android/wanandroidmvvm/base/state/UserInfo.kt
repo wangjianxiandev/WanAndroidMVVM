@@ -5,7 +5,7 @@ import android.content.Context
 import com.wjx.android.wanandroidmvvm.base.state.callback.CollectListener
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessState
 import com.wjx.android.wanandroidmvvm.base.utils.Constant
-import com.wjx.android.wanandroidmvvm.base.utils.Preference
+import com.wjx.android.wanandroidmvvm.base.utils.SPreference
 
 /**
  * Created with Android Studio.
@@ -16,7 +16,7 @@ import com.wjx.android.wanandroidmvvm.base.utils.Preference
  */
 class UserInfo private constructor() {
 
-    private var isLogin: Boolean by Preference(Constant.LOGIN_KEY, false)
+    private var isLogin: Boolean by SPreference(Constant.LOGIN_KEY, false)
 
     // 设置默认状态
     var mState: UserState = if (isLogin) LoginState() else LogoutState()
@@ -73,7 +73,7 @@ class UserInfo private constructor() {
     fun logoutSuccess() {
         UserInfo.instance.mState = LogoutState()
         // 清除 cookie、登录缓存
-        Preference.clear()
+        SPreference.clear()
         LoginSuccessState.notifyLoginState("未登录", "--",null)
     }
 }

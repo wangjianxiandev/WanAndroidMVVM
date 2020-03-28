@@ -22,6 +22,12 @@ import org.greenrobot.eventbus.Subscribe
  */
 class WeChatFragment : BaseLifeCycleFragment<WeChatViewModel>() {
 
+    companion object {
+        fun getInstance(): WeChatFragment? {
+            return WeChatFragment()
+        }
+    }
+
     override fun getLayoutId(): Int = R.layout.layout_wechat
 
     override fun initView() {

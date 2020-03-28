@@ -14,7 +14,7 @@ import com.youth.banner.Banner
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.layout_home_headview.view.*
-import java.util.ArrayList
+import java.util.*
 
 /**
  * Created with Android Studio.
@@ -36,6 +36,12 @@ class HomeFragment : BaseArticleListFragment<HomeViewModel>() {
     }
 
     private var page = 0
+
+    companion object {
+        fun getInstance(): HomeFragment? {
+            return HomeFragment()
+        }
+    }
 
     override fun initView() {
         super.initView()

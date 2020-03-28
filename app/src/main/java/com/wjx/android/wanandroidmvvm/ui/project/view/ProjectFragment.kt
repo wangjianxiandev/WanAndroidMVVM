@@ -25,6 +25,12 @@ import org.greenrobot.eventbus.Subscribe
  * Time: 20:00
  */
 class ProjectFragment : BaseLifeCycleFragment<ProjectViewModel>() {
+
+    companion object {
+        fun getInstance(): ProjectFragment? {
+            return ProjectFragment()
+        }
+    }
     override fun getLayoutId(): Int = R.layout.layout_project
 
     override fun initView() {

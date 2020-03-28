@@ -13,7 +13,7 @@ import kotlin.reflect.KProperty
  * Time: 18:22
  */
 
-class Preference<T>(private val name: String, private val default: T) : ReadWriteProperty<Any?, T> {
+class SPreference<T>(private val name: String, private val default: T) : ReadWriteProperty<Any?, T> {
 
     companion object {
         lateinit var preference: SharedPreferences

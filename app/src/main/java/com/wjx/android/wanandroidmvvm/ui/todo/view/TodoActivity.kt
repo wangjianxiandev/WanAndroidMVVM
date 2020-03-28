@@ -19,9 +19,7 @@ import com.wjx.android.wanandroidmvvm.ui.todo.adapter.TodoAdapter
 import com.wjx.android.wanandroidmvvm.ui.todo.data.TodoResponse
 import com.wjx.android.wanandroidmvvm.ui.todo.viewmodel.TodoViewModel
 import kotlinx.android.synthetic.main.activity_todo.*
-import kotlinx.android.synthetic.main.custom_bar.*
 import kotlinx.android.synthetic.main.custom_bar.view.*
-import kotlinx.android.synthetic.main.custom_bar.view.custom_bar
 import org.greenrobot.eventbus.Subscribe
 
 class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {

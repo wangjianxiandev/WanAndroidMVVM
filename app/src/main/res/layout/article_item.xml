@@ -8,8 +8,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:background="@color/white"
-    app:cardBackgroundColor="@color/white"
+    android:background="@color/white_bg"
+    app:cardBackgroundColor="@color/white_bg"
     app:cardElevation="4dp"
     app:strokeColor="@color/colorPrimaryDark"
     app:strokeWidth="2dp">

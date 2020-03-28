@@ -7,7 +7,7 @@ import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.base.utils.Constant
-import com.wjx.android.wanandroidmvvm.base.utils.Preference
+import com.wjx.android.wanandroidmvvm.base.utils.SPreference
 import com.wjx.android.wanandroidmvvm.base.utils.Util
 import com.wjx.android.wanandroidmvvm.ui.collect.viewmodel.CollectViewModel
 import kotlinx.android.synthetic.main.activity_add_collect.*
@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.custom_bar.view.*
 import org.greenrobot.eventbus.Subscribe
 
 class AddCollectActivity : BaseLifeCycleActivity<CollectViewModel>(), View.OnClickListener{
-    private var mUsername: String by Preference(Constant.USERNAME_KEY, "未登录")
+    private var mUsername: String by SPreference(Constant.USERNAME_KEY, "未登录")
     override fun initView() {
         super.initView()
         initHeaderView()

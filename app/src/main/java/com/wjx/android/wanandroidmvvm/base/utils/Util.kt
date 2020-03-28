@@ -176,6 +176,36 @@ object Util {
         return ColorStateList(states, colors)
     }
 
+    /**
+     * 设置切换夜间模式之前的主题颜色
+     *
+     * @param context
+     * @param color
+     */
+    fun setLastColor(context: Context, color: Int) {
+        val setting =
+            PreferenceManager.getDefaultSharedPreferences(context)
+        setting.edit().putInt("lastColor", color).apply()
+    }
+
+    /**
+     * 获取切换夜间模式之前的主题色
+     *
+     * @param context
+     * @return
+     */
+    fun getLastColor(context: Context): Int {
+        val setting =
+            PreferenceManager.getDefaultSharedPreferences(context)
+        val defaultColor = ContextCompat.getColor(context, R.color.colorPrimary)
+        val color = setting.getInt("lastColor", defaultColor)
+        return if (color != 0 && Color.alpha(color) != 255) {
+            defaultColor
+        } else {
+            color
+        }
+    }
+
     fun Activity.setReveal(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
             val container = window.decorView as FrameLayout

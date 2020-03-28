@@ -45,7 +45,9 @@ class SettingActivity : BaseActivity(), View.OnClickListener{
         }
     }
 
-    override fun showDestroyReveal(): Boolean = true
+    override fun showCreateReveal(): Boolean = false
+
+    override fun showDestroyReveal(): Boolean = false
 
     override fun onBackPressed() {
         finish()
