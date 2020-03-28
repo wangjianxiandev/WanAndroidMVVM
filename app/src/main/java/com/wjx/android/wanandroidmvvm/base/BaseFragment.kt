@@ -12,6 +12,7 @@ import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.base.utils.Util
+import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
 /**
@@ -33,6 +34,7 @@ abstract class BaseFragment : Fragment() {
     ): View? {
         val rootView = inflater.inflate(getLayoutId(), null)
         loadService = LoadSir.getDefault().register(rootView) {reLoad()}
+        EventBus.getDefault().register(this)
         return loadService.loadLayout
     }
 
@@ -62,6 +64,11 @@ abstract class BaseFragment : Fragment() {
         } else { // 跟随系统
             activity!!.window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        EventBus.getDefault().unregister(this)
     }
 
     @Subscribe

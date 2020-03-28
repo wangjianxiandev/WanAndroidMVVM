@@ -13,10 +13,12 @@ import com.wjx.android.wanandroidmvvm.base.state.UserInfo
 import com.wjx.android.wanandroidmvvm.base.state.callback.CollectListener
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessListener
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessState
+import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import com.wjx.android.wanandroidmvvm.ui.project.adapter.ProjectArticleAdapter
 import com.wjx.android.wanandroidmvvm.ui.project.viewmodel.ProjectViewModel
 import kotlinx.android.synthetic.main.fragment_article_list.*
+import org.greenrobot.eventbus.Subscribe
 
 /**
  * Created with Android Studio.
@@ -165,5 +167,10 @@ class ProjectArticleFragment : BaseLifeCycleFragment<ProjectViewModel>() , Login
         // 初始化状态直接加载数据
         mAdapter.addData(articleList)
         mAdapter.loadMoreComplete()
+    }
+
+    @Subscribe
+    fun settingEvent(event: ChangeThemeEvent) {
+        mAdapter.notifyDataSetChanged()
     }
 }

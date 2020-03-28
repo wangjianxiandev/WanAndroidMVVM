@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleListFragment
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
+import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.base.utils.GlideImageLoader
 import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import com.wjx.android.wanandroidmvvm.ui.home.data.BannerResponse
@@ -20,6 +21,7 @@ import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.layout_home_headview.view.*
+import org.greenrobot.eventbus.Subscribe
 import java.util.ArrayList
 
 /**
@@ -116,5 +118,10 @@ class HomeFragment : BaseArticleListFragment<HomeViewModel>() {
 
     override fun onLoadMoreData() {
         mViewModel.loadHomeArticleData(++page)
+    }
+
+    @Subscribe
+    fun settingEvent(event: ChangeThemeEvent) {
+        mAdapter.notifyDataSetChanged()
     }
 }

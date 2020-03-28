@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleFragment
+import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.ui.navigation.adapter.NavigationLabelAdapter
 import com.wjx.android.wanandroidmvvm.ui.navigation.adapter.NavigationTabAdapter
 import com.wjx.android.wanandroidmvvm.ui.navigation.data.NavigationTabNameResponse
@@ -14,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.fragment_article_list.*
 import kotlinx.android.synthetic.main.fragment_article_list.mSrlRefresh
 import kotlinx.android.synthetic.main.layout_navigation.*
+import org.greenrobot.eventbus.Subscribe
 
 
 /**
@@ -119,5 +121,11 @@ class NavigationFragment : BaseLifeCycleFragment<NavigationViewModel>() {
         if (nav_refresh.isRefreshing) {
             nav_refresh.isRefreshing = false
         }
+    }
+
+    @Subscribe
+    fun settingEvent(event: ChangeThemeEvent) {
+        mNavigationTabAdapter.notifyDataSetChanged()
+        mNavigationLabelAdapter.notifyDataSetChanged()
     }
 }

@@ -5,8 +5,10 @@ import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleListActivity
 import com.wjx.android.wanandroidmvvm.base.state.UserInfo
+import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.ui.system.viewmodel.SystemViewModel
 import kotlinx.android.synthetic.main.custom_bar.view.*
+import org.greenrobot.eventbus.Subscribe
 
 class SystemArticleListActivity : BaseArticleListActivity<SystemViewModel>() {
     private var mCurrentPageNum : Int = 0
@@ -58,6 +60,11 @@ class SystemArticleListActivity : BaseArticleListActivity<SystemViewModel>() {
     override fun onBackPressed() {
         super.onBackPressed()
         finish()
+    }
+
+    @Subscribe
+    fun settingEvent(event: ChangeThemeEvent) {
+        mAdapter.notifyDataSetChanged()
     }
 
 }

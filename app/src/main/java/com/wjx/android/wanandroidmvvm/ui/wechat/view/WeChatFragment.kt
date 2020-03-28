@@ -1,10 +1,5 @@
 package com.wjx.android.wanandroidmvvm.ui.wechat.view
 
-import android.graphics.Color
-import android.os.Build
-import android.view.View
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.ColorUtils
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R

@@ -26,8 +26,6 @@ import kotlinx.android.synthetic.main.layout_system.*
 class SystemFragment : BaseLifeCycleFragment<SystemViewModel>() {
     protected lateinit var mAdapter: SystemAdapter
 
-    private val fragments by lazy { arrayListOf<Fragment>() }
-
     override fun initDataObserver() {
         mViewModel.mSystemTabNameData.observe(this, Observer { response ->
             response?.let {
