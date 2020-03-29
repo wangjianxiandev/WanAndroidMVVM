@@ -10,5 +10,4 @@
 
     <include
         layout="@layout/custom_bar"/>
-
 </LinearLayout>

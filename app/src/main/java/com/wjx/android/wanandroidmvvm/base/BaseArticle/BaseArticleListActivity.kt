@@ -126,7 +126,6 @@ abstract class BaseArticleListActivity <VM : BaseArticleViewModel<*>> : BaseLife
     @Subscribe
     open fun settingEvent(event: ChangeThemeEvent) {
         mSrlRefresh.setProgressBackgroundColorSchemeColor(Util.getColor(this))
-        mSrlRefresh.setColorSchemeColors(Color.WHITE)
         mAdapter.notifyDataSetChanged()
     }
 }

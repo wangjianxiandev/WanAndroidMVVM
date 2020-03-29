@@ -60,6 +60,10 @@ class ShareArticleActivity : BaseLifeCycleActivity<SquareViewModel>(), View.OnCl
         }
     }
 
+    override fun showCreateReveal(): Boolean = false
+
+    override fun showDestroyReveal(): Boolean = false
+
     override fun getLayoutId(): Int = R.layout.activity_share_article
 
     @Subscribe

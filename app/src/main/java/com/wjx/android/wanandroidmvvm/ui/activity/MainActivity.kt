@@ -27,6 +27,7 @@ import com.wjx.android.wanandroidmvvm.ui.home.view.HomeFragment
 import com.wjx.android.wanandroidmvvm.ui.navigation.view.NavigationFragment
 import com.wjx.android.wanandroidmvvm.ui.project.view.ProjectFragment
 import com.wjx.android.wanandroidmvvm.ui.question.view.QuestionArticleListActivity
+import com.wjx.android.wanandroidmvvm.ui.rank.view.RankActivity
 import com.wjx.android.wanandroidmvvm.ui.search.SearchActivity
 import com.wjx.android.wanandroidmvvm.ui.setting.SettingActivity
 import com.wjx.android.wanandroidmvvm.ui.square.view.SquareActivity
@@ -120,7 +121,7 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
         navigation_draw.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_menu_rank -> {
-                    startActivity<SquareActivity>()
+                    startActivity<RankActivity>()
                 }
                 R.id.nav_menu_square -> {
                     startActivity<SquareActivity>()

@@ -193,7 +193,6 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
     @Subscribe
     fun settingEvent(event: ChangeThemeEvent) {
         todo_refresh.setProgressBackgroundColorSchemeColor(Util.getColor(this))
-        todo_refresh.setColorSchemeColors(Color.WHITE)
         initColor()
     }
 }

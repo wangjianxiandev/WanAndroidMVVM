@@ -66,6 +66,9 @@ class AddCollectActivity : BaseLifeCycleActivity<CollectViewModel>(), View.OnCli
         }
     }
 
+
+    override fun showCreateReveal(): Boolean = false
+
     @Subscribe
     fun settingEvent(event: ChangeThemeEvent) {
         initColor()

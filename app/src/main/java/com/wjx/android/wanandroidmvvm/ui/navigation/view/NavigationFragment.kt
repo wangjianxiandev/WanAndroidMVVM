@@ -135,7 +135,6 @@ class NavigationFragment : BaseLifeCycleFragment<NavigationViewModel>() {
     @Subscribe
     fun settingEvent(event: ChangeThemeEvent) {
         nav_refresh.setProgressBackgroundColorSchemeColor(Util.getColor(activity!!))
-        nav_refresh.setColorSchemeColors(Color.WHITE)
         mNavigationTabAdapter.notifyDataSetChanged()
         mNavigationLabelAdapter.notifyDataSetChanged()
     }

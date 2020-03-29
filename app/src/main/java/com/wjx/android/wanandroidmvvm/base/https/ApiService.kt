@@ -12,6 +12,8 @@ import com.wjx.android.wanandroidmvvm.ui.navigation.data.NavigationTabNameRespon
 import com.wjx.android.wanandroidmvvm.ui.project.data.ProjectResponse
 import com.wjx.android.wanandroidmvvm.ui.project.data.ProjectTabResponse
 import com.wjx.android.wanandroidmvvm.ui.question.data.QuestionResponse
+import com.wjx.android.wanandroidmvvm.ui.rank.data.IntegralResponse
+import com.wjx.android.wanandroidmvvm.ui.rank.data.RankResponse
 import com.wjx.android.wanandroidmvvm.ui.search.data.HotKeyResponse
 import com.wjx.android.wanandroidmvvm.ui.search.data.SearchResultResponse
 import com.wjx.android.wanandroidmvvm.ui.square.data.SquareResponse
@@ -37,12 +39,16 @@ import retrofit2.http.Query
 interface ApiService {
 
     @POST("/user/login")
-    fun onLogin(@Query("username") username: String,
-                 @Query("password") password: String): Observable<BaseResponse<LoginResponse>>
+    fun onLogin(
+        @Query("username") username: String,
+        @Query("password") password: String
+    ): Observable<BaseResponse<LoginResponse>>
 
     @POST("/user/register")
-    fun onRegister(@Query("username") username: String, @Query("password") password: String,
-                    @Query("repassword") repassword: String): Observable<BaseResponse<RegisterResponse>>
+    fun onRegister(
+        @Query("username") username: String, @Query("password") password: String,
+        @Query("repassword") repassword: String
+    ): Observable<BaseResponse<RegisterResponse>>
 
     @POST("/lg/collect/{id}/json")
     fun collect(@Path("id") id: Int): Observable<BaseResponse<EmptyResponse>>
@@ -70,13 +76,19 @@ interface ApiService {
     fun loadSystemTab(): Observable<BaseResponse<List<SystemTabNameResponse>>>
 
     @GET("/article/list/{pageNum}/json")
-    fun loadSystemArticles(@Path("pageNum") pageNum: Int, @Query("cid") id: Int?): Observable<BaseResponse<SystemArticleResponse>>
+    fun loadSystemArticles(
+        @Path("pageNum") pageNum: Int,
+        @Query("cid") id: Int?
+    ): Observable<BaseResponse<SystemArticleResponse>>
 
     @GET("/project/tree/json")
     fun loadProjectTab(): Observable<BaseResponse<List<ProjectTabResponse>>>
 
     @GET("/project/list/{pageNum}/json")
-    fun loadProjectArticles(@Path("pageNum") pageNum: Int, @Query("cid") cid: Int): Observable<BaseResponse<ProjectResponse>>
+    fun loadProjectArticles(
+        @Path("pageNum") pageNum: Int,
+        @Query("cid") cid: Int
+    ): Observable<BaseResponse<ProjectResponse>>
 
     @GET("/navi/json")
     fun loadNavigationTab(): Observable<BaseResponse<List<NavigationTabNameResponse>>>
@@ -85,12 +97,16 @@ interface ApiService {
     fun loadCollectArticle(@Path("pageNum") page: Int): Observable<BaseResponse<CollectResponse>>
 
     @POST("/lg/uncollect/{id}/json")
-    fun unCollect(@Path("id") id: Int, @Query("originId") originId: Int): Observable<BaseResponse<EmptyResponse>>
+    fun unCollect(
+        @Path("id") id: Int,
+        @Query("originId") originId: Int
+    ): Observable<BaseResponse<EmptyResponse>>
 
     @POST("lg/collect/add/json")
-    fun addCollectArticle(@Query("title") title: String,
-                          @Query("author") author: String,
-                          @Query("link") link: String
+    fun addCollectArticle(
+        @Query("title") title: String,
+        @Query("author") author: String,
+        @Query("link") link: String
     ): Observable<BaseResponse<EmptyResponse>>
 
     @GET("/lg/todo/v2/list/{pageNum}/json")
@@ -119,13 +135,19 @@ interface ApiService {
     ): Observable<BaseResponse<EmptyResponse>>
 
     @POST("/lg/todo/done/{id}/json")
-    fun finishTodo(@Path("id") id: Int, @Query("status") status: Int): Observable<BaseResponse<EmptyResponse>>
+    fun finishTodo(
+        @Path("id") id: Int,
+        @Query("status") status: Int
+    ): Observable<BaseResponse<EmptyResponse>>
 
     @GET("hotkey/json")
-    fun loadHotKey() : Observable<BaseResponse<List<HotKeyResponse>>>
+    fun loadHotKey(): Observable<BaseResponse<List<HotKeyResponse>>>
 
     @POST("/article/query/{pageNum}/json")
-    fun loadSearchResult(@Path("pageNum") pageNum: Int, @Query("k") key: String): Observable<BaseResponse<SearchResultResponse>>
+    fun loadSearchResult(
+        @Path("pageNum") pageNum: Int,
+        @Query("k") key: String
+    ): Observable<BaseResponse<SearchResultResponse>>
 
     @GET("wenda/list/{pageNum}/json")
     fun loadQuestionList(@Path("pageNum") pageNum: Int): Observable<BaseResponse<QuestionResponse>>
@@ -134,14 +156,20 @@ interface ApiService {
     fun loadMeShareArticle(@Path("pageNum") pageNum: Int): Observable<BaseResponse<MeShareResponse<MeShareArticleResponse>>>
 
     @GET("user_article/list/{pageNum}/json")
-    fun loadSquareArticle(@Path("pageNum") pageNum: Int) : Observable<BaseResponse<SquareResponse>>
+    fun loadSquareArticle(@Path("pageNum") pageNum: Int): Observable<BaseResponse<SquareResponse>>
 
     @POST("lg/user_article/delete/{id}/json")
-    fun deleteShareArticle(@Path("id")id : Int): Observable<BaseResponse<EmptyResponse>>
+    fun deleteShareArticle(@Path("id") id: Int): Observable<BaseResponse<EmptyResponse>>
 
     @POST("lg/user_article/add/json")
     fun addShareArticle(
         @Query("title") title: String,
         @Query("link") link: String
     ): Observable<BaseResponse<EmptyResponse>>
+
+    @GET("coin/rank/{pageNum}/json")
+    fun loadRankList(@Path("pageNum") pageNum: Int): Observable<BaseResponse<RankResponse>>
+
+    @GET("lg/coin/userinfo/json")
+    fun loadMeRankInfo(): Observable<BaseResponse<IntegralResponse>>
 }

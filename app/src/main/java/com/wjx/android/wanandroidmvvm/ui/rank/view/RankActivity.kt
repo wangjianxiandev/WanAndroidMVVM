@@ -1,57 +1,37 @@
-package com.wjx.android.wanandroidmvvm.ui.meshare.view
+package com.wjx.android.wanandroidmvvm.ui.rank.view
 
-import android.content.Intent
 import android.graphics.Color
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleListActivity
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
-import com.wjx.android.wanandroidmvvm.base.state.UserInfo
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.SpeedLayoutManager
 import com.wjx.android.wanandroidmvvm.base.utils.Util
-import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
-import com.wjx.android.wanandroidmvvm.ui.meshare.adapter.MeShareAdapter
-import com.wjx.android.wanandroidmvvm.ui.meshare.viewmodel.MeShareViewModel
-import kotlinx.android.synthetic.main.custom_bar.*
+import com.wjx.android.wanandroidmvvm.ui.rank.adapter.RankAdapter
+import com.wjx.android.wanandroidmvvm.ui.rank.data.IntegralResponse
+import com.wjx.android.wanandroidmvvm.ui.rank.viewmodel.RankViewModel
+import kotlinx.android.synthetic.main.activity_rank.*
 import kotlinx.android.synthetic.main.custom_bar.view.*
-import kotlinx.android.synthetic.main.custom_bar.view.custom_bar
 import kotlinx.android.synthetic.main.fragment_article_list.*
+import kotlinx.android.synthetic.main.fragment_article_list.mRvArticle
+import kotlinx.android.synthetic.main.fragment_article_list.mSrlRefresh
 import org.greenrobot.eventbus.Subscribe
 
-class MeShareActivity : BaseLifeCycleActivity<MeShareViewModel>() {
+class RankActivity : BaseLifeCycleActivity<RankViewModel>() {
     private var mCurrentPage: Int = 1
-
-    private lateinit var mAdapter: MeShareAdapter
-
-    private lateinit var headerView : View
-
-    override fun getLayoutId(): Int = R.layout.fragment_article_list
+    private lateinit var headerView: View
+    private lateinit var mAdapter: RankAdapter
+    override fun getLayoutId(): Int = R.layout.activity_rank
 
     override fun initView() {
         super.initView()
-        mAdapter = MeShareAdapter(R.layout.article_item, null)
+        mAdapter = RankAdapter(R.layout.rank_item, null)
         initHeaderView()
         initRefresh()
-        mRvArticle?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        mRvArticle.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         mRvArticle.adapter = mAdapter
-        mAdapter.setOnItemClickListener { _, _, position ->
-            val article = mAdapter.getItem(position)
-            article?.let {
-                val intent: Intent = Intent(this, ArticleDetailActivity::class.java)
-                intent.putExtra("url", it.link)
-                intent.putExtra("title", it.title)
-                startActivity(intent)
-            }
-        }
-
-        mAdapter.setOnItemChildClickListener { _, _, position ->
-            mViewModel.deleteMeShareArticle(mAdapter.getItem(position)!!.id)
-            mAdapter.remove(position)
-        }
         mAdapter.setEnableLoadMore(true)
         mAdapter.setOnLoadMoreListener({ onLoadMoreData() }, mRvArticle)
     }
@@ -59,29 +39,38 @@ class MeShareActivity : BaseLifeCycleActivity<MeShareViewModel>() {
     override fun initData() {
         super.initData()
         mCurrentPage = 1
-        mViewModel.loadMeShareArticle(mCurrentPage)
+        mViewModel.loadRankList(mCurrentPage)
+        mViewModel.loadMeRankInfo()
     }
 
     override fun initDataObserver() {
-        mViewModel.mMeShareData.observe(this, Observer { response ->
+        mViewModel.mRankListData.observe(this, Observer { response ->
             response.let {
-                addData(it.data.shareArticles.datas)
+                addData(it.data.datas)
+            }
+        })
+        mViewModel.mMeRankInfo.observe(this, Observer { response ->
+            response.let {
+                integral_melevel.text = "等级：" + it.data.level.toString()
+                integral_mename.text = "用户：" + it.data.username
+                integral_mecount.text = "积分：" + it.data.coinCount.toString()
             }
         })
     }
 
     fun onRefreshData() {
         mCurrentPage = 1
-        mViewModel.loadMeShareArticle(mCurrentPage)
+        mViewModel.loadRankList(mCurrentPage)
+        mViewModel.loadMeRankInfo()
     }
 
     fun onLoadMoreData() {
-        mViewModel.loadMeShareArticle(++mCurrentPage)
+        mViewModel.loadRankList(++mCurrentPage)
     }
 
     private fun initHeaderView() {
         headerView = View.inflate(this, R.layout.custom_bar, null)
-        headerView.detail_title.text = "我的分享"
+        headerView.detail_title.text = "积分排行"
         headerView.detail_back.visibility = View.VISIBLE
         headerView.detail_search.visibility = View.GONE
         headerView.detail_back.setOnClickListener { onBackPressed() }
@@ -91,6 +80,7 @@ class MeShareActivity : BaseLifeCycleActivity<MeShareViewModel>() {
 
     private fun initColor() {
         headerView.setBackgroundColor(Util.getColor(this))
+        integral_mecard.setCardBackgroundColor(Util.getColor(this))
     }
 
     private fun initRefresh() {
@@ -100,10 +90,10 @@ class MeShareActivity : BaseLifeCycleActivity<MeShareViewModel>() {
         mSrlRefresh.setOnRefreshListener { onRefreshData() }
     }
 
-    fun addData(articleList: List<Article>) {
+    fun addData(integralList: List<IntegralResponse>) {
 
         // 返回列表为空显示加载完毕
-        if (articleList.isEmpty()) {
+        if (integralList.isEmpty()) {
             mAdapter.loadMoreEnd()
             return
         }
@@ -111,18 +101,17 @@ class MeShareActivity : BaseLifeCycleActivity<MeShareViewModel>() {
         // 如果是下拉刷新状态，直接设置数据
         if (mSrlRefresh.isRefreshing) {
             mSrlRefresh.isRefreshing = false
-            mAdapter.setNewData(articleList)
+            mAdapter.setNewData(integralList)
             mAdapter.loadMoreComplete()
             return
         }
 
         // 初始化状态直接加载数据
-        mAdapter.addData(articleList)
+        mAdapter.addData(integralList)
         mAdapter.loadMoreComplete()
     }
 
     override fun showDestroyReveal(): Boolean = true
-
     override fun onBackPressed() = finish()
 
     @Subscribe
@@ -130,4 +119,5 @@ class MeShareActivity : BaseLifeCycleActivity<MeShareViewModel>() {
         initColor()
         mSrlRefresh.setProgressBackgroundColorSchemeColor(Util.getColor(this))
     }
+
 }

@@ -93,7 +93,6 @@ class SystemFragment : BaseLifeCycleFragment<SystemViewModel>() {
     @Subscribe
     fun settingEvent(event: ChangeThemeEvent) {
         system_refresh.setProgressBackgroundColorSchemeColor(Util.getColor(activity!!))
-        system_refresh.setColorSchemeColors(Color.WHITE)
         mAdapter.notifyDataSetChanged()
     }
 }

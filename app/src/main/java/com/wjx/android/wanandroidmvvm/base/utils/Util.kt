@@ -246,7 +246,6 @@ object Util {
         val circularReveal = CircularRevealCompat.createCircularReveal(rootLayout, centerX, centerY, finalRadius)
         circularReveal.duration = 500
         circularReveal.interpolator = LinearInterpolator()
-        circularReveal.startDelay = 1
         circularReveal.start()
     }
 
