@@ -29,7 +29,7 @@
         android:maxWidth="270dp"
         android:maxLines="1"
         android:text="这是第一个Android MVVM de "
-        android:textColor="@color/white"
+        android:textColor="@color/always_white_text"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
