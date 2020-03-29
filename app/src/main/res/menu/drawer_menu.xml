@@ -5,6 +5,10 @@
     <item android:title="@string/app_name"/>
     <group android:id="@+id/common">
         <item
+            android:id="@+id/nav_menu_rank"
+            android:icon="@drawable/ic_rank"
+            android:title="@string/rank"/>
+        <item
             android:id="@+id/nav_menu_square"
             android:icon="@drawable/ic_square"
             android:title="@string/square" />

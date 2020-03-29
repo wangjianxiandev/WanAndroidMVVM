@@ -119,6 +119,9 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
 
         navigation_draw.setNavigationItemSelectedListener {
             when (it.itemId) {
+                R.id.nav_menu_rank -> {
+                    startActivity<SquareActivity>()
+                }
                 R.id.nav_menu_square -> {
                     startActivity<SquareActivity>()
                 }
