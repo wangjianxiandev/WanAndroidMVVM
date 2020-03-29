@@ -22,9 +22,6 @@ class RankAdapter(layoutId: Int, listData: MutableList<IntegralResponse>?) :
                 holder ->
             holder.itemView.rank_material_card.rippleColor = Util.getOneColorStateList(mContext)
             holder.itemView.rank_material_card.strokeColor = Util.getColor(mContext)
-            holder.itemView.integral_level.setTextColor(Util.getColor(mContext))
-            holder.itemView.integral_name.setTextColor(Util.getColor(mContext))
-            holder.itemView.integral_count.setTextColor(Util.getColor(mContext))
             integralResponse?.let {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     holder.setText(R.id.integral_level, "等级：" + integralResponse.level)

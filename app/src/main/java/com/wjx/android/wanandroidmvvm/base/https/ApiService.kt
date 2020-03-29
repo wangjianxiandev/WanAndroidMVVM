@@ -12,6 +12,7 @@ import com.wjx.android.wanandroidmvvm.ui.navigation.data.NavigationTabNameRespon
 import com.wjx.android.wanandroidmvvm.ui.project.data.ProjectResponse
 import com.wjx.android.wanandroidmvvm.ui.project.data.ProjectTabResponse
 import com.wjx.android.wanandroidmvvm.ui.question.data.QuestionResponse
+import com.wjx.android.wanandroidmvvm.ui.rank.data.IntegralHistoryListResponse
 import com.wjx.android.wanandroidmvvm.ui.rank.data.IntegralResponse
 import com.wjx.android.wanandroidmvvm.ui.rank.data.RankResponse
 import com.wjx.android.wanandroidmvvm.ui.search.data.HotKeyResponse
@@ -172,4 +173,7 @@ interface ApiService {
 
     @GET("lg/coin/userinfo/json")
     fun loadMeRankInfo(): Observable<BaseResponse<IntegralResponse>>
+
+    @GET("/lg/coin/list/{pageNum}/json")
+    fun loadIntegralHistory(@Path("pageNum") pageNum: Int) : Observable<BaseResponse<IntegralHistoryListResponse>>
 }

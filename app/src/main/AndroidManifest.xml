@@ -15,7 +15,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AnimActivity">
-        <activity android:name=".ui.rank.view.RankActivity"></activity>
+        <activity android:name=".ui.rank.view.IntegralHistoryActivity"></activity>
+        <activity android:name=".ui.rank.view.RankActivity" />
         <activity
             android:name=".ui.collect.view.AddCollectActivity"
             android:configChanges="orientation|keyboardHidden|navigation|locale"

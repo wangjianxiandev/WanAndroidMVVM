@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.base.BaseViewModel
 import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
+import com.wjx.android.wanandroidmvvm.ui.rank.data.IntegralHistoryListResponse
 import com.wjx.android.wanandroidmvvm.ui.rank.data.IntegralResponse
 import com.wjx.android.wanandroidmvvm.ui.rank.data.RankResponse
 import com.wjx.android.wanandroidmvvm.ui.rank.repository.RankRepository
@@ -17,6 +18,8 @@ import com.wjx.android.wanandroidmvvm.ui.rank.repository.RankRepository
 class RankViewModel(application: Application) : BaseViewModel<RankRepository>(application) {
     val mRankListData: MutableLiveData<BaseResponse<RankResponse>> = MutableLiveData()
     val mMeRankInfo: MutableLiveData<BaseResponse<IntegralResponse>> = MutableLiveData()
+    val mIntegralHistoryListData: MutableLiveData<BaseResponse<IntegralHistoryListResponse>> =
+        MutableLiveData()
 
     fun loadRankList(pageNum: Int) {
         mRepository.loadRankList(pageNum, mRankListData)
@@ -24,5 +27,9 @@ class RankViewModel(application: Application) : BaseViewModel<RankRepository>(ap
 
     fun loadMeRankInfo() {
         mRepository.loadMeRankInfo(mMeRankInfo)
+    }
+
+    fun loadIntegralHistoryList(pageNum: Int) {
+        mRepository.loadIntegralHistoryList(pageNum, mIntegralHistoryListData)
     }
 }

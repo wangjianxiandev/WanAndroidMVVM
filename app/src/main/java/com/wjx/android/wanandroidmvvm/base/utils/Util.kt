@@ -1,5 +1,6 @@
 package com.wjx.android.wanandroidmvvm.base.utils
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -302,6 +303,20 @@ object Util {
         } else {
             Date()
         }
+    }
+
+    /**
+     * 日期格式化
+     *
+     * @param formatStyle
+     * @param date
+     * @return
+     */
+    @SuppressLint("SimpleDateFormat")
+    fun formatDate(date: Long): String {
+        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        return sdf.format(Date(date))
+
     }
 
     // 关闭软键盘
