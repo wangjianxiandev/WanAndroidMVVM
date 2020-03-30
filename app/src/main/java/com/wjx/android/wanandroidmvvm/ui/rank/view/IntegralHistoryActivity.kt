@@ -1,20 +1,24 @@
 package com.wjx.android.wanandroidmvvm.ui.rank.view
 
+import android.animation.ValueAnimator
+import android.content.Intent
 import android.graphics.Color
 
 import android.view.View
+import android.view.animation.DecelerateInterpolator
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import com.wjx.android.wanandroidmvvm.ui.rank.adapter.IntegralHistoryAdapter
 import com.wjx.android.wanandroidmvvm.ui.rank.data.IntegralHistoryResponse
 import com.wjx.android.wanandroidmvvm.ui.rank.viewmodel.RankViewModel
-import kotlinx.android.synthetic.main.custom_bar.view.*
-import kotlinx.android.synthetic.main.fragment_article_list.*
-import kotlinx.android.synthetic.main.integral_history_item.*
+import kotlinx.android.synthetic.main.fragment_article_list.mRvArticle
+import kotlinx.android.synthetic.main.fragment_article_list.mSrlRefresh
+import kotlinx.android.synthetic.main.integral_header_view.view.*
 import org.greenrobot.eventbus.Subscribe
 
 class IntegralHistoryActivity : BaseLifeCycleActivity<RankViewModel>() {
@@ -47,6 +51,11 @@ class IntegralHistoryActivity : BaseLifeCycleActivity<RankViewModel>() {
                 addData(it.data.datas)
             }
         })
+        mViewModel.mMeRankInfo.observe(this, Observer { response ->
+            response.let {
+                startIntegralTextAnim(it.data.coinCount)
+            }
+        })
     }
 
     fun onRefreshData() {
@@ -59,17 +68,16 @@ class IntegralHistoryActivity : BaseLifeCycleActivity<RankViewModel>() {
     }
 
     private fun initHeaderView() {
-        headerView = View.inflate(this, R.layout.custom_bar, null)
-        headerView.detail_title.text = "积分记录"
-        headerView.detail_back.visibility = View.VISIBLE
-        headerView.detail_search.visibility = View.GONE
-        headerView.detail_back.setOnClickListener { onBackPressed() }
+        headerView = View.inflate(this, R.layout.integral_header_view, null)
+        headerView.integral_title.text = "积分记录"
+        headerView.integral_rule.setOnClickListener { onRulePressed() }
+        headerView.integral_back.setOnClickListener { onBackPressed() }
         mAdapter.addHeaderView(headerView)
         initColor()
     }
 
     private fun initColor() {
-        headerView.setBackgroundColor(Util.getColor(this))
+        headerView.integral_bar.setBackgroundColor(Util.getColor(this))
     }
 
     private fun initRefresh() {
@@ -77,6 +85,19 @@ class IntegralHistoryActivity : BaseLifeCycleActivity<RankViewModel>() {
         mSrlRefresh.setProgressBackgroundColorSchemeColor(Util.getColor(this))
         mSrlRefresh.setColorSchemeColors(Color.WHITE)
         mSrlRefresh.setOnRefreshListener { onRefreshData() }
+    }
+
+    private fun startIntegralTextAnim(coinCount : Int) {
+        val animator = ValueAnimator.ofInt(0,coinCount)
+        //播放时长
+        animator.duration = 1500
+        animator.interpolator = DecelerateInterpolator()
+        animator.addUpdateListener { animation ->
+            //获取改变后的值
+            val currentValue = animation.animatedValue as Int
+            headerView.integral_text_anim.text = "$currentValue"
+        }
+        animator.start()
     }
 
     fun addData(integralHistoryList: List<IntegralHistoryResponse>) {
@@ -103,6 +124,13 @@ class IntegralHistoryActivity : BaseLifeCycleActivity<RankViewModel>() {
     override fun showCreateReveal(): Boolean = false
     override fun showDestroyReveal(): Boolean = false
     override fun onBackPressed() = finish()
+
+    private fun onRulePressed() {
+        val intent: Intent = Intent(this, ArticleDetailActivity::class.java)
+        intent.putExtra("url", "https://www.wanandroid.com/blog/show/2653")
+        intent.putExtra("title", getString(R.string.rank_rule))
+        startActivity(intent)
+    }
 
 
     @Subscribe

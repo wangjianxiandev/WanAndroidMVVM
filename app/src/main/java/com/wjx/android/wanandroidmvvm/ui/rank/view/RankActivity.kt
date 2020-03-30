@@ -76,10 +76,8 @@ class RankActivity : BaseLifeCycleActivity<RankViewModel>() {
         headerView.detail_title.text = "积分排行"
         headerView.detail_back.visibility = View.VISIBLE
         headerView.detail_search.visibility = View.VISIBLE
-        headerView.detail_search.setImageResource(R.drawable.ic_help)
-        headerView.addition_menu.visibility = View.VISIBLE
-        headerView.detail_search.setOnClickListener { onRulePressed() }
-        headerView.addition_menu.setOnClickListener { onHistoryPressed() }
+        headerView.detail_search.setImageResource(R.drawable.ic_history)
+        headerView.detail_search.setOnClickListener { onHistoryPressed() }
         headerView.detail_back.setOnClickListener { onBackPressed() }
         mAdapter.addHeaderView(headerView)
         initColor()
@@ -120,13 +118,6 @@ class RankActivity : BaseLifeCycleActivity<RankViewModel>() {
 
     override fun showDestroyReveal(): Boolean = true
     override fun onBackPressed() = finish()
-
-    private fun onRulePressed() {
-        val intent: Intent = Intent(this, ArticleDetailActivity::class.java)
-        intent.putExtra("url", "https://www.wanandroid.com/blog/show/2653")
-        intent.putExtra("title", getString(R.string.rank_rule))
-        startActivity(intent)
-    }
 
     private fun onHistoryPressed() {
         startActivity<IntegralHistoryActivity>()
