@@ -1,22 +1,18 @@
 package com.wjx.android.wanandroidmvvm.ui.rank.view
 
-import android.content.Intent
 import android.graphics.Color
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.base.utils.Util
-import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import com.wjx.android.wanandroidmvvm.ui.rank.adapter.RankAdapter
 import com.wjx.android.wanandroidmvvm.ui.rank.data.IntegralResponse
 import com.wjx.android.wanandroidmvvm.ui.rank.viewmodel.RankViewModel
 import kotlinx.android.synthetic.main.activity_rank.*
 import kotlinx.android.synthetic.main.custom_bar.view.*
-import kotlinx.android.synthetic.main.fragment_article_list.*
 import kotlinx.android.synthetic.main.fragment_article_list.mRvArticle
 import kotlinx.android.synthetic.main.fragment_article_list.mSrlRefresh
 import org.greenrobot.eventbus.Subscribe

@@ -70,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/textTipColor"
             android:textSize="60dp" />
 
         <TextView
@@ -79,7 +79,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="我的积分"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/textTipColor"
             android:textSize="15dp" />
     </LinearLayout>
 
@@ -104,7 +104,7 @@
             android:gravity="center_vertical"
             android:maxLines="1"
             android:text="积分记录"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/textTipColor"
             android:textSize="15dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
