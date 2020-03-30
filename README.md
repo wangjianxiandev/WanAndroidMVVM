@@ -4,7 +4,10 @@
 ## 项目地址
 [WanAndroid(github)](https://github.com/wangjianxiandev/WanAndroidMvvm)  （**欢迎大佬们star**)
 ## 下载体验
-## 当前版本（1.0）
+## 当前版本（1.0.1）
+- 增加排行榜内容
+- 提高稳定性
+- 修复更换主题以及设置夜间模式的细节问题
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2020032821192381.png)
 ##### 密码：123456
 

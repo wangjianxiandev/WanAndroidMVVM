@@ -78,7 +78,7 @@ class SettingFragment : PreferenceFragmentCompat(),
             } else {
                 Util.setColor(parentActivity, Util.getLastColor(parentActivity))
             }
-            RecreateEvent().post()
+//            RecreateEvent().post()
             true
         }
 

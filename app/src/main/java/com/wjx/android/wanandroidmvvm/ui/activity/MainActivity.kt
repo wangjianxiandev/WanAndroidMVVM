@@ -316,9 +316,4 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
     fun settingEvent(event: ChangeThemeEvent) {
         initColor()
     }
-
-    @Subscribe
-    fun recreateEvent(event: RecreateEvent) {
-        recreate()
-    }
 }
