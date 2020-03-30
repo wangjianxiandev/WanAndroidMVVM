@@ -34,6 +34,7 @@ ext {
     material_dialog_color_version = "3.1.1"
     litepal_version = '3.0.0'
     circular_avatar = 'v1.0.0'
+    easypermissions_version = '3.0.0'
 
 
     appId = [
@@ -81,7 +82,8 @@ ext {
             "material_dialog"            : "com.afollestad.material-dialogs:core:$material_dialog_version",
             "materiaal_dialog_color"     : "com.afollestad.material-dialogs:color:$material_dialog_color_version",
             "litepal"                    : "org.litepal.android:kotlin:$litepal_version",
-            "circular_avatar"            : "com.github.wangjianxiandev:CircularAvatar:$circular_avatar"
+            "circular_avatar"            : "com.github.wangjianxiandev:CircularAvatar:$circular_avatar",
+            "easypermissions"            : "pub.devrel:easypermissions:$easypermissions_version"
     ]
 
     processor = [

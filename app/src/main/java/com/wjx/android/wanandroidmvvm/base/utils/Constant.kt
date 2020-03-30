@@ -10,6 +10,9 @@ package com.wjx.android.wanandroidmvvm.base.utils
 object Constant {
     const val BASE_URL = "https://www.wanandroid.com"
 
+    const val RC_STORAGE_PERM = 100
+
+
     const val USERNAME_KEY = "username"
     const val USERID_KEY = "userid"
     const val LOGIN_KEY = "login"
@@ -18,7 +21,6 @@ object Constant {
     const val SAVE_USER_REGISTER_KEY = "user/register"
     const val SET_COOKIE_KEY = "set-cookie"
     const val COOKIE_NAME = "Cookie"
-
 
     const val NIGHT_MODE = "night_mode"
 
