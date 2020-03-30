@@ -6,11 +6,11 @@ ext {
             minSdkVersion    : 26,
             targetSdkVersion : 29,
             versionCode      : 1,
-            versionName      : "1.0",
+            versionName      : "1.0.1",
     ]
 
     retrofit_version = '2.5.0'
-    okhttp_version = '3.4.1'
+    okhttp_version = '3.14.7'
     rx_kotlin_version = '2.3.0'
     rx_android_version = '2.1.1'
     anko_version = '0.10.5'

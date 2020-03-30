@@ -310,6 +310,8 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
         LoginSuccessState.removeListener(this)
     }
 
+    override fun showCreateReveal(): Boolean = false
+
     @Subscribe
     fun settingEvent(event: ChangeThemeEvent) {
         initColor()
