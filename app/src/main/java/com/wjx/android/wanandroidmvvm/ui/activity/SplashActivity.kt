@@ -15,7 +15,6 @@ import pub.devrel.easypermissions.AfterPermissionGranted
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 
-
 class SplashActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
 
     private var mLottieAnimationView: LottieAnimationView? = null
@@ -36,7 +35,7 @@ class SplashActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
         setContentView(R.layout.activity_splash)
-        overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out)
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         mSplashContainer = findViewById<ViewGroup>(R.id.splash_container)
         initView()
     }
@@ -47,13 +46,14 @@ class SplashActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks 
             EasyPermissions.requestPermissions(
                 this, "读写权限(用于读取和保存用户数据)和联网权限", Constant.RC_STORAGE_PERM, *mPermissions
             )
+        } else {
+            startIntent()
         }
     }
 
     private fun hasPermission(vararg permission: String): Boolean {
         return EasyPermissions.hasPermissions(this, *permission)
     }
-
 
     override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
         if (EasyPermissions.somePermissionPermanentlyDenied(this, perms!!)) {
@@ -71,7 +71,6 @@ class SplashActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks 
     ) {
         startIntent()
     }
-
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -94,7 +93,6 @@ class SplashActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks 
             override fun onAnimationEnd(animator: Animator) {
                 initPermission()
             }
-
             override fun onAnimationCancel(animator: Animator) {}
             override fun onAnimationRepeat(animator: Animator) {}
         })
