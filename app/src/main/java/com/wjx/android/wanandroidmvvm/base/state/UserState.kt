@@ -15,6 +15,8 @@ interface UserState {
 
     fun login(context: Context?)
 
+    fun startRankActivity(context: Context?)
+
     fun startTodoActivity(context: Context?)
 
     fun startCollectActivity(context: Context?)

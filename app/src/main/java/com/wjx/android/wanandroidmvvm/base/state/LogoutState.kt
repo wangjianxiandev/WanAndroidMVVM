@@ -23,6 +23,10 @@ class LogoutState :UserState {
         startLoginActivity(context)
     }
 
+    override fun startRankActivity(context: Context?) {
+        startLoginActivity(context)
+    }
+
     override fun startCollectActivity(context: Context?) {
         startLoginActivity(context)
     }

@@ -36,6 +36,10 @@ class UserInfo private constructor() {
         mState.collect(context, position, listener)
     }
 
+    fun startRankActivity(context: Context?) {
+        mState.startRankActivity(context)
+    }
+
     fun startCollectActivity(context: Context?) {
         mState.startCollectActivity(context)
     }

@@ -6,6 +6,7 @@ import com.wjx.android.wanandroidmvvm.base.state.callback.CollectListener
 import com.wjx.android.wanandroidmvvm.base.utils.Constant
 import com.wjx.android.wanandroidmvvm.ui.collect.view.CollectArticleListActivity
 import com.wjx.android.wanandroidmvvm.ui.meshare.view.MeShareActivity
+import com.wjx.android.wanandroidmvvm.ui.rank.view.RankActivity
 import com.wjx.android.wanandroidmvvm.ui.square.view.ShareArticleActivity
 import com.wjx.android.wanandroidmvvm.ui.todo.view.EditTodoActivity
 import com.wjx.android.wanandroidmvvm.ui.todo.view.TodoActivity
@@ -24,6 +25,11 @@ class LoginState : UserState {
     }
 
     override fun login(context: Context?) {}
+
+    override fun startRankActivity(context: Context?) {
+        val intent = Intent(context, RankActivity::class.java)
+        context?.startActivity(intent)
+    }
 
     override fun startCollectActivity(context: Context?) {
         val intent = Intent(context, CollectArticleListActivity::class.java)

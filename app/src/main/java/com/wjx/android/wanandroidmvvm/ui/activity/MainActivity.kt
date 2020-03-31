@@ -16,7 +16,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.color.colorChooser
-import com.afollestad.materialdialogs.color.setArgbColor
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseActivity
 import com.wjx.android.wanandroidmvvm.base.state.UserInfo
@@ -27,7 +26,6 @@ import com.wjx.android.wanandroidmvvm.ui.home.view.HomeFragment
 import com.wjx.android.wanandroidmvvm.ui.navigation.view.NavigationFragment
 import com.wjx.android.wanandroidmvvm.ui.project.view.ProjectFragment
 import com.wjx.android.wanandroidmvvm.ui.question.view.QuestionArticleListActivity
-import com.wjx.android.wanandroidmvvm.ui.rank.view.RankActivity
 import com.wjx.android.wanandroidmvvm.ui.search.SearchActivity
 import com.wjx.android.wanandroidmvvm.ui.setting.SettingActivity
 import com.wjx.android.wanandroidmvvm.ui.square.view.SquareActivity
@@ -121,7 +119,7 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
         navigation_draw.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_menu_rank -> {
-                    startActivity<RankActivity>()
+                    UserInfo.instance.startRankActivity(this)
                 }
                 R.id.nav_menu_square -> {
                     startActivity<SquareActivity>()
