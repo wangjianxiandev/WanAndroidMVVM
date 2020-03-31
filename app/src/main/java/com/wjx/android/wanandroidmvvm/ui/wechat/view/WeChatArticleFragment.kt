@@ -45,8 +45,8 @@ class WeChatArticleFragment : BaseArticleListFragment<WeChatViewModel>() {
 
     override fun initDataObserver() {
         super.initDataObserver()
-        mViewModel.mWeChatArticleData.observe(this, Observer { reponse ->
-            reponse?.let {
+        mViewModel.mWeChatArticleData.observe(this, Observer { response ->
+            response?.let {
                 addData(it.data.datas)
             }
         })

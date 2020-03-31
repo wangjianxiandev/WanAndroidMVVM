@@ -27,10 +27,13 @@ class HomeViewModel(application: Application) :
     }
 
     fun loadHomeArticleData(pageNum : Int) {
+        if (pageNum == 0) {
+            mRepository.loadTopArticle(mTopArticleData)
+        }
         mRepository.loadHomeArticle(pageNum, mHomeArticleData)
     }
 
-    fun loadTopArticle() {
-        mRepository.loadTopArticle(mTopArticleData)
-    }
+//    fun loadTopArticle() {
+//        mRepository.loadTopArticle(mTopArticleData)
+//    }
 }

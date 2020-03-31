@@ -35,7 +35,9 @@ class HomeFragment : BaseArticleListFragment<HomeViewModel>() {
         arrayListOf<String>()
     }
 
-    private var page = 0
+    private var mCurrentPage = 0
+
+    private var mTopArticlesLoadTimes: Int = 0
 
     companion object {
         fun getInstance(): HomeFragment? {
@@ -61,10 +63,10 @@ class HomeFragment : BaseArticleListFragment<HomeViewModel>() {
     }
 
     override fun initData() {
-        page = 0
-        mViewModel.loadTopArticle()
+        mCurrentPage = 0
+        mTopArticlesLoadTimes = 0
         mViewModel.loadBanner()
-        mViewModel.loadHomeArticleData(page)
+        mViewModel.loadHomeArticleData(mCurrentPage)
     }
 
     override fun initDataObserver() {
@@ -75,14 +77,22 @@ class HomeFragment : BaseArticleListFragment<HomeViewModel>() {
             }
         })
 
-        mViewModel.mTopArticleData.observe(this, Observer { responseTop ->
-            responseTop?.let {
-                handleTopArticle(responseTop.data)
-                mViewModel.mHomeArticleData.observe(this, Observer { responseArticle ->
-                    responseArticle?.let {
-                        addData(responseTop.data + responseArticle.data.datas)
+        mViewModel.mHomeArticleData.observe(this, Observer { responseArticle ->
+            responseArticle?.let {
+                mViewModel.mTopArticleData.observe(this, Observer { responseTop ->
+                    responseTop?.let {
+                        // 仅让置顶文章add一次，避免不必要的开销
+                        if (mCurrentPage == 0 && mTopArticlesLoadTimes == 0) {
+                            handleTopArticle(it.data)
+                            addData(responseTop.data + responseArticle.data.datas)
+                            mTopArticlesLoadTimes++
+                        }
                     }
                 })
+                if (mCurrentPage != 0) {
+                    // 非第0页直接加载首页数据
+                    addData(responseArticle.data.datas)
+                }
             }
         })
     }
@@ -108,13 +118,13 @@ class HomeFragment : BaseArticleListFragment<HomeViewModel>() {
     }
 
     override fun onRefreshData() {
-        page = 0
-        mViewModel.loadHomeArticleData(page)
-        mViewModel.loadTopArticle()
+        mCurrentPage = 0
+        mTopArticlesLoadTimes = 0
+        mViewModel.loadHomeArticleData(mCurrentPage)
         mViewModel.loadBanner()
     }
 
     override fun onLoadMoreData() {
-        mViewModel.loadHomeArticleData(++page)
+        mViewModel.loadHomeArticleData(++mCurrentPage)
     }
 }
