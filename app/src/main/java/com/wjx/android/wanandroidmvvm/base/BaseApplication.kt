@@ -3,6 +3,7 @@ package com.wjx.android.wanandroidmvvm.base
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import com.kingja.loadsir.core.LoadSir
+import com.tencent.bugly.Bugly
 import com.wjx.android.wanandroidmvvm.base.callback.EmptyCallBack
 import com.wjx.android.wanandroidmvvm.base.callback.ErrorCallBack
 import com.wjx.android.wanandroidmvvm.base.callback.LoadingCallBack
@@ -22,6 +23,8 @@ open class BaseApplication : Application() {
         super.onCreate()
         LitePal.initialize(this)
         SPreference.setContext(applicationContext)
+        // 集成bugly
+        Bugly.init(applicationContext, "7c31dd2361", false)
         initMode()
         LoadSir.beginBuilder()
             .addCallback(ErrorCallBack())

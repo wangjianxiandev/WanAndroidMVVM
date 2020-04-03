@@ -8,6 +8,12 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission
+        android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <application
         android:name=".base.BaseApplication"
@@ -16,8 +22,22 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AnimActivity">
-        <activity android:name=".ui.rank.view.IntegralHistoryActivity"></activity>
-        <activity android:name=".ui.rank.view.RankActivity" />
+        <activity
+            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
+            android:theme="@android:style/Theme.Translucent" />
+        <activity
+            android:name=".ui.rank.view.IntegralHistoryActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|locale"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".ui.rank.view.RankActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|locale"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.collect.view.AddCollectActivity"
             android:configChanges="orientation|keyboardHidden|navigation|locale"
