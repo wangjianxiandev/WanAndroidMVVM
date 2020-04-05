@@ -146,7 +146,7 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
                                 initialSelection = Util.getColor(this@MainActivity),
                                 subColors = ColorUtil.PRIMARY_COLORS_SUB
                             ) { dialog, color ->
-                                Util.setColor(this@MainActivity, color)
+                                Util.setColor(color)
                                 ChangeThemeEvent().post()
                             }
                             positiveButton(R.string.done)

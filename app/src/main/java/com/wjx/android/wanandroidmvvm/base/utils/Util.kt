@@ -120,10 +120,8 @@ object Util {
      * @return
      */
     fun getColor(context: Context): Int {
-        val setting =
-            PreferenceManager.getDefaultSharedPreferences(context)
         val defaultColor = ContextCompat.getColor(context!!, R.color.colorPrimaryDark)
-        val color = setting.getInt("color", defaultColor)
+        val color = SPreference.preference.getInt("color", defaultColor)
         return if (color != 0 && Color.alpha(color) != 255) {
             defaultColor
         } else {
@@ -137,10 +135,8 @@ object Util {
      * @param context
      * @param color
      */
-    fun setColor(context: Context, color: Int) {
-        val setting =
-            PreferenceManager.getDefaultSharedPreferences(context)
-        setting.edit().putInt("color", color).apply()
+    fun setColor(color: Int) {
+        SPreference.preference.edit().putInt("color", color).apply()
     }
 
     /**
@@ -179,14 +175,10 @@ object Util {
 
     /**
      * 设置切换夜间模式之前的主题颜色
-     *
-     * @param context
      * @param color
      */
-    fun setLastColor(context: Context, color: Int) {
-        val setting =
-            PreferenceManager.getDefaultSharedPreferences(context)
-        setting.edit().putInt("lastColor", color).apply()
+    fun setLastColor(color: Int) {
+        SPreference.preference.edit().putInt("lastColor", color).apply()
     }
 
     /**
@@ -196,10 +188,8 @@ object Util {
      * @return
      */
     fun getLastColor(context: Context): Int {
-        val setting =
-            PreferenceManager.getDefaultSharedPreferences(context)
         val defaultColor = ContextCompat.getColor(context, R.color.colorPrimary)
-        val color = setting.getInt("lastColor", defaultColor)
+        val color = SPreference.preference.getInt("lastColor", defaultColor)
         return if (color != 0 && Color.alpha(color) != 255) {
             defaultColor
         } else {
