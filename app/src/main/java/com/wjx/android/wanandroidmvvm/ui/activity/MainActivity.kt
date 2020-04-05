@@ -17,7 +17,7 @@ import androidx.fragment.app.Fragment
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.color.colorChooser
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.BaseActivity
+import com.wjx.android.wanandroidmvvm.base.view.BaseActivity
 import com.wjx.android.wanandroidmvvm.base.state.UserInfo
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessListener
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessState

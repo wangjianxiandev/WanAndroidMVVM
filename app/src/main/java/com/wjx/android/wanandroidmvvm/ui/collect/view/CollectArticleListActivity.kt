@@ -4,7 +4,7 @@ import android.content.Intent
 import android.view.View
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleListActivity
+import com.wjx.android.wanandroidmvvm.base.basearticle.view.BaseArticleListActivity
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.ui.collect.viewmodel.CollectViewModel

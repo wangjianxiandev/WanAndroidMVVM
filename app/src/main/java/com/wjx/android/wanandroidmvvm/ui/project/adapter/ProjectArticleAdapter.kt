@@ -6,7 +6,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.wjx.android.wanandroidmvvm.Custom.DrawableScaleFadeFactory
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
+import com.wjx.android.wanandroidmvvm.base.basearticle.data.Article
 import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import kotlinx.android.synthetic.main.project_item.view.*
 

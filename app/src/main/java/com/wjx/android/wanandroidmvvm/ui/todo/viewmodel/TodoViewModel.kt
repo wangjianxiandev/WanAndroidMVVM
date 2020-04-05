@@ -1,10 +1,8 @@
 package com.wjx.android.wanandroidmvvm.ui.todo.viewmodel
 
 import android.app.Application
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
-import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.BaseViewModel
+import com.wjx.android.wanandroidmvvm.base.viewmodel.BaseViewModel
 import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
 import com.wjx.android.wanandroidmvvm.base.https.EmptyResponse
 import com.wjx.android.wanandroidmvvm.ui.todo.data.TodoPageResponse

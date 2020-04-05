@@ -1,24 +1,17 @@
-package com.wjx.android.wanandroidmvvm.base
+package com.wjx.android.wanandroidmvvm.base.view
 
 
-import android.graphics.Color
-import android.os.Build
 import android.text.TextUtils
-import android.view.View
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.ColorUtils
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.kingja.loadsir.callback.SuccessCallback
-import com.wjx.android.wanandroidmvvm.R
+import com.wjx.android.wanandroidmvvm.base.viewmodel.BaseViewModel
 import com.wjx.android.wanandroidmvvm.base.callback.EmptyCallBack
 import com.wjx.android.wanandroidmvvm.base.callback.ErrorCallBack
 import com.wjx.android.wanandroidmvvm.base.callback.LoadingCallBack
 import com.wjx.android.wanandroidmvvm.base.state.State
 import com.wjx.android.wanandroidmvvm.base.state.StateType
-import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.base.utils.Util
-import org.greenrobot.eventbus.Subscribe
 import org.jetbrains.anko.toast
 
 /**

@@ -2,7 +2,7 @@ package com.wjx.android.wanandroidmvvm.ui.wechat.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import com.wjx.android.wanandroidmvvm.base.BaseArticle.viewmodel.BaseArticleViewModel
+import com.wjx.android.wanandroidmvvm.base.basearticle.viewmodel.BaseArticleViewModel
 import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
 import com.wjx.android.wanandroidmvvm.ui.wechat.data.WeChatArticleResponse
 import com.wjx.android.wanandroidmvvm.ui.wechat.data.WeChatTabNameResponse

@@ -1,4 +1,4 @@
-package com.wjx.android.wanandroidmvvm.base
+package com.wjx.android.wanandroidmvvm.base.utils
 
 import android.app.Activity
 import android.app.ActivityManager

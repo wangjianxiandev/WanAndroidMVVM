@@ -1,4 +1,4 @@
-package com.wjx.android.wanandroidmvvm.base
+package com.wjx.android.wanandroidmvvm.base.view
 
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate

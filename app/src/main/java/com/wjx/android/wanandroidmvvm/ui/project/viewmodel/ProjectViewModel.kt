@@ -2,7 +2,7 @@ package com.wjx.android.wanandroidmvvm.ui.project.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import com.wjx.android.wanandroidmvvm.base.BaseArticle.viewmodel.BaseArticleViewModel
+import com.wjx.android.wanandroidmvvm.base.basearticle.viewmodel.BaseArticleViewModel
 import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
 import com.wjx.android.wanandroidmvvm.ui.project.data.ProjectResponse
 import com.wjx.android.wanandroidmvvm.ui.project.data.ProjectTabResponse

@@ -1,8 +1,8 @@
 package com.wjx.android.wanandroidmvvm.ui.collect.repository
 
 import androidx.lifecycle.MutableLiveData
-import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleRepository
-import com.wjx.android.wanandroidmvvm.base.BaseObserver
+import com.wjx.android.wanandroidmvvm.base.basearticle.respository.BaseArticleRepository
+import com.wjx.android.wanandroidmvvm.base.observer.BaseObserver
 import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
 import com.wjx.android.wanandroidmvvm.base.https.EmptyResponse
 import com.wjx.android.wanandroidmvvm.base.state.State
@@ -23,7 +23,13 @@ class CollectRepository(loadState: MutableLiveData<State>) : BaseArticleReposito
         apiService.loadCollectArticle(pageNum)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(BaseObserver(liveData, loadState, this))
+            .subscribe(
+                BaseObserver(
+                    liveData,
+                    loadState,
+                    this
+                )
+            )
     }
 
     fun addCollectArticle(
@@ -35,13 +41,25 @@ class CollectRepository(loadState: MutableLiveData<State>) : BaseArticleReposito
         apiService.addCollectArticle(title, author, link)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(BaseObserver(liveData, loadState, this))
+            .subscribe(
+                BaseObserver(
+                    liveData,
+                    loadState,
+                    this
+                )
+            )
     }
 
     fun unCollect(id: Int, originId: Int, liveData: MutableLiveData<BaseResponse<EmptyResponse>>) {
         apiService.unCollect(id, originId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(BaseObserver(liveData, loadState, this))
+            .subscribe(
+                BaseObserver(
+                    liveData,
+                    loadState,
+                    this
+                )
+            )
     }
 }

@@ -7,7 +7,7 @@ import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
 import com.just.agentweb.AgentWeb
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.BaseActivity
+import com.wjx.android.wanandroidmvvm.base.view.BaseActivity
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import kotlinx.android.synthetic.main.activity_article_detail.*

@@ -4,8 +4,8 @@ import android.content.Intent
 import android.view.View
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleListFragment
-import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
+import com.wjx.android.wanandroidmvvm.base.basearticle.view.BaseArticleListFragment
+import com.wjx.android.wanandroidmvvm.base.basearticle.data.Article
 import com.wjx.android.wanandroidmvvm.base.utils.GlideImageLoader
 import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import com.wjx.android.wanandroidmvvm.ui.home.data.BannerResponse

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleFragment
+import com.wjx.android.wanandroidmvvm.base.view.BaseLifeCycleFragment
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.ui.navigation.adapter.NavigationLabelAdapter

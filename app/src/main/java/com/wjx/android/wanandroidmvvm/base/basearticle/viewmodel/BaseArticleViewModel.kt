@@ -1,11 +1,11 @@
-package com.wjx.android.wanandroidmvvm.base.BaseArticle.viewmodel
+package com.wjx.android.wanandroidmvvm.base.basearticle.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleRepository
+import com.wjx.android.wanandroidmvvm.base.basearticle.respository.BaseArticleRepository
 import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
 import com.wjx.android.wanandroidmvvm.base.https.EmptyResponse
-import com.wjx.android.wanandroidmvvm.base.BaseViewModel
+import com.wjx.android.wanandroidmvvm.base.viewmodel.BaseViewModel
 
 /**
  * Created with Android Studio.

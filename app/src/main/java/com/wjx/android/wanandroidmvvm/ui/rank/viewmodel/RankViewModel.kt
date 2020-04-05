@@ -2,7 +2,7 @@ package com.wjx.android.wanandroidmvvm.ui.rank.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import com.wjx.android.wanandroidmvvm.base.BaseViewModel
+import com.wjx.android.wanandroidmvvm.base.viewmodel.BaseViewModel
 import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
 import com.wjx.android.wanandroidmvvm.ui.rank.data.IntegralHistoryListResponse
 import com.wjx.android.wanandroidmvvm.ui.rank.data.IntegralResponse

@@ -1,8 +1,8 @@
 package com.wjx.android.wanandroidmvvm.ui.system.repository
 
 import androidx.lifecycle.MutableLiveData
-import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleRepository
-import com.wjx.android.wanandroidmvvm.base.BaseObserver
+import com.wjx.android.wanandroidmvvm.base.basearticle.respository.BaseArticleRepository
+import com.wjx.android.wanandroidmvvm.base.observer.BaseObserver
 import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
 import com.wjx.android.wanandroidmvvm.base.state.State
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemArticleResponse
@@ -22,13 +22,25 @@ class SystemRepository (loadState : MutableLiveData<State>) : BaseArticleReposit
         apiService.loadSystemTab()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(BaseObserver(liveData, loadState, this))
+            .subscribe(
+                BaseObserver(
+                    liveData,
+                    loadState,
+                    this
+                )
+            )
     }
 
     fun loadSystemArticle(pageNum : Int, cid : Int?, liveData: MutableLiveData<BaseResponse<SystemArticleResponse>>) {
         apiService.loadSystemArticles(pageNum, cid)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(BaseObserver(liveData, loadState, this))
+            .subscribe(
+                BaseObserver(
+                    liveData,
+                    loadState,
+                    this
+                )
+            )
     }
 }

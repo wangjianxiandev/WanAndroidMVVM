@@ -2,8 +2,8 @@ package com.wjx.android.wanandroidmvvm.ui.home.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
-import com.wjx.android.wanandroidmvvm.base.BaseArticle.viewmodel.BaseArticleViewModel
+import com.wjx.android.wanandroidmvvm.base.basearticle.data.Article
+import com.wjx.android.wanandroidmvvm.base.basearticle.viewmodel.BaseArticleViewModel
 import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
 import com.wjx.android.wanandroidmvvm.ui.home.data.BannerResponse
 import com.wjx.android.wanandroidmvvm.ui.home.data.HomeArticleResponse

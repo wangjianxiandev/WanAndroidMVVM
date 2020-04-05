@@ -1,4 +1,4 @@
-package com.wjx.android.wanandroidmvvm.base.BaseArticle.data
+package com.wjx.android.wanandroidmvvm.base.basearticle.data
 
 /**
  * Created with Android Studio.

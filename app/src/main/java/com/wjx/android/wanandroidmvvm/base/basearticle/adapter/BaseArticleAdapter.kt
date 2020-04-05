@@ -1,4 +1,4 @@
-package com.wjx.android.wanandroidmvvm.base.BaseArticle
+package com.wjx.android.wanandroidmvvm.base.basearticle.adapter
 
 import android.os.Build
 import android.text.Html
@@ -6,7 +6,7 @@ import androidx.annotation.RequiresApi
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
+import com.wjx.android.wanandroidmvvm.base.basearticle.data.Article
 import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import kotlinx.android.synthetic.main.article_item.view.*
 

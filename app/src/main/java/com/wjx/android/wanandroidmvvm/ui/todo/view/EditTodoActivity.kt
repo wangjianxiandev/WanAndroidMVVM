@@ -12,7 +12,7 @@ import android.widget.DatePicker
 import android.widget.TextView
 import android.widget.Toast
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
+import com.wjx.android.wanandroidmvvm.base.view.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.base.utils.*
 import com.wjx.android.wanandroidmvvm.ui.todo.viewmodel.TodoViewModel
 import kotlinx.android.synthetic.main.activity_edit_todo.*

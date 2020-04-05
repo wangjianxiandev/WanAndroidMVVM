@@ -1,4 +1,4 @@
-package com.wjx.android.wanandroidmvvm.base
+package com.wjx.android.wanandroidmvvm.base.view
 
 import android.graphics.Color
 import android.os.Build

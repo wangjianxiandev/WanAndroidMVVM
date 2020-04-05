@@ -2,7 +2,7 @@ package com.wjx.android.wanandroidmvvm.ui.setting
 
 import android.view.View
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.BaseActivity
+import com.wjx.android.wanandroidmvvm.base.view.BaseActivity
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import kotlinx.android.synthetic.main.activity_setting.*

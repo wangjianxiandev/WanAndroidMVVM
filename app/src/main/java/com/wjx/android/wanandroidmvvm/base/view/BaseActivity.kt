@@ -1,4 +1,4 @@
-package com.wjx.android.wanandroidmvvm.base
+package com.wjx.android.wanandroidmvvm.base.view
 
 import android.content.Context
 import android.graphics.Color
@@ -15,6 +15,7 @@ import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import com.wjx.android.wanandroidmvvm.Custom.graylayout.GrayFrameLayout
 import com.wjx.android.wanandroidmvvm.R
+import com.wjx.android.wanandroidmvvm.base.utils.AppManager
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.base.utils.RevealUtil.circularFinishReveal

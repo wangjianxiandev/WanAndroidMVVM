@@ -3,10 +3,8 @@ package com.wjx.android.wanandroidmvvm.ui.wechat.view
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleListFragment
-import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
+import com.wjx.android.wanandroidmvvm.base.basearticle.view.BaseArticleListFragment
 import com.wjx.android.wanandroidmvvm.ui.wechat.viewmodel.WeChatViewModel
-import org.greenrobot.eventbus.Subscribe
 
 /**
  * Created with Android Studio.

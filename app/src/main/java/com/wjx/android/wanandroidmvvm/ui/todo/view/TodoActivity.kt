@@ -10,7 +10,7 @@ import android.view.ViewGroup.MarginLayoutParams
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
+import com.wjx.android.wanandroidmvvm.base.view.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.base.state.UserInfo
 import com.wjx.android.wanandroidmvvm.base.utils.*
 import com.wjx.android.wanandroidmvvm.ui.todo.adapter.TodoAdapter

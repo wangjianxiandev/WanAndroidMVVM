@@ -1,6 +1,6 @@
 package com.wjx.android.wanandroidmvvm.base.https
 
-import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
+import com.wjx.android.wanandroidmvvm.base.basearticle.data.Article
 import com.wjx.android.wanandroidmvvm.ui.account.data.LoginResponse
 import com.wjx.android.wanandroidmvvm.ui.account.data.RegisterResponse
 import com.wjx.android.wanandroidmvvm.ui.collect.data.CollectResponse

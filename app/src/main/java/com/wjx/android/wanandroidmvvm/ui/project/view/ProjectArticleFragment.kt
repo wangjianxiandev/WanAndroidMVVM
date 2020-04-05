@@ -8,8 +8,8 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
-import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleFragment
+import com.wjx.android.wanandroidmvvm.base.basearticle.data.Article
+import com.wjx.android.wanandroidmvvm.base.view.BaseLifeCycleFragment
 import com.wjx.android.wanandroidmvvm.base.state.UserInfo
 import com.wjx.android.wanandroidmvvm.base.state.callback.CollectListener
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessListener

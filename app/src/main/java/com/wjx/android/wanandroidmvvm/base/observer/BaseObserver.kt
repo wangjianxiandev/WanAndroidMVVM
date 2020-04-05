@@ -1,4 +1,4 @@
-package com.wjx.android.wanandroidmvvm.base
+package com.wjx.android.wanandroidmvvm.base.observer
 
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.Observer

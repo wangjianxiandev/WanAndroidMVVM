@@ -1,9 +1,8 @@
 package com.wjx.android.wanandroidmvvm.ui.search.repository
 
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleRepository
-import com.wjx.android.wanandroidmvvm.base.BaseObserver
+import com.wjx.android.wanandroidmvvm.base.basearticle.respository.BaseArticleRepository
+import com.wjx.android.wanandroidmvvm.base.observer.BaseObserver
 import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
 import com.wjx.android.wanandroidmvvm.base.state.State
 import com.wjx.android.wanandroidmvvm.ui.search.data.HotKeyResponse
@@ -25,14 +24,26 @@ class SearchRepostiory (loadState : MutableLiveData<State>) : BaseArticleReposit
         apiService.loadHotKey()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(BaseObserver(liveData, loadState, this))
+            .subscribe(
+                BaseObserver(
+                    liveData,
+                    loadState,
+                    this
+                )
+            )
     }
 
     fun loadSearchResult(pageNum : Int, key : String, liveData: MutableLiveData<BaseResponse<SearchResultResponse>>) {
         apiService.loadSearchResult(pageNum, key)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(BaseObserver(liveData, loadState, this))
+            .subscribe(
+                BaseObserver(
+                    liveData,
+                    loadState,
+                    this
+                )
+            )
     }
 
     fun loadSearchHistory() : List<SearchHistory> {

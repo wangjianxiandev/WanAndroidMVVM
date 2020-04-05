@@ -1,6 +1,6 @@
 package com.wjx.android.wanandroidmvvm.ui.wechat.data
 
-import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
+import com.wjx.android.wanandroidmvvm.base.basearticle.data.Article
 
 /**
  * Created with Android Studio.

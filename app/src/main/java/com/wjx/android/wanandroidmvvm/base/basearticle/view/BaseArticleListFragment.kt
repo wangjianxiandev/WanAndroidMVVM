@@ -1,12 +1,13 @@
-package com.wjx.android.wanandroidmvvm.base.BaseArticle
+package com.wjx.android.wanandroidmvvm.base.basearticle.view
 
 import android.content.Intent
 import android.graphics.Color
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
-import com.wjx.android.wanandroidmvvm.base.BaseArticle.viewmodel.BaseArticleViewModel
-import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleFragment
+import com.wjx.android.wanandroidmvvm.base.basearticle.data.Article
+import com.wjx.android.wanandroidmvvm.base.basearticle.viewmodel.BaseArticleViewModel
+import com.wjx.android.wanandroidmvvm.base.view.BaseLifeCycleFragment
+import com.wjx.android.wanandroidmvvm.base.basearticle.adapter.BaseArticleAdapter
 import com.wjx.android.wanandroidmvvm.base.state.UserInfo
 import com.wjx.android.wanandroidmvvm.base.state.callback.CollectListener
 import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessListener
@@ -40,7 +41,11 @@ abstract class BaseArticleListFragment<VM : BaseArticleViewModel<*>> : BaseLifeC
         super.initView()
         initRefresh()
         mRvArticle?.layoutManager = SpeedLayoutManager(context, 10f)
-        mAdapter = BaseArticleAdapter(R.layout.article_item, null)
+        mAdapter =
+            BaseArticleAdapter(
+                R.layout.article_item,
+                null
+            )
         mRvArticle?.adapter = mAdapter
 
         mAdapter.setOnItemClickListener { _, _, position ->

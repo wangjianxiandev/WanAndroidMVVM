@@ -4,7 +4,7 @@ import android.graphics.Color
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleFragment
+import com.wjx.android.wanandroidmvvm.base.view.BaseLifeCycleFragment
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.ui.system.adapter.SystemAdapter

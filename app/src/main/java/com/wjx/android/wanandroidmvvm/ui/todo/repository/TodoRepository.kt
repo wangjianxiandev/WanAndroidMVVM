@@ -1,12 +1,10 @@
 package com.wjx.android.wanandroidmvvm.ui.todo.repository
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.liveData
-import com.wjx.android.wanandroidmvvm.base.BaseObserver
+import com.wjx.android.wanandroidmvvm.base.observer.BaseObserver
 import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
 import com.wjx.android.wanandroidmvvm.base.https.EmptyResponse
 import com.wjx.android.wanandroidmvvm.base.repository.ApiRepository
-import com.wjx.android.wanandroidmvvm.base.repository.BaseRepository
 import com.wjx.android.wanandroidmvvm.base.state.State
 import com.wjx.android.wanandroidmvvm.ui.todo.data.TodoPageResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -25,7 +23,13 @@ class TodoRepository(var loadState: MutableLiveData<State>) : ApiRepository() {
         apiService.loadTodoData(pageNum)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(BaseObserver(liveData, loadState, this))
+            .subscribe(
+                BaseObserver(
+                    liveData,
+                    loadState,
+                    this
+                )
+            )
     }
 
     fun addTodo(
@@ -35,14 +39,26 @@ class TodoRepository(var loadState: MutableLiveData<State>) : ApiRepository() {
         apiService.addTodo(title, content, date, type, priority)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(BaseObserver(liveData, loadState, this))
+            .subscribe(
+                BaseObserver(
+                    liveData,
+                    loadState,
+                    this
+                )
+            )
     }
 
     fun finishTodo(id: Int, status: Int, liveData: MutableLiveData<BaseResponse<EmptyResponse>>) {
         apiService.finishTodo(id, status)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(BaseObserver(liveData, loadState, this))
+            .subscribe(
+                BaseObserver(
+                    liveData,
+                    loadState,
+                    this
+                )
+            )
     }
 
     fun updateTodo(
@@ -52,13 +68,25 @@ class TodoRepository(var loadState: MutableLiveData<State>) : ApiRepository() {
         apiService.updateTodo(id, title, content, date, type, priority)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(BaseObserver(liveData, loadState, this))
+            .subscribe(
+                BaseObserver(
+                    liveData,
+                    loadState,
+                    this
+                )
+            )
     }
 
     fun deleteTodo(id: Int, liveData: MutableLiveData<BaseResponse<EmptyResponse>>) {
         apiService.deleteTodo(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(BaseObserver(liveData, loadState, this))
+            .subscribe(
+                BaseObserver(
+                    liveData,
+                    loadState,
+                    this
+                )
+            )
     }
 }
