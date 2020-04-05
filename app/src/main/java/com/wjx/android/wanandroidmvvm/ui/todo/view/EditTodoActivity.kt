@@ -4,7 +4,6 @@ import androidx.lifecycle.Observer
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.app.Dialog
-import android.content.Intent
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -14,9 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
-import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.Constant
-import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.base.utils.*
 import com.wjx.android.wanandroidmvvm.ui.todo.viewmodel.TodoViewModel
 import kotlinx.android.synthetic.main.activity_edit_todo.*
 import kotlinx.android.synthetic.main.custom_bar.view.*
@@ -79,8 +76,8 @@ class EditTodoActivity : BaseLifeCycleActivity<TodoViewModel>(), View.OnClickLis
     }
 
     private fun initColor() {
-        todo_bar.setBackgroundColor(Util.getColor(this))
-        edit_todo_submit.setBackgroundColor(Util.getColor(this))
+        todo_bar.setBackgroundColor(ColorUtil.getColor(this))
+        edit_todo_submit.setBackgroundColor(ColorUtil.getColor(this))
     }
 
     private fun initContentView() {
@@ -123,8 +120,8 @@ class EditTodoActivity : BaseLifeCycleActivity<TodoViewModel>(), View.OnClickLis
                 bottomDialog.setContentView(contentView)
                 val params = contentView.layoutParams as MarginLayoutParams
                 params.width =
-                    resources.displayMetrics.widthPixels - Util.dp2Px(this, 16)
-                params.bottomMargin = Util.dp2Px(this, 8)
+                    resources.displayMetrics.widthPixels - DisplayUtil.dp2Px(this, 16)
+                params.bottomMargin = DisplayUtil.dp2Px(this, 8)
                 contentView.layoutParams = params
                 bottomDialog.window!!.setGravity(Gravity.BOTTOM)
                 bottomDialog.window!!.setWindowAnimations(R.style.BottomDialog_Animation)
@@ -153,8 +150,8 @@ class EditTodoActivity : BaseLifeCycleActivity<TodoViewModel>(), View.OnClickLis
                 bottomDialog.setContentView(contentView)
                 val params = contentView.layoutParams as MarginLayoutParams
                 params.width =
-                    resources.displayMetrics.widthPixels - Util.dp2Px(this, 16)
-                params.bottomMargin = Util.dp2Px(this, 8)
+                    resources.displayMetrics.widthPixels - DisplayUtil.dp2Px(this, 16)
+                params.bottomMargin = DisplayUtil.dp2Px(this, 8)
                 contentView.layoutParams = params
                 bottomDialog.window!!.setGravity(Gravity.BOTTOM)
                 bottomDialog.window!!.setWindowAnimations(R.style.BottomDialog_Animation)

@@ -6,6 +6,7 @@ import android.graphics.Paint
 import android.graphics.Path
 import android.util.AttributeSet
 import android.view.View
+import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.base.utils.Util
 
 /**
@@ -42,18 +43,18 @@ class ShapeView(context: Context?, attrs: AttributeSet? = null) :
                 // 取屏幕中心位置
                 var center: Float = (height / 2).toFloat()
                 // 设置画笔颜色为主题颜色
-                mPaint.setColor(Util.getColor(context))
+                mPaint.setColor(ColorUtil.getColor(context))
                 // 在布局中心绘制
                 canvas!!.drawCircle(center, center, center, mPaint)
             }
 
             Shapes.Square -> {
-                mPaint.setColor(Util.getColor(context))
+                mPaint.setColor(ColorUtil.getColor(context))
                 canvas!!.drawRect(0.0f, 0.0f, width.toFloat(), height.toFloat(), mPaint)
             }
 
             Shapes.Triangle -> {
-                mPaint.setColor(Util.getColor(context))
+                mPaint.setColor(ColorUtil.getColor(context))
                 var path = Path()
                 var dy = (Math.sqrt(3.0) * height / 2).toInt()
                 var offsetY = (height - dy) / 2

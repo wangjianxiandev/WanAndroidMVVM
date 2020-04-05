@@ -7,7 +7,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
-import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import kotlinx.android.synthetic.main.article_item.view.*
 
 /**
@@ -22,8 +22,8 @@ open class BaseArticleAdapter (layoutId : Int, listData : MutableList<Article>?)
     override fun convert(viewHolder: BaseViewHolder, article: Article?) {
         viewHolder?.let {
             holder ->
-            holder.itemView.article_material_card.rippleColor = Util.getOneColorStateList(mContext)
-            holder.itemView.article_material_card.strokeColor = Util.getColor(mContext)
+            holder.itemView.article_material_card.rippleColor = ColorUtil.getOneColorStateList(mContext)
+            holder.itemView.article_material_card.strokeColor = ColorUtil.getColor(mContext)
             article?.let {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     holder.setText(R.id.item_home_author, handleAuthor(it))

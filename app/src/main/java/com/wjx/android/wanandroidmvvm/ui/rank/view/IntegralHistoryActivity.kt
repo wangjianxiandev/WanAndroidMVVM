@@ -3,7 +3,6 @@ package com.wjx.android.wanandroidmvvm.ui.rank.view
 import android.animation.ValueAnimator
 import android.content.Intent
 import android.graphics.Color
-
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import androidx.lifecycle.Observer
@@ -11,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import com.wjx.android.wanandroidmvvm.ui.rank.adapter.IntegralHistoryAdapter
 import com.wjx.android.wanandroidmvvm.ui.rank.data.IntegralHistoryResponse
@@ -77,12 +76,12 @@ class IntegralHistoryActivity : BaseLifeCycleActivity<RankViewModel>() {
     }
 
     private fun initColor() {
-        headerView.integral_bar.setBackgroundColor(Util.getColor(this))
+        headerView.integral_bar.setBackgroundColor(ColorUtil.getColor(this))
     }
 
     private fun initRefresh() {
         // 设置下拉刷新的loading颜色
-        mSrlRefresh.setProgressBackgroundColorSchemeColor(Util.getColor(this))
+        mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(this))
         mSrlRefresh.setColorSchemeColors(Color.WHITE)
         mSrlRefresh.setOnRefreshListener { onRefreshData() }
     }
@@ -136,6 +135,6 @@ class IntegralHistoryActivity : BaseLifeCycleActivity<RankViewModel>() {
     @Subscribe
     fun settingEvent(event: ChangeThemeEvent) {
         initColor()
-        mSrlRefresh.setProgressBackgroundColorSchemeColor(Util.getColor(this))
+        mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(this))
     }
 }

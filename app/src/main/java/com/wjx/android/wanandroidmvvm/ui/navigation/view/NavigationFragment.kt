@@ -8,14 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleFragment
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.ui.navigation.adapter.NavigationLabelAdapter
 import com.wjx.android.wanandroidmvvm.ui.navigation.adapter.NavigationTabAdapter
 import com.wjx.android.wanandroidmvvm.ui.navigation.data.NavigationTabNameResponse
 import com.wjx.android.wanandroidmvvm.ui.navigation.viewmodel.NavigationViewModel
-import kotlinx.android.synthetic.main.activity_search.*
-import kotlinx.android.synthetic.main.fragment_article_list.*
-import kotlinx.android.synthetic.main.fragment_article_list.mSrlRefresh
 import kotlinx.android.synthetic.main.layout_navigation.*
 import org.greenrobot.eventbus.Subscribe
 
@@ -99,7 +96,7 @@ class NavigationFragment : BaseLifeCycleFragment<NavigationViewModel>() {
 
     private fun initRefresh() {
         // 设置下拉刷新的loading颜色
-        nav_refresh.setProgressBackgroundColorSchemeColor(Util.getColor(activity!!))
+        nav_refresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(activity!!))
         nav_refresh.setColorSchemeColors(Color.WHITE)
         nav_refresh.setOnRefreshListener { onRefreshData() }
     }
@@ -134,7 +131,7 @@ class NavigationFragment : BaseLifeCycleFragment<NavigationViewModel>() {
 
     @Subscribe
     fun settingEvent(event: ChangeThemeEvent) {
-        nav_refresh.setProgressBackgroundColorSchemeColor(Util.getColor(activity!!))
+        nav_refresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(activity!!))
         mNavigationTabAdapter.notifyDataSetChanged()
         mNavigationLabelAdapter.notifyDataSetChanged()
     }

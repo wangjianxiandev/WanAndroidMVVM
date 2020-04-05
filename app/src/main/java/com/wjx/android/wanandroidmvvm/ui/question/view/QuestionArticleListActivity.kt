@@ -5,11 +5,9 @@ import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleListActivity
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.ui.question.viewModel.QuestionViewModel
-import kotlinx.android.synthetic.main.custom_bar.*
 import kotlinx.android.synthetic.main.custom_bar.view.*
-import kotlinx.android.synthetic.main.custom_bar.view.custom_bar
 import org.greenrobot.eventbus.Subscribe
 
 class QuestionArticleListActivity : BaseArticleListActivity<QuestionViewModel>() {
@@ -57,7 +55,7 @@ class QuestionArticleListActivity : BaseArticleListActivity<QuestionViewModel>()
     }
 
     private fun initColor() {
-        headerView.setBackgroundColor(Util.getColor(this))
+        headerView.setBackgroundColor(ColorUtil.getColor(this))
     }
 
     override fun showDestroyReveal(): Boolean = true

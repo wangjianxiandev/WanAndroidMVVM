@@ -1,7 +1,12 @@
 package com.wjx.android.wanandroidmvvm.base.utils
 
+import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.Color
+import androidx.core.content.ContextCompat
+import com.wjx.android.wanandroidmvvm.R
 import java.util.*
+import kotlin.jvm.internal.Intrinsics
 
 /**
  * Created with Android Studio.
@@ -58,13 +63,128 @@ object ColorUtil {
      * 获取随机rgb颜色值
      */
     fun randomColor(): Int {
-        Random().run {
-            //0-190, 如果颜色值过大,就越接近白色,就看不清了,所以需要限定范围
-            val red = nextInt(190)
-            val green = nextInt(190)
-            val blue = nextInt(190)
-            //使用rgb混合生成一种新的颜色,Color.rgb生成的是一个int数
-            return Color.rgb(red, green, blue)
+        val random = Random()
+        //0-190, 如果颜色值过大,就越接近白色,就看不清了,所以需要限定范围
+        val red = random.nextInt(150)
+        //0-190
+        val green = random.nextInt(150)
+        //0-190
+        val blue = random.nextInt(150)
+        //使用rgb混合生成一种新的颜色,Color.rgb生成的是一个int数
+        return Color.rgb(red, green, blue)
+    }
+
+    /**
+     * 从右下到左上计算渐变颜色值 ARGB
+     *
+     * @param fraction
+     * 变化比率 0~1
+     * @param startValue
+     * 初始色值
+     * @param endValue
+     * 结束色值
+     * @return
+     */
+    fun calculateGradient(fraction: Float, startValue: Any, endValue: Int): Int {
+        val startInt = startValue as Int
+        val startA = startInt shr 24 and 0xff
+        val startR = startInt shr 16 and 0xff
+        val startG = startInt shr 8 and 0xff
+        val startB = startInt and 0xff
+        val endInt = endValue
+        val endA = endInt shr 24 and 0xff
+        val endR = endInt shr 16 and 0xff
+        val endG = endInt shr 8 and 0xff
+        val endB = endInt and 0xff
+        return ((startA + (fraction * (endA - startA)).toInt() shl 24)
+                or (startR + (fraction * (endR - startR)).toInt() shl 16)
+                or (startG + (fraction * (endG - startG)).toInt() shl 8)
+                or (startB + (fraction * (endB - startB)).toInt()))
+    }
+
+    /**
+     * 获取主题颜色
+     *
+     * @param context
+     * @return
+     */
+    fun getColor(context: Context): Int {
+        val defaultColor = ContextCompat.getColor(context!!, R.color.colorPrimaryDark)
+        val color = SPreference.preference.getInt("color", defaultColor)
+        return if (color != 0 && Color.alpha(color) != 255) {
+            defaultColor
+        } else {
+            color
         }
     }
+
+    /**
+     * 设置主题颜色
+     *
+     * @param context
+     * @param color
+     */
+    fun setColor(color: Int) {
+        SPreference.preference.edit().putInt("color", color).apply()
+    }
+
+    /**
+     * BottomNavigation 适配颜色
+     *
+     * @param context
+     * @return
+     */
+    fun getColorStateList(context: Context): ColorStateList {
+        Intrinsics.checkParameterIsNotNull(context, "context")
+        val colors = intArrayOf(getColor(context),
+            ContextCompat.getColor(context!!, R.color.colorGray)
+        )
+        val states = arrayOf(
+            intArrayOf(
+                android.R.attr.state_checked,
+                android.R.attr.state_checked
+            ), IntArray(0)
+        )
+        return ColorStateList(states, colors)
+    }
+
+    /**
+     * Float button 适配颜色
+     *
+     * @param context
+     * @return
+     */
+    fun getOneColorStateList(context: Context): ColorStateList {
+        Intrinsics.checkParameterIsNotNull(context, "context")
+        val colors =
+            intArrayOf(getColor(context))
+        val states = arrayOf(IntArray(0))
+        return ColorStateList(states, colors)
+    }
+
+    /**
+     * 设置切换夜间模式之前的主题颜色
+     * @param color
+     */
+    fun setLastColor(color: Int) {
+        SPreference.preference.edit().putInt("lastColor", color).apply()
+    }
+
+    /**
+     * 获取切换夜间模式之前的主题色
+     *
+     * @param context
+     * @return
+     */
+    fun getLastColor(context: Context): Int {
+        val defaultColor = ContextCompat.getColor(context, R.color.colorPrimary)
+        val color = SPreference.preference.getInt("lastColor", defaultColor)
+        return if (color != 0 && Color.alpha(color) != 255) {
+            defaultColor
+        } else {
+            color
+        }
+    }
+
+
 }

@@ -10,8 +10,8 @@ import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.base.state.UserInfo
 import com.wjx.android.wanandroidmvvm.base.state.callback.CollectListener
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
+import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.base.utils.SpeedLayoutManager
-import com.wjx.android.wanandroidmvvm.base.utils.Util
 import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import kotlinx.android.synthetic.main.fragment_article_list.*
 import org.greenrobot.eventbus.Subscribe
@@ -61,7 +61,7 @@ abstract class BaseArticleListActivity <VM : BaseArticleViewModel<*>> : BaseLife
 
     private fun initRefresh() {
         // 设置下拉刷新的loading颜色
-            mSrlRefresh.setProgressBackgroundColorSchemeColor(Util.getColor(this))
+            mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(this))
             mSrlRefresh.setColorSchemeColors(Color.WHITE)
         mSrlRefresh.setOnRefreshListener { onRefreshData() }
     }
@@ -125,7 +125,7 @@ abstract class BaseArticleListActivity <VM : BaseArticleViewModel<*>> : BaseLife
 
     @Subscribe
     open fun settingEvent(event: ChangeThemeEvent) {
-        mSrlRefresh.setProgressBackgroundColorSchemeColor(Util.getColor(this))
+        mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(this))
         mAdapter.notifyDataSetChanged()
     }
 }

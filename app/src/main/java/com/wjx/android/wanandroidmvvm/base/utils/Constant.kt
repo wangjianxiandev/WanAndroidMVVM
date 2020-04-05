@@ -33,9 +33,6 @@ object Constant {
     const val SUCCESS = 0
     const val NOT_LOGIN = -1001
 
-    const val TODO = 0
-    const val ALL = 0
-
     const val ADD_TODO = 1.toString() + ""
 
     const val EDIT_TODO = 2.toString() + ""
@@ -58,6 +55,4 @@ object Constant {
     const val KEY_TODO_TYPE = "todo_type"
 
     const val KEY_TODO_HANDLE_TYPE = "todo_handle"
-
-    const val PAINT_STYLE_STROKE_FULL = 1
 }

@@ -4,7 +4,7 @@ import android.os.Build
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.ui.rank.data.IntegralResponse
 import kotlinx.android.synthetic.main.rank_item.view.*
 
@@ -20,8 +20,8 @@ class RankAdapter(layoutId: Int, listData: MutableList<IntegralResponse>?) :
     override fun convert(viewHolder: BaseViewHolder, integralResponse: IntegralResponse?) {
         viewHolder?.let {
                 holder ->
-            holder.itemView.rank_material_card.rippleColor = Util.getOneColorStateList(mContext)
-            holder.itemView.rank_material_card.strokeColor = Util.getColor(mContext)
+            holder.itemView.rank_material_card.rippleColor = ColorUtil.getOneColorStateList(mContext)
+            holder.itemView.rank_material_card.strokeColor = ColorUtil.getColor(mContext)
             integralResponse?.let {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     holder.setText(R.id.integral_level, "等级：" + integralResponse.level)

@@ -5,10 +5,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
-import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.Constant
-import com.wjx.android.wanandroidmvvm.base.utils.SPreference
-import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.base.utils.*
 import com.wjx.android.wanandroidmvvm.ui.collect.viewmodel.CollectViewModel
 import kotlinx.android.synthetic.main.activity_add_collect.*
 import kotlinx.android.synthetic.main.custom_bar.view.*
@@ -33,8 +30,8 @@ class AddCollectActivity : BaseLifeCycleActivity<CollectViewModel>(), View.OnCli
     }
 
     private fun initColor() {
-        add_collect_bar.setBackgroundColor(Util.getColor(this))
-        edit_collect_submit.setBackgroundColor(Util.getColor(this))
+        add_collect_bar.setBackgroundColor(ColorUtil.getColor(this))
+        edit_collect_submit.setBackgroundColor(ColorUtil.getColor(this))
     }
 
     override fun initDataObserver() {

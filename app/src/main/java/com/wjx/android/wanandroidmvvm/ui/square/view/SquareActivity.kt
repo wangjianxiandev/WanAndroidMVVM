@@ -6,11 +6,9 @@ import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleListActivity
 import com.wjx.android.wanandroidmvvm.base.state.UserInfo
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.ui.square.viewmodel.SquareViewModel
-import kotlinx.android.synthetic.main.custom_bar.*
 import kotlinx.android.synthetic.main.custom_bar.view.*
-import kotlinx.android.synthetic.main.custom_bar.view.custom_bar
 import org.greenrobot.eventbus.Subscribe
 
 class SquareActivity : BaseArticleListActivity<SquareViewModel>() {
@@ -59,7 +57,7 @@ class SquareActivity : BaseArticleListActivity<SquareViewModel>() {
     }
 
     private fun initColor() {
-        headerView.setBackgroundColor(Util.getColor(this))
+        headerView.setBackgroundColor(ColorUtil.getColor(this))
     }
 
     override fun onBackPressed() = finish()

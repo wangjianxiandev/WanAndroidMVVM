@@ -4,7 +4,7 @@ import android.view.View
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseActivity
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import kotlinx.android.synthetic.main.activity_setting.*
 import kotlinx.android.synthetic.main.custom_bar.view.*
 import org.greenrobot.eventbus.Subscribe
@@ -34,7 +34,7 @@ class SettingActivity : BaseActivity(), View.OnClickListener{
     }
 
     private fun initColor() {
-        setting_bar.setBackgroundColor(Util.getColor(this))
+        setting_bar.setBackgroundColor(ColorUtil.getColor(this))
     }
 
     override fun onClick(v: View?) {

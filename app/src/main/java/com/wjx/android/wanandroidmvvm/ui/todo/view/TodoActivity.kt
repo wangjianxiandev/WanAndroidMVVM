@@ -12,9 +12,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.base.state.UserInfo
-import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.Constant
-import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.base.utils.*
 import com.wjx.android.wanandroidmvvm.ui.todo.adapter.TodoAdapter
 import com.wjx.android.wanandroidmvvm.ui.todo.data.TodoResponse
 import com.wjx.android.wanandroidmvvm.ui.todo.viewmodel.TodoViewModel
@@ -79,8 +77,8 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
             bottomDialog.setContentView(contentView)
             val params = contentView.layoutParams as MarginLayoutParams
             params.width =
-                getResources().getDisplayMetrics().widthPixels - Util.dp2Px(this, 16)
-            params.bottomMargin = Util.dp2Px(this, 8)
+                getResources().getDisplayMetrics().widthPixels - DisplayUtil.dp2Px(this, 16)
+            params.bottomMargin = DisplayUtil.dp2Px(this, 8)
             contentView.layoutParams = params
             bottomDialog.window!!.setGravity(Gravity.BOTTOM)
             bottomDialog.window!!.setWindowAnimations(R.style.BottomDialog_Animation)
@@ -139,12 +137,12 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
     }
 
     private fun initColor() {
-        headerView.setBackgroundColor(Util.getColor(this))
+        headerView.setBackgroundColor(ColorUtil.getColor(this))
     }
 
     private fun initRefresh() {
         // 设置下拉刷新的loading颜色
-        todo_refresh.setProgressBackgroundColorSchemeColor(Util.getColor(this))
+        todo_refresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(this))
         todo_refresh.setColorSchemeColors(Color.WHITE)
         todo_refresh.setOnRefreshListener {
             onRefreshData()
@@ -192,7 +190,7 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
 
     @Subscribe
     fun settingEvent(event: ChangeThemeEvent) {
-        todo_refresh.setProgressBackgroundColorSchemeColor(Util.getColor(this))
+        todo_refresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(this))
         initColor()
     }
 }

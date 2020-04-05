@@ -94,12 +94,12 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
     }
 
     private fun initColor() {
-        toolbar.setBackgroundColor(Util.getColor(this))
-        headView.setBackgroundColor(Util.getColor(this))
-        bottom_navigation.setItemIconTintList(Util.getColorStateList(this))
-        bottom_navigation.setItemTextColor(Util.getColorStateList(this))
+        toolbar.setBackgroundColor(ColorUtil.getColor(this))
+        headView.setBackgroundColor(ColorUtil.getColor(this))
+        bottom_navigation.setItemIconTintList(ColorUtil.getColorStateList(this))
+        bottom_navigation.setItemTextColor(ColorUtil.getColorStateList(this))
         bottom_navigation.setBackgroundColor(ContextCompat.getColor(this, R.color.white_bg))
-        fab_add.setBackgroundTintList(Util.getOneColorStateList(this))
+        fab_add.setBackgroundTintList(ColorUtil.getOneColorStateList(this))
     }
 
     private fun initDrawerLayout() {
@@ -143,10 +143,10 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
                             cornerRadius(16.0f)
                             colorChooser(
                                 ColorUtil.ACCENT_COLORS,
-                                initialSelection = Util.getColor(this@MainActivity),
+                                initialSelection = ColorUtil.getColor(this@MainActivity),
                                 subColors = ColorUtil.PRIMARY_COLORS_SUB
                             ) { dialog, color ->
-                                Util.setColor(color)
+                                ColorUtil.setColor(color)
                                 ChangeThemeEvent().post()
                             }
                             positiveButton(R.string.done)

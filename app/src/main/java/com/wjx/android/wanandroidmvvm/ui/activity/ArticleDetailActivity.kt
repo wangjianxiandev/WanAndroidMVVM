@@ -9,7 +9,7 @@ import com.just.agentweb.AgentWeb
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseActivity
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import kotlinx.android.synthetic.main.activity_article_detail.*
 import kotlinx.android.synthetic.main.custom_bar.*
 import org.greenrobot.eventbus.Subscribe
@@ -21,7 +21,7 @@ class ArticleDetailActivity : BaseActivity() {
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun initView() {
-        custom_bar.setBackgroundColor(Util.getColor(this))
+        custom_bar.setBackgroundColor(ColorUtil.getColor(this))
         detail_back.visibility = View.VISIBLE
         detail_back.setOnClickListener{finish()}
         detail_search.visibility = View.GONE
@@ -43,6 +43,6 @@ class ArticleDetailActivity : BaseActivity() {
 
     @Subscribe
     fun changeEvent(event: ChangeThemeEvent) {
-        custom_bar.setBackgroundColor(Util.getColor(this))
+        custom_bar.setBackgroundColor(ColorUtil.getColor(this))
     }
 }

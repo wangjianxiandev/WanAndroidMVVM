@@ -5,7 +5,8 @@ import android.graphics.drawable.GradientDrawable
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.base.utils.DateUtil
 import com.wjx.android.wanandroidmvvm.ui.todo.data.TodoResponse
 import kotlinx.android.synthetic.main.todo_item.view.*
 
@@ -31,7 +32,7 @@ class TodoAdapter(layoutId: Int, listData: MutableList<TodoResponse>?) :
                 val gradientDrawable = GradientDrawable(
                     GradientDrawable.Orientation.BR_TL,
                     intArrayOf(
-                        Util.evaluate(0.5f, Util.randomColor(), Color.WHITE),
+                        ColorUtil.calculateGradient(0.5f, ColorUtil.randomColor(), Color.WHITE),
                         Color.WHITE
                     )
                 )
@@ -41,7 +42,7 @@ class TodoAdapter(layoutId: Int, listData: MutableList<TodoResponse>?) :
                     holder.setVisible(R.id.item_todo_status, true)
                     holder.setImageResource(R.id.item_todo_status, R.drawable.todo_done)
                 } else {
-                    if (it.date < Util.getNowTime()!!.getTime()) {
+                    if (it.date < DateUtil.getNowTime()!!.getTime()) {
                         holder.setVisible(R.id.item_todo_status, true)
                         holder.setImageResource(R.id.item_todo_status, R.drawable.todo_not_done)
                     } else {

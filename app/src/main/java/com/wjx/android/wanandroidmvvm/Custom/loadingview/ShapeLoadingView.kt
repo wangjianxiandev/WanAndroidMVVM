@@ -1,7 +1,6 @@
 package com.wjx.android.wanandroidmvvm.Custom.loadingview
 
 import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Context
@@ -11,8 +10,7 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.widget.LinearLayout
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.utils.Util
-
+import com.wjx.android.wanandroidmvvm.base.utils.DisplayUtil
 
 /**
  * Created with Android Studio.
@@ -32,7 +30,7 @@ class ShapeLoadingView(context: Context?, attrs: AttributeSet? = null) :
 
     init {
         // 设置下落距离
-        mDropDistance = Util.dp2Px(context!!.applicationContext, 100)
+        mDropDistance = DisplayUtil.dp2Px(context!!.applicationContext, 100)
         initLoadingView()
     }
 

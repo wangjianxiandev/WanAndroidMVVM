@@ -73,10 +73,10 @@ class SettingFragment : PreferenceFragmentCompat(),
                 if (nightModeChanged) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
             )
             if (nightModeChanged) {
-                Util.setLastColor(Util.getColor(parentActivity))
-                Util.setColor(ContextCompat.getColor(parentActivity, R.color.colorGray666))
+                ColorUtil.setLastColor(ColorUtil.getColor(parentActivity))
+                ColorUtil.setColor(ContextCompat.getColor(parentActivity, R.color.colorGray666))
             } else {
-                Util.setColor(Util.getLastColor(parentActivity))
+                ColorUtil.setColor(ColorUtil.getLastColor(parentActivity))
             }
 //            RecreateEvent().post()
             true

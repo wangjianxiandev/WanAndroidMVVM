@@ -12,8 +12,8 @@ import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleListActivity
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.Util
-import com.wjx.android.wanandroidmvvm.base.utils.Util.hideKeyboard
+import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.base.utils.KeyBoardUtil.hideKeyboard
 import com.wjx.android.wanandroidmvvm.ui.search.adapter.SearchHistoryAdapter
 import com.wjx.android.wanandroidmvvm.ui.search.data.HotKeyResponse
 import com.wjx.android.wanandroidmvvm.ui.search.viewmodel.SearchViewModel
@@ -21,7 +21,6 @@ import com.zhy.view.flowlayout.FlowLayout
 import com.zhy.view.flowlayout.TagAdapter
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.activity_search.mSrlRefresh
-import kotlinx.android.synthetic.main.custom_bar.*
 import kotlinx.android.synthetic.main.custom_search.*
 import kotlinx.android.synthetic.main.custom_search.view.*
 import kotlinx.android.synthetic.main.history_foot.view.*
@@ -54,7 +53,7 @@ class SearchActivity : BaseArticleListActivity<SearchViewModel>() {
     }
 
     private fun initColor() {
-        search_bar.setBackgroundColor(Util.getColor(this))
+        search_bar.setBackgroundColor(ColorUtil.getColor(this))
     }
 
     override fun onBackPressed() {
@@ -214,7 +213,7 @@ class SearchActivity : BaseArticleListActivity<SearchViewModel>() {
                     .inflate(R.layout.flow_layout, parent, false) as TextView
                 tagText.setText(tags[position])
                 tagText.background
-                    .setColorFilter(Util.randomColor(), PorterDuff.Mode.SRC_ATOP)
+                    .setColorFilter(ColorUtil.randomColor(), PorterDuff.Mode.SRC_ATOP)
                 tagText.setTextColor(getColor(R.color.white))
                 return tagText
             }

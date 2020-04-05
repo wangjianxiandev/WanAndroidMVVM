@@ -13,7 +13,7 @@ import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import java.util.*
@@ -64,7 +64,7 @@ abstract class BaseFragment : Fragment() {
 
     private fun initStatusColor(color: Int) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            activity!!.window.statusBarColor = if (color == 0) Util.getColor(activity!!) else color
+            activity!!.window.statusBarColor = if (color == 0) ColorUtil.getColor(activity!!) else color
         }
         if (ColorUtils.calculateLuminance(Color.TRANSPARENT) >= 0.5) {
             // 设置状态栏中字体的颜色为黑色

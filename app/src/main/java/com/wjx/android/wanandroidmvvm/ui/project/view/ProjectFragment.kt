@@ -1,16 +1,11 @@
 package com.wjx.android.wanandroidmvvm.ui.project.view
 
-import android.graphics.Color
-import android.os.Build
-import android.view.View
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.ColorUtils
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleFragment
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.ui.project.adapter.ProjectTabAdapter
 import com.wjx.android.wanandroidmvvm.ui.project.data.ProjectTabResponse
 import com.wjx.android.wanandroidmvvm.ui.project.viewmodel.ProjectViewModel
@@ -39,8 +34,8 @@ class ProjectFragment : BaseLifeCycleFragment<ProjectViewModel>() {
     }
 
     private fun initColor() {
-        project_tab.dividerColor = Util.getColor(activity!!)
-        project_tab.indicatorColor = Util.getColor(activity!!)
+        project_tab.dividerColor = ColorUtil.getColor(activity!!)
+        project_tab.indicatorColor = ColorUtil.getColor(activity!!)
     }
 
     override fun initData() {

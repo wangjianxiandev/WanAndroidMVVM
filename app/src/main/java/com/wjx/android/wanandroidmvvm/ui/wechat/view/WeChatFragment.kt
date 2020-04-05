@@ -6,7 +6,7 @@ import com.wjx.android.wanandroidmvvm.R
 
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleFragment
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.ui.wechat.adapter.WeChatTabAdapter
 import com.wjx.android.wanandroidmvvm.ui.wechat.data.WeChatTabNameResponse
 import com.wjx.android.wanandroidmvvm.ui.wechat.viewmodel.WeChatViewModel
@@ -36,8 +36,8 @@ class WeChatFragment : BaseLifeCycleFragment<WeChatViewModel>() {
     }
 
     private fun initColor() {
-        wechat_tab.dividerColor = Util.getColor(activity!!)
-        wechat_tab.indicatorColor = Util.getColor(activity!!)
+        wechat_tab.dividerColor = ColorUtil.getColor(activity!!)
+        wechat_tab.indicatorColor = ColorUtil.getColor(activity!!)
     }
 
     override fun initData() {

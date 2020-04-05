@@ -6,7 +6,7 @@ import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.base.state.UserInfo
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.ui.account.viewmodel.AccountViewModel
 import kotlinx.android.synthetic.main.activity_login.*
 import org.greenrobot.eventbus.Subscribe
@@ -25,8 +25,8 @@ class LoginActivity : BaseLifeCycleActivity<AccountViewModel>(), View.OnClickLis
     }
 
     private fun initColor() {
-        login_background.setBackgroundColor(Util.getColor(this))
-        button_login.setTextColor(Util.getColor(this))
+        login_background.setBackgroundColor(ColorUtil.getColor(this))
+        button_login.setTextColor(ColorUtil.getColor(this))
     }
 
     override fun initDataObserver() {

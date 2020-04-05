@@ -6,19 +6,14 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleListActivity
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.data.Article
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
-import com.wjx.android.wanandroidmvvm.base.state.UserInfo
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.SpeedLayoutManager
-import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import com.wjx.android.wanandroidmvvm.ui.meshare.adapter.MeShareAdapter
 import com.wjx.android.wanandroidmvvm.ui.meshare.viewmodel.MeShareViewModel
-import kotlinx.android.synthetic.main.custom_bar.*
 import kotlinx.android.synthetic.main.custom_bar.view.*
-import kotlinx.android.synthetic.main.custom_bar.view.custom_bar
 import kotlinx.android.synthetic.main.fragment_article_list.*
 import org.greenrobot.eventbus.Subscribe
 
@@ -90,12 +85,12 @@ class MeShareActivity : BaseLifeCycleActivity<MeShareViewModel>() {
     }
 
     private fun initColor() {
-        headerView.setBackgroundColor(Util.getColor(this))
+        headerView.setBackgroundColor(ColorUtil.getColor(this))
     }
 
     private fun initRefresh() {
         // 设置下拉刷新的loading颜色
-        mSrlRefresh.setProgressBackgroundColorSchemeColor(Util.getColor(this))
+        mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(this))
         mSrlRefresh.setColorSchemeColors(Color.WHITE)
         mSrlRefresh.setOnRefreshListener { onRefreshData() }
     }
@@ -128,6 +123,6 @@ class MeShareActivity : BaseLifeCycleActivity<MeShareViewModel>() {
     @Subscribe
     fun settingEvent(event: ChangeThemeEvent) {
         initColor()
-        mSrlRefresh.setProgressBackgroundColorSchemeColor(Util.getColor(this))
+        mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(this))
     }
 }

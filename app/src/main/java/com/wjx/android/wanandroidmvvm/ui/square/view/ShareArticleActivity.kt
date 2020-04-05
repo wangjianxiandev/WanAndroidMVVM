@@ -6,7 +6,7 @@ import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.ui.square.viewmodel.SquareViewModel
 import kotlinx.android.synthetic.main.activity_share_article.*
 import kotlinx.android.synthetic.main.custom_bar.view.*
@@ -30,8 +30,8 @@ class ShareArticleActivity : BaseLifeCycleActivity<SquareViewModel>(), View.OnCl
     }
 
     private fun initColor() {
-        share_bar.setBackgroundColor(Util.getColor(this))
-        edit_share_submit.setBackgroundColor(Util.getColor(this))
+        share_bar.setBackgroundColor(ColorUtil.getColor(this))
+        edit_share_submit.setBackgroundColor(ColorUtil.getColor(this))
     }
 
     override fun initDataObserver() {

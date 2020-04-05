@@ -6,7 +6,7 @@ import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseArticle.BaseArticleListActivity
 import com.wjx.android.wanandroidmvvm.base.state.UserInfo
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.ui.system.viewmodel.SystemViewModel
 import kotlinx.android.synthetic.main.custom_bar.view.*
 import org.greenrobot.eventbus.Subscribe
@@ -34,7 +34,7 @@ class SystemArticleListActivity : BaseArticleListActivity<SystemViewModel>() {
         headView.detail_back.visibility = View.VISIBLE
         headView.detail_back.setOnClickListener { finish() }
         headView.detail_search.visibility = View.GONE
-        headView.setBackgroundColor(Util.getColor(this))
+        headView.setBackgroundColor(ColorUtil.getColor(this))
         mAdapter.addHeaderView(headView)
     }
 
@@ -69,6 +69,6 @@ class SystemArticleListActivity : BaseArticleListActivity<SystemViewModel>() {
     @Subscribe
     override fun settingEvent(event: ChangeThemeEvent) {
         super.settingEvent(event)
-        headView.setBackgroundColor(Util.getColor(this))
+        headView.setBackgroundColor(ColorUtil.getColor(this))
     }
 }

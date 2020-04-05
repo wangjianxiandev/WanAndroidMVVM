@@ -16,9 +16,9 @@ import com.kingja.loadsir.core.LoadSir
 import com.wjx.android.wanandroidmvvm.Custom.graylayout.GrayFrameLayout
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.Util
-import com.wjx.android.wanandroidmvvm.base.utils.Util.circularFinishReveal
-import com.wjx.android.wanandroidmvvm.base.utils.Util.setReveal
+import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.base.utils.RevealUtil.circularFinishReveal
+import com.wjx.android.wanandroidmvvm.base.utils.RevealUtil.setReveal
 import io.reactivex.disposables.Disposable
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -163,7 +163,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     private fun initStatusColor(color : Int) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            window.statusBarColor = if (color == 0) Util.getColor(this) else color
+            window.statusBarColor = if (color == 0) ColorUtil.getColor(this) else color
         }
         if (ColorUtils.calculateLuminance(Color.TRANSPARENT) >= 0.5) {
             // 设置状态栏中字体的颜色为黑色

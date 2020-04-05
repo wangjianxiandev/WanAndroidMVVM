@@ -12,7 +12,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.wjx.android.wanandroidmvvm.Custom.interpolator.CustomScaleInterpolator
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.ui.system.view.SystemArticleListActivity
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemLabelResponse
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemTabNameResponse
@@ -33,8 +33,8 @@ class SystemAdapter (layoutId : Int, listData : MutableList<SystemTabNameRespons
     override fun convert(viewHolder: BaseViewHolder?, item: SystemTabNameResponse?) {
         viewHolder?.let {
             holder ->
-            holder.itemView.system_material_card.rippleColor = Util.getOneColorStateList(mContext)
-            holder.itemView.system_material_card.strokeColor = Util.getColor(mContext)
+            holder.itemView.system_material_card.rippleColor = ColorUtil.getOneColorStateList(mContext)
+            holder.itemView.system_material_card.strokeColor = ColorUtil.getColor(mContext)
             item?.let {
                 holder.setText(R.id.item_system_title, it.name)
                 holder.itemView.item_tag_layout.adapter = object : TagAdapter<SystemLabelResponse>(it.children) {
@@ -46,7 +46,7 @@ class SystemAdapter (layoutId : Int, listData : MutableList<SystemTabNameRespons
                         val tagView : TextView =
                             LayoutInflater.from(mContext).inflate(R.layout.flow_layout, parent,false) as TextView
                         tagView.setText(it.children[position].name)
-                        tagView.setTextColor(Util.randomColor())
+                        tagView.setTextColor(ColorUtil.randomColor())
                         return tagView
                     }
                 }
@@ -54,7 +54,7 @@ class SystemAdapter (layoutId : Int, listData : MutableList<SystemTabNameRespons
                 val gradientDrawable = GradientDrawable(
                     GradientDrawable.Orientation.BR_TL,
                     intArrayOf(
-                        Util.evaluate(0.5f, Util.randomColor(), Color.WHITE),
+                        ColorUtil.calculateGradient(0.5f, ColorUtil.randomColor(), Color.WHITE),
                         Color.WHITE
                     )
                 )

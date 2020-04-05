@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.ui.rank.adapter.RankAdapter
 import com.wjx.android.wanandroidmvvm.ui.rank.data.IntegralResponse
 import com.wjx.android.wanandroidmvvm.ui.rank.viewmodel.RankViewModel
@@ -80,13 +80,13 @@ class RankActivity : BaseLifeCycleActivity<RankViewModel>() {
     }
 
     private fun initColor() {
-        headerView.setBackgroundColor(Util.getColor(this))
-        integral_mecard.setCardBackgroundColor(Util.getColor(this))
+        headerView.setBackgroundColor(ColorUtil.getColor(this))
+        integral_mecard.setCardBackgroundColor(ColorUtil.getColor(this))
     }
 
     private fun initRefresh() {
         // 设置下拉刷新的loading颜色
-        mSrlRefresh.setProgressBackgroundColorSchemeColor(Util.getColor(this))
+        mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(this))
         mSrlRefresh.setColorSchemeColors(Color.WHITE)
         mSrlRefresh.setOnRefreshListener { onRefreshData() }
     }
@@ -122,7 +122,7 @@ class RankActivity : BaseLifeCycleActivity<RankViewModel>() {
     @Subscribe
     fun settingEvent(event: ChangeThemeEvent) {
         initColor()
-        mSrlRefresh.setProgressBackgroundColorSchemeColor(Util.getColor(this))
+        mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(this))
     }
 
 }

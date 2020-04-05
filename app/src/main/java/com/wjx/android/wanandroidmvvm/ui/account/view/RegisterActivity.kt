@@ -7,7 +7,7 @@ import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.base.state.UserInfo
 import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.ui.account.viewmodel.AccountViewModel
 import kotlinx.android.synthetic.main.activity_register.*
 import org.greenrobot.eventbus.Subscribe
@@ -26,8 +26,8 @@ class RegisterActivity : BaseLifeCycleActivity<AccountViewModel>(), View.OnClick
     }
 
     private fun initColor() {
-        register_background.setBackgroundColor(Util.getColor(this))
-        button_register.setTextColor(Util.getColor(this))
+        register_background.setBackgroundColor(ColorUtil.getColor(this))
+        button_register.setTextColor(ColorUtil.getColor(this))
     }
 
     override fun initDataObserver() {
