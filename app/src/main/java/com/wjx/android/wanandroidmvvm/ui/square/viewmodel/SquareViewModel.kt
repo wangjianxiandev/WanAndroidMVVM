@@ -2,9 +2,9 @@ package com.wjx.android.wanandroidmvvm.ui.square.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import com.wjx.android.wanandroidmvvm.base.basearticle.viewmodel.BaseArticleViewModel
-import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
-import com.wjx.android.wanandroidmvvm.base.https.EmptyResponse
+import com.wjx.android.wanandroidmvvm.ui.common.viewmodel.ArticleViewModel
+import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
+import com.wjx.android.wanandroidmvvm.network.response.EmptyResponse
 import com.wjx.android.wanandroidmvvm.ui.square.data.SquareResponse
 import com.wjx.android.wanandroidmvvm.ui.square.repository.SquareRepository
 
@@ -16,7 +16,7 @@ import com.wjx.android.wanandroidmvvm.ui.square.repository.SquareRepository
  * Time: 17:07
  */
 class SquareViewModel(application: Application) :
-    BaseArticleViewModel<SquareRepository>(application) {
+    ArticleViewModel<SquareRepository>(application) {
     var mSquareData: MutableLiveData<BaseResponse<SquareResponse>> = MutableLiveData()
     var mAddShareData: MutableLiveData<BaseResponse<EmptyResponse>> = MutableLiveData()
 

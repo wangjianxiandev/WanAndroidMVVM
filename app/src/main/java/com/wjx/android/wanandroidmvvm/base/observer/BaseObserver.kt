@@ -2,12 +2,12 @@ package com.wjx.android.wanandroidmvvm.base.observer
 
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.Observer
-import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
+import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.base.repository.BaseRepository
-import com.wjx.android.wanandroidmvvm.base.state.State
-import com.wjx.android.wanandroidmvvm.base.state.StateType
-import com.wjx.android.wanandroidmvvm.base.state.UserInfo
-import com.wjx.android.wanandroidmvvm.base.utils.Constant
+import com.wjx.android.wanandroidmvvm.common.state.State
+import com.wjx.android.wanandroidmvvm.common.state.StateType
+import com.wjx.android.wanandroidmvvm.common.state.UserInfo
+import com.wjx.android.wanandroidmvvm.common.utils.Constant
 import io.reactivex.disposables.Disposable
 
 /**

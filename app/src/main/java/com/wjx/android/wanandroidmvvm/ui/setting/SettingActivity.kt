@@ -3,8 +3,8 @@ package com.wjx.android.wanandroidmvvm.ui.setting
 import android.view.View
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.view.BaseActivity
-import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
+import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import kotlinx.android.synthetic.main.activity_setting.*
 import kotlinx.android.synthetic.main.custom_bar.view.*
 import org.greenrobot.eventbus.Subscribe

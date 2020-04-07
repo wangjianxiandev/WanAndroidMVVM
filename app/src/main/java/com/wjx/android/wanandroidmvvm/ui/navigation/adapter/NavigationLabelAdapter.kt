@@ -6,8 +6,8 @@ import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
-import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.common.utils.CommonUtil
 import com.wjx.android.wanandroidmvvm.ui.navigation.data.NavigationLabelResponse
 import com.wjx.android.wanandroidmvvm.ui.navigation.data.NavigationTabNameResponse
 import com.zhy.view.flowlayout.FlowLayout
@@ -43,7 +43,7 @@ class NavigationLabelAdapter (layoutId : Int, listData : MutableList<NavigationT
                     }
                 }
                 holder.itemView.nav_label_layout.setOnTagClickListener {_, position, _ ->
-                    Util.startWebView(mContext, it.articles[position].title, it.articles[position].link)
+                    CommonUtil.startWebView(mContext, it.articles[position].title, it.articles[position].link)
                     return@setOnTagClickListener true
                 }
             }

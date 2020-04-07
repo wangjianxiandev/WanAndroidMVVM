@@ -6,12 +6,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.kingja.loadsir.callback.SuccessCallback
 import com.wjx.android.wanandroidmvvm.base.viewmodel.BaseViewModel
-import com.wjx.android.wanandroidmvvm.base.callback.EmptyCallBack
-import com.wjx.android.wanandroidmvvm.base.callback.ErrorCallBack
-import com.wjx.android.wanandroidmvvm.base.callback.LoadingCallBack
-import com.wjx.android.wanandroidmvvm.base.state.State
-import com.wjx.android.wanandroidmvvm.base.state.StateType
-import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.common.callback.EmptyCallBack
+import com.wjx.android.wanandroidmvvm.common.callback.ErrorCallBack
+import com.wjx.android.wanandroidmvvm.common.callback.LoadingCallBack
+import com.wjx.android.wanandroidmvvm.common.state.State
+import com.wjx.android.wanandroidmvvm.common.state.StateType
+import com.wjx.android.wanandroidmvvm.common.utils.CommonUtil
 import org.jetbrains.anko.toast
 
 /**
@@ -27,7 +27,7 @@ abstract class BaseLifeCycleActivity<VM : BaseViewModel<*>> : BaseActivity() {
     override fun initView() {
         showLoading()
 
-        mViewModel = ViewModelProviders.of(this).get(Util.getClass(this))
+        mViewModel = ViewModelProviders.of(this).get(CommonUtil.getClass(this))
 
         mViewModel.loadState.observe(this, observer)
 

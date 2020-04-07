@@ -4,14 +4,14 @@ import android.content.Intent
 import android.view.View
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.basearticle.view.BaseArticleListActivity
-import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.ui.common.view.ArticleListActivity
+import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
+import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.ui.collect.viewmodel.CollectViewModel
 import kotlinx.android.synthetic.main.custom_bar.view.*
 import org.greenrobot.eventbus.Subscribe
 
-class CollectArticleListActivity : BaseArticleListActivity<CollectViewModel>() {
+class CollectArticleListActivity : ArticleListActivity<CollectViewModel>() {
     private var mCurrentItem: Int = -1
 
     private var mCurrentPage = 0

@@ -30,7 +30,7 @@
                 android:visibility="invisible"
                 app:backgroundTint="@color/color_304ffe"
                 app:fabSize="auto"
-                app:layout_behavior=".Custom.behavior.FloatScrollBehavior"
+                app:layout_behavior=".custom.behavior.FloatScrollBehavior"
                 app:tint="@color/white_bg" />
 
             <com.google.android.material.bottomnavigation.BottomNavigationView

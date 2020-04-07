@@ -1,11 +1,11 @@
 package com.wjx.android.wanandroidmvvm.ui.home.repository
 
 import androidx.lifecycle.MutableLiveData
-import com.wjx.android.wanandroidmvvm.base.basearticle.repository.BaseArticleRepository
-import com.wjx.android.wanandroidmvvm.base.basearticle.data.Article
+import com.wjx.android.wanandroidmvvm.ui.common.repository.ArticleRepository
+import com.wjx.android.wanandroidmvvm.ui.common.data.Article
 import com.wjx.android.wanandroidmvvm.base.observer.BaseObserver
-import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
-import com.wjx.android.wanandroidmvvm.base.state.State
+import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
+import com.wjx.android.wanandroidmvvm.common.state.State
 import com.wjx.android.wanandroidmvvm.ui.home.data.BannerResponse
 import com.wjx.android.wanandroidmvvm.ui.home.data.HomeArticleResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -18,7 +18,7 @@ import io.reactivex.schedulers.Schedulers
  * @date: 2020/02/26
  * Time: 10:53
  */
-class HomeRepository (loadState : MutableLiveData<State>) : BaseArticleRepository(loadState) {
+class HomeRepository (loadState : MutableLiveData<State>) : ArticleRepository(loadState) {
     fun loadBanner(liveData: MutableLiveData<BaseResponse<List<BannerResponse>>>) {
         apiService.loadBanner()
             .subscribeOn(Schedulers.io())

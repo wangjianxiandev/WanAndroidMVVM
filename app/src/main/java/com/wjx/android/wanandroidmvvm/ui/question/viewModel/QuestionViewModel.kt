@@ -2,8 +2,8 @@ package com.wjx.android.wanandroidmvvm.ui.question.viewModel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import com.wjx.android.wanandroidmvvm.base.basearticle.viewmodel.BaseArticleViewModel
-import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
+import com.wjx.android.wanandroidmvvm.ui.common.viewmodel.ArticleViewModel
+import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.ui.question.questionrepository.QuestionRepository
 import com.wjx.android.wanandroidmvvm.ui.question.data.QuestionResponse
 
@@ -16,7 +16,7 @@ import com.wjx.android.wanandroidmvvm.ui.question.data.QuestionResponse
  */
 
 class QuestionViewModel(application: Application) :
-    BaseArticleViewModel<QuestionRepository>(application) {
+    ArticleViewModel<QuestionRepository>(application) {
     var mQuestionData : MutableLiveData<BaseResponse<QuestionResponse>> = MutableLiveData()
 
     fun loadQuestionList(pageNum : Int) {

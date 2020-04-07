@@ -4,8 +4,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.view.BaseLifeCycleFragment
-import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
+import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.ui.project.adapter.ProjectTabAdapter
 import com.wjx.android.wanandroidmvvm.ui.project.data.ProjectTabResponse
 import com.wjx.android.wanandroidmvvm.ui.project.viewmodel.ProjectViewModel

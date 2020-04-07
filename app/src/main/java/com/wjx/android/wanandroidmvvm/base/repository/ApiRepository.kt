@@ -1,7 +1,7 @@
 package com.wjx.android.wanandroidmvvm.base.repository
 
-import com.wjx.android.wanandroidmvvm.base.https.ApiService
-import com.wjx.android.wanandroidmvvm.base.https.RetrofitFactory
+import com.wjx.android.wanandroidmvvm.network.ApiService
+import com.wjx.android.wanandroidmvvm.network.RetrofitFactory
 
 /**
  * Created with Android Studio.

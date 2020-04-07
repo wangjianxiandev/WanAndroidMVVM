@@ -8,8 +8,8 @@ import androidx.annotation.RequiresApi
 import com.just.agentweb.AgentWeb
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.view.BaseActivity
-import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
+import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import kotlinx.android.synthetic.main.activity_article_detail.*
 import kotlinx.android.synthetic.main.custom_bar.*
 import org.greenrobot.eventbus.Subscribe

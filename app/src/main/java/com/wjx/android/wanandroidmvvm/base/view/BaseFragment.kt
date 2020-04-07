@@ -12,8 +12,8 @@ import androidx.fragment.app.Fragment
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
+import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import java.util.*

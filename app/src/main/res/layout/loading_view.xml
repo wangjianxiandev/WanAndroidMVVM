@@ -7,7 +7,7 @@
     android:gravity="center"
     tools:ignore="MissingDefaultResource">
 
-    <com.wjx.android.wanandroidmvvm.Custom.loadingview.ShapeView
+    <com.wjx.android.wanandroidmvvm.custom.loadingview.ShapeView
         android:id="@+id/shape_view"
         android:layout_width="40dp"
         android:layout_height="40dp"

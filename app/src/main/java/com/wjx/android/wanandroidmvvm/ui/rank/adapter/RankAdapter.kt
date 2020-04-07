@@ -4,7 +4,7 @@ import android.os.Build
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.ui.rank.data.IntegralResponse
 import kotlinx.android.synthetic.main.rank_item.view.*
 

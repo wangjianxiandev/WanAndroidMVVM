@@ -2,8 +2,8 @@ package com.wjx.android.wanandroidmvvm.ui.search.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import com.wjx.android.wanandroidmvvm.base.basearticle.viewmodel.BaseArticleViewModel
-import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
+import com.wjx.android.wanandroidmvvm.ui.common.viewmodel.ArticleViewModel
+import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.ui.search.data.HotKeyResponse
 import com.wjx.android.wanandroidmvvm.ui.search.data.SearchResultResponse
 import com.wjx.android.wanandroidmvvm.ui.search.data.db.SearchHistory
@@ -16,7 +16,7 @@ import com.wjx.android.wanandroidmvvm.ui.search.repository.SearchRepostiory
  * @date: 2020/03/05
  * Time: 17:49
  */
-class SearchViewModel (application: Application) : BaseArticleViewModel<SearchRepostiory>(application) {
+class SearchViewModel (application: Application) : ArticleViewModel<SearchRepostiory>(application) {
     val mHotKeyData = MutableLiveData<BaseResponse<List<HotKeyResponse>>>()
     val mSearResultData = MutableLiveData<BaseResponse<SearchResultResponse>>()
     val mDeleteHistory = MutableLiveData<Int>()

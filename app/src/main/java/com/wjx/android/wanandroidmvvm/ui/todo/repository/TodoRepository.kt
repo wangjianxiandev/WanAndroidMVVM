@@ -2,10 +2,10 @@ package com.wjx.android.wanandroidmvvm.ui.todo.repository
 
 import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.base.observer.BaseObserver
-import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
-import com.wjx.android.wanandroidmvvm.base.https.EmptyResponse
+import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
+import com.wjx.android.wanandroidmvvm.network.response.EmptyResponse
 import com.wjx.android.wanandroidmvvm.base.repository.ApiRepository
-import com.wjx.android.wanandroidmvvm.base.state.State
+import com.wjx.android.wanandroidmvvm.common.state.State
 import com.wjx.android.wanandroidmvvm.ui.todo.data.TodoPageResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

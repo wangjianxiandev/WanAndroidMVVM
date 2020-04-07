@@ -4,9 +4,9 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
-import com.wjx.android.wanandroidmvvm.Custom.interpolator.CustomScaleInterpolator
+import com.wjx.android.wanandroidmvvm.custom.interpolator.CustomScaleInterpolator
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import kotlinx.android.synthetic.main.navigation_item.view.*
 
 /**

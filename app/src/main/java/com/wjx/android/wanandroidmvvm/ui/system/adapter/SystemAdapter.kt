@@ -10,9 +10,9 @@ import android.view.View
 import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
-import com.wjx.android.wanandroidmvvm.Custom.interpolator.CustomScaleInterpolator
+import com.wjx.android.wanandroidmvvm.custom.interpolator.CustomScaleInterpolator
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.ui.system.view.SystemArticleListActivity
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemLabelResponse
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemTabNameResponse

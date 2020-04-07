@@ -2,9 +2,9 @@ package com.wjx.android.wanandroidmvvm.ui.meshare.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import com.wjx.android.wanandroidmvvm.base.basearticle.viewmodel.BaseArticleViewModel
-import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
-import com.wjx.android.wanandroidmvvm.base.https.EmptyResponse
+import com.wjx.android.wanandroidmvvm.ui.common.viewmodel.ArticleViewModel
+import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
+import com.wjx.android.wanandroidmvvm.network.response.EmptyResponse
 import com.wjx.android.wanandroidmvvm.ui.meshare.data.MeShareArticleResponse
 import com.wjx.android.wanandroidmvvm.ui.meshare.data.MeShareResponse
 import com.wjx.android.wanandroidmvvm.ui.meshare.repository.MeShareRepository
@@ -17,7 +17,7 @@ import com.wjx.android.wanandroidmvvm.ui.meshare.repository.MeShareRepository
  * Time: 17:36
  */
 class MeShareViewModel(application: Application) :
-    BaseArticleViewModel<MeShareRepository>(application) {
+    ArticleViewModel<MeShareRepository>(application) {
     var mMeShareData: MutableLiveData<BaseResponse<MeShareResponse<MeShareArticleResponse>>> =
         MutableLiveData()
     var mDeleteMeShareData: MutableLiveData<BaseResponse<EmptyResponse>> = MutableLiveData()

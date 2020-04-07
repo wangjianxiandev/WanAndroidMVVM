@@ -4,9 +4,9 @@ import android.content.Intent
 import android.view.View
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.basearticle.view.BaseArticleListFragment
-import com.wjx.android.wanandroidmvvm.base.basearticle.data.Article
-import com.wjx.android.wanandroidmvvm.base.utils.GlideImageLoader
+import com.wjx.android.wanandroidmvvm.ui.common.view.ArticleListFragment
+import com.wjx.android.wanandroidmvvm.ui.common.data.Article
+import com.wjx.android.wanandroidmvvm.common.utils.GlideImageLoader
 import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import com.wjx.android.wanandroidmvvm.ui.home.data.BannerResponse
 import com.wjx.android.wanandroidmvvm.ui.home.viewmodel.HomeViewModel
@@ -23,7 +23,7 @@ import java.util.*
  * @date: 2020/02/22
  * Time: 19:59
  */
-class HomeFragment : BaseArticleListFragment<HomeViewModel>() {
+class HomeFragment : ArticleListFragment<HomeViewModel>() {
 
     private lateinit var mBanner: Banner
 

@@ -1,11 +1,11 @@
 package com.wjx.android.wanandroidmvvm.ui.collect.repository
 
 import androidx.lifecycle.MutableLiveData
-import com.wjx.android.wanandroidmvvm.base.basearticle.repository.BaseArticleRepository
+import com.wjx.android.wanandroidmvvm.ui.common.repository.ArticleRepository
 import com.wjx.android.wanandroidmvvm.base.observer.BaseObserver
-import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
-import com.wjx.android.wanandroidmvvm.base.https.EmptyResponse
-import com.wjx.android.wanandroidmvvm.base.state.State
+import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
+import com.wjx.android.wanandroidmvvm.network.response.EmptyResponse
+import com.wjx.android.wanandroidmvvm.common.state.State
 import com.wjx.android.wanandroidmvvm.ui.collect.data.CollectResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -17,7 +17,7 @@ import io.reactivex.schedulers.Schedulers
  * @date: 2020/03/03
  * Time: 14:42
  */
-class CollectRepository(loadState: MutableLiveData<State>) : BaseArticleRepository(loadState) {
+class CollectRepository(loadState: MutableLiveData<State>) : ArticleRepository(loadState) {
 
     fun loadCollectArticle(pageNum: Int, liveData: MutableLiveData<BaseResponse<CollectResponse>>) {
         apiService.loadCollectArticle(pageNum)

@@ -1,10 +1,10 @@
 package com.wjx.android.wanandroidmvvm.ui.wechat.repository
 
 import androidx.lifecycle.MutableLiveData
-import com.wjx.android.wanandroidmvvm.base.basearticle.repository.BaseArticleRepository
+import com.wjx.android.wanandroidmvvm.ui.common.repository.ArticleRepository
 import com.wjx.android.wanandroidmvvm.base.observer.BaseObserver
-import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
-import com.wjx.android.wanandroidmvvm.base.state.State
+import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
+import com.wjx.android.wanandroidmvvm.common.state.State
 import com.wjx.android.wanandroidmvvm.ui.wechat.data.WeChatArticleResponse
 import com.wjx.android.wanandroidmvvm.ui.wechat.data.WeChatTabNameResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -17,7 +17,7 @@ import io.reactivex.schedulers.Schedulers
  * @date: 2020/02/27
  * Time: 14:40
  */
-class WeChatRepository (loadState : MutableLiveData<State>) : BaseArticleRepository(loadState) {
+class WeChatRepository (loadState : MutableLiveData<State>) : ArticleRepository(loadState) {
     fun loadWeChatTabName(liveData: MutableLiveData<BaseResponse<List<WeChatTabNameResponse>>>) {
         apiService.loadWeChatTab()
             .subscribeOn(Schedulers.io())

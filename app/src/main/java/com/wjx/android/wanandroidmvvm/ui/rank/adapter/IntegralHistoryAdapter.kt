@@ -3,8 +3,8 @@ package com.wjx.android.wanandroidmvvm.ui.rank.adapter
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
-import com.wjx.android.wanandroidmvvm.base.utils.DateUtil
+import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.common.utils.DateUtil
 import com.wjx.android.wanandroidmvvm.ui.rank.data.IntegralHistoryResponse
 import kotlinx.android.synthetic.main.integral_history_item.view.*
 

@@ -18,10 +18,10 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.color.colorChooser
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.view.BaseActivity
-import com.wjx.android.wanandroidmvvm.base.state.UserInfo
-import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessListener
-import com.wjx.android.wanandroidmvvm.base.state.callback.LoginSuccessState
-import com.wjx.android.wanandroidmvvm.base.utils.*
+import com.wjx.android.wanandroidmvvm.common.state.UserInfo
+import com.wjx.android.wanandroidmvvm.common.state.callback.LoginSuccessListener
+import com.wjx.android.wanandroidmvvm.common.state.callback.LoginSuccessState
+import com.wjx.android.wanandroidmvvm.common.utils.*
 import com.wjx.android.wanandroidmvvm.ui.home.view.HomeFragment
 import com.wjx.android.wanandroidmvvm.ui.navigation.view.NavigationFragment
 import com.wjx.android.wanandroidmvvm.ui.project.view.ProjectFragment
@@ -146,7 +146,7 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
                                 initialSelection = ColorUtil.getColor(this@MainActivity),
                                 subColors = ColorUtil.PRIMARY_COLORS_SUB
                             ) { dialog, color ->
-                                ColorUtil.setColor(color)
+                                ColorUtil.setColor(this@MainActivity, color)
                                 ChangeThemeEvent().post()
                             }
                             positiveButton(R.string.done)

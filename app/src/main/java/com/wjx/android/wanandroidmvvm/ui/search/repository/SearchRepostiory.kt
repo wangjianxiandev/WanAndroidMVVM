@@ -1,10 +1,10 @@
 package com.wjx.android.wanandroidmvvm.ui.search.repository
 
 import androidx.lifecycle.MutableLiveData
-import com.wjx.android.wanandroidmvvm.base.basearticle.repository.BaseArticleRepository
+import com.wjx.android.wanandroidmvvm.ui.common.repository.ArticleRepository
 import com.wjx.android.wanandroidmvvm.base.observer.BaseObserver
-import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
-import com.wjx.android.wanandroidmvvm.base.state.State
+import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
+import com.wjx.android.wanandroidmvvm.common.state.State
 import com.wjx.android.wanandroidmvvm.ui.search.data.HotKeyResponse
 import com.wjx.android.wanandroidmvvm.ui.search.data.SearchResultResponse
 import com.wjx.android.wanandroidmvvm.ui.search.data.dao.SearchHistoryDao
@@ -19,7 +19,7 @@ import io.reactivex.schedulers.Schedulers
  * @date: 2020/03/05
  * Time: 17:14
  */
-class SearchRepostiory (loadState : MutableLiveData<State>) : BaseArticleRepository(loadState) {
+class SearchRepostiory (loadState : MutableLiveData<State>) : ArticleRepository(loadState) {
     fun loadHotKey(liveData: MutableLiveData<BaseResponse<List<HotKeyResponse>>>) {
         apiService.loadHotKey()
             .subscribeOn(Schedulers.io())

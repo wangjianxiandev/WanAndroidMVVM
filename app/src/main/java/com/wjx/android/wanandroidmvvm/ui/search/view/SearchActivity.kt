@@ -9,11 +9,11 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.basearticle.view.BaseArticleListActivity
-import com.wjx.android.wanandroidmvvm.base.basearticle.data.Article
-import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
-import com.wjx.android.wanandroidmvvm.base.utils.KeyBoardUtil.hideKeyboard
+import com.wjx.android.wanandroidmvvm.ui.common.view.ArticleListActivity
+import com.wjx.android.wanandroidmvvm.ui.common.data.Article
+import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
+import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.common.utils.KeyBoardUtil.hideKeyboard
 import com.wjx.android.wanandroidmvvm.ui.search.adapter.SearchHistoryAdapter
 import com.wjx.android.wanandroidmvvm.ui.search.data.HotKeyResponse
 import com.wjx.android.wanandroidmvvm.ui.search.viewmodel.SearchViewModel
@@ -27,7 +27,7 @@ import kotlinx.android.synthetic.main.history_foot.view.*
 import org.greenrobot.eventbus.Subscribe
 import org.jetbrains.anko.toast
 
-class SearchActivity : BaseArticleListActivity<SearchViewModel>() {
+class SearchActivity : ArticleListActivity<SearchViewModel>() {
     private var mCurrentPageNum: Int = 0
 
     private var mMaxHistory = 10

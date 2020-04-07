@@ -12,7 +12,7 @@ import androidx.preference.Preference
 import androidx.preference.SwitchPreference
 import com.afollestad.materialdialogs.MaterialDialog
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.utils.*
+import com.wjx.android.wanandroidmvvm.common.utils.*
 
 
 /**
@@ -73,10 +73,13 @@ class SettingFragment : PreferenceFragmentCompat(),
                 if (nightModeChanged) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
             )
             if (nightModeChanged) {
-                ColorUtil.setLastColor(ColorUtil.getColor(parentActivity))
-                ColorUtil.setColor(ContextCompat.getColor(parentActivity, R.color.colorGray666))
+                ColorUtil.setLastColor(parentActivity, ColorUtil.getColor(parentActivity))
+                ColorUtil.setColor(
+                    parentActivity,
+                    ContextCompat.getColor(parentActivity, R.color.colorGray666)
+                )
             } else {
-                ColorUtil.setColor(ColorUtil.getLastColor(parentActivity))
+                ColorUtil.setColor(parentActivity, ColorUtil.getLastColor(parentActivity))
             }
 //            RecreateEvent().post()
             true
@@ -99,12 +102,12 @@ class SettingFragment : PreferenceFragmentCompat(),
         }
 
         findPreference<Preference>("csdn")?.setOnPreferenceClickListener {
-            Util.startWebView(parentActivity, "DLUT_WJX", "https://blog.csdn.net/qq_39424143")
+            CommonUtil.startWebView(parentActivity, "DLUT_WJX", "https://blog.csdn.net/qq_39424143")
             false
         }
 
         findPreference<Preference>("project")?.setOnPreferenceClickListener {
-            Util.startWebView(
+            CommonUtil.startWebView(
                 parentActivity,
                 "WanAndroid",
                 "https://github.com/wangjianxiandev/WanAndroidMvvm"

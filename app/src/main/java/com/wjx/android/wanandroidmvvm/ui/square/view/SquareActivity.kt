@@ -3,15 +3,15 @@ package com.wjx.android.wanandroidmvvm.ui.square.view
 import android.view.View
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.basearticle.view.BaseArticleListActivity
-import com.wjx.android.wanandroidmvvm.base.state.UserInfo
-import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.ui.common.view.ArticleListActivity
+import com.wjx.android.wanandroidmvvm.common.state.UserInfo
+import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
+import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.ui.square.viewmodel.SquareViewModel
 import kotlinx.android.synthetic.main.custom_bar.view.*
 import org.greenrobot.eventbus.Subscribe
 
-class SquareActivity : BaseArticleListActivity<SquareViewModel>() {
+class SquareActivity : ArticleListActivity<SquareViewModel>() {
 
     private var mCurrentPage: Int = 0
     private lateinit var headerView: View

@@ -4,8 +4,8 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.base.repository.BaseRepository
-import com.wjx.android.wanandroidmvvm.base.state.State
-import com.wjx.android.wanandroidmvvm.base.utils.Util
+import com.wjx.android.wanandroidmvvm.common.state.State
+import com.wjx.android.wanandroidmvvm.common.utils.CommonUtil
 
 /**
  * Created with Android Studio.
@@ -25,7 +25,7 @@ open class BaseViewModel<T : BaseRepository>(application : Application) : Androi
      */
     val mRepository : T by lazy {
         // 获取对应Repository 实例 (有参构造函数)
-        (Util.getClass<T>(this))
+        (CommonUtil.getClass<T>(this))
                 // 获取构造函数的构造器，传入参数class
             .getDeclaredConstructor(MutableLiveData::class.java)
                 // 传入加载状态

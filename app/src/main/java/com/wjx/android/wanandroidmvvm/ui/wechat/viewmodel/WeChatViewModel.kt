@@ -2,8 +2,8 @@ package com.wjx.android.wanandroidmvvm.ui.wechat.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import com.wjx.android.wanandroidmvvm.base.basearticle.viewmodel.BaseArticleViewModel
-import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
+import com.wjx.android.wanandroidmvvm.ui.common.viewmodel.ArticleViewModel
+import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.ui.wechat.data.WeChatArticleResponse
 import com.wjx.android.wanandroidmvvm.ui.wechat.data.WeChatTabNameResponse
 import com.wjx.android.wanandroidmvvm.ui.wechat.repository.WeChatRepository
@@ -16,7 +16,7 @@ import com.wjx.android.wanandroidmvvm.ui.wechat.repository.WeChatRepository
  * Time: 14:39
  */
 class WeChatViewModel(application: Application) :
-        BaseArticleViewModel<WeChatRepository>(application) {
+        ArticleViewModel<WeChatRepository>(application) {
         val mWChatTabData : MutableLiveData<BaseResponse<List<WeChatTabNameResponse>>> = MutableLiveData()
         var mWeChatArticleData : MutableLiveData<BaseResponse<WeChatArticleResponse>> = MutableLiveData()
 

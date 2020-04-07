@@ -5,7 +5,7 @@ import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.viewmodel.BaseViewModel
-import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
+import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.ui.account.data.LoginResponse
 import com.wjx.android.wanandroidmvvm.ui.account.data.RegisterResponse
 import com.wjx.android.wanandroidmvvm.ui.account.repository.AccountReponsitory

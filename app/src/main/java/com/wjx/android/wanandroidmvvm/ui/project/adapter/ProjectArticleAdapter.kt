@@ -4,10 +4,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
-import com.wjx.android.wanandroidmvvm.Custom.DrawableScaleFadeFactory
+import com.wjx.android.wanandroidmvvm.custom.DrawableScaleFadeFactory
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.basearticle.data.Article
-import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.ui.common.data.Article
+import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import kotlinx.android.synthetic.main.project_item.view.*
 
 /**

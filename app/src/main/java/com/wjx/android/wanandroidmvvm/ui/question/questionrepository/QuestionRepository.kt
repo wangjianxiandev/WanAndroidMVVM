@@ -1,10 +1,10 @@
 package com.wjx.android.wanandroidmvvm.ui.question.questionrepository
 
 import androidx.lifecycle.MutableLiveData
-import com.wjx.android.wanandroidmvvm.base.basearticle.repository.BaseArticleRepository
+import com.wjx.android.wanandroidmvvm.ui.common.repository.ArticleRepository
 import com.wjx.android.wanandroidmvvm.base.observer.BaseObserver
-import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
-import com.wjx.android.wanandroidmvvm.base.state.State
+import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
+import com.wjx.android.wanandroidmvvm.common.state.State
 import com.wjx.android.wanandroidmvvm.ui.question.data.QuestionResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -16,7 +16,7 @@ import io.reactivex.schedulers.Schedulers
  * @date: 2020/03/26
  * Time: 15:42
  */
-class QuestionRepository(loadState: MutableLiveData<State>) : BaseArticleRepository(loadState) {
+class QuestionRepository(loadState: MutableLiveData<State>) : ArticleRepository(loadState) {
     fun loadQuestionList(pageNum : Int, liveData : MutableLiveData<BaseResponse<QuestionResponse>>) {
         apiService.loadQuestionList(pageNum)
             .subscribeOn(Schedulers.io())

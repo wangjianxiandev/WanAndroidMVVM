@@ -6,8 +6,8 @@ import androidx.annotation.RequiresApi
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.basearticle.data.Article
-import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.ui.common.data.Article
+import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import kotlinx.android.synthetic.main.article_item.view.*
 
 /**

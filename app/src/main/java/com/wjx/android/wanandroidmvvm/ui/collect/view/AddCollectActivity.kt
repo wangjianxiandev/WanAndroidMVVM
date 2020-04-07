@@ -5,7 +5,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.view.BaseLifeCycleActivity
-import com.wjx.android.wanandroidmvvm.base.utils.*
+import com.wjx.android.wanandroidmvvm.common.utils.*
 import com.wjx.android.wanandroidmvvm.ui.collect.viewmodel.CollectViewModel
 import kotlinx.android.synthetic.main.activity_add_collect.*
 import kotlinx.android.synthetic.main.custom_bar.view.*

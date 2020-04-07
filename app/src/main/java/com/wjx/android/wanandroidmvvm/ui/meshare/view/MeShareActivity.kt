@@ -6,10 +6,10 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wjx.android.wanandroidmvvm.R
-import com.wjx.android.wanandroidmvvm.base.basearticle.data.Article
+import com.wjx.android.wanandroidmvvm.ui.common.data.Article
 import com.wjx.android.wanandroidmvvm.base.view.BaseLifeCycleActivity
-import com.wjx.android.wanandroidmvvm.base.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.base.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
+import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import com.wjx.android.wanandroidmvvm.ui.meshare.adapter.MeShareAdapter
 import com.wjx.android.wanandroidmvvm.ui.meshare.viewmodel.MeShareViewModel

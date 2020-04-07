@@ -2,9 +2,9 @@ package com.wjx.android.wanandroidmvvm.ui.collect.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import com.wjx.android.wanandroidmvvm.base.basearticle.viewmodel.BaseArticleViewModel
-import com.wjx.android.wanandroidmvvm.base.https.BaseResponse
-import com.wjx.android.wanandroidmvvm.base.https.EmptyResponse
+import com.wjx.android.wanandroidmvvm.ui.common.viewmodel.ArticleViewModel
+import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
+import com.wjx.android.wanandroidmvvm.network.response.EmptyResponse
 import com.wjx.android.wanandroidmvvm.ui.collect.data.CollectResponse
 import com.wjx.android.wanandroidmvvm.ui.collect.repository.CollectRepository
 
@@ -16,7 +16,7 @@ import com.wjx.android.wanandroidmvvm.ui.collect.repository.CollectRepository
  * Time: 14:48
  */
 class CollectViewModel(application: Application) :
-    BaseArticleViewModel<CollectRepository>(application) {
+    ArticleViewModel<CollectRepository>(application) {
     val mCollectArticleData: MutableLiveData<BaseResponse<CollectResponse>> = MutableLiveData()
     val mAddCollectData: MutableLiveData<BaseResponse<EmptyResponse>> = MutableLiveData()
     val mUnCollectData: MutableLiveData<BaseResponse<EmptyResponse>> = MutableLiveData()

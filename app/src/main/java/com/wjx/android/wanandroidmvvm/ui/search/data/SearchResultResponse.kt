@@ -1,6 +1,6 @@
 package com.wjx.android.wanandroidmvvm.ui.search.data
 
-import com.wjx.android.wanandroidmvvm.base.basearticle.data.Article
+import com.wjx.android.wanandroidmvvm.ui.common.data.Article
 
 /**
  * Created with Android Studio.

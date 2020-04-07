@@ -4,11 +4,11 @@ import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import com.kingja.loadsir.core.LoadSir
 import com.tencent.bugly.Bugly
-import com.wjx.android.wanandroidmvvm.base.callback.EmptyCallBack
-import com.wjx.android.wanandroidmvvm.base.callback.ErrorCallBack
-import com.wjx.android.wanandroidmvvm.base.callback.LoadingCallBack
-import com.wjx.android.wanandroidmvvm.base.utils.Constant
-import com.wjx.android.wanandroidmvvm.base.utils.SPreference
+import com.wjx.android.wanandroidmvvm.common.callback.EmptyCallBack
+import com.wjx.android.wanandroidmvvm.common.callback.ErrorCallBack
+import com.wjx.android.wanandroidmvvm.common.callback.LoadingCallBack
+import com.wjx.android.wanandroidmvvm.common.utils.Constant
+import com.wjx.android.wanandroidmvvm.common.utils.SPreference
 import org.litepal.LitePal
 
 /**
