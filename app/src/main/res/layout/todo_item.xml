@@ -2,6 +2,7 @@
 
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/todo_material_card"
     style="@style/CutCardViewStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -9,7 +10,6 @@
     android:background="@color/white_bg"
     app:cardBackgroundColor="@color/white_bg"
     app:cardElevation="4dp"
-    app:rippleColor="@color/colorPrimary"
     app:strokeColor="@color/colorPrimaryDark"
     app:strokeWidth="2dp">
 

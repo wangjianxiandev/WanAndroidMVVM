@@ -28,12 +28,6 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
-
-    <style name="ToolbarTheme">
-        <item name="colorControlHighlight">@color/color_b388ff</item>
-        <item name="android:colorControlHighlight">@color/color_b388ff</item>
-    </style>
-
     <style name="AnimAlpha" parent="@android:style/Animation">
         <item name="android:windowEnterAnimation">@anim/alpha_in</item>
         <item name="android:windowExitAnimation">@anim/alpha_out</item>

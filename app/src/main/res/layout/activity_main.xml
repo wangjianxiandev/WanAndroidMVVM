@@ -28,7 +28,7 @@
                 android:layout_marginBottom="@dimen/dp_72"
                 android:src="@drawable/ic_up"
                 android:visibility="invisible"
-                app:backgroundTint="@color/color_304ffe"
+                app:backgroundTint="@color/colorPrimaryDark"
                 app:fabSize="auto"
                 app:layout_behavior=".custom.behavior.FloatScrollBehavior"
                 app:tint="@color/white_bg" />

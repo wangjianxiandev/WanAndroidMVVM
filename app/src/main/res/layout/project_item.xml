@@ -10,7 +10,6 @@
     android:background="@color/white_bg"
     app:cardBackgroundColor="@color/white_bg"
     app:cardElevation="4dp"
-    app:rippleColor="@color/colorPrimary"
     app:strokeColor="@color/colorPrimaryDark"
     app:strokeWidth="2dp">
 

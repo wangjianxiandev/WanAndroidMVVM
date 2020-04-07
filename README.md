@@ -2,9 +2,10 @@
 根据鸿神提供的[WanAndroid开放Api](https://www.wanandroid.com/)来制作的WanAndroidApp, 基本实现了所有的功能，使用kotlin语言开发，基于Material Design+AndroidX + MVVM + ViewModel + LiveData + RxJava + Retrofit等优秀的开源框架，上次开发的 [WanAndroidMvvm版本](https://blog.csdn.net/qq_39424143/article/details/104697886)不是很完善，所以这次带来了完整的MVVM结构的客户端
 
 ## 项目地址
-[WanAndroid(github)](https://github.com/wangjianxiandev/WanAndroidMvvm)  （**欢迎大佬们star**)
+[WanAndroid(github)](https://github.com/wangjianxiandev/WanAndroidMvvm)  （**欢迎大佬们提issue,     		欢迎大佬们star**)
 ## 下载体验
-## 当前版本（1.1）
+## 当前版本（2.0）
+- **修复首页文章重复加载的bug**
 - 增加排行榜内容
 - 提高稳定性
 - 修复更换主题以及设置夜间模式的细节问题

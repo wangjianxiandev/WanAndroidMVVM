@@ -22,6 +22,8 @@ class TodoAdapter(layoutId: Int, listData: MutableList<TodoResponse>?) :
     override fun convert(helper: BaseViewHolder?, item: TodoResponse?) {
         helper?.let { holder ->
             item?.let {
+                holder.itemView.todo_material_card.rippleColor = ColorUtil.getOneColorStateList(mContext)
+                holder.itemView.todo_material_card.strokeColor = ColorUtil.getColor(mContext)
                 holder.setText(R.id.item_todo_title, it.title)
                     .setText(R.id.item_todo_content, it.content)
                     .setText(R.id.item_todo_date, it.dateStr)
