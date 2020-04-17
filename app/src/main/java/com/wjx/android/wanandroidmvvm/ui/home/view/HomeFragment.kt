@@ -15,6 +15,7 @@ import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.layout_home_headview.view.*
 import java.util.*
+import kotlin.coroutines.CoroutineContext
 
 /**
  * Created with Android Studio.
@@ -65,7 +66,7 @@ class HomeFragment : ArticleListFragment<HomeViewModel>() {
     override fun initData() {
         mCurrentPage = 0
         mTopArticlesLoadTimes = 0
-        mViewModel.loadBanner()
+        mViewModel.loadBannerData()
         mViewModel.loadHomeArticleData(mCurrentPage)
     }
 
@@ -121,7 +122,7 @@ class HomeFragment : ArticleListFragment<HomeViewModel>() {
         mCurrentPage = 0
         mTopArticlesLoadTimes = 0
         mViewModel.loadHomeArticleData(mCurrentPage)
-        mViewModel.loadBanner()
+        mViewModel.loadBannerData()
     }
 
     override fun onLoadMoreData() {

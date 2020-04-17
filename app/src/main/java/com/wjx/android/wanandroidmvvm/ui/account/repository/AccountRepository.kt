@@ -17,7 +17,7 @@ import io.reactivex.schedulers.Schedulers
  * @date: 2020/03/01
  * Time: 19:59
  */
-class AccountReponsitory (val loadState : MutableLiveData<State>) : ApiRepository() {
+class AccountRepository (val loadState : MutableLiveData<State>) : ApiRepository() {
     fun login(username : String, password : String, liveData: MutableLiveData<BaseResponse<LoginResponse>>) {
         apiService.onLogin(username, password)
             .subscribeOn(Schedulers.io())

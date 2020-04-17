@@ -62,6 +62,9 @@ interface ApiService {
     @GET("/banner/json")
     fun loadBanner(): Observable<BaseResponse<List<BannerResponse>>>
 
+    @GET("/banner/json")
+    suspend fun loadBannerData() : BaseResponse<List<BannerResponse>>
+
     @GET("/article/top/json")
     fun loadTopArticle(): Observable<BaseResponse<List<Article>>>
 

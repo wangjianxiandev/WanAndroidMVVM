@@ -8,7 +8,7 @@ import com.wjx.android.wanandroidmvvm.base.viewmodel.BaseViewModel
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.ui.account.data.LoginResponse
 import com.wjx.android.wanandroidmvvm.ui.account.data.RegisterResponse
-import com.wjx.android.wanandroidmvvm.ui.account.repository.AccountReponsitory
+import com.wjx.android.wanandroidmvvm.ui.account.repository.AccountRepository
 
 /**
  * Created with Android Studio.
@@ -17,7 +17,7 @@ import com.wjx.android.wanandroidmvvm.ui.account.repository.AccountReponsitory
  * @date: 2020/03/01
  * Time: 19:58
  */
-class AccountViewModel(application: Application) : BaseViewModel<AccountReponsitory>(application) {
+class AccountViewModel(application: Application) : BaseViewModel<AccountRepository>(application) {
     val mLoginData : MutableLiveData<BaseResponse<LoginResponse>> = MutableLiveData()
     val mRegisterData : MutableLiveData<BaseResponse<RegisterResponse>> = MutableLiveData()
 

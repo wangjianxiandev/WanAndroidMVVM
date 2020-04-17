@@ -10,6 +10,10 @@ import com.wjx.android.wanandroidmvvm.ui.home.data.BannerResponse
 import com.wjx.android.wanandroidmvvm.ui.home.data.HomeArticleResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * Created with Android Studio.
@@ -30,6 +34,17 @@ class HomeRepository (loadState : MutableLiveData<State>) : ArticleRepository(lo
                     this
                 )
             )
+    }
+
+    suspend fun loadBannerData(liveData: MutableLiveData<BaseResponse<List<BannerResponse>>>) {
+            apiService.loadBannerData()
+            withContext(Dispatchers.Main) {
+                BaseObserver(
+                    liveData,
+                    loadState,
+                    this@HomeRepository
+                )
+            }
     }
 
     fun loadHomeArticle(pageNum : Int, liveData: MutableLiveData<BaseResponse<HomeArticleResponse>>) {
