@@ -22,6 +22,7 @@ import com.wjx.android.wanandroidmvvm.common.state.UserInfo
 import com.wjx.android.wanandroidmvvm.common.state.callback.LoginSuccessListener
 import com.wjx.android.wanandroidmvvm.common.state.callback.LoginSuccessState
 import com.wjx.android.wanandroidmvvm.common.utils.*
+import com.wjx.android.wanandroidmvvm.ui.home.view.CoroutineHomeFragment
 import com.wjx.android.wanandroidmvvm.ui.home.view.HomeFragment
 import com.wjx.android.wanandroidmvvm.ui.navigation.view.NavigationFragment
 import com.wjx.android.wanandroidmvvm.ui.project.view.ProjectFragment

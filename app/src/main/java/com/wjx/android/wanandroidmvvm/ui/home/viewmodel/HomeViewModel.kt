@@ -2,17 +2,12 @@ package com.wjx.android.wanandroidmvvm.ui.home.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
 import com.wjx.android.wanandroidmvvm.ui.common.data.Article
 import com.wjx.android.wanandroidmvvm.ui.common.viewmodel.ArticleViewModel
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.ui.home.data.BannerResponse
 import com.wjx.android.wanandroidmvvm.ui.home.data.HomeArticleResponse
 import com.wjx.android.wanandroidmvvm.ui.home.repository.HomeRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.lang.Exception
 
 /**
  * Created with Android Studio.
@@ -29,18 +24,6 @@ class HomeViewModel(application: Application) :
 
     fun loadBanner() {
         mRepository.loadBanner(mBannerData)
-    }
-
-    fun loadBannerData() {
-        viewModelScope.launch {
-            try {
-                withContext(Dispatchers.IO) {
-                    mRepository.loadBannerData(mBannerData)
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
     }
 
     fun loadHomeArticleData(pageNum: Int) {
