@@ -6,6 +6,7 @@ import com.wjx.android.wanandroidmvvm.ui.common.data.Article
 import com.wjx.android.wanandroidmvvm.base.observer.BaseObserver
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.common.state.State
+import com.wjx.android.wanandroidmvvm.network.dataConvert
 import com.wjx.android.wanandroidmvvm.ui.home.data.BannerResponse
 import com.wjx.android.wanandroidmvvm.ui.home.data.HomeArticleResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -56,5 +57,18 @@ class HomeRepository (loadState : MutableLiveData<State>) : ArticleRepository(lo
                     this
                 )
             )
+    }
+
+    // 使用协程 + Retrofit2.6
+    suspend fun loadBannerCo() : List<BannerResponse> {
+        return apiService.loadBannerCo().dataConvert(loadState)
+    }
+
+    suspend fun loadTopArticleCo() :List<Article> {
+        return apiService.loadTopArticleCo().dataConvert(loadState)
+    }
+
+    suspend fun loadHomeArticleCo(pageNum : Int) : HomeArticleResponse {
+        return apiService.loadHomeArticleCo(pageNum).dataConvert(loadState)
     }
 }

@@ -15,7 +15,6 @@ import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.layout_home_headview.view.*
 import java.util.*
-import kotlin.coroutines.CoroutineContext
 
 /**
  * Created with Android Studio.
@@ -66,15 +65,15 @@ class HomeFragment : ArticleListFragment<HomeViewModel>() {
     override fun initData() {
         mCurrentPage = 0
         mTopArticlesLoadTimes = 0
-        mViewModel.loadBanner()
-        mViewModel.loadHomeArticleData(mCurrentPage)
+        mViewModel.loadBannerCo()
+        mViewModel.loadHomeArticleDataCo(mCurrentPage)
     }
 
     override fun initDataObserver() {
         super.initDataObserver()
         mViewModel.mBannerData.observe(this, Observer { response ->
             response?.let {
-                setBannerData(it.data)
+                setBannerData(it)
             }
         })
 
@@ -84,15 +83,15 @@ class HomeFragment : ArticleListFragment<HomeViewModel>() {
                     responseTop?.let {
                         // 仅让置顶文章add一次，避免不必要的开销
                         if (mCurrentPage == 0 && mTopArticlesLoadTimes == 0) {
-                            handleTopArticle(it.data)
-                            addData(responseTop.data + responseArticle.data.datas)
+                            handleTopArticle(it)
+                            addData(responseTop + responseArticle.datas)
                             mTopArticlesLoadTimes++
                         }
                     }
                 })
                 if (mCurrentPage != 0) {
                     // 非第0页直接加载首页数据
-                    addData(responseArticle.data.datas)
+                    addData(responseArticle.datas)
                 }
             }
         })
@@ -121,11 +120,11 @@ class HomeFragment : ArticleListFragment<HomeViewModel>() {
     override fun onRefreshData() {
         mCurrentPage = 0
         mTopArticlesLoadTimes = 0
-        mViewModel.loadHomeArticleData(mCurrentPage)
-        mViewModel.loadBanner()
+        mViewModel.loadHomeArticleDataCo(mCurrentPage)
+        mViewModel.loadBannerCo()
     }
 
     override fun onLoadMoreData() {
-        mViewModel.loadHomeArticleData(++mCurrentPage)
+        mViewModel.loadHomeArticleDataCo(++mCurrentPage)
     }
 }

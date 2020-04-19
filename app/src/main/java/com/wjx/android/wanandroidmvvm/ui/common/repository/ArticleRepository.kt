@@ -6,6 +6,7 @@ import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.network.response.EmptyResponse
 import com.wjx.android.wanandroidmvvm.base.repository.ApiRepository
 import com.wjx.android.wanandroidmvvm.common.state.State
+import com.wjx.android.wanandroidmvvm.network.dataConvert
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -40,5 +41,13 @@ abstract class ArticleRepository(val loadState: MutableLiveData<State>) : ApiRep
                     this
                 )
             )
+    }
+
+    suspend fun collectCo(id : Int ) :EmptyResponse {
+        return apiService.collectCo(id).dataConvert(loadState)
+    }
+
+    suspend fun unCollectCo(id : Int ) :EmptyResponse {
+        return apiService.unCollectCo(id).dataConvert(loadState)
     }
 }

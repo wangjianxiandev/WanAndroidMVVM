@@ -7,7 +7,7 @@ package com.wjx.android.wanandroidmvvm.ui.home.data
  * @date: 2020/02/26
  * Time: 10:55
  */
-class BannerResponse (var id : Int,
+data class BannerResponse (var id : Int,
                       var desc : String,
                       var imagePath : String,
                       var title : String,

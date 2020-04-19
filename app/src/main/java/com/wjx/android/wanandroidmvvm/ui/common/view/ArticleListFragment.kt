@@ -115,11 +115,10 @@ abstract class ArticleListFragment<VM : ArticleViewModel<*>> : BaseLifeCycleFrag
 
     override fun collect(position: Int) {
         var article = mAdapter.getItem(position)
-
         article?.let {
             mCurrentItem = position
             mCollectState = it.collect
-            if (mCollectState) mViewModel.unCollect(it.id) else mViewModel.collect(it.id)
+            if (mCollectState) mViewModel.unCollectCo(it.id) else mViewModel.collectCo(it.id)
         }
     }
 

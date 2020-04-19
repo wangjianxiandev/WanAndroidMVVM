@@ -118,7 +118,7 @@ abstract class ArticleListActivity <VM : ArticleViewModel<*>> : BaseLifeCycleAct
         article?.let {
             mCurrentItem = position
             mCollectState = it.collect
-            if (mCollectState) mViewModel.unCollect(it.id) else mViewModel.collect(it.id)
+            if (mCollectState) mViewModel.unCollectCo(it.id) else mViewModel.collectCo(it.id)
         }
     }
 

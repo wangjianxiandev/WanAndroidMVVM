@@ -62,9 +62,6 @@ interface ApiService {
     @GET("/banner/json")
     fun loadBanner(): Observable<BaseResponse<List<BannerResponse>>>
 
-    @GET("/banner/json")
-    suspend fun loadBannerData() : BaseResponse<List<BannerResponse>>
-
     @GET("/article/top/json")
     fun loadTopArticle(): Observable<BaseResponse<List<Article>>>
 
@@ -181,4 +178,20 @@ interface ApiService {
 
     @GET("/lg/coin/list/{pageNum}/json")
     fun loadIntegralHistory(@Path("pageNum") pageNum: Int) : Observable<BaseResponse<IntegralHistoryListResponse>>
+
+    // 使用协程 + Retrofit2.6
+    @POST("/lg/collect/{id}/json")
+    suspend fun collectCo(@Path("id") id: Int): BaseResponse<EmptyResponse>
+
+    @POST("/lg/uncollect_originId/{id}/json")
+    suspend fun unCollectCo(@Path("id") id: Int): BaseResponse<EmptyResponse>
+
+    @GET("/banner/json")
+    suspend fun loadBannerCo() : BaseResponse<List<BannerResponse>>
+
+    @GET("/article/top/json")
+    suspend fun loadTopArticleCo(): BaseResponse<List<Article>>
+
+    @GET("/article/list/{pageNum}/json")
+    suspend fun loadHomeArticleCo(@Path("pageNum") pageNum: Int): BaseResponse<HomeArticleResponse>
 }

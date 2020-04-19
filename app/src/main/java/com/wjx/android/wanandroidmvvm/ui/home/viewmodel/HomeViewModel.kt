@@ -2,12 +2,17 @@ package com.wjx.android.wanandroidmvvm.ui.home.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.wjx.android.wanandroidmvvm.ui.common.data.Article
 import com.wjx.android.wanandroidmvvm.ui.common.viewmodel.ArticleViewModel
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.ui.home.data.BannerResponse
 import com.wjx.android.wanandroidmvvm.ui.home.data.HomeArticleResponse
 import com.wjx.android.wanandroidmvvm.ui.home.repository.HomeRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.lang.Exception
 
 /**
  * Created with Android Studio.
@@ -18,22 +23,60 @@ import com.wjx.android.wanandroidmvvm.ui.home.repository.HomeRepository
  */
 class HomeViewModel(application: Application) :
     ArticleViewModel<HomeRepository>(application) {
-    val mBannerData: MutableLiveData<BaseResponse<List<BannerResponse>>> = MutableLiveData()
-    val mHomeArticleData: MutableLiveData<BaseResponse<HomeArticleResponse>> = MutableLiveData()
-    val mTopArticleData: MutableLiveData<BaseResponse<List<Article>>> = MutableLiveData()
+    // Rxjava2版本
+//    val mBannerData: MutableLiveData<BaseResponse<List<BannerResponse>>> = MutableLiveData()
+//    val mHomeArticleData: MutableLiveData<BaseResponse<HomeArticleResponse>> = MutableLiveData()
+//    val mTopArticleData: MutableLiveData<BaseResponse<List<Article>>> = MutableLiveData()
 
-    fun loadBanner() {
-        mRepository.loadBanner(mBannerData)
-    }
+//    fun loadBanner() {
+//        mRepository.loadBanner(mBannerData)
+//    }
 
-    fun loadHomeArticleData(pageNum: Int) {
-        if (pageNum == 0) {
-            mRepository.loadTopArticle(mTopArticleData)
-        }
-        mRepository.loadHomeArticle(pageNum, mHomeArticleData)
-    }
+//    fun loadHomeArticleData(pageNum: Int) {
+//        if (pageNum == 0) {
+//            mRepository.loadTopArticle(mTopArticleData)
+//        }
+//        mRepository.loadHomeArticle(pageNum, mHomeArticleData)
+//    }
 
 //    fun loadTopArticle() {
 //        mRepository.loadTopArticle(mTopArticleData)
 //    }
+
+    // 使用协程 + Retrofit2.6以上版本
+    var mBannerData: MutableLiveData<List<BannerResponse>> = MutableLiveData()
+    var mHomeArticleData: MutableLiveData<HomeArticleResponse> = MutableLiveData()
+    var mTopArticleData: MutableLiveData<List<Article>> = MutableLiveData()
+
+    fun loadBannerCo() {
+        viewModelScope.launch {
+            try{
+                val data = withContext(Dispatchers.IO) {
+                    mRepository.loadBannerCo()
+                }
+                mBannerData.value = data
+            } catch (e : Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    fun loadHomeArticleDataCo(pageNum : Int) {
+        viewModelScope.launch {
+            try {
+                if (pageNum == 0) {
+                    val topData = withContext(Dispatchers.IO) {
+                        mRepository.loadTopArticleCo()
+                    }
+                    mTopArticleData.value = topData
+                }
+                val homeData = withContext(Dispatchers.IO) {
+                    mRepository.loadHomeArticleCo(pageNum)
+                }
+                mHomeArticleData.value = homeData
+            } catch (e : Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
 }

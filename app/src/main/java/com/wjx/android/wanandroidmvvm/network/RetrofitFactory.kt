@@ -29,7 +29,6 @@ class RetrofitFactory private constructor() {
             .baseUrl(Constant.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .client(initOkHttpClient())
             .build()
     }
