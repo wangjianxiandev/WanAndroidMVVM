@@ -40,10 +40,7 @@ abstract class ArticleViewModel<T : ArticleRepository>(application: Application)
     fun collectCo(id: Int) {
         viewModelScope.launch {
             try {
-                val data = withContext(Dispatchers.IO) {
-                    mRepository.collectCo(id)
-                }
-                mCollectData.value = data
+                mCollectData.value = mRepository.collectCo(id)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -53,10 +50,7 @@ abstract class ArticleViewModel<T : ArticleRepository>(application: Application)
     fun unCollectCo(id: Int) {
         viewModelScope.launch {
             try {
-                val data = withContext(Dispatchers.IO) {
-                    mRepository.unCollectCo(id)
-                }
-                mCollectData.value = data
+                mCollectData.value = mRepository.unCollectCo(id)
             } catch (e: Exception) {
                 e.printStackTrace()
             }

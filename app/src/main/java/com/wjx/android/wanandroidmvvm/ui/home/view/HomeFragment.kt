@@ -57,7 +57,7 @@ class HomeFragment : ArticleListFragment<HomeViewModel>() {
         }
         mBanner.setImageLoader(GlideImageLoader())
         mBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)
-        mBanner.setDelayTime(2000)
+        mBanner.setDelayTime(5000)
         mBanner.setBannerAnimation(Transformer.DepthPage)
         mAdapter.addHeaderView(headView)
     }

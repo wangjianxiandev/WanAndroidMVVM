@@ -50,31 +50,22 @@ class HomeViewModel(application: Application) :
 
     fun loadBannerCo() {
         viewModelScope.launch {
-            try{
-                val data = withContext(Dispatchers.IO) {
-                    mRepository.loadBannerCo()
-                }
-                mBannerData.value = data
-            } catch (e : Exception) {
+            try {
+                mBannerData.value = mRepository.loadBannerCo()
+            } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
     }
 
-    fun loadHomeArticleDataCo(pageNum : Int) {
+    fun loadHomeArticleDataCo(pageNum: Int) {
         viewModelScope.launch {
             try {
                 if (pageNum == 0) {
-                    val topData = withContext(Dispatchers.IO) {
-                        mRepository.loadTopArticleCo()
-                    }
-                    mTopArticleData.value = topData
+                    mTopArticleData.value = mRepository.loadTopArticleCo()
                 }
-                val homeData = withContext(Dispatchers.IO) {
-                    mRepository.loadHomeArticleCo(pageNum)
-                }
-                mHomeArticleData.value = homeData
-            } catch (e : Exception) {
+                mHomeArticleData.value = mRepository.loadHomeArticleCo(pageNum)
+            } catch (e: Exception) {
                 e.printStackTrace()
             }
         }

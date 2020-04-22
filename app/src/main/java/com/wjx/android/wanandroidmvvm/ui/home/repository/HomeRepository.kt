@@ -11,6 +11,8 @@ import com.wjx.android.wanandroidmvvm.ui.home.data.BannerResponse
 import com.wjx.android.wanandroidmvvm.ui.home.data.HomeArticleResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 /**
  * Created with Android Studio.
@@ -61,14 +63,20 @@ class HomeRepository (loadState : MutableLiveData<State>) : ArticleRepository(lo
 
     // 使用协程 + Retrofit2.6
     suspend fun loadBannerCo() : List<BannerResponse> {
-        return apiService.loadBannerCo().dataConvert(loadState)
+        return withContext(Dispatchers.IO) {
+            apiService.loadBannerCo().dataConvert(loadState)
+        }
     }
 
     suspend fun loadTopArticleCo() :List<Article> {
-        return apiService.loadTopArticleCo().dataConvert(loadState)
+        return withContext(Dispatchers.IO) {
+            apiService.loadTopArticleCo().dataConvert(loadState)
+        }
     }
 
     suspend fun loadHomeArticleCo(pageNum : Int) : HomeArticleResponse {
-        return apiService.loadHomeArticleCo(pageNum).dataConvert(loadState)
+        return withContext(Dispatchers.IO) {
+            apiService.loadHomeArticleCo(pageNum).dataConvert(loadState)
+        }
     }
 }

@@ -2,11 +2,11 @@
 根据鸿神提供的[WanAndroid开放Api](https://www.wanandroid.com/)来制作的WanAndroidApp, 基本实现了所有的功能，使用kotlin语言开发，基于Material Design+AndroidX + MVVM + ViewModel + LiveData + Coroutines(已经替换掉RxJava) + Retrofit等优秀的开源框架，上次开发的 [WanAndroidMvvm版本](https://blog.csdn.net/qq_39424143/article/details/104697886)不是很完善，所以这次带来了完整的MVVM结构的客户端
 
 ## 项目地址
-[WanAndroid(github)](https://github.com/wangjianxiandev/WanAndroidMvvm)  （**欢迎大佬们提issue,     		欢迎大佬们star**)
+[WanAndroid(github)](https://github.com/wangjianxiandev/WanAndroidMvvm)  （留个star再走叭(๑• . •๑))
 ## 下载体验
 ## 当前版本（2.0）
 - **修复首页文章重复加载的bug**
-- 使用Coroutines + Retrofit 替换RxJava2 + Retrofit，并对数据解析进行封装
+- 使用Coroutines + Retrofit 替换RxJava2 + Retrofit，并对数据解析进行封装(因为是自己学习的项目，所以两种方法都用了(๑• . •๑))
 - 增加排行榜内容
 - 提高稳定性
 - 修复更换主题以及设置夜间模式的细节问题
@@ -23,7 +23,7 @@
         <td ><center><img src="https://img-blog.csdnimg.cn/20200328205346494.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
         <td ><center><img src="https://img-blog.csdnimg.cn/2020032820535557.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
         <td ><center><img src="https://img-blog.csdnimg.cn/20200328205401611.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
-            </tr>
+    </tr>
 </table>
 <table>
      <tr>

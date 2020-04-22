@@ -9,6 +9,8 @@ import com.wjx.android.wanandroidmvvm.common.state.State
 import com.wjx.android.wanandroidmvvm.network.dataConvert
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 /**
  * Created with Android Studio.
@@ -44,10 +46,14 @@ abstract class ArticleRepository(val loadState: MutableLiveData<State>) : ApiRep
     }
 
     suspend fun collectCo(id : Int ) :EmptyResponse {
-        return apiService.collectCo(id).dataConvert(loadState)
+        return withContext(Dispatchers.IO) {
+            apiService.collectCo(id).dataConvert(loadState)
+        }
     }
 
     suspend fun unCollectCo(id : Int ) :EmptyResponse {
-        return apiService.unCollectCo(id).dataConvert(loadState)
+        return withContext(Dispatchers.IO) {
+            apiService.unCollectCo(id).dataConvert(loadState)
+        }
     }
 }
