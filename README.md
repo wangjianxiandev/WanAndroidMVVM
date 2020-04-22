@@ -15,20 +15,28 @@
 ##### 密码：123456
 
 ## 项目展示
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200328205250824.gif)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2020033012513741.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200328205327145.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200328205339358.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200328205346494.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2020032820535557.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200328205401611.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200328205407997.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200330110235512.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200330125154357.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200330125216370.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200328205427386.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2020032820543845.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200328205451624.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70)
+<table>
+    <tr>
+        <td ><center><img src="https://img-blog.csdnimg.cn/2020033012513741.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+        <td ><center><img src="https://img-blog.csdnimg.cn/20200328205327145.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+        <td ><center><img src="https://img-blog.csdnimg.cn/20200328205339358.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+        <td ><center><img src="https://img-blog.csdnimg.cn/20200328205346494.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+        <td ><center><img src="https://img-blog.csdnimg.cn/2020032820535557.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+        <td ><center><img src="https://img-blog.csdnimg.cn/20200328205401611.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+            </tr>
+</table>
+<table>
+     <tr>
+        <td ><center><img src="https://img-blog.csdnimg.cn/20200328205407997.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+        <td ><center><img src="https://img-blog.csdnimg.cn/20200330110235512.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+        <td ><center><img src="https://img-blog.csdnimg.cn/20200330125154357.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+        <td ><center><img src="https://img-blog.csdnimg.cn/20200330125216370.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+        <td ><center><img src="https://img-blog.csdnimg.cn/20200328205427386.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+        <td ><center><img src="https://img-blog.csdnimg.cn/2020032820543845.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+        <td ><center><img src="https://img-blog.csdnimg.cn/20200328205451624.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+    </tr>
+</table>
+
 ## 项目功能
 ### 首页
 - 首页文章列表
@@ -97,26 +105,25 @@
 ### 开源
 |开源库| 版本 |
 |--|--|
-|retrofit | '2.5.0'|
-|okhttp| '3.4.1'|
-|rx_kotlin| '2.3.0'|
-|rx_android|'2.1.1'|
-|loadSir| '1.3.6'|
-| lifecycle|'2.2.0-rc02'|
-| glide |'4.9.0'|
-|banner | '1.4.10'|
-| agentweb| '4.1.2'|
-| room| '2.2.2'|
-| material_dialog | '0.9.6.0'|
-| event_bus | "3.1.1"|
-|adapter_helper | "2.9.30"|
-| tab_layout | "2.1.2@aar"|
-|flex_box | "2.0.1"|
-|flow_layout | "1.1.2"|
-|float_button  | "1.10.1"|
-|lottie|"2.8.0"|  
-| preference | "1.1.0-alpha04"|
-|material_dialog |  "3.1.1"|
-| material_dialog_color | "3.1.1"|
-| circular_avatar | 'v1.0.0'|
-
+| retrofit | 2.6.2 |
+| okhttp | 3.4.1 |
+| rx_kotlin | 2.3.0 |
+| rx_android | 2.1.1 |
+| loadSir | 1.3.6 |
+| lifecycle | 2.2.0-rc02 |
+| glide | 4.9.0 |
+| banner | 1.4.10 |
+| agentweb | 4.1.2 |
+| material_dialog | 0.9.6.0 |
+| event_bus | 3.1.1 |
+| adapter_helper | 2.9.30 |
+| tab_layout | 2.1.2@aar |
+| flex_box | 2.0.1 |
+| flow_layout | 1.1.2 |
+| float_button  | 1.10.1 |
+| lottie | 2.8.0 |  
+| preference | 1.1.0-alpha04|
+| material_dialog | 3.1.1|
+| material_dialog_color | 3.1.1|
+| circular_avatar | v1.0.0|
+|easypermissions| 3.0.0|
