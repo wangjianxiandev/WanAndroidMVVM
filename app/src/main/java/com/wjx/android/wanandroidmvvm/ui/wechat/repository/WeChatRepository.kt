@@ -20,7 +20,7 @@ import kotlinx.coroutines.withContext
  * @date: 2020/02/27
  * Time: 14:40
  */
-class WeChatRepository (loadState : MutableLiveData<State>) : ArticleRepository(loadState) {
+class WeChatRepository(loadState: MutableLiveData<State>) : ArticleRepository(loadState) {
     fun loadWeChatTabName(liveData: MutableLiveData<BaseResponse<List<WeChatTabNameResponse>>>) {
         apiService.loadWeChatTab()
             .subscribeOn(Schedulers.io())
@@ -34,7 +34,11 @@ class WeChatRepository (loadState : MutableLiveData<State>) : ArticleRepository(
             )
     }
 
-    fun loadWeChatArticle(cid : Int, pageNum : Int, liveData: MutableLiveData<BaseResponse<WeChatArticleResponse>>) {
+    fun loadWeChatArticle(
+        cid: Int,
+        pageNum: Int,
+        liveData: MutableLiveData<BaseResponse<WeChatArticleResponse>>
+    ) {
         apiService.loadWeChatArticles(cid, pageNum)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -47,15 +51,11 @@ class WeChatRepository (loadState : MutableLiveData<State>) : ArticleRepository(
             )
     }
 
-    suspend fun loadWeChatTabNameCo() : List<WeChatTabNameResponse> {
-        return withContext(Dispatchers.IO) {
-            apiService.loadWeChatTabCo().dataConvert(loadState)
-        }
+    suspend fun loadWeChatTabNameCo(): List<WeChatTabNameResponse> {
+        return apiService.loadWeChatTabCo().dataConvert(loadState)
     }
 
-    suspend fun loadWeChatArticleCo(cid : Int, pageNum : Int) : WeChatArticleResponse {
-        return withContext(Dispatchers.IO) {
-            apiService.loadWeChatArticlesCo(cid, pageNum).dataConvert(loadState)
-        }
+    suspend fun loadWeChatArticleCo(cid: Int, pageNum: Int): WeChatArticleResponse {
+        return apiService.loadWeChatArticlesCo(cid, pageNum).dataConvert(loadState)
     }
 }

@@ -54,14 +54,10 @@ class ProjectRespository(loadState: MutableLiveData<State>) : ArticleRepository(
     }
 
     suspend fun loadProjectTabCo(): List<ProjectTabResponse> {
-        return withContext(Dispatchers.IO) {
-            apiService.loadProjectTabCo().dataConvert(loadState)
-        }
+        return apiService.loadProjectTabCo().dataConvert(loadState)
     }
 
     suspend fun loadProjectArticleCo(pageNum: Int, cid: Int): ProjectResponse {
-        return withContext(Dispatchers.IO) {
-            apiService.loadProjectArticlesCo(pageNum, cid).dataConvert(loadState)
-        }
+        return apiService.loadProjectArticlesCo(pageNum, cid).dataConvert(loadState)
     }
 }

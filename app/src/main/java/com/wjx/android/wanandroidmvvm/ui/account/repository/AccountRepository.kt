@@ -20,8 +20,12 @@ import kotlinx.coroutines.withContext
  * @date: 2020/03/01
  * Time: 19:59
  */
-class AccountRepository (val loadState : MutableLiveData<State>) : ApiRepository() {
-    fun login(username : String, password : String, liveData: MutableLiveData<BaseResponse<LoginResponse>>) {
+class AccountRepository(val loadState: MutableLiveData<State>) : ApiRepository() {
+    fun login(
+        username: String,
+        password: String,
+        liveData: MutableLiveData<BaseResponse<LoginResponse>>
+    ) {
         apiService.onLogin(username, password)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -34,7 +38,12 @@ class AccountRepository (val loadState : MutableLiveData<State>) : ApiRepository
             )
     }
 
-    fun register(username : String, password :String, repassword : String, liveData: MutableLiveData<BaseResponse<RegisterResponse>>){
+    fun register(
+        username: String,
+        password: String,
+        repassword: String,
+        liveData: MutableLiveData<BaseResponse<RegisterResponse>>
+    ) {
         apiService.onRegister(username, password, repassword)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -48,15 +57,15 @@ class AccountRepository (val loadState : MutableLiveData<State>) : ApiRepository
     }
 
     // 使用协程 + Retrofit2.6
-    suspend fun loginCo(username : String, password : String) : LoginResponse {
-        return withContext(Dispatchers.IO) {
-            apiService.onLoginCo(username, password).dataConvert(loadState)
-        }
+    suspend fun loginCo(username: String, password: String): LoginResponse {
+        return apiService.onLoginCo(username, password).dataConvert(loadState)
     }
 
-    suspend fun registerCo(username: String, password: String, repassword: String) : RegisterResponse {
-        return withContext(Dispatchers.IO) {
-            apiService.onRegisterCo(username, password, repassword).dataConvert(loadState)
-        }
+    suspend fun registerCo(
+        username: String,
+        password: String,
+        repassword: String
+    ): RegisterResponse {
+        return apiService.onRegisterCo(username, password, repassword).dataConvert(loadState)
     }
 }

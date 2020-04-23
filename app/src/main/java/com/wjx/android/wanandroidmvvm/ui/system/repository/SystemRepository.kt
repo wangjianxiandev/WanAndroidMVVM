@@ -52,14 +52,10 @@ class SystemRepository(loadState: MutableLiveData<State>) : ArticleRepository(lo
     }
 
     suspend fun loadSystemTabCo(): List<SystemTabNameResponse> {
-        return withContext(Dispatchers.IO) {
-            apiService.loadSystemTabCo().dataConvert(loadState)
-        }
+        return apiService.loadSystemTabCo().dataConvert(loadState)
     }
 
     suspend fun loadsystemArticleCo(pageNum: Int, cid: Int?): SystemArticleResponse {
-        return withContext(Dispatchers.IO) {
-            apiService.loadSystemArticlesCo(pageNum, cid).dataConvert(loadState)
-        }
+        return apiService.loadSystemArticlesCo(pageNum, cid).dataConvert(loadState)
     }
 }

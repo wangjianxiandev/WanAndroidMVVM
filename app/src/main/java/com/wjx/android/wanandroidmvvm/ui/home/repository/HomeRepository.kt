@@ -21,7 +21,7 @@ import kotlinx.coroutines.withContext
  * @date: 2020/02/26
  * Time: 10:53
  */
-class HomeRepository (loadState : MutableLiveData<State>) : ArticleRepository(loadState) {
+class HomeRepository(loadState: MutableLiveData<State>) : ArticleRepository(loadState) {
     fun loadBanner(liveData: MutableLiveData<BaseResponse<List<BannerResponse>>>) {
         apiService.loadBanner()
             .subscribeOn(Schedulers.io())
@@ -35,7 +35,10 @@ class HomeRepository (loadState : MutableLiveData<State>) : ArticleRepository(lo
             )
     }
 
-    fun loadHomeArticle(pageNum : Int, liveData: MutableLiveData<BaseResponse<HomeArticleResponse>>) {
+    fun loadHomeArticle(
+        pageNum: Int,
+        liveData: MutableLiveData<BaseResponse<HomeArticleResponse>>
+    ) {
         apiService.loadHomeArticle(pageNum)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -62,21 +65,16 @@ class HomeRepository (loadState : MutableLiveData<State>) : ArticleRepository(lo
     }
 
     // 使用协程 + Retrofit2.6
-    suspend fun loadBannerCo() : List<BannerResponse> {
-        return withContext(Dispatchers.IO) {
-            apiService.loadBannerCo().dataConvert(loadState)
-        }
+    suspend fun loadBannerCo(): List<BannerResponse> {
+        return apiService.loadBannerCo().dataConvert(loadState)
+
     }
 
-    suspend fun loadTopArticleCo() :List<Article> {
-        return withContext(Dispatchers.IO) {
-            apiService.loadTopArticleCo().dataConvert(loadState)
-        }
+    suspend fun loadTopArticleCo(): List<Article> {
+        return apiService.loadTopArticleCo().dataConvert(loadState)
     }
 
-    suspend fun loadHomeArticleCo(pageNum : Int) : HomeArticleResponse {
-        return withContext(Dispatchers.IO) {
-            apiService.loadHomeArticleCo(pageNum).dataConvert(loadState)
-        }
+    suspend fun loadHomeArticleCo(pageNum: Int): HomeArticleResponse {
+        return apiService.loadHomeArticleCo(pageNum).dataConvert(loadState)
     }
 }

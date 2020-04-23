@@ -34,8 +34,6 @@ class NavigationRepository(loadState: MutableLiveData<State>) : ArticleRepositor
     }
 
     suspend fun loadNavigationTab(): List<NavigationTabNameResponse> {
-        return withContext(Dispatchers.IO) {
-            apiService.loadNavigationTabCo().dataConvert(loadState)
-        }
+        return apiService.loadNavigationTabCo().dataConvert(loadState)
     }
 }
