@@ -46,7 +46,7 @@ class ProjectFragment : BaseLifeCycleFragment<ProjectViewModel>() {
     override fun initDataObserver() {
         mViewModel.mProjectTabData.observe(this, Observer { response ->
             response?.let {
-                initProjectArticleFragment(it.data)
+                initProjectArticleFragment(it)
             }
         })
     }

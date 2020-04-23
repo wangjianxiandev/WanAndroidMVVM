@@ -48,7 +48,7 @@ class WeChatFragment : BaseLifeCycleFragment<WeChatViewModel>() {
     override fun initDataObserver() {
         mViewModel.mWChatTabData.observe(this, Observer { response ->
             response?.let{
-                initWeChatArticleFragment(it.data)
+                initWeChatArticleFragment(it)
             }
         })
     }

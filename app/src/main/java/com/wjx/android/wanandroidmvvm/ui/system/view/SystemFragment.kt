@@ -33,7 +33,7 @@ class SystemFragment : BaseLifeCycleFragment<SystemViewModel>() {
     override fun initDataObserver() {
         mViewModel.mSystemTabNameData.observe(this, Observer { response ->
             response?.let {
-                setSystemTabData(it.data)
+                setSystemTabData(it)
             }
         })
     }

@@ -5,10 +5,13 @@ import com.wjx.android.wanandroidmvvm.base.observer.BaseObserver
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.base.repository.ApiRepository
 import com.wjx.android.wanandroidmvvm.common.state.State
+import com.wjx.android.wanandroidmvvm.network.dataConvert
 import com.wjx.android.wanandroidmvvm.ui.account.data.LoginResponse
 import com.wjx.android.wanandroidmvvm.ui.account.data.RegisterResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 /**
  * Created with Android Studio.
@@ -42,5 +45,18 @@ class AccountRepository (val loadState : MutableLiveData<State>) : ApiRepository
                     this
                 )
             )
+    }
+
+    // 使用协程 + Retrofit2.6
+    suspend fun loginCo(username : String, password : String) : LoginResponse {
+        return withContext(Dispatchers.IO) {
+            apiService.onLoginCo(username, password).dataConvert(loadState)
+        }
+    }
+
+    suspend fun registerCo(username: String, password: String, repassword: String) : RegisterResponse {
+        return withContext(Dispatchers.IO) {
+            apiService.onRegisterCo(username, password, repassword).dataConvert(loadState)
+        }
     }
 }

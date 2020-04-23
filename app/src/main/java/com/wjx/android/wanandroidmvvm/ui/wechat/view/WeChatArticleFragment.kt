@@ -45,7 +45,7 @@ class WeChatArticleFragment : ArticleListFragment<WeChatViewModel>() {
         super.initDataObserver()
         mViewModel.mWeChatArticleData.observe(this, Observer { response ->
             response?.let {
-                addData(it.data.datas)
+                addData(it.datas)
             }
         })
     }

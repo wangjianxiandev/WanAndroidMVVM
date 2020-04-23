@@ -5,10 +5,13 @@ import com.wjx.android.wanandroidmvvm.ui.common.repository.ArticleRepository
 import com.wjx.android.wanandroidmvvm.base.observer.BaseObserver
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.common.state.State
+import com.wjx.android.wanandroidmvvm.network.dataConvert
 import com.wjx.android.wanandroidmvvm.ui.wechat.data.WeChatArticleResponse
 import com.wjx.android.wanandroidmvvm.ui.wechat.data.WeChatTabNameResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 /**
  * Created with Android Studio.
@@ -42,5 +45,17 @@ class WeChatRepository (loadState : MutableLiveData<State>) : ArticleRepository(
                     this
                 )
             )
+    }
+
+    suspend fun loadWeChatTabNameCo() : List<WeChatTabNameResponse> {
+        return withContext(Dispatchers.IO) {
+            apiService.loadWeChatTabCo().dataConvert(loadState)
+        }
+    }
+
+    suspend fun loadWeChatArticleCo(cid : Int, pageNum : Int) : WeChatArticleResponse {
+        return withContext(Dispatchers.IO) {
+            apiService.loadWeChatArticlesCo(cid, pageNum).dataConvert(loadState)
+        }
     }
 }

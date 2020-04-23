@@ -194,4 +194,47 @@ interface ApiService {
 
     @GET("/article/list/{pageNum}/json")
     suspend fun loadHomeArticleCo(@Path("pageNum") pageNum: Int): BaseResponse<HomeArticleResponse>
+
+    @POST("/user/login")
+    suspend fun onLoginCo(
+        @Query("username") username: String,
+        @Query("password") password: String
+    ): BaseResponse<LoginResponse>
+
+    @POST("/user/register")
+    suspend fun onRegisterCo(
+        @Query("username") username: String, @Query("password") password: String,
+        @Query("repassword") repassword: String
+    ): BaseResponse<RegisterResponse>
+
+    @GET("/wxarticle/chapters/json")
+    suspend fun loadWeChatTabCo(): BaseResponse<List<WeChatTabNameResponse>>
+
+    @GET("/wxarticle/list/{cid}/{pageNum}/json")
+    suspend fun loadWeChatArticlesCo(@Path("cid") cid: Int, @Path("pageNum") page: Int)
+            : BaseResponse<WeChatArticleResponse>
+
+    @GET("/tree/json")
+    suspend fun loadSystemTabCo(): BaseResponse<List<SystemTabNameResponse>>
+
+    @GET("/article/list/{pageNum}/json")
+    suspend fun loadSystemArticlesCo(
+        @Path("pageNum") pageNum: Int,
+        @Query("cid") id: Int?
+    ): BaseResponse<SystemArticleResponse>
+
+    @GET("/project/tree/json")
+    suspend fun loadProjectTabCo(): BaseResponse<List<ProjectTabResponse>>
+
+    @GET("/project/list/{pageNum}/json")
+    suspend fun loadProjectArticlesCo(
+        @Path("pageNum") pageNum: Int,
+        @Query("cid") cid: Int
+    ): BaseResponse<ProjectResponse>
+
+    @GET("/navi/json")
+    suspend fun loadNavigationTabCo(): BaseResponse<List<NavigationTabNameResponse>>
+
+    @GET("/lg/collect/list/{pageNum}/json")
+    suspend fun loadCollectArticleCo(@Path("pageNum") page: Int): BaseResponse<CollectResponse>
 }

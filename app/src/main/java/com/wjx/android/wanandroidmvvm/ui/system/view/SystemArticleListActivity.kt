@@ -46,7 +46,7 @@ class SystemArticleListActivity : ArticleListActivity<SystemViewModel>() {
     override fun initDataObserver() {
         super.initDataObserver()
         mViewModel.mSystemArticleData.observe(this, Observer { response ->
-            response?.let { addData(it.data.datas) }
+            response?.let { addData(it.datas) }
         })
     }
 

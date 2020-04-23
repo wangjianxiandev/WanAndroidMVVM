@@ -96,7 +96,7 @@ class ProjectArticleFragment : BaseLifeCycleFragment<ProjectViewModel>() , Login
     override fun initDataObserver() {
         mViewModel.mProjectArticleData.observe(this, Observer { reponse ->
             reponse?.let {
-                setProjectArticle(it.data.datas)
+                setProjectArticle(it.datas)
             }
         })
         mViewModel.mCollectData.observe(this, Observer {

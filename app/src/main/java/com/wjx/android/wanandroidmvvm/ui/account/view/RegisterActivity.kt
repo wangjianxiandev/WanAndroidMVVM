@@ -32,7 +32,7 @@ class RegisterActivity : BaseLifeCycleActivity<AccountViewModel>(), View.OnClick
 
     override fun initDataObserver() {
         mViewModel.mRegisterData.observe(this, Observer {
-            it.data.let {
+            it.let {
                 Toast.makeText(this, "注册成功", Toast.LENGTH_SHORT).show()
                 UserInfo.instance.loginSuccess(it.username, it.id.toString(), it.collectIds)
                 finish()
@@ -49,7 +49,7 @@ class RegisterActivity : BaseLifeCycleActivity<AccountViewModel>(), View.OnClick
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.button_register -> {
-                mViewModel.register(
+                mViewModel.registerCo(
                     account_text.text.toString(),
                     password_text.text.toString(),
                     repassword_text.text.toString()

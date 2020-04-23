@@ -31,7 +31,7 @@ class LoginActivity : BaseLifeCycleActivity<AccountViewModel>(), View.OnClickLis
 
     override fun initDataObserver() {
         mViewModel.mLoginData.observe(this, Observer {
-            it?.data?.let {
+            it?.let {
                 loginResponse ->
                 UserInfo.instance.loginSuccess(loginResponse.username, loginResponse.id.toString(),loginResponse.collectIds)
                 finish()
@@ -48,7 +48,7 @@ class LoginActivity : BaseLifeCycleActivity<AccountViewModel>(), View.OnClickLis
     override fun onClick(v: View?) {
         when(v?.id) {
             R.id.button_login -> {
-                mViewModel.login(account_text.text.toString(), password_text.text.toString())
+                mViewModel.loginCo(account_text.text.toString(), password_text.text.toString())
             }
             R.id.register_text -> {
                 startActivity<RegisterActivity>()

@@ -46,8 +46,8 @@ class NavigationFragment : BaseLifeCycleFragment<NavigationViewModel>() {
     override fun initDataObserver() {
         mViewModel.mNavigationTabData.observe(this, Observer { response ->
             response?.let {
-                initNavigationTabData(it.data)
-                initNavigationLabelData(it.data)
+                initNavigationTabData(it)
+                initNavigationLabelData(it)
             }
         })
     }
