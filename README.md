@@ -11,7 +11,15 @@
 - 提高稳定性
 - 修复更换主题以及设置夜间模式的细节问题
 - 更改应用启动动画
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2020032821192381.png)
+<table>
+    <tr>
+        <td>
+            <center>
+            <img src="https://img-blog.csdnimg.cn/2020032821192381.png">
+            </center>
+        </td>
+    </tr>
+</table>
 ##### 密码：123456
 
 ## 项目展示
