@@ -1,4 +1,4 @@
-package com.wjx.android.wanandroidmvvm.ui.search
+package com.wjx.android.wanandroidmvvm.ui.search.view
 
 import android.graphics.PorterDuff
 import android.view.LayoutInflater

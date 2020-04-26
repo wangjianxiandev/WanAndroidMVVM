@@ -9,7 +9,7 @@ import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.ui.project.adapter.ProjectTabAdapter
 import com.wjx.android.wanandroidmvvm.ui.project.data.ProjectTabResponse
 import com.wjx.android.wanandroidmvvm.ui.project.viewmodel.ProjectViewModel
-import kotlinx.android.synthetic.main.layout_project.*
+import kotlinx.android.synthetic.main.fragment_project.*
 import org.greenrobot.eventbus.Subscribe
 
 /**
@@ -26,7 +26,7 @@ class ProjectFragment : BaseLifeCycleFragment<ProjectViewModel>() {
             return ProjectFragment()
         }
     }
-    override fun getLayoutId(): Int = R.layout.layout_project
+    override fun getLayoutId(): Int = R.layout.fragment_project
 
     override fun initView() {
         super.initView()

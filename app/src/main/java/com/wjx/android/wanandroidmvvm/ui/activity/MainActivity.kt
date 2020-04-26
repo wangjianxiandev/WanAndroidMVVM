@@ -26,7 +26,7 @@ import com.wjx.android.wanandroidmvvm.ui.home.view.HomeFragment
 import com.wjx.android.wanandroidmvvm.ui.navigation.view.NavigationFragment
 import com.wjx.android.wanandroidmvvm.ui.project.view.ProjectFragment
 import com.wjx.android.wanandroidmvvm.ui.question.view.QuestionArticleListActivity
-import com.wjx.android.wanandroidmvvm.ui.search.SearchActivity
+import com.wjx.android.wanandroidmvvm.ui.search.view.SearchActivity
 import com.wjx.android.wanandroidmvvm.ui.setting.SettingActivity
 import com.wjx.android.wanandroidmvvm.ui.square.view.SquareActivity
 import com.wjx.android.wanandroidmvvm.ui.system.view.SystemFragment

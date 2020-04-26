@@ -11,7 +11,7 @@ import com.wjx.android.wanandroidmvvm.ui.system.adapter.SystemAdapter
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemLabelResponse
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemTabNameResponse
 import com.wjx.android.wanandroidmvvm.ui.system.viewmodel.SystemViewModel
-import kotlinx.android.synthetic.main.layout_system.*
+import kotlinx.android.synthetic.main.fragment_system.*
 import org.greenrobot.eventbus.Subscribe
 
 /**
@@ -42,7 +42,7 @@ class SystemFragment : BaseLifeCycleFragment<SystemViewModel>() {
         mViewModel.loadSystemTab()
     }
 
-    override fun getLayoutId(): Int = R.layout.layout_system
+    override fun getLayoutId(): Int = R.layout.fragment_system
 
     override fun initView() {
         super.initView()

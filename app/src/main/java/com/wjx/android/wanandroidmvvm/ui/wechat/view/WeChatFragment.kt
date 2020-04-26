@@ -10,7 +10,7 @@ import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.ui.wechat.adapter.WeChatTabAdapter
 import com.wjx.android.wanandroidmvvm.ui.wechat.data.WeChatTabNameResponse
 import com.wjx.android.wanandroidmvvm.ui.wechat.viewmodel.WeChatViewModel
-import kotlinx.android.synthetic.main.layout_wechat.*
+import kotlinx.android.synthetic.main.fragment_wechat.*
 import org.greenrobot.eventbus.Subscribe
 
 /**
@@ -28,7 +28,7 @@ class WeChatFragment : BaseLifeCycleFragment<WeChatViewModel>() {
         }
     }
 
-    override fun getLayoutId(): Int = R.layout.layout_wechat
+    override fun getLayoutId(): Int = R.layout.fragment_wechat
 
     override fun initView() {
         super.initView()

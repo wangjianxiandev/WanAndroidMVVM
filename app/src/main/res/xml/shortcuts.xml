@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="MissingDefaultResource">
+    <shortcut
+        android:shortcutId="search"
+        android:enabled="true"
+        android:icon="@drawable/shortcut_search"
+        android:shortcutShortLabel="@string/shortcut_search">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.wjx.android.wanandroidmvvm"
+            android:targetClass="com.wjx.android.wanandroidmvvm.ui.search.view.SearchActivity" />
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="collect"
+        android:enabled="true"
+        android:icon="@drawable/shortcut_wenda"
+        android:shortcutShortLabel="@string/shortcut_wenda">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.wjx.android.wanandroidmvvm"
+            android:targetClass="com.wjx.android.wanandroidmvvm.ui.question.view.QuestionArticleListActivity" />
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+
+</shortcuts>

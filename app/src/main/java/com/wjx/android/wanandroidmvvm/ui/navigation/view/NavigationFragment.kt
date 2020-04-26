@@ -13,7 +13,7 @@ import com.wjx.android.wanandroidmvvm.ui.navigation.adapter.NavigationLabelAdapt
 import com.wjx.android.wanandroidmvvm.ui.navigation.adapter.NavigationTabAdapter
 import com.wjx.android.wanandroidmvvm.ui.navigation.data.NavigationTabNameResponse
 import com.wjx.android.wanandroidmvvm.ui.navigation.viewmodel.NavigationViewModel
-import kotlinx.android.synthetic.main.layout_navigation.*
+import kotlinx.android.synthetic.main.fragment_navigation.*
 import org.greenrobot.eventbus.Subscribe
 
 
@@ -41,7 +41,7 @@ class NavigationFragment : BaseLifeCycleFragment<NavigationViewModel>() {
         }
     }
 
-    override fun getLayoutId(): Int = R.layout.layout_navigation
+    override fun getLayoutId(): Int = R.layout.fragment_navigation
 
     override fun initDataObserver() {
         mViewModel.mNavigationTabData.observe(this, Observer { response ->
