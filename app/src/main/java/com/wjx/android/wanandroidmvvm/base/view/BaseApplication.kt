@@ -7,7 +7,6 @@ import com.tencent.bugly.Bugly
 import com.wjx.android.wanandroidmvvm.common.callback.EmptyCallBack
 import com.wjx.android.wanandroidmvvm.common.callback.ErrorCallBack
 import com.wjx.android.wanandroidmvvm.common.callback.LoadingCallBack
-import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.common.utils.Constant
 import com.wjx.android.wanandroidmvvm.common.utils.SPreference
 import org.litepal.LitePal
@@ -35,7 +34,7 @@ open class BaseApplication : Application() {
     }
 
     private fun initMode() {
-        var isNightMode = ColorUtil.getNightMode(this)
+        var isNightMode: Boolean by SPreference(Constant.NIGHT_MODE, false)
         AppCompatDelegate.setDefaultNightMode(if (isNightMode) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO)
     }
 }

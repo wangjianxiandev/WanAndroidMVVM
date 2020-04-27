@@ -72,7 +72,7 @@ class RetrofitFactory private constructor() {
             val domain = request.url().host()
 
             if(domain.isNotEmpty()){
-                val mCookie by SPreference(domain,"")
+                val mCookie by SPreference("cookie","")
                 if(mCookie.isNotEmpty()){
                     builder.addHeader(Constant.COOKIE_NAME,mCookie)
                 }
@@ -114,7 +114,7 @@ class RetrofitFactory private constructor() {
 
     private fun saveCookie(domain: String?, parseCookie: String) {
         domain?.let {
-            var resutl :String by SPreference(it,parseCookie)
+            var resutl :String by SPreference("cookie",parseCookie)
             resutl = parseCookie
         }
     }

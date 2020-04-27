@@ -45,7 +45,7 @@ class SettingFragment : PreferenceFragmentCompat(),
 
 
     private fun init() {
-        var nightMode = ColorUtil.getNightMode(parentActivity)
+        var nightMode: Boolean by SPreference(Constant.NIGHT_MODE, false)
         val version = "当前版本 " + parentActivity.packageManager.getPackageInfo(
             parentActivity.packageName,
             0
@@ -58,7 +58,6 @@ class SettingFragment : PreferenceFragmentCompat(),
         findPreference<SwitchPreference>("night")?.setOnPreferenceChangeListener { preference, newValue ->
             val boolValue = newValue as Boolean
             findPreference<SwitchPreference>("night")?.isChecked = !boolValue
-            ColorUtil.setNightMode(parentActivity, boolValue)
             nightMode = boolValue
             var currentMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
             parentActivity.delegate.localNightMode =
@@ -69,22 +68,17 @@ class SettingFragment : PreferenceFragmentCompat(),
                 R.anim.animo_alph_close
             )
             parentActivity.finish()
-            var nightModeChanged = ColorUtil.getNightMode(parentActivity)
+            var nightModeChanged: Boolean by SPreference(Constant.NIGHT_MODE, false)
             AppCompatDelegate.setDefaultNightMode(
-                if (nightModeChanged) {
-                    AppCompatDelegate.MODE_NIGHT_YES
-                } else {
-                    AppCompatDelegate.MODE_NIGHT_NO
-                }
+                if (nightModeChanged) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
             )
             if (nightModeChanged) {
-                ColorUtil.setLastColor(parentActivity, ColorUtil.getColor(parentActivity))
+                ColorUtil.setLastColor(ColorUtil.getColor(parentActivity))
                 ColorUtil.setColor(
-                    parentActivity,
                     ContextCompat.getColor(parentActivity, R.color.colorGray666)
                 )
             } else {
-                ColorUtil.setColor(parentActivity, ColorUtil.getLastColor(parentActivity))
+                ColorUtil.setColor(ColorUtil.getLastColor(parentActivity))
             }
 //            RecreateEvent().post()
             true

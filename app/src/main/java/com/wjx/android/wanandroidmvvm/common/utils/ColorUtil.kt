@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import androidx.core.content.ContextCompat
-import androidx.preference.PreferenceManager
 import com.wjx.android.wanandroidmvvm.R
 import java.util.*
 import kotlin.jvm.internal.Intrinsics
@@ -245,14 +244,12 @@ object ColorUtil {
      * @return
      */
     fun getColor(context: Context): Int {
-        val setting =
-            PreferenceManager.getDefaultSharedPreferences(context)
         val defaultColor = ContextCompat.getColor(context!!, R.color.colorPrimaryDark)
-        val color = setting.getInt("color", defaultColor)
-        return if (color != 0 && Color.alpha(color) != 255) {
+        var colorTheme: Int by SPreference("color", defaultColor)
+        return if (colorTheme != 0 && Color.alpha(colorTheme) != 255) {
             defaultColor
         } else {
-            color
+            colorTheme
         }
     }
 
@@ -262,9 +259,9 @@ object ColorUtil {
      * @param context
      * @param color
      */
-    fun setColor(context: Context, color: Int) {
-        val setting = PreferenceManager.getDefaultSharedPreferences(context)
-        setting.edit().putInt("color", color).apply()
+    fun setColor(color: Int) {
+        var colorTheme: Int by SPreference("color", color)
+        colorTheme = color
     }
 
     /**
@@ -306,9 +303,9 @@ object ColorUtil {
      * 设置切换夜间模式之前的主题颜色
      * @param color
      */
-    fun setLastColor(context: Context, color: Int) {
-        val setting =	PreferenceManager.getDefaultSharedPreferences(context)
-        setting.edit().putInt("lastColor", color).apply()
+    fun setLastColor(color: Int) {
+        var lastColor: Int by SPreference("lastColor", color)
+        lastColor = color
     }
 
     /**
@@ -318,24 +315,12 @@ object ColorUtil {
      * @return
      */
     fun getLastColor(context: Context): Int {
-        val setting =
-            PreferenceManager.getDefaultSharedPreferences(context)
         val defaultColor = ContextCompat.getColor(context, R.color.colorPrimary)
-        val color = setting.getInt("lastColor", defaultColor)
-        return if (color != 0 && Color.alpha(color) != 255) {
+        var lastColor: Int by SPreference("lastColor", defaultColor)
+        return if (lastColor != 0 && Color.alpha(lastColor) != 255) {
             defaultColor
         } else {
-            color
+            lastColor
         }
-    }
-
-    fun setNightMode(context: Context, isNightMode : Boolean){
-        val setting = PreferenceManager.getDefaultSharedPreferences(context)
-        setting.edit().putBoolean("nightMode", isNightMode).apply()
-    }
-
-    fun getNightMode(context: Context) :Boolean {
-        val setting = PreferenceManager.getDefaultSharedPreferences(context)
-        return setting.getBoolean("nightMode", false)
     }
 }

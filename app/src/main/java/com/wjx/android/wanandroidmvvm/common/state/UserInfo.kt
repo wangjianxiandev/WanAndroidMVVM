@@ -65,7 +65,7 @@ class UserInfo private constructor() {
         mState.login(context)
     }
 
-    fun loginSuccess(username: String, userId : String, collectIds: List<Int>?) {
+    fun loginSuccess(username: String, userId: String, collectIds: List<Int>?) {
         // 改变 sharedPreferences   isLogin值
         isLogin = true
         UserInfo.instance.mState = LoginState()
@@ -77,7 +77,9 @@ class UserInfo private constructor() {
     fun logoutSuccess() {
         UserInfo.instance.mState = LogoutState()
         // 清除 cookie、登录缓存
-        SPreference.clear()
-        LoginSuccessState.notifyLoginState("未登录", "--",null)
+        var mCookie by SPreference("cookie", "")
+        mCookie = ""
+        isLogin = false
+        LoginSuccessState.notifyLoginState("未登录", "--", null)
     }
 }

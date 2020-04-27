@@ -7,7 +7,7 @@ import kotlin.reflect.KProperty
 
 /**
  * Created with Android Studio.
- * Description:
+ * Description: // SP做委托代理
  * @author: Wangjianxian
  * @date: 2020/02/24
  * Time: 18:22
