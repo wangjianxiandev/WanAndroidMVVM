@@ -8,14 +8,16 @@ import android.os.Bundle
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.airbnb.lottie.LottieAnimationView
 import com.wjx.android.wanandroidmvvm.R
+import com.wjx.android.wanandroidmvvm.common.permission.PermissionResult
+import com.wjx.android.wanandroidmvvm.common.permission.Permissions
 import com.wjx.android.wanandroidmvvm.common.utils.Constant
 import pub.devrel.easypermissions.AfterPermissionGranted
 import pub.devrel.easypermissions.AppSettingsDialog
-import pub.devrel.easypermissions.EasyPermissions
 
-class SplashActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
+class SplashActivity : AppCompatActivity() {
 
     private var mLottieAnimationView: LottieAnimationView? = null
 
@@ -40,48 +42,6 @@ class SplashActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks 
         initView()
     }
 
-    @AfterPermissionGranted(Constant.RC_STORAGE_PERM)
-    private fun initPermission() {
-        if (!hasPermission(*mPermissions)) {
-            EasyPermissions.requestPermissions(
-                this, "读写权限(用于读取和保存用户数据)和联网权限", Constant.RC_STORAGE_PERM, *mPermissions
-            )
-        } else {
-            startIntent()
-        }
-    }
-
-    private fun hasPermission(vararg permission: String): Boolean {
-        return EasyPermissions.hasPermissions(this, *permission)
-    }
-
-    override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
-        if (EasyPermissions.somePermissionPermanentlyDenied(this, perms!!)) {
-            AppSettingsDialog.Builder(this)
-                .setTitle("申请权限")
-                .setRationale("没有相关权限应用将无法正常运行，点击确定进入权限设置界面来进行更改")
-                .build()
-                .show()
-        }
-    }
-
-    override fun onPermissionsGranted(
-        requestCode: Int,
-        perms: List<String?>
-    ) {
-        startIntent()
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String?>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        // Forward results to EasyPermissions
-        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
-    }
-
     /**
      * 初始化进场动画
      */
@@ -93,6 +53,7 @@ class SplashActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks 
             override fun onAnimationEnd(animator: Animator) {
                 initPermission()
             }
+
             override fun onAnimationCancel(animator: Animator) {}
             override fun onAnimationRepeat(animator: Animator) {}
         })
@@ -106,5 +67,34 @@ class SplashActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks 
     override fun onStop() {
         super.onStop()
         finish()
+    }
+
+    @AfterPermissionGranted(Constant.RC_STORAGE_PERM)
+    private fun initPermission() {
+        Permissions(this).request(*mPermissions).observe(
+            this, Observer {
+                when (it) {
+                    is PermissionResult.Grant -> {
+                        startIntent()
+                    }
+                    // 进入设置界面申请权限
+                    is PermissionResult.Rationale -> {
+                        AppSettingsDialog.Builder(this)
+                            .setTitle("申请权限")
+                            .setRationale("没有相关权限应用将无法正常运行，点击确定进入权限设置界面来进行更改")
+                            .build()
+                            .show()
+                    }
+                    // 进入设置界面申请权限
+                    is PermissionResult.Deny -> {
+                        AppSettingsDialog.Builder(this)
+                            .setTitle("申请权限")
+                            .setRationale("没有相关权限应用将无法正常运行，点击确定进入权限设置界面来进行更改")
+                            .build()
+                            .show()
+                    }
+                }
+            }
+        )
     }
 }
