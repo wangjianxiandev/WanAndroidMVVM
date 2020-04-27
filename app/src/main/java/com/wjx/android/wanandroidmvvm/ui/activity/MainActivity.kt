@@ -41,7 +41,6 @@ import org.jetbrains.anko.startActivity
 class MainActivity : BaseActivity(), LoginSuccessListener {
     // 委托属性   将实现委托给了 -> Preference
     private var mUsername: String by SPreference(Constant.USERNAME_KEY, "未登录")
-    private var isNightMode: Boolean by SPreference(Constant.NIGHT_MODE, false)
     private var mUserId: String by SPreference(Constant.USERID_KEY, "--")
     private lateinit var headView: View
     private var mLastIndex: Int = -1
@@ -137,7 +136,7 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
                     UserInfo.instance.startTodoActivity(this)
                 }
                 R.id.nav_menu_theme -> {
-                    if (!isNightMode) {
+                    if (!ColorUtil.getNightMode(this)) {
                         MaterialDialog(this).show {
                             title(R.string.theme_color)
                             cornerRadius(16.0f)

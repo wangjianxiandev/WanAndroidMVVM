@@ -45,7 +45,7 @@ class SettingFragment : PreferenceFragmentCompat(),
 
 
     private fun init() {
-        var nightMode: Boolean by SPreference(Constant.NIGHT_MODE, false)
+        var nightMode = ColorUtil.getNightMode(parentActivity)
         val version = "当前版本 " + parentActivity.packageManager.getPackageInfo(
             parentActivity.packageName,
             0
@@ -58,6 +58,7 @@ class SettingFragment : PreferenceFragmentCompat(),
         findPreference<SwitchPreference>("night")?.setOnPreferenceChangeListener { preference, newValue ->
             val boolValue = newValue as Boolean
             findPreference<SwitchPreference>("night")?.isChecked = !boolValue
+            ColorUtil.setNightMode(parentActivity, boolValue)
             nightMode = boolValue
             var currentMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
             parentActivity.delegate.localNightMode =
@@ -68,9 +69,13 @@ class SettingFragment : PreferenceFragmentCompat(),
                 R.anim.animo_alph_close
             )
             parentActivity.finish()
-            var nightModeChanged: Boolean by SPreference(Constant.NIGHT_MODE, false)
+            var nightModeChanged = ColorUtil.getNightMode(parentActivity)
             AppCompatDelegate.setDefaultNightMode(
-                if (nightModeChanged) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+                if (nightModeChanged) {
+                    AppCompatDelegate.MODE_NIGHT_YES
+                } else {
+                    AppCompatDelegate.MODE_NIGHT_NO
+                }
             )
             if (nightModeChanged) {
                 ColorUtil.setLastColor(parentActivity, ColorUtil.getColor(parentActivity))

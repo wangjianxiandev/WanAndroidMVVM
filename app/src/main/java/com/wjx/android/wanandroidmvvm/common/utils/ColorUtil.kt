@@ -329,5 +329,13 @@ object ColorUtil {
         }
     }
 
+    fun setNightMode(context: Context, isNightMode : Boolean){
+        val setting = PreferenceManager.getDefaultSharedPreferences(context)
+        setting.edit().putBoolean("nightMode", isNightMode).apply()
+    }
 
+    fun getNightMode(context: Context) :Boolean {
+        val setting = PreferenceManager.getDefaultSharedPreferences(context)
+        return setting.getBoolean("nightMode", false)
+    }
 }
