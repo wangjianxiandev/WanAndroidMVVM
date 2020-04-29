@@ -52,9 +52,10 @@ abstract class ArticleListFragment<VM : ArticleViewModel<*>> : BaseLifeCycleFrag
             val article = mAdapter.getItem(position)
 
             article?.let {
-                val intent: Intent = Intent(activity, ArticleDetailActivity::class.java)
-                intent.putExtra("url", it.link)
-                intent.putExtra("title", it.title)
+                val intent: Intent = Intent(activity, ArticleDetailActivity::class.java).apply {
+                    putExtra("url", it.link)
+                    putExtra("title", it.title)
+                }
                 startActivity(intent)
             }
         }

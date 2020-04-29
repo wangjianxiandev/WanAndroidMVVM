@@ -22,7 +22,7 @@ class MeShareActivity : BaseLifeCycleActivity<MeShareViewModel>() {
 
     private lateinit var mAdapter: MeShareAdapter
 
-    private lateinit var headerView : View
+    private lateinit var headerView: View
 
     override fun getLayoutId(): Int = R.layout.fragment_article_list
 
@@ -36,9 +36,10 @@ class MeShareActivity : BaseLifeCycleActivity<MeShareViewModel>() {
         mAdapter.setOnItemClickListener { _, _, position ->
             val article = mAdapter.getItem(position)
             article?.let {
-                val intent: Intent = Intent(this, ArticleDetailActivity::class.java)
-                intent.putExtra("url", it.link)
-                intent.putExtra("title", it.title)
+                val intent: Intent = Intent(this, ArticleDetailActivity::class.java).apply {
+                    putExtra("url", it.link)
+                    putExtra("title", it.title)
+                }
                 startActivity(intent)
             }
         }

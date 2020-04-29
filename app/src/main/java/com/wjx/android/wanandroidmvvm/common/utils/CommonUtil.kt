@@ -10,7 +10,7 @@ object CommonUtil {
     fun <T> getClass(t: Any): Class<T> {
         // 通过反射 获取父类泛型 (T) 对应 Class类
         return (t.javaClass.genericSuperclass as ParameterizedType)
-                .actualTypeArguments[0]
+            .actualTypeArguments[0]
                 as Class<T>
     }
 
@@ -19,11 +19,11 @@ object CommonUtil {
         title: String?,
         url: String?
     ) {
-        val intent = Intent()
-        intent.setClass(context, ArticleDetailActivity::class.java)
-        intent.putExtra("title", title)
-        intent.putExtra("url", url)
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        val intent = Intent(context, ArticleDetailActivity::class.java).apply {
+            putExtra("title", title)
+            putExtra("url", url)
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
         context.startActivity(intent)
     }
 }

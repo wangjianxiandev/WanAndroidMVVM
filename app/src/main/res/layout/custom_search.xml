@@ -32,6 +32,7 @@
             android:hint="@string/search_input_tips"
             android:imeOptions="actionSearch"
             android:inputType="text"
+            android:textColor="@color/black"
             android:paddingStart="12dp"
             android:textSize="14sp" />
 

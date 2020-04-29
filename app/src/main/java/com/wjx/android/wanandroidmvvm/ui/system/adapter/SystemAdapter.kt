@@ -61,10 +61,11 @@ class SystemAdapter (layoutId : Int, listData : MutableList<SystemTabNameRespons
                 holder.itemView.system_card.setBackgroundDrawable(gradientDrawable)
 
                 holder.itemView.item_tag_layout.setOnTagClickListener{_, position,_ ->
-                    val intent = Intent(mContext, SystemArticleListActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                    intent.putExtra("id", it.children[position].id)
-                    intent.putExtra("title", it.children[position].name)
+                    val intent = Intent(mContext, SystemArticleListActivity::class.java).apply {
+                        flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                        putExtra("id", it.children[position].id)
+                        putExtra("title", it.children[position].name)
+                    }
                     mContext.startActivity(intent)
                     return@setOnTagClickListener true
                 }

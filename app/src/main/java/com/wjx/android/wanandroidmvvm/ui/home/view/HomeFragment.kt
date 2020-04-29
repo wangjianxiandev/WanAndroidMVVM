@@ -50,9 +50,10 @@ class HomeFragment : ArticleListFragment<HomeViewModel>() {
         val headView = View.inflate(activity, R.layout.layout_home_headview, null)
         mBanner = headView.mBanner
         mBanner.setOnBannerListener { position ->
-            val intent: Intent = Intent(activity, ArticleDetailActivity::class.java)
-            intent.putExtra("url", urls[position])
-            intent.putExtra("title", titles[position])
+            val intent: Intent = Intent(activity, ArticleDetailActivity::class.java).apply {
+                putExtra("url", urls[position])
+                putExtra("title", titles[position])
+            }
             startActivity(intent)
         }
         mBanner.setImageLoader(GlideImageLoader())

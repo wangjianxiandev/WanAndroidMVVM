@@ -86,8 +86,8 @@ class IntegralHistoryActivity : BaseLifeCycleActivity<RankViewModel>() {
         mSrlRefresh.setOnRefreshListener { onRefreshData() }
     }
 
-    private fun startIntegralTextAnim(coinCount : Int) {
-        val animator = ValueAnimator.ofInt(0,coinCount)
+    private fun startIntegralTextAnim(coinCount: Int) {
+        val animator = ValueAnimator.ofInt(0, coinCount)
         //播放时长
         animator.duration = 1500
         animator.interpolator = DecelerateInterpolator()
@@ -125,9 +125,10 @@ class IntegralHistoryActivity : BaseLifeCycleActivity<RankViewModel>() {
     override fun onBackPressed() = finish()
 
     private fun onRulePressed() {
-        val intent: Intent = Intent(this, ArticleDetailActivity::class.java)
-        intent.putExtra("url", "https://www.wanandroid.com/blog/show/2653")
-        intent.putExtra("title", getString(R.string.rank_rule))
+        val intent: Intent = Intent(this, ArticleDetailActivity::class.java).apply {
+            putExtra("url", "https://www.wanandroid.com/blog/show/2653")
+            putExtra("title", getString(R.string.rank_rule))
+        }
         startActivity(intent)
     }
 

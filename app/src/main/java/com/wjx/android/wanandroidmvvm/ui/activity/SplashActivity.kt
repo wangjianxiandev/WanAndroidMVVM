@@ -46,7 +46,6 @@ class SplashActivity : AppCompatActivity() {
      * 初始化进场动画
      */
     private fun initView() {
-        mSplashContainer!!.setBackgroundColor(getColor(R.color.black))
         mLottieAnimationView = findViewById<LottieAnimationView>(R.id.splash_animation)
         mLottieAnimationView!!.addAnimatorListener(object : Animator.AnimatorListener {
             override fun onAnimationStart(animator: Animator) {}

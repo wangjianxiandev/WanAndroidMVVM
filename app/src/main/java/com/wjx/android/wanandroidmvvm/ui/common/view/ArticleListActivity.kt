@@ -24,12 +24,13 @@ import org.greenrobot.eventbus.Subscribe
  * @date: 2020/03/01
  * Time: 14:00
  */
-abstract class ArticleListActivity <VM : ArticleViewModel<*>> : BaseLifeCycleActivity<VM>(), CollectListener {
-    private var mCollectState : Boolean = false
+abstract class ArticleListActivity<VM : ArticleViewModel<*>> : BaseLifeCycleActivity<VM>(),
+    CollectListener {
+    private var mCollectState: Boolean = false
 
-    private var mCurrentItem : Int = 0
+    private var mCurrentItem: Int = 0
 
-    protected lateinit var mAdapter : ArticleAdapter
+    protected lateinit var mAdapter: ArticleAdapter
 
     protected var isLoadMore: Boolean = true
 
@@ -44,20 +45,21 @@ abstract class ArticleListActivity <VM : ArticleViewModel<*>> : BaseLifeCycleAct
                 R.layout.article_item,
                 null
             )
-        mRvArticle?.adapter  = mAdapter
+        mRvArticle?.adapter = mAdapter
 
         mAdapter.setOnItemClickListener { _, _, position ->
             val article = mAdapter.getItem(position)
 
             article?.let {
-                val intent : Intent = Intent(this, ArticleDetailActivity::class.java)
-                intent.putExtra("url", it.link)
-                intent.putExtra("title", it.title)
+                val intent: Intent = Intent(this, ArticleDetailActivity::class.java).apply {
+                    putExtra("url", it.link)
+                    putExtra("title", it.title)
+                }
                 startActivity(intent)
             }
         }
 
-        mAdapter.setOnItemChildClickListener{_, _, position ->
+        mAdapter.setOnItemChildClickListener { _, _, position ->
             UserInfo.instance.collect(this, position, this)
         }
         mAdapter.setEnableLoadMore(isLoadMore)
@@ -66,8 +68,8 @@ abstract class ArticleListActivity <VM : ArticleViewModel<*>> : BaseLifeCycleAct
 
     private fun initRefresh() {
         // 设置下拉刷新的loading颜色
-            mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(this))
-            mSrlRefresh.setColorSchemeColors(Color.WHITE)
+        mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(this))
+        mSrlRefresh.setColorSchemeColors(Color.WHITE)
         mSrlRefresh.setOnRefreshListener { onRefreshData() }
     }
 
@@ -81,7 +83,7 @@ abstract class ArticleListActivity <VM : ArticleViewModel<*>> : BaseLifeCycleAct
      */
     abstract fun onLoadMoreData()
 
-    fun addData(articleList : List<Article>) {
+    fun addData(articleList: List<Article>) {
 
         // 返回列表为空显示加载完毕
         if (articleList.isEmpty()) {

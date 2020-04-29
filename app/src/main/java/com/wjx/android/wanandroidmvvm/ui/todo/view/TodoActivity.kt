@@ -26,7 +26,7 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
 
     private var mCurrentPageNum: Int = 1
 
-    private lateinit var headerView : View
+    private lateinit var headerView: View
 
     override fun initDataObserver() {
         mViewModel.mTodoListData.observe(this, Observer { response ->
@@ -57,14 +57,15 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
         )
         mAdapter.setOnItemClickListener { adapter, view, position ->
             var todo = mAdapter.getItem(position)
-            val intent = Intent(this, EditTodoActivity::class.java)
-            intent.putExtra(Constant.KEY_TODO_HANDLE_TYPE, Constant.EDIT_TODO)
-            intent.putExtra(Constant.KEY_TODO_TITLE, todo!!.title)
-            intent.putExtra(Constant.KEY_TODO_CONTENT, todo!!.content)
-            intent.putExtra(Constant.KEY_TODO_DATE, todo!!.dateStr)
-            intent.putExtra(Constant.KEY_TODO_PRIORITY, todo!!.priority.toString() + "")
-            intent.putExtra(Constant.KEY_TODO_ID, todo!!.id.toString() + "")
-            intent.putExtra(Constant.KEY_TODO_TYPE, todo!!.type.toString() + "")
+            val intent = Intent(this, EditTodoActivity::class.java).apply {
+                putExtra(Constant.KEY_TODO_HANDLE_TYPE, Constant.EDIT_TODO)
+                putExtra(Constant.KEY_TODO_TITLE, todo!!.title)
+                putExtra(Constant.KEY_TODO_CONTENT, todo!!.content)
+                putExtra(Constant.KEY_TODO_DATE, todo!!.dateStr)
+                putExtra(Constant.KEY_TODO_PRIORITY, todo!!.priority.toString() + "")
+                putExtra(Constant.KEY_TODO_ID, todo!!.id.toString() + "")
+                putExtra(Constant.KEY_TODO_TYPE, todo!!.type.toString() + "")
+            }
             startActivity(intent)
         }
 
@@ -92,15 +93,18 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
                 .setOnClickListener { v1: View? ->
                     bottomDialog.dismiss()
                     val intent = Intent(this, EditTodoActivity::class.java)
-                    intent.putExtra(Constant.KEY_TODO_HANDLE_TYPE, Constant.EDIT_TODO)
-                    intent.putExtra(Constant.KEY_TODO_TITLE, todo!!.title)
-                    intent.putExtra(Constant.KEY_TODO_CONTENT, todo!!.content)
-                    intent.putExtra(Constant.KEY_TODO_DATE, todo!!.dateStr)
-                    intent.putExtra(Constant.KEY_TODO_PRIORITY, todo!!.priority.toString() + "")
-                    intent.putExtra(Constant.KEY_TODO_ID, todo!!.id.toString() + "")
-                    intent.putExtra(Constant.KEY_TODO_TYPE, todo!!.type.toString() + "")
+                    intent.apply {
+                        putExtra(Constant.KEY_TODO_HANDLE_TYPE, Constant.EDIT_TODO)
+                        putExtra(Constant.KEY_TODO_TITLE, todo!!.title)
+                        putExtra(Constant.KEY_TODO_CONTENT, todo!!.content)
+                        putExtra(Constant.KEY_TODO_DATE, todo!!.dateStr)
+                        putExtra(Constant.KEY_TODO_PRIORITY, todo!!.priority.toString() + "")
+                        putExtra(Constant.KEY_TODO_ID, todo!!.id.toString() + "")
+                        putExtra(Constant.KEY_TODO_TYPE, todo!!.type.toString() + "")
+                    }
                     startActivity(intent)
                 }
+
 
             // 点击对话框删除
             contentView.findViewById<View>(R.id.delete_todo)
