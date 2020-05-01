@@ -1,6 +1,5 @@
 package com.wjx.android.wanandroidmvvm.ui.project.view
 
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -16,6 +15,7 @@ import com.wjx.android.wanandroidmvvm.common.state.callback.LoginSuccessListener
 import com.wjx.android.wanandroidmvvm.common.state.callback.LoginSuccessState
 import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.common.utils.startActivity
 import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import com.wjx.android.wanandroidmvvm.ui.project.adapter.ProjectArticleAdapter
 import com.wjx.android.wanandroidmvvm.ui.project.viewmodel.ProjectViewModel
@@ -29,22 +29,22 @@ import org.greenrobot.eventbus.Subscribe
  * @date: 2020/02/28
  * Time: 16:42
  */
-class ProjectArticleFragment : BaseLifeCycleFragment<ProjectViewModel>() , LoginSuccessListener,
+class ProjectArticleFragment : BaseLifeCycleFragment<ProjectViewModel>(), LoginSuccessListener,
     CollectListener {
     private var mCurrentPage = 1
 
-    private var mCurrentItem : Int = 0
+    private var mCurrentItem: Int = 0
 
-    private var mCollectState : Boolean = false
+    private var mCollectState: Boolean = false
 
     private lateinit var mAdapter: ProjectArticleAdapter
 
-    private lateinit var mLinearSnapHelper : LinearSnapHelper
+    private lateinit var mLinearSnapHelper: LinearSnapHelper
 
     private val mCid: Int by lazy { arguments?.getInt("id") ?: -1 }
 
     companion object {
-        fun newInstance(id : Int) : Fragment {
+        fun newInstance(id: Int): Fragment {
             val bundle = Bundle()
             bundle.putInt("id", id)
             val fragment = ProjectArticleFragment()
@@ -56,7 +56,8 @@ class ProjectArticleFragment : BaseLifeCycleFragment<ProjectViewModel>() , Login
     override fun initView() {
         super.initView()
         initRefresh()
-        mRvArticle?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        mRvArticle?.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         mLinearSnapHelper = LinearSnapHelper()
         mLinearSnapHelper.attachToRecyclerView(mRvArticle)
         mAdapter = ProjectArticleAdapter(R.layout.project_item, null)
@@ -65,15 +66,14 @@ class ProjectArticleFragment : BaseLifeCycleFragment<ProjectViewModel>() , Login
             val article = mAdapter.getItem(position)
 
             article?.let {
-                val intent : Intent = Intent(activity, ArticleDetailActivity::class.java).apply {
+                startActivity<ArticleDetailActivity>(activity!!) {
                     putExtra("url", it.link)
                     putExtra("title", it.title)
                 }
-                startActivity(intent)
             }
         }
-        mAdapter.setOnItemChildClickListener{_,_,position ->
-            UserInfo.instance.collect(activity, position, this)
+        mAdapter.setOnItemChildClickListener { _, _, position ->
+            UserInfo.instance.collect(activity!!, position, this)
         }
         mAdapter.setEnableLoadMore(true)
         mAdapter.setOnLoadMoreListener({ onLoadMoreData() }, mRvArticle)
@@ -119,7 +119,7 @@ class ProjectArticleFragment : BaseLifeCycleFragment<ProjectViewModel>() , Login
         }
     }
 
-    override fun loginSuccess(userName: String, userId : String, collectArticleIds: List<Int>?) {
+    override fun loginSuccess(userName: String, userId: String, collectArticleIds: List<Int>?) {
         collectArticleIds?.let {
             it.forEach { id ->
                 mAdapter.data.forEach { article ->
@@ -148,11 +148,11 @@ class ProjectArticleFragment : BaseLifeCycleFragment<ProjectViewModel>() , Login
         mViewModel.loadProjectArticle(mCurrentPage, mCid)
     }
 
-     fun onLoadMoreData() {
+    fun onLoadMoreData() {
         mViewModel.loadProjectArticle(++mCurrentPage, mCid)
     }
 
-    private fun setProjectArticle(articleList : List<Article>) {
+    private fun setProjectArticle(articleList: List<Article>) {
 
         // 返回列表为空显示加载完毕
         if (articleList.isEmpty()) {

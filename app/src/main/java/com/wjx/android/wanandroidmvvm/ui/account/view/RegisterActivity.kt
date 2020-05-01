@@ -8,10 +8,10 @@ import com.wjx.android.wanandroidmvvm.base.view.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.common.state.UserInfo
 import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.common.utils.startActivity
 import com.wjx.android.wanandroidmvvm.ui.account.viewmodel.AccountViewModel
 import kotlinx.android.synthetic.main.activity_register.*
 import org.greenrobot.eventbus.Subscribe
-import org.jetbrains.anko.startActivity
 
 class RegisterActivity : BaseLifeCycleActivity<AccountViewModel>(), View.OnClickListener {
     override fun getLayoutId(): Int = R.layout.activity_register
@@ -56,7 +56,7 @@ class RegisterActivity : BaseLifeCycleActivity<AccountViewModel>(), View.OnClick
                 )
             }
             R.id.login_text -> {
-                startActivity<LoginActivity>()
+                startActivity<LoginActivity>(this)
                 finish()
             }
             R.id.ivBack -> {

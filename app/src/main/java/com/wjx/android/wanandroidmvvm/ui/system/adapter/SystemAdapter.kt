@@ -13,6 +13,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.wjx.android.wanandroidmvvm.custom.interpolator.CustomScaleInterpolator
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.common.utils.startActivity
 import com.wjx.android.wanandroidmvvm.ui.system.view.SystemArticleListActivity
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemLabelResponse
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemTabNameResponse
@@ -27,29 +28,31 @@ import kotlinx.android.synthetic.main.system_item.view.*
  * @date: 2020/02/27
  * Time: 17:32
  */
-class SystemAdapter (layoutId : Int, listData : MutableList<SystemTabNameResponse>?)
-    :BaseQuickAdapter<SystemTabNameResponse, BaseViewHolder>(layoutId, listData) {
+class SystemAdapter(layoutId: Int, listData: MutableList<SystemTabNameResponse>?) :
+    BaseQuickAdapter<SystemTabNameResponse, BaseViewHolder>(layoutId, listData) {
 
     override fun convert(viewHolder: BaseViewHolder?, item: SystemTabNameResponse?) {
-        viewHolder?.let {
-            holder ->
-            holder.itemView.system_material_card.rippleColor = ColorUtil.getOneColorStateList(mContext)
+        viewHolder?.let { holder ->
+            holder.itemView.system_material_card.rippleColor =
+                ColorUtil.getOneColorStateList(mContext)
             holder.itemView.system_material_card.strokeColor = ColorUtil.getColor(mContext)
             item?.let {
                 holder.setText(R.id.item_system_title, it.name)
-                holder.itemView.item_tag_layout.adapter = object : TagAdapter<SystemLabelResponse>(it.children) {
-                    override fun getView(
-                        parent: FlowLayout?,
-                        position: Int,
-                        t: SystemLabelResponse?
-                    ): View {
-                        val tagView : TextView =
-                            LayoutInflater.from(mContext).inflate(R.layout.flow_layout, parent,false) as TextView
-                        tagView.setText(it.children[position].name)
-                        tagView.setTextColor(ColorUtil.randomColor())
-                        return tagView
+                holder.itemView.item_tag_layout.adapter =
+                    object : TagAdapter<SystemLabelResponse>(it.children) {
+                        override fun getView(
+                            parent: FlowLayout?,
+                            position: Int,
+                            t: SystemLabelResponse?
+                        ): View {
+                            val tagView: TextView =
+                                LayoutInflater.from(mContext)
+                                    .inflate(R.layout.flow_layout, parent, false) as TextView
+                            tagView.setText(it.children[position].name)
+                            tagView.setTextColor(ColorUtil.randomColor())
+                            return tagView
+                        }
                     }
-                }
 
                 val gradientDrawable = GradientDrawable(
                     GradientDrawable.Orientation.BR_TL,
@@ -60,13 +63,12 @@ class SystemAdapter (layoutId : Int, listData : MutableList<SystemTabNameRespons
                 )
                 holder.itemView.system_card.setBackgroundDrawable(gradientDrawable)
 
-                holder.itemView.item_tag_layout.setOnTagClickListener{_, position,_ ->
-                    val intent = Intent(mContext, SystemArticleListActivity::class.java).apply {
+                holder.itemView.item_tag_layout.setOnTagClickListener { _, position, _ ->
+                    startActivity<SystemArticleListActivity>(mContext) {
                         flags = Intent.FLAG_ACTIVITY_NEW_TASK
                         putExtra("id", it.children[position].id)
                         putExtra("title", it.children[position].name)
                     }
-                    mContext.startActivity(intent)
                     return@setOnTagClickListener true
                 }
             }

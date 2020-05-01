@@ -7,10 +7,10 @@ import com.wjx.android.wanandroidmvvm.base.view.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.common.state.UserInfo
 import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.common.utils.startActivity
 import com.wjx.android.wanandroidmvvm.ui.account.viewmodel.AccountViewModel
 import kotlinx.android.synthetic.main.activity_login.*
 import org.greenrobot.eventbus.Subscribe
-import org.jetbrains.anko.startActivity
 
 class LoginActivity : BaseLifeCycleActivity<AccountViewModel>(), View.OnClickListener {
     override fun getLayoutId(): Int = R.layout.activity_login
@@ -31,9 +31,12 @@ class LoginActivity : BaseLifeCycleActivity<AccountViewModel>(), View.OnClickLis
 
     override fun initDataObserver() {
         mViewModel.mLoginData.observe(this, Observer {
-            it?.let {
-                loginResponse ->
-                UserInfo.instance.loginSuccess(loginResponse.username, loginResponse.id.toString(),loginResponse.collectIds)
+            it?.let { loginResponse ->
+                UserInfo.instance.loginSuccess(
+                    loginResponse.username,
+                    loginResponse.id.toString(),
+                    loginResponse.collectIds
+                )
                 finish()
             }
         })
@@ -46,12 +49,12 @@ class LoginActivity : BaseLifeCycleActivity<AccountViewModel>(), View.OnClickLis
     override fun onBackPressed() = finish()
 
     override fun onClick(v: View?) {
-        when(v?.id) {
+        when (v?.id) {
             R.id.button_login -> {
                 mViewModel.loginCo(account_text.text.toString(), password_text.text.toString())
             }
             R.id.register_text -> {
-                startActivity<RegisterActivity>()
+                startActivity<RegisterActivity>(this)
                 finish()
             }
             R.id.ivBack -> {

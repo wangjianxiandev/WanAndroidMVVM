@@ -1,12 +1,12 @@
 package com.wjx.android.wanandroidmvvm.ui.collect.view
 
-import android.content.Intent
 import android.view.View
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.ui.common.view.ArticleListActivity
 import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.common.utils.startActivity
 import com.wjx.android.wanandroidmvvm.ui.collect.viewmodel.CollectViewModel
 import kotlinx.android.synthetic.main.custom_bar.view.*
 import org.greenrobot.eventbus.Subscribe
@@ -85,8 +85,7 @@ class CollectArticleListActivity : ArticleListActivity<CollectViewModel>() {
     }
 
     private fun onAddCollectArticle() {
-        val intent = Intent(this, AddCollectActivity::class.java)
-        startActivity(intent)
+        startActivity<AddCollectActivity>(this)
     }
 
     @Subscribe

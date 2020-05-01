@@ -11,19 +11,19 @@ import com.wjx.android.wanandroidmvvm.common.state.callback.CollectListener
  * Time: 19:31
  */
 interface UserState {
-    fun collect(context: Context?, position: Int, listener: CollectListener)
+    fun collect(context: Context, position: Int, listener: CollectListener)
 
-    fun login(context: Context?)
+    fun login(context: Context)
 
-    fun startRankActivity(context: Context?)
+    fun startRankActivity(context: Context)
 
-    fun startTodoActivity(context: Context?)
+    fun startTodoActivity(context: Context)
 
-    fun startCollectActivity(context: Context?)
+    fun startCollectActivity(context: Context)
 
-    fun startShareActivity(context: Context?)
+    fun startShareActivity(context: Context)
 
-    fun startAddShareActivity(context: Context?)
+    fun startAddShareActivity(context: Context)
 
-    fun startEditTodoActivity(context: Context?)
+    fun startEditTodoActivity(context: Context)
 }

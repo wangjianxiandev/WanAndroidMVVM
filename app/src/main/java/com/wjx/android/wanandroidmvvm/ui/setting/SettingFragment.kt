@@ -1,6 +1,5 @@
 package com.wjx.android.wanandroidmvvm.ui.setting
 
-import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
 
@@ -62,7 +61,7 @@ class SettingFragment : PreferenceFragmentCompat(),
             var currentMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
             parentActivity.delegate.localNightMode =
                 if (currentMode == Configuration.UI_MODE_NIGHT_NO) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
-            startActivity((Intent(parentActivity, SettingActivity::class.java)))
+            startActivity<SettingActivity>(parentActivity)
             parentActivity.overridePendingTransition(
                 R.anim.animo_alph_open,
                 R.anim.animo_alph_close

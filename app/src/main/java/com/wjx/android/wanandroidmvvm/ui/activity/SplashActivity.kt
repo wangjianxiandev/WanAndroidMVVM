@@ -3,7 +3,6 @@ package com.wjx.android.wanandroidmvvm.ui.activity
 import android.Manifest
 import android.animation.Animator
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.ViewGroup
 import android.view.WindowManager
@@ -14,6 +13,7 @@ import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.common.permission.PermissionResult
 import com.wjx.android.wanandroidmvvm.common.permission.Permissions
 import com.wjx.android.wanandroidmvvm.common.utils.Constant
+import com.wjx.android.wanandroidmvvm.common.utils.startActivity
 import pub.devrel.easypermissions.AfterPermissionGranted
 import pub.devrel.easypermissions.AppSettingsDialog
 
@@ -59,7 +59,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun startIntent() {
-        startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+        startActivity<MainActivity>(this)
         overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out)
     }
 

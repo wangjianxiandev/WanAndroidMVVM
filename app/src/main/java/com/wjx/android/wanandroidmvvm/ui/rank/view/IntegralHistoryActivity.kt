@@ -1,7 +1,6 @@
 package com.wjx.android.wanandroidmvvm.ui.rank.view
 
 import android.animation.ValueAnimator
-import android.content.Intent
 import android.graphics.Color
 import android.view.View
 import android.view.animation.DecelerateInterpolator
@@ -11,6 +10,7 @@ import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.view.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.common.utils.startActivity
 import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import com.wjx.android.wanandroidmvvm.ui.rank.adapter.IntegralHistoryAdapter
 import com.wjx.android.wanandroidmvvm.ui.rank.data.IntegralHistoryResponse
@@ -125,11 +125,10 @@ class IntegralHistoryActivity : BaseLifeCycleActivity<RankViewModel>() {
     override fun onBackPressed() = finish()
 
     private fun onRulePressed() {
-        val intent: Intent = Intent(this, ArticleDetailActivity::class.java).apply {
+        startActivity<ArticleDetailActivity>(this) {
             putExtra("url", "https://www.wanandroid.com/blog/show/2653")
             putExtra("title", getString(R.string.rank_rule))
         }
-        startActivity(intent)
     }
 
 

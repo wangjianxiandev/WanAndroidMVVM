@@ -7,7 +7,7 @@ import kotlin.reflect.KProperty
 
 /**
  * Created with Android Studio.
- * Description: // SP做委托代理
+ * Description: // SP委托模式
  * @author: Wangjianxian
  * @date: 2020/02/24
  * Time: 18:22

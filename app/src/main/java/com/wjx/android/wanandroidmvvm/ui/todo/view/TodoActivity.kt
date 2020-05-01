@@ -1,7 +1,6 @@
 package com.wjx.android.wanandroidmvvm.ui.todo.view
 
 import android.app.Dialog
-import android.content.Intent
 import android.graphics.Color
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -57,7 +56,7 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
         )
         mAdapter.setOnItemClickListener { adapter, view, position ->
             var todo = mAdapter.getItem(position)
-            val intent = Intent(this, EditTodoActivity::class.java).apply {
+            startActivity<EditTodoActivity>(this) {
                 putExtra(Constant.KEY_TODO_HANDLE_TYPE, Constant.EDIT_TODO)
                 putExtra(Constant.KEY_TODO_TITLE, todo!!.title)
                 putExtra(Constant.KEY_TODO_CONTENT, todo!!.content)
@@ -66,7 +65,6 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
                 putExtra(Constant.KEY_TODO_ID, todo!!.id.toString() + "")
                 putExtra(Constant.KEY_TODO_TYPE, todo!!.type.toString() + "")
             }
-            startActivity(intent)
         }
 
         mAdapter.setOnItemChildClickListener { _, _, position ->
@@ -92,8 +90,7 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
             contentView.findViewById<View>(R.id.edit_todo)
                 .setOnClickListener { v1: View? ->
                     bottomDialog.dismiss()
-                    val intent = Intent(this, EditTodoActivity::class.java)
-                    intent.apply {
+                    startActivity<EditTodoActivity>(this) {
                         putExtra(Constant.KEY_TODO_HANDLE_TYPE, Constant.EDIT_TODO)
                         putExtra(Constant.KEY_TODO_TITLE, todo!!.title)
                         putExtra(Constant.KEY_TODO_CONTENT, todo!!.content)
@@ -102,7 +99,6 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
                         putExtra(Constant.KEY_TODO_ID, todo!!.id.toString() + "")
                         putExtra(Constant.KEY_TODO_TYPE, todo!!.type.toString() + "")
                     }
-                    startActivity(intent)
                 }
 
 

@@ -1,6 +1,5 @@
 package com.wjx.android.wanandroidmvvm.ui.meshare.view
 
-import android.content.Intent
 import android.graphics.Color
 import android.view.View
 import androidx.lifecycle.Observer
@@ -10,6 +9,7 @@ import com.wjx.android.wanandroidmvvm.ui.common.data.Article
 import com.wjx.android.wanandroidmvvm.base.view.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.common.utils.startActivity
 import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import com.wjx.android.wanandroidmvvm.ui.meshare.adapter.MeShareAdapter
 import com.wjx.android.wanandroidmvvm.ui.meshare.viewmodel.MeShareViewModel
@@ -36,11 +36,10 @@ class MeShareActivity : BaseLifeCycleActivity<MeShareViewModel>() {
         mAdapter.setOnItemClickListener { _, _, position ->
             val article = mAdapter.getItem(position)
             article?.let {
-                val intent: Intent = Intent(this, ArticleDetailActivity::class.java).apply {
+                startActivity<ArticleDetailActivity>(this) {
                     putExtra("url", it.link)
                     putExtra("title", it.title)
                 }
-                startActivity(intent)
             }
         }
 

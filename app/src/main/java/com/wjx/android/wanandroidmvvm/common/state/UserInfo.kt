@@ -32,36 +32,36 @@ class UserInfo private constructor() {
     }
 
     // 收藏
-    fun collect(context: Context?, position: Int, listener: CollectListener) {
+    fun collect(context: Context, position: Int, listener: CollectListener) {
         mState.collect(context, position, listener)
     }
 
-    fun startRankActivity(context: Context?) {
+    fun startRankActivity(context: Context) {
         mState.startRankActivity(context)
     }
 
-    fun startCollectActivity(context: Context?) {
+    fun startCollectActivity(context: Context) {
         mState.startCollectActivity(context)
     }
 
-    fun startShareActivity(context: Context?) {
+    fun startShareActivity(context: Context) {
         mState.startShareActivity(context)
     }
 
-    fun startAddShareActivity(context: Context?) {
+    fun startAddShareActivity(context: Context) {
         mState.startAddShareActivity(context)
     }
 
-    fun startTodoActivity(context: Context?) {
+    fun startTodoActivity(context: Context) {
         mState.startTodoActivity(context)
     }
 
-    fun startEditTodoActivity(context: Context?) {
+    fun startEditTodoActivity(context: Context) {
         mState.startEditTodoActivity(context)
     }
 
     // 跳转去登录
-    fun login(context: Activity?) {
+    fun login(context: Activity) {
         mState.login(context)
     }
 

@@ -8,6 +8,7 @@ import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.view.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.common.utils.startActivity
 import com.wjx.android.wanandroidmvvm.ui.rank.adapter.RankAdapter
 import com.wjx.android.wanandroidmvvm.ui.rank.data.IntegralResponse
 import com.wjx.android.wanandroidmvvm.ui.rank.viewmodel.RankViewModel
@@ -16,7 +17,6 @@ import kotlinx.android.synthetic.main.custom_bar.view.*
 import kotlinx.android.synthetic.main.fragment_article_list.mRvArticle
 import kotlinx.android.synthetic.main.fragment_article_list.mSrlRefresh
 import org.greenrobot.eventbus.Subscribe
-import org.jetbrains.anko.startActivity
 
 class RankActivity : BaseLifeCycleActivity<RankViewModel>() {
     private var mCurrentPage: Int = 1
@@ -116,7 +116,7 @@ class RankActivity : BaseLifeCycleActivity<RankViewModel>() {
     override fun onBackPressed() = finish()
 
     private fun onHistoryPressed() {
-        startActivity<IntegralHistoryActivity>()
+        startActivity<IntegralHistoryActivity>(this)
     }
 
     @Subscribe

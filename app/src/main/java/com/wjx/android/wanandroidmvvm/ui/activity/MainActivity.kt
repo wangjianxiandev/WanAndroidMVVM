@@ -36,7 +36,6 @@ import kotlinx.android.synthetic.main.fragment_article_list.*
 import kotlinx.android.synthetic.main.layout_drawer_header.view.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import org.greenrobot.eventbus.Subscribe
-import org.jetbrains.anko.startActivity
 
 class MainActivity : BaseActivity(), LoginSuccessListener {
     // 委托属性   将实现委托给了 -> Preference
@@ -122,7 +121,7 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
                     UserInfo.instance.startRankActivity(this)
                 }
                 R.id.nav_menu_square -> {
-                    startActivity<SquareActivity>()
+                    startActivity<SquareActivity>(this)
                 }
                 R.id.nav_menu_collect -> {
                     UserInfo.instance.startCollectActivity(this)
@@ -131,7 +130,7 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
                     UserInfo.instance.startShareActivity(this)
                 }
                 R.id.nav_menu_question -> {
-                    startActivity<QuestionArticleListActivity>()
+                    startActivity<QuestionArticleListActivity>(this)
                 }
                 R.id.nav_menu_todo -> {
                     UserInfo.instance.startTodoActivity(this)
@@ -158,7 +157,7 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
                     false
                 }
                 R.id.nav_menu_setting -> {
-                    startActivity<SettingActivity>()
+                    startActivity<SettingActivity>(this)
                 }
                 R.id.nav_menu_logout -> {
                     UserInfo.instance.logoutSuccess()
@@ -286,7 +285,7 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
                 return true
             }
             R.id.action_search -> {
-                startActivity<SearchActivity>()
+                startActivity<SearchActivity>(this)
                 return true
             }
         }

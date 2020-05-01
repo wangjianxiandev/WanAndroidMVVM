@@ -1,12 +1,12 @@
 package com.wjx.android.wanandroidmvvm.ui.home.view
 
-import android.content.Intent
 import android.view.View
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.ui.common.view.ArticleListFragment
 import com.wjx.android.wanandroidmvvm.ui.common.data.Article
 import com.wjx.android.wanandroidmvvm.common.utils.GlideImageLoader
+import com.wjx.android.wanandroidmvvm.common.utils.startActivity
 import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import com.wjx.android.wanandroidmvvm.ui.home.data.BannerResponse
 import com.wjx.android.wanandroidmvvm.ui.home.viewmodel.HomeViewModel
@@ -50,11 +50,10 @@ class HomeFragment : ArticleListFragment<HomeViewModel>() {
         val headView = View.inflate(activity, R.layout.layout_home_headview, null)
         mBanner = headView.mBanner
         mBanner.setOnBannerListener { position ->
-            val intent: Intent = Intent(activity, ArticleDetailActivity::class.java).apply {
+            startActivity<ArticleDetailActivity>(activity!!) {
                 putExtra("url", urls[position])
                 putExtra("title", titles[position])
             }
-            startActivity(intent)
         }
         mBanner.setImageLoader(GlideImageLoader())
         mBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)

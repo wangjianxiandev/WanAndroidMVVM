@@ -19,11 +19,10 @@ object CommonUtil {
         title: String?,
         url: String?
     ) {
-        val intent = Intent(context, ArticleDetailActivity::class.java).apply {
+        startActivity<ArticleDetailActivity>(context) {
             putExtra("title", title)
             putExtra("url", url)
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         }
-        context.startActivity(intent)
     }
 }

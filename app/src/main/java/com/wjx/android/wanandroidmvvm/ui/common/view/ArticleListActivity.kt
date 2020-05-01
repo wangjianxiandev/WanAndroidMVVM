@@ -1,6 +1,5 @@
 package com.wjx.android.wanandroidmvvm.ui.common.view
 
-import android.content.Intent
 import android.graphics.Color
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
@@ -13,6 +12,7 @@ import com.wjx.android.wanandroidmvvm.common.state.callback.CollectListener
 import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.common.utils.SpeedLayoutManager
+import com.wjx.android.wanandroidmvvm.common.utils.startActivity
 import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import kotlinx.android.synthetic.main.fragment_article_list.*
 import org.greenrobot.eventbus.Subscribe
@@ -51,11 +51,10 @@ abstract class ArticleListActivity<VM : ArticleViewModel<*>> : BaseLifeCycleActi
             val article = mAdapter.getItem(position)
 
             article?.let {
-                val intent: Intent = Intent(this, ArticleDetailActivity::class.java).apply {
+                startActivity<ArticleDetailActivity>(this) {
                     putExtra("url", it.link)
                     putExtra("title", it.title)
                 }
-                startActivity(intent)
             }
         }
 
