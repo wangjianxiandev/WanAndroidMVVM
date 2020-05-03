@@ -30,11 +30,13 @@ class SystemArticleListActivity : ArticleListActivity<SystemViewModel>() {
 
     private fun initHeaderView() {
         headView = View.inflate(this, R.layout.custom_bar, null)
-        headView.detail_title.text = mTitle
-        headView.detail_back.visibility = View.VISIBLE
-        headView.detail_back.setOnClickListener { finish() }
-        headView.detail_search.visibility = View.GONE
-        headView.setBackgroundColor(ColorUtil.getColor(this))
+        headView.apply {
+            detail_title.text = mTitle
+            detail_back.visibility = View.VISIBLE
+            detail_back.setOnClickListener { finish() }
+            detail_search.visibility = View.GONE
+            setBackgroundColor(ColorUtil.getColor(this@SystemArticleListActivity))
+        }
         mAdapter.addHeaderView(headView)
     }
 

@@ -22,7 +22,9 @@ import java.util.*
 
 class EditTodoActivity : BaseLifeCycleActivity<TodoViewModel>(), View.OnClickListener {
 
-    private val mActivityType: Int? by lazy { intent.getStringExtra(Constant.KEY_TODO_HANDLE_TYPE)?.toInt() }
+    private val mActivityType: Int? by lazy {
+        intent.getStringExtra(Constant.KEY_TODO_HANDLE_TYPE)?.toInt()
+    }
 
     private val mTitle: String? by lazy { intent?.getStringExtra(Constant.KEY_TODO_TITLE) }
 
@@ -34,11 +36,13 @@ class EditTodoActivity : BaseLifeCycleActivity<TodoViewModel>(), View.OnClickLis
 
     private val mTodoType: Int? by lazy { intent?.getStringExtra(Constant.KEY_TODO_TYPE)?.toInt() }
 
-    private val mPriority: Int? by lazy { intent?.getStringExtra(Constant.KEY_TODO_PRIORITY)?.toInt()}
+    private val mPriority: Int? by lazy {
+        intent?.getStringExtra(Constant.KEY_TODO_PRIORITY)?.toInt()
+    }
 
-    private var todoType : Int = 0
+    private var todoType: Int = 0
 
-    private var todoPriority : Int = 0
+    private var todoPriority: Int = 0
 
     override fun initDataObserver() {
         mViewModel.mTodoAddData.observe(this, Observer {
@@ -67,11 +71,13 @@ class EditTodoActivity : BaseLifeCycleActivity<TodoViewModel>(), View.OnClickLis
     override fun showDestroyReveal(): Boolean = false
 
     private fun initHeadView() {
-        todo_bar.detail_title.text =
-            if (mActivityType == Constant.EDIT_TODO.toInt()) "编辑待办" else "添加待办"
-        todo_bar.detail_back.visibility = View.VISIBLE
-        todo_bar.detail_search.visibility = View.GONE
-        todo_bar.detail_back.setOnClickListener(this)
+        todo_bar.apply {
+            detail_title.text =
+                if (mActivityType == Constant.EDIT_TODO.toInt()) "编辑待办" else "添加待办"
+            detail_back.visibility = View.VISIBLE
+            detail_search.visibility = View.GONE
+            detail_back.setOnClickListener(this@EditTodoActivity)
+        }
         initColor()
     }
 
@@ -85,15 +91,17 @@ class EditTodoActivity : BaseLifeCycleActivity<TodoViewModel>(), View.OnClickLis
             edit_todo_title.setText(mTitle)
             edit_todo_content.setText(mContent)
             edit_todo_date.setText(mDateStr)
-            edit_todo_type.text = if (mTodoType == 1 || mTodoType == 0) getString(R.string.todo_work) else getString(R.string.todo_study)
-            edit_todo_priority.text = if (mPriority == 1) getString(R.string.todo_piority_important) else getString(R.string.todo_piority_normal)
+            edit_todo_type.text =
+                if (mTodoType == 1 || mTodoType == 0) getString(R.string.todo_work) else getString(R.string.todo_study)
+            edit_todo_priority.text =
+                if (mPriority == 1) getString(R.string.todo_piority_important) else getString(R.string.todo_piority_normal)
             todoType = mTodoType?.toInt()!!
             todoPriority = mPriority?.toInt()!!
         }
     }
 
     override fun onClick(v: View?) {
-        when(v?.id) {
+        when (v?.id) {
             R.id.edit_todo_date -> {
                 // 日期选择器，月份加一
                 val datePickerDialog = DatePickerDialog(
@@ -176,8 +184,10 @@ class EditTodoActivity : BaseLifeCycleActivity<TodoViewModel>(), View.OnClickLis
             }
             R.id.edit_todo_submit -> {
                 if (mActivityType == Constant.EDIT_TODO.toInt()) {
-                    if (edit_todo_title.text.toString().isNullOrEmpty() || edit_todo_content.text.toString().isNullOrEmpty()
-                        || edit_todo_date.text.toString().isNullOrEmpty()) {
+                    if (edit_todo_title.text.toString()
+                            .isNullOrEmpty() || edit_todo_content.text.toString().isNullOrEmpty()
+                        || edit_todo_date.text.toString().isNullOrEmpty()
+                    ) {
                         Toast.makeText(this, R.string.todo_empty, Toast.LENGTH_SHORT).show()
                     } else {
                         mViewModel.updateTodo(
@@ -190,8 +200,10 @@ class EditTodoActivity : BaseLifeCycleActivity<TodoViewModel>(), View.OnClickLis
                         )
                     }
                 } else if (mActivityType == Constant.ADD_TODO.toInt()) {
-                    if (edit_todo_title.text.toString().isNullOrEmpty() || edit_todo_content.text.toString().isNullOrEmpty()
-                        || edit_todo_date.text.toString().isNullOrEmpty()) {
+                    if (edit_todo_title.text.toString()
+                            .isNullOrEmpty() || edit_todo_content.text.toString().isNullOrEmpty()
+                        || edit_todo_date.text.toString().isNullOrEmpty()
+                    ) {
                         Toast.makeText(this, R.string.todo_empty, Toast.LENGTH_SHORT).show()
                     } else {
                         mViewModel.addTodo(

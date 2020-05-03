@@ -46,10 +46,12 @@ class QuestionArticleListActivity : ArticleListActivity<QuestionViewModel>() {
 
     private fun initHeaderView() {
         headerView = View.inflate(this, R.layout.custom_bar, null)
-        headerView.detail_title.text = "每日一问"
-        headerView.detail_back.visibility = View.VISIBLE
-        headerView.detail_search.visibility = View.GONE
-        headerView.detail_back.setOnClickListener { onBackPressed() }
+        headerView.apply {
+            detail_title.text = "每日一问"
+            detail_back.visibility = View.VISIBLE
+            detail_search.visibility = View.GONE
+            detail_back.setOnClickListener { onBackPressed() }
+        }
         mAdapter.addHeaderView(headerView)
         initColor()
     }

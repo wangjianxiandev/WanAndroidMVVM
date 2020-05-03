@@ -46,12 +46,14 @@ class SquareActivity : ArticleListActivity<SquareViewModel>() {
 
     private fun initHeaderView() {
         headerView = View.inflate(this, R.layout.custom_bar, null)
-        headerView.detail_title.text = "广场"
-        headerView.detail_back.visibility = View.VISIBLE
-        headerView.detail_search.visibility = View.VISIBLE
-        headerView.detail_search.setImageResource(R.drawable.ic_share_square)
-        headerView.detail_back.setOnClickListener { onBackPressed() }
-        headerView.detail_search.setOnClickListener { onShareArticle() }
+        headerView.apply {
+            detail_title.text = "广场"
+            detail_back.visibility = View.VISIBLE
+            detail_search.visibility = View.VISIBLE
+            detail_search.setImageResource(R.drawable.ic_share_square)
+            detail_back.setOnClickListener { onBackPressed() }
+            detail_search.setOnClickListener { onShareArticle() }
+        }
         mAdapter.addHeaderView(headerView)
         initColor()
     }

@@ -22,10 +22,12 @@ class ShareArticleActivity : BaseLifeCycleActivity<SquareViewModel>(), View.OnCl
     }
 
     private fun initHeaderView() {
-        share_bar.detail_title.text = "分享文章"
-        share_bar.detail_back.visibility = View.VISIBLE
-        share_bar.detail_search.visibility = View.GONE
-        share_bar.detail_back.setOnClickListener(this)
+        share_bar.apply {
+            detail_title.text = "分享文章"
+            detail_back.visibility = View.VISIBLE
+            detail_search.visibility = View.GONE
+            detail_back.setOnClickListener(this@ShareArticleActivity)
+        }
         initColor()
     }
 

@@ -126,12 +126,14 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
 
     private fun initHeadView() {
         headerView = View.inflate(this, R.layout.custom_bar, null)
-        headerView.detail_title.text = "待办事项"
-        headerView.detail_back.visibility = View.VISIBLE
-        headerView.detail_search.visibility = View.VISIBLE
-        headerView.detail_search.setImageResource(R.drawable.ic_add)
-        headerView.detail_search.setOnClickListener { onAddTodo() }
-        headerView.detail_back.setOnClickListener { onBackPressed() }
+        headerView.apply {
+            detail_title.text = "待办事项"
+            detail_back.visibility = View.VISIBLE
+            detail_search.visibility = View.VISIBLE
+            detail_search.setImageResource(R.drawable.ic_add)
+            detail_search.setOnClickListener { onAddTodo() }
+            detail_back.setOnClickListener { onBackPressed() }
+        }
         mAdapter.addHeaderView(headerView)
         initColor()
     }

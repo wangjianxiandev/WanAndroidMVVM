@@ -42,7 +42,7 @@ class ArticleDetailActivity : BaseActivity() {
     }
 
     @Subscribe
-    fun changeEvent(event: ChangeThemeEvent) {
+    fun settingEvent(event: ChangeThemeEvent) {
         custom_bar.setBackgroundColor(ColorUtil.getColor(this))
     }
 }

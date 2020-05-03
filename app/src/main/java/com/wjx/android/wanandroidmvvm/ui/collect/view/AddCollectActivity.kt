@@ -22,10 +22,12 @@ class AddCollectActivity : BaseLifeCycleActivity<CollectViewModel>(), View.OnCli
     }
 
     private fun initHeaderView() {
-        add_collect_bar.detail_title.text = "添加收藏"
-        add_collect_bar.detail_back.visibility = View.VISIBLE
-        add_collect_bar.detail_search.visibility = View.GONE
-        add_collect_bar.detail_back.setOnClickListener(this)
+        add_collect_bar.apply{
+            detail_title.text = "添加收藏"
+            detail_back.visibility = View.VISIBLE
+            detail_search.visibility = View.GONE
+            detail_back.setOnClickListener(this@AddCollectActivity)
+        }
         initColor()
     }
 

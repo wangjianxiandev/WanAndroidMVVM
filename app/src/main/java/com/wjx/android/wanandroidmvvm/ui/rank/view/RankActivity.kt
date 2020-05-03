@@ -69,12 +69,14 @@ class RankActivity : BaseLifeCycleActivity<RankViewModel>() {
 
     private fun initHeaderView() {
         headerView = View.inflate(this, R.layout.custom_bar, null)
-        headerView.detail_title.text = "积分排行"
-        headerView.detail_back.visibility = View.VISIBLE
-        headerView.detail_search.visibility = View.VISIBLE
-        headerView.detail_search.setImageResource(R.drawable.ic_history)
-        headerView.detail_search.setOnClickListener { onHistoryPressed() }
-        headerView.detail_back.setOnClickListener { onBackPressed() }
+        headerView.apply {
+            detail_title.text = "积分排行"
+            detail_back.visibility = View.VISIBLE
+            detail_search.visibility = View.VISIBLE
+            detail_search.setImageResource(R.drawable.ic_history)
+            detail_search.setOnClickListener { onHistoryPressed() }
+            detail_back.setOnClickListener { onBackPressed() }
+        }
         mAdapter.addHeaderView(headerView)
         initColor()
     }

@@ -76,10 +76,12 @@ class MeShareActivity : BaseLifeCycleActivity<MeShareViewModel>() {
 
     private fun initHeaderView() {
         headerView = View.inflate(this, R.layout.custom_bar, null)
-        headerView.detail_title.text = "我的分享"
-        headerView.detail_back.visibility = View.VISIBLE
-        headerView.detail_search.visibility = View.GONE
-        headerView.detail_back.setOnClickListener { onBackPressed() }
+        headerView.apply {
+            detail_title.text = "我的分享"
+            detail_back.visibility = View.VISIBLE
+            detail_search.visibility = View.GONE
+            detail_back.setOnClickListener { onBackPressed() }
+        }
         mAdapter.addHeaderView(headerView)
         initColor()
     }

@@ -68,9 +68,11 @@ class IntegralHistoryActivity : BaseLifeCycleActivity<RankViewModel>() {
 
     private fun initHeaderView() {
         headerView = View.inflate(this, R.layout.integral_header_view, null)
-        headerView.integral_title.text = "积分记录"
-        headerView.integral_rule.setOnClickListener { onRulePressed() }
-        headerView.integral_back.setOnClickListener { onBackPressed() }
+        headerView.apply {
+            integral_title.text = "积分记录"
+            integral_rule.setOnClickListener { onRulePressed() }
+            integral_back.setOnClickListener { onBackPressed() }
+        }
         mAdapter.addHeaderView(headerView)
         initColor()
     }

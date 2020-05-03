@@ -26,10 +26,12 @@ class SettingActivity : BaseActivity(), View.OnClickListener{
     }
 
     private fun initHeadView() {
-        setting_bar.detail_title.text = "设置"
-        setting_bar.detail_back.visibility = View.VISIBLE
-        setting_bar.detail_search.visibility = View.GONE
-        setting_bar.detail_back.setOnClickListener(this)
+        setting_bar.apply {
+            detail_title.text = "设置"
+            detail_back.visibility = View.VISIBLE
+            detail_search.visibility = View.GONE
+            detail_back.setOnClickListener(this@SettingActivity)
+        }
         initColor()
     }
 

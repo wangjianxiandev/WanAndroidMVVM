@@ -49,16 +49,18 @@ class HomeFragment : ArticleListFragment<HomeViewModel>() {
         super.initView()
         val headView = View.inflate(activity, R.layout.layout_home_headview, null)
         mBanner = headView.mBanner
-        mBanner.setOnBannerListener { position ->
-            startActivity<ArticleDetailActivity>(activity!!) {
-                putExtra("url", urls[position])
-                putExtra("title", titles[position])
+        mBanner.apply {
+            setOnBannerListener { position ->
+                startActivity<ArticleDetailActivity>(activity!!) {
+                    putExtra("url", urls[position])
+                    putExtra("title", titles[position])
+                }
             }
+            setImageLoader(GlideImageLoader())
+            setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)
+            setDelayTime(5000)
+            setBannerAnimation(Transformer.DepthPage)
         }
-        mBanner.setImageLoader(GlideImageLoader())
-        mBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)
-        mBanner.setDelayTime(5000)
-        mBanner.setBannerAnimation(Transformer.DepthPage)
         mAdapter.addHeaderView(headView)
     }
 
