@@ -10,8 +10,7 @@ import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.view.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
-import com.wjx.android.wanandroidmvvm.common.utils.startActivity
-import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
+import com.wjx.android.wanandroidmvvm.common.utils.CommonUtil
 import com.wjx.android.wanandroidmvvm.ui.rank.adapter.IntegralHistoryAdapter
 import com.wjx.android.wanandroidmvvm.ui.rank.data.IntegralHistoryResponse
 import com.wjx.android.wanandroidmvvm.ui.rank.viewmodel.RankViewModel
@@ -127,10 +126,11 @@ class IntegralHistoryActivity : BaseLifeCycleActivity<RankViewModel>() {
     override fun onBackPressed() = finish()
 
     private fun onRulePressed() {
-        startActivity<ArticleDetailActivity>(this) {
-            putExtra("url", "https://www.wanandroid.com/blog/show/2653")
-            putExtra("title", getString(R.string.rank_rule))
-        }
+        CommonUtil.startWebView(
+            this,
+            "https://www.wanandroid.com/blog/show/2653",
+            getString(R.string.rank_rule)
+        )
     }
 
 

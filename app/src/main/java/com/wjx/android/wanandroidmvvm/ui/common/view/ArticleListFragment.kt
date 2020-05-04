@@ -11,10 +11,7 @@ import com.wjx.android.wanandroidmvvm.common.state.UserInfo
 import com.wjx.android.wanandroidmvvm.common.state.callback.CollectListener
 import com.wjx.android.wanandroidmvvm.common.state.callback.LoginSuccessListener
 import com.wjx.android.wanandroidmvvm.common.state.callback.LoginSuccessState
-import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
-import com.wjx.android.wanandroidmvvm.common.utils.SpeedLayoutManager
-import com.wjx.android.wanandroidmvvm.common.utils.startActivity
+import com.wjx.android.wanandroidmvvm.common.utils.*
 import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import kotlinx.android.synthetic.main.fragment_article_list.*
 import org.greenrobot.eventbus.Subscribe
@@ -52,10 +49,7 @@ abstract class ArticleListFragment<VM : ArticleViewModel<*>> : BaseLifeCycleFrag
             val article = mAdapter.getItem(position)
 
             article?.let {
-                startActivity<ArticleDetailActivity>(activity!!) {
-                    putExtra("url", it.link)
-                    putExtra("title", it.title)
-                }
+                CommonUtil.startWebView(activity!!, it.link, it.title)
             }
         }
         mAdapter.setOnItemChildClickListener { _, _, position ->

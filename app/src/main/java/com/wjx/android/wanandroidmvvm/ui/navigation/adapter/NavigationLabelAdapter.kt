@@ -43,7 +43,7 @@ class NavigationLabelAdapter (layoutId : Int, listData : MutableList<NavigationT
                     }
                 }
                 holder.itemView.nav_label_layout.setOnTagClickListener {_, position, _ ->
-                    CommonUtil.startWebView(mContext, it.articles[position].title, it.articles[position].link)
+                    CommonUtil.startWebView(mContext, it.articles[position].link, it.articles[position].title)
                     return@setOnTagClickListener true
                 }
             }

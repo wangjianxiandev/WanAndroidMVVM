@@ -9,11 +9,7 @@ import com.wjx.android.wanandroidmvvm.base.view.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.ui.common.adapter.ArticleAdapter
 import com.wjx.android.wanandroidmvvm.common.state.UserInfo
 import com.wjx.android.wanandroidmvvm.common.state.callback.CollectListener
-import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
-import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
-import com.wjx.android.wanandroidmvvm.common.utils.SpeedLayoutManager
-import com.wjx.android.wanandroidmvvm.common.utils.startActivity
-import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
+import com.wjx.android.wanandroidmvvm.common.utils.*
 import kotlinx.android.synthetic.main.fragment_article_list.*
 import org.greenrobot.eventbus.Subscribe
 
@@ -51,10 +47,7 @@ abstract class ArticleListActivity<VM : ArticleViewModel<*>> : BaseLifeCycleActi
             val article = mAdapter.getItem(position)
 
             article?.let {
-                startActivity<ArticleDetailActivity>(this) {
-                    putExtra("url", it.link)
-                    putExtra("title", it.title)
-                }
+                CommonUtil.startWebView(this, it.link, it.title)
             }
         }
 

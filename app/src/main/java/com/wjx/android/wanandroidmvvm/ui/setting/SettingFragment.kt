@@ -100,15 +100,15 @@ class SettingFragment : PreferenceFragmentCompat(),
         }
 
         findPreference<Preference>("csdn")?.setOnPreferenceClickListener {
-            CommonUtil.startWebView(parentActivity, "DLUT_WJX", "https://blog.csdn.net/qq_39424143")
+            CommonUtil.startWebView(parentActivity, "https://blog.csdn.net/qq_39424143", "DLUT_WJX")
             false
         }
 
         findPreference<Preference>("project")?.setOnPreferenceClickListener {
             CommonUtil.startWebView(
                 parentActivity,
-                "WanAndroid",
-                "https://github.com/wangjianxiandev/WanAndroidMvvm"
+                "https://github.com/wangjianxiandev/WanAndroidMvvm",
+                "WanAndroid"
             )
             false
         }

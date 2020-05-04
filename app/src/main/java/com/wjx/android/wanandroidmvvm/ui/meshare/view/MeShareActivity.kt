@@ -9,8 +9,7 @@ import com.wjx.android.wanandroidmvvm.ui.common.data.Article
 import com.wjx.android.wanandroidmvvm.base.view.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
-import com.wjx.android.wanandroidmvvm.common.utils.startActivity
-import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
+import com.wjx.android.wanandroidmvvm.common.utils.CommonUtil
 import com.wjx.android.wanandroidmvvm.ui.meshare.adapter.MeShareAdapter
 import com.wjx.android.wanandroidmvvm.ui.meshare.viewmodel.MeShareViewModel
 import kotlinx.android.synthetic.main.custom_bar.view.*
@@ -36,10 +35,7 @@ class MeShareActivity : BaseLifeCycleActivity<MeShareViewModel>() {
         mAdapter.setOnItemClickListener { _, _, position ->
             val article = mAdapter.getItem(position)
             article?.let {
-                startActivity<ArticleDetailActivity>(this) {
-                    putExtra("url", it.link)
-                    putExtra("title", it.title)
-                }
+                CommonUtil.startWebView(this, it.link, it.title)
             }
         }
 

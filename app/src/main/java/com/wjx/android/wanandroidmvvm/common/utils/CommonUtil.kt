@@ -16,12 +16,12 @@ object CommonUtil {
 
     fun startWebView(
         context: Context,
-        title: String?,
-        url: String?
+        url: String,
+        title: String
     ) {
         startActivity<ArticleDetailActivity>(context) {
-            putExtra("title", title)
             putExtra("url", url)
+            putExtra("title", title)
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         }
     }
