@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_dialog"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/safe_top">
+
+    <ImageView
+        android:id="@+id/qrcode_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/item_margin_top"
+        android:text="@string/qrcode"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:id="@+id/button_group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="0.0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/edit_shap"
+            android:gravity="center"
+            android:paddingTop="@dimen/safe_dialog_padding"
+            android:paddingBottom="@dimen/safe_dialog_padding"
+            android:text="@string/cancel"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/btn_divider"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/dialog_divider"
+            android:orientation="vertical" />
+
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="@drawable/edit_shap"
+            android:gravity="center"
+            android:paddingTop="@dimen/safe_dialog_padding"
+            android:paddingBottom="@dimen/safe_dialog_padding"
+            android:text="@string/share"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>

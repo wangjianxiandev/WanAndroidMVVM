@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import com.kingja.loadsir.core.LoadSir
 import com.tencent.bugly.Bugly
+import com.uuzuche.lib_zxing.activity.ZXingLibrary
 import com.wjx.android.wanandroidmvvm.common.callback.EmptyCallBack
 import com.wjx.android.wanandroidmvvm.common.callback.ErrorCallBack
 import com.wjx.android.wanandroidmvvm.common.callback.LoadingCallBack
@@ -25,6 +26,7 @@ open class BaseApplication : Application() {
         SPreference.setContext(applicationContext)
         // 集成bugly
         Bugly.init(applicationContext, "7c31dd2361", false)
+        ZXingLibrary.initDisplayOpinion(this)
         initMode()
         LoadSir.beginBuilder()
             .addCallback(ErrorCallBack())

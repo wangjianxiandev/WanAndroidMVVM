@@ -34,4 +34,5 @@
     <color name="card_grey_bg">#70616161</color>
     <color name="me_item">#FFFFFF</color>
     <color name="text_color">#000000</color>
+    <color name="dialog_divider">#80FFFFFF</color>
 </resources>

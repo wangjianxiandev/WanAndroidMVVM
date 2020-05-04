@@ -124,7 +124,7 @@ class EditTodoActivity : BaseLifeCycleActivity<TodoViewModel>(), View.OnClickLis
                 val bottomDialog =
                     Dialog(this, R.style.BottomDialog)
                 val contentView: View =
-                    LayoutInflater.from(this).inflate(R.layout.dialog_content_circle, null)
+                    LayoutInflater.from(this).inflate(R.layout.dialog_edit_todo, null)
                 bottomDialog.setContentView(contentView)
                 val params = contentView.layoutParams as MarginLayoutParams
                 params.width =
@@ -154,7 +154,7 @@ class EditTodoActivity : BaseLifeCycleActivity<TodoViewModel>(), View.OnClickLis
                 val bottomDialog =
                     Dialog(this, R.style.BottomDialog)
                 val contentView =
-                    LayoutInflater.from(this).inflate(R.layout.dialog_content_circle, null)
+                    LayoutInflater.from(this).inflate(R.layout.dialog_edit_todo, null)
                 bottomDialog.setContentView(contentView)
                 val params = contentView.layoutParams as MarginLayoutParams
                 params.width =

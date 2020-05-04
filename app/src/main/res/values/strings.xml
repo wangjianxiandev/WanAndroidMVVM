@@ -1,8 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">WanAndroid</string>
-    <!--反馈页-->
-    <string name="error_message">发生了一些错误</string>
-    <string name="empty_message">没有数据哎~</string>
 
     <string name="navigation_home">首页</string>
     <string name="search_input_tips">请输入搜索内容</string>
@@ -10,8 +7,9 @@
     <string name="navigation_system">体系</string>
     <string name="navigation_navigation">导航</string>
     <string name="navigation_project">项目</string>
-    <string name="search">搜索</string>
     <string name="exit_app">再按一次退出程序</string>
+
+    <!--to do-->
     <string name="todo_empty">必填内容不可为空</string>
     <string name="add_todo">添加待办</string>
     <string name="edit_todo">编辑待办</string>
@@ -45,7 +43,7 @@
     <string name="account">账户</string>
     <string name="password">密码</string>
 
-    <!--设置-->
+    <!--setting-->
     <string name="title">温馨提示</string>
     <string name="done">确定</string>
     <string name="cancel">取消</string>
@@ -66,7 +64,21 @@
     <string name="github_url">https://github.com/wangjianxiandev/WanAndroidMvvm</string>
     <string name="open_project">感谢优秀的开源项目</string>
     <string name="open_project_tips">项目中开源库</string>
+
+    <!--menu-->
+    <string name="search">搜索</string>
+    <string name="scan">扫一扫</string>
+    <string name="share">分享</string>
+    <string name="qrcode_share">二维码分享</string>
+    <string name="open_it_with_system_browser">系统浏览器</string>
+    <string name="app_title_url">%1$s 分享的【%2$s】戳此链接查看☞：%3$s</string>
+    <string name="qrcode">扫一扫二维码，可分享文章</string>
+
     <!--shortcuts-->
     <string name="shortcut_search" tools:ignore="ExtraTranslation">搜一搜</string>
     <string name="shortcut_wenda" tools:ignore="ExtraTranslation">每日一问</string>
+
+    <!--feed back-->
+    <string name="error_message">发生了一些错误</string>
+    <string name="empty_message">没有数据哎~</string>
 </resources>

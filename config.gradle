@@ -35,6 +35,7 @@ ext {
     litepal_version = '3.0.0'
     circular_avatar = 'v1.0.0'
     easypermissions_version = '3.0.0'
+    zxing_version = '2.2'
 
 
     appId = [
@@ -85,7 +86,8 @@ ext {
             "circular_avatar"            : "com.github.wangjianxiandev:CircularAvatar:$circular_avatar",
             "easypermissions"            : "pub.devrel:easypermissions:$easypermissions_version",
             "bugly_crashreport"          : "com.tencent.bugly:crashreport_upgrade:latest.release",
-            "bugly_nativecrashreport"    : "com.tencent.bugly:nativecrashreport:latest.release"
+            "bugly_nativecrashreport"    : "com.tencent.bugly:nativecrashreport:latest.release",
+            "zxing"                      : "cn.yipianfengye.android:zxing-library:$zxing_version"
     ]
 
     processor = [
