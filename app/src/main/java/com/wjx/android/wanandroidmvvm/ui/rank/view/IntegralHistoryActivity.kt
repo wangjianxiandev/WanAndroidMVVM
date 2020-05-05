@@ -1,9 +1,7 @@
 package com.wjx.android.wanandroidmvvm.ui.rank.view
 
-import android.animation.ValueAnimator
 import android.graphics.Color
 import android.view.View
-import android.view.animation.DecelerateInterpolator
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wjx.android.wanandroidmvvm.R
@@ -11,6 +9,7 @@ import com.wjx.android.wanandroidmvvm.base.view.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.common.utils.CommonUtil
+import com.wjx.android.wanandroidmvvm.common.utils.DisplayUtil
 import com.wjx.android.wanandroidmvvm.ui.rank.adapter.IntegralHistoryAdapter
 import com.wjx.android.wanandroidmvvm.ui.rank.data.IntegralHistoryResponse
 import com.wjx.android.wanandroidmvvm.ui.rank.viewmodel.RankViewModel
@@ -51,8 +50,9 @@ class IntegralHistoryActivity : BaseLifeCycleActivity<RankViewModel>() {
         })
         mViewModel.mMeRankInfo.observe(this, Observer { response ->
             response.let {
-                startIntegralTextAnim(it.data.coinCount)
-                startIntegralRankAnim(it.data.rank)
+                DisplayUtil.startIntegralTextAnim(headerView.integral_text_anim, it.data.coinCount, "")
+                DisplayUtil.startIntegralTextAnim(headerView.integral_level_anim, it.data.level, "等级:")
+                DisplayUtil.startIntegralTextAnim(headerView.integral_rank_anim, it.data.rank, "排名:")
             }
         })
     }
@@ -69,7 +69,7 @@ class IntegralHistoryActivity : BaseLifeCycleActivity<RankViewModel>() {
     private fun initHeaderView() {
         headerView = View.inflate(this, R.layout.integral_header_view, null)
         headerView.apply {
-            integral_title.text = "积分记录"
+            integral_title.text = "我的积分"
             integral_rule.setOnClickListener { onRulePressed() }
             integral_back.setOnClickListener { onBackPressed() }
         }
@@ -86,32 +86,6 @@ class IntegralHistoryActivity : BaseLifeCycleActivity<RankViewModel>() {
         mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(this))
         mSrlRefresh.setColorSchemeColors(Color.WHITE)
         mSrlRefresh.setOnRefreshListener { onRefreshData() }
-    }
-
-    private fun startIntegralTextAnim(coinCount: Int) {
-        val animator = ValueAnimator.ofInt(0, coinCount)
-        //播放时长
-        animator.duration = 1500
-        animator.interpolator = DecelerateInterpolator()
-        animator.addUpdateListener { animation ->
-            //获取改变后的值
-            val currentValue = animation.animatedValue as Int
-            headerView.integral_text_anim.text = "$currentValue"
-        }
-        animator.start()
-    }
-
-    private fun startIntegralRankAnim(coinCount: Int) {
-        val animator = ValueAnimator.ofInt(0, coinCount)
-        //播放时长
-        animator.duration = 1500
-        animator.interpolator = DecelerateInterpolator()
-        animator.addUpdateListener { animation ->
-            //获取改变后的值
-            val currentValue = animation.animatedValue as Int
-            headerView.integral_rank_anim.text = "排名: $currentValue"
-        }
-        animator.start()
     }
 
     fun addData(integralHistoryList: List<IntegralHistoryResponse>) {
