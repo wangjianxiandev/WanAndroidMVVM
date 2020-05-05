@@ -52,6 +52,7 @@ class IntegralHistoryActivity : BaseLifeCycleActivity<RankViewModel>() {
         mViewModel.mMeRankInfo.observe(this, Observer { response ->
             response.let {
                 startIntegralTextAnim(it.data.coinCount)
+                startIntegralRankAnim(it.data.rank)
             }
         })
     }
@@ -96,6 +97,19 @@ class IntegralHistoryActivity : BaseLifeCycleActivity<RankViewModel>() {
             //获取改变后的值
             val currentValue = animation.animatedValue as Int
             headerView.integral_text_anim.text = "$currentValue"
+        }
+        animator.start()
+    }
+
+    private fun startIntegralRankAnim(coinCount: Int) {
+        val animator = ValueAnimator.ofInt(0, coinCount)
+        //播放时长
+        animator.duration = 1500
+        animator.interpolator = DecelerateInterpolator()
+        animator.addUpdateListener { animation ->
+            //获取改变后的值
+            val currentValue = animation.animatedValue as Int
+            headerView.integral_rank_anim.text = "排名: $currentValue"
         }
         animator.start()
     }

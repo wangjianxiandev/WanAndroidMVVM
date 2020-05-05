@@ -11,9 +11,9 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
         android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/integral_back"
@@ -58,9 +58,9 @@
         android:id="@+id/integral_text"
         android:layout_width="match_parent"
         android:layout_height="215dp"
+        android:background="@color/white_bg"
         android:gravity="center"
         android:orientation="vertical"
-        android:background="@color/white_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/integral_bar">
@@ -81,6 +81,16 @@
             android:text="我的积分"
             android:textColor="@color/textTipColor"
             android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/integral_rank_anim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="排名："
+            android:textColor="@color/textTipColor"
+            android:textSize="15dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -95,7 +105,7 @@
             android:layout_height="42dp"
             android:layout_marginLeft="10dp"
             android:padding="10dp"
-            android:src="@drawable/ic_integral"/>
+            android:src="@drawable/ic_integral" />
 
         <TextView
             android:layout_width="match_parent"
