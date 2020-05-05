@@ -1,17 +1,20 @@
 package com.wjx.android.wanandroidmvvm.ui.home.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.wjx.android.wanandroidmvvm.common.state.State
+import com.wjx.android.wanandroidmvvm.common.state.StateType
+import com.wjx.android.wanandroidmvvm.network.dataConvert
+import com.wjx.android.wanandroidmvvm.network.initiateRequest
 import com.wjx.android.wanandroidmvvm.ui.common.data.Article
 import com.wjx.android.wanandroidmvvm.ui.common.viewmodel.ArticleViewModel
-import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.ui.home.data.BannerResponse
 import com.wjx.android.wanandroidmvvm.ui.home.data.HomeArticleResponse
 import com.wjx.android.wanandroidmvvm.ui.home.repository.HomeRepository
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import retrofit2.HttpException
 import java.lang.Exception
 
 /**
@@ -49,25 +52,17 @@ class HomeViewModel(application: Application) :
     var mTopArticleData: MutableLiveData<List<Article>> = MutableLiveData()
 
     fun loadBannerCo() {
-        viewModelScope.launch {
-            try {
-                mBannerData.value = mRepository.loadBannerCo()
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
+        initiateRequest({
+            mBannerData.value = mRepository.loadBannerCo()
+        }, loadState)
     }
 
     fun loadHomeArticleDataCo(pageNum: Int) {
-        viewModelScope.launch {
-            try {
-                if (pageNum == 0) {
-                    mTopArticleData.value = mRepository.loadTopArticleCo()
-                }
-                mHomeArticleData.value = mRepository.loadHomeArticleCo(pageNum)
-            } catch (e: Exception) {
-                e.printStackTrace()
+        initiateRequest({
+            if (pageNum == 0) {
+                mTopArticleData.value = mRepository.loadTopArticleCo()
             }
-        }
+            mHomeArticleData.value = mRepository.loadHomeArticleCo(pageNum)
+        }, loadState)
     }
 }

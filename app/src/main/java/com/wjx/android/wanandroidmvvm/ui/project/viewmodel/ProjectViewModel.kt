@@ -3,6 +3,7 @@ package com.wjx.android.wanandroidmvvm.ui.project.viewmodel
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.wjx.android.wanandroidmvvm.network.initiateRequest
 import com.wjx.android.wanandroidmvvm.ui.common.viewmodel.ArticleViewModel
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.ui.project.data.ProjectResponse
@@ -35,22 +36,12 @@ class ProjectViewModel(application: Application) :
     val mProjectArticleData: MutableLiveData<ProjectResponse> = MutableLiveData()
 
     fun loadProjectTab() {
-        viewModelScope.launch {
-            try {
-                mProjectTabData.value = mRepository.loadProjectTabCo()
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
+        initiateRequest({ mProjectTabData.value = mRepository.loadProjectTabCo() }, loadState)
     }
 
     fun loadProjectArticle(pageNum: Int, cid: Int) {
-        viewModelScope.launch {
-            try {
-                mProjectArticleData.value = mRepository.loadProjectArticleCo(pageNum, cid)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
+        initiateRequest({
+            mProjectArticleData.value = mRepository.loadProjectArticleCo(pageNum, cid)
+        }, loadState)
     }
 }

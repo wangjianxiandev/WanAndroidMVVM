@@ -3,6 +3,7 @@ package com.wjx.android.wanandroidmvvm.ui.wechat.viewmodel
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.wjx.android.wanandroidmvvm.network.initiateRequest
 import com.wjx.android.wanandroidmvvm.ui.common.viewmodel.ArticleViewModel
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.ui.wechat.data.WeChatArticleResponse
@@ -36,22 +37,10 @@ class WeChatViewModel(application: Application) :
         MutableLiveData()
     var mWeChatArticleData: MutableLiveData<WeChatArticleResponse> = MutableLiveData()
     fun loadWeChatTabName() {
-        viewModelScope.launch {
-            try {
-                mWChatTabData.value = mRepository.loadWeChatTabNameCo()
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
+        initiateRequest({mWChatTabData.value = mRepository.loadWeChatTabNameCo()}, loadState)
     }
 
     fun loadWeChatArticle(cid: Int, pageNum: Int) {
-        viewModelScope.launch {
-            try {
-                mWeChatArticleData.value = mRepository.loadWeChatArticleCo(cid, pageNum)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
+        initiateRequest({mWeChatArticleData.value = mRepository.loadWeChatArticleCo(cid, pageNum)}, loadState)
     }
 }

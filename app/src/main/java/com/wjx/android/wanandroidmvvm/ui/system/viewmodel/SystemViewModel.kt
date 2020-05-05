@@ -3,6 +3,7 @@ package com.wjx.android.wanandroidmvvm.ui.system.viewmodel
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.wjx.android.wanandroidmvvm.network.initiateRequest
 import com.wjx.android.wanandroidmvvm.ui.common.viewmodel.ArticleViewModel
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.ui.system.data.SystemArticleResponse
@@ -34,22 +35,12 @@ class SystemViewModel(application: Application) : ArticleViewModel<SystemReposit
     val mSystemArticleData: MutableLiveData<SystemArticleResponse> = MutableLiveData()
 
     fun loadSystemTab() {
-        viewModelScope.launch {
-            try {
-                mSystemTabNameData.value = mRepository.loadSystemTabCo()
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
+        initiateRequest({ mSystemTabNameData.value = mRepository.loadSystemTabCo() }, loadState)
     }
 
     fun loadSystemArticle(pageNum: Int, cid: Int?) {
-        viewModelScope.launch {
-            try {
-                mSystemArticleData.value = mRepository.loadsystemArticleCo(pageNum, cid)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
+        initiateRequest({
+            mSystemArticleData.value = mRepository.loadsystemArticleCo(pageNum, cid)
+        }, loadState)
     }
 }

@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.wjx.android.wanandroidmvvm.base.viewmodel.BaseViewModel
+import com.wjx.android.wanandroidmvvm.network.initiateRequest
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.ui.navigation.data.NavigationTabNameResponse
 import com.wjx.android.wanandroidmvvm.ui.navigation.repository.NavigationRepository
@@ -28,12 +29,6 @@ class NavigationViewModel(application: Application) :
     val mNavigationTabData: MutableLiveData<List<NavigationTabNameResponse>> = MutableLiveData()
 
     fun loadNavigationTab() {
-        viewModelScope.launch {
-            try {
-                mNavigationTabData.value = mRepository.loadNavigationTab()
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
+        initiateRequest({mNavigationTabData.value = mRepository.loadNavigationTab()},loadState)
     }
 }

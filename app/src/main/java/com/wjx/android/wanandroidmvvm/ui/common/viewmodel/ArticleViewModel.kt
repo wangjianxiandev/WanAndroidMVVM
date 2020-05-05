@@ -56,5 +56,4 @@ abstract class ArticleViewModel<T : ArticleRepository>(application: Application)
             }
         }
     }
-
 }

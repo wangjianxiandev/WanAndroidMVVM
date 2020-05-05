@@ -1,11 +1,15 @@
 package com.wjx.android.wanandroidmvvm.network
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.wjx.android.wanandroidmvvm.base.repository.BaseRepository
+import com.wjx.android.wanandroidmvvm.base.viewmodel.BaseViewModel
 import com.wjx.android.wanandroidmvvm.common.state.State
 import com.wjx.android.wanandroidmvvm.common.state.StateType
 import com.wjx.android.wanandroidmvvm.common.state.UserInfo
 import com.wjx.android.wanandroidmvvm.common.utils.Constant
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
+import kotlinx.coroutines.launch
 
 /**
  * Created with Android Studio.
@@ -16,7 +20,7 @@ import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 
 fun <T> BaseResponse<T>.dataConvert(
     loadState: MutableLiveData<State>
-) : T{
+): T {
     when (errorCode) {
         Constant.SUCCESS -> {
             if (data is List<*>) {
@@ -39,3 +43,17 @@ fun <T> BaseResponse<T>.dataConvert(
     }
 }
 
+
+fun <T : BaseRepository> BaseViewModel<T>.initiateRequest(
+    block: suspend () -> Unit,
+    loadState: MutableLiveData<State>
+) {
+    viewModelScope.launch {
+        runCatching {
+            block()
+        }.onSuccess {
+        }.onFailure {
+            NetExceptionHandle.handleException(it, loadState)
+        }
+    }
+}
