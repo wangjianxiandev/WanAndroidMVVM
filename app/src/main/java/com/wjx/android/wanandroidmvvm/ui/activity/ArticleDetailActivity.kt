@@ -12,12 +12,12 @@ import android.widget.PopupWindow
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.just.agentweb.AgentWeb
-import com.uuzuche.lib_zxing.activity.CodeUtils
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.view.BaseActivity
 import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.common.utils.DisplayUtil
+import com.yzq.zxinglibrary.encode.CodeCreator
 import kotlinx.android.synthetic.main.activity_article_detail.*
 import kotlinx.android.synthetic.main.custom_bar.*
 import kotlinx.android.synthetic.main.dialog_qrcode.view.*
@@ -114,9 +114,7 @@ class ArticleDetailActivity : BaseActivity(), View.OnClickListener {
 
     private fun showPopupWindow() {
         val popRootView = LayoutInflater.from(this).inflate(R.layout.layout_popup, null)
-        mPopupWindow = PopupWindow(popRootView)
-        mPopupWindow.width = ViewGroup.LayoutParams.WRAP_CONTENT
-        mPopupWindow.height = ViewGroup.LayoutParams.WRAP_CONTENT
+        mPopupWindow = PopupWindow(popRootView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true)
         val qrcodeLinear = popRootView.findViewById<ViewGroup>(R.id.qrcode_linear)
         val shareLinear = popRootView.findViewById<ViewGroup>(R.id.share_linear)
         val browserLinear = popRootView.findViewById<ViewGroup>(R.id.browser_linear)
@@ -151,7 +149,7 @@ class ArticleDetailActivity : BaseActivity(), View.OnClickListener {
         contentView.layoutParams = params
         bottomDialog.window!!.setGravity(Gravity.BOTTOM)
         bottomDialog.window!!.setWindowAnimations(R.style.BottomDialog_Animation)
-        val bitmap = CodeUtils.createImage(
+        val bitmap = CodeCreator.createQRCode(
             mUrl,
             600,
             600,

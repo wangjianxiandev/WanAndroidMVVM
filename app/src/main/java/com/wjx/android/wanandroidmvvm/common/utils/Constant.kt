@@ -10,9 +10,6 @@ package com.wjx.android.wanandroidmvvm.common.utils
 object Constant {
     const val BASE_URL = "https://www.wanandroid.com"
 
-    const val RC_STORAGE_PERM = 100
-
-
     const val USERNAME_KEY = "username"
     const val USERID_KEY = "userid"
     const val LOGIN_KEY = "login"
@@ -55,4 +52,11 @@ object Constant {
     const val KEY_TODO_TYPE = "todo_type"
 
     const val KEY_TODO_HANDLE_TYPE = "todo_handle"
+
+    // 二维码扫描
+    const val REQUEST_CODE_SCAN = 1
+
+    const val CODED_CONTENT = "codedContent"
+
+    const val INTENT_ZXING_CONFIG = "zxingConfig"
 }

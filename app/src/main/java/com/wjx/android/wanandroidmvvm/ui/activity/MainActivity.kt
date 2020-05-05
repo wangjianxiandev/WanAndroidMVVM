@@ -1,8 +1,12 @@
 package com.wjx.android.wanandroidmvvm.ui.activity
 
+import android.Manifest
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.SparseArray
 import android.view.Gravity
@@ -14,10 +18,13 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.color.colorChooser
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.view.BaseActivity
+import com.wjx.android.wanandroidmvvm.common.permission.PermissionResult
+import com.wjx.android.wanandroidmvvm.common.permission.Permissions
 import com.wjx.android.wanandroidmvvm.common.state.UserInfo
 import com.wjx.android.wanandroidmvvm.common.state.callback.LoginSuccessListener
 import com.wjx.android.wanandroidmvvm.common.state.callback.LoginSuccessState
@@ -26,17 +33,20 @@ import com.wjx.android.wanandroidmvvm.ui.home.view.HomeFragment
 import com.wjx.android.wanandroidmvvm.ui.navigation.view.NavigationFragment
 import com.wjx.android.wanandroidmvvm.ui.project.view.ProjectFragment
 import com.wjx.android.wanandroidmvvm.ui.question.view.QuestionArticleListActivity
-import com.wjx.android.wanandroidmvvm.ui.scan.ScanAnalysisActivity
 import com.wjx.android.wanandroidmvvm.ui.search.view.SearchActivity
 import com.wjx.android.wanandroidmvvm.ui.setting.SettingActivity
 import com.wjx.android.wanandroidmvvm.ui.square.view.SquareActivity
 import com.wjx.android.wanandroidmvvm.ui.system.view.SystemFragment
 import com.wjx.android.wanandroidmvvm.ui.wechat.view.WeChatFragment
+import com.yzq.zxinglibrary.android.CaptureActivity
+import com.yzq.zxinglibrary.bean.ZxingConfig
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_article_list.*
 import kotlinx.android.synthetic.main.layout_drawer_header.view.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import org.greenrobot.eventbus.Subscribe
+import pub.devrel.easypermissions.AppSettingsDialog
+
 
 class MainActivity : BaseActivity(), LoginSuccessListener {
     // 委托属性   将实现委托给了 -> Preference
@@ -50,6 +60,11 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
     // 当前显示的 fragment
     private var mCurrentFragment: Fragment? = null
     private var mLastFragment: Fragment? = null
+
+    private val mPermissions = arrayOf(
+        Manifest.permission.CAMERA,
+        Manifest.permission.READ_EXTERNAL_STORAGE
+    )
 
     override fun getLayoutId(): Int = R.layout.activity_main
 
@@ -285,9 +300,9 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
                 drawer_main.openDrawer(Gravity.START)
                 return true
             }
-//            R.id.action_scan -> {
-//                startActivity<ScanAnalysisActivity>(this)
-//            }
+            R.id.action_scan -> {
+                initCameraPermission()
+            }
             R.id.action_search -> {
                 startActivity<SearchActivity>(this)
                 return true
@@ -316,5 +331,55 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
     @Subscribe
     fun settingEvent(event: ChangeThemeEvent) {
         initColor()
+    }
+
+    // 获取扫描二维码的返回结果，使用浏览器打开（使用ArticleDetailActivity扫描复杂二维码会crash）
+    override fun onActivityResult(
+        requestCode: Int,
+        resultCode: Int,
+        data: Intent?
+    ) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == Constant.REQUEST_CODE_SCAN && resultCode == Activity.RESULT_OK) {
+            if (data != null) {
+                var intent = Intent()
+                intent.action = "android.intent.action.VIEW"
+                intent.data = Uri.parse(data.getStringExtra(Constant.CODED_CONTENT).toString())
+                startActivity(intent)
+            }
+        }
+    }
+
+    private fun initCameraPermission() {
+        Permissions(this).request(*mPermissions).observe(
+            this, Observer {
+                when (it) {
+                    is PermissionResult.Grant -> {
+                        val intent = Intent(this@MainActivity, CaptureActivity::class.java)
+                        var config = ZxingConfig()
+                        config.isShowAlbum = false
+                        intent.putExtra(Constant.INTENT_ZXING_CONFIG, config)
+                        startActivityForResult(intent, Constant.REQUEST_CODE_SCAN)
+                    }
+                    // 进入设置界面申请权限
+                    is PermissionResult.Rationale -> {
+                        AppSettingsDialog.Builder(this)
+                            .setTitle("申请权限")
+                            .setRationale("没有相关权限应用将无法正常运行，点击确定进入权限设置界面来进行更改")
+                            .build()
+                            .show()
+                    }
+                    // 进入设置界面申请权限
+                    is PermissionResult.Deny -> {
+                        AppSettingsDialog.Builder(this)
+                            .setTitle("申请权限")
+                            .setRationale("没有相关权限应用将无法正常运行，点击确定进入权限设置界面来进行更改")
+                            .build()
+                            .show()
+                    }
+                }
+            }
+        )
+
     }
 }
