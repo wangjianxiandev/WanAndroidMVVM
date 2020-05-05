@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.viewmodel.BaseViewModel
+import com.wjx.android.wanandroidmvvm.network.initiateRequest
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.ui.account.data.LoginResponse
 import com.wjx.android.wanandroidmvvm.ui.account.data.RegisterResponse
@@ -46,22 +47,10 @@ class AccountViewModel(application: Application) : BaseViewModel<AccountReposito
     val mRegisterData: MutableLiveData<RegisterResponse> = MutableLiveData()
 
     fun loginCo(username: String, password: String) {
-        viewModelScope.launch {
-            try {
-                mLoginData.value = mRepository.loginCo(username, password)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
+        initiateRequest({mLoginData.value = mRepository.loginCo(username, password)}, loadState)
     }
 
     fun registerCo(username: String, password: String, repassword: String) {
-        viewModelScope.launch {
-            try {
-                mRegisterData.value = mRepository.registerCo(username, password, repassword)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
+        initiateRequest({mRegisterData.value = mRepository.registerCo(username, password, repassword)}, loadState)
     }
 }
