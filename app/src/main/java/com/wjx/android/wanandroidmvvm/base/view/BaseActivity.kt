@@ -159,10 +159,17 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun finish() {
         super.finish()
-        overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out)
+        if (showDestroyReveal()) {
+            overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out)
+        } else {
+            overridePendingTransition(
+                R.anim.animo_alph_open,
+                R.anim.animo_alph_close
+            )
+        }
     }
 
-    private fun initStatusColor(color : Int) {
+    private fun initStatusColor(color: Int) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             window.statusBarColor = if (color == 0) ColorUtil.getColor(this) else color
         }

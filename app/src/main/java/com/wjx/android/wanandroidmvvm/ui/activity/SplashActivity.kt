@@ -68,7 +68,6 @@ class SplashActivity : AppCompatActivity() {
         finish()
     }
 
-    @AfterPermissionGranted(Constant.RC_STORAGE_PERM)
     private fun initPermission() {
         Permissions(this).request(*mPermissions).observe(
             this, Observer {
