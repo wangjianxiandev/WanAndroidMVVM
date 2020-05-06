@@ -82,6 +82,7 @@ class SplashActivity : AppCompatActivity() {
                             .setRationale("没有相关权限应用将无法正常运行，点击确定进入权限设置界面来进行更改")
                             .build()
                             .show()
+                        finish()
                     }
                     // 进入设置界面申请权限
                     is PermissionResult.Deny -> {
@@ -90,6 +91,7 @@ class SplashActivity : AppCompatActivity() {
                             .setRationale("没有相关权限应用将无法正常运行，点击确定进入权限设置界面来进行更改")
                             .build()
                             .show()
+                        finish()
                     }
                 }
             }
