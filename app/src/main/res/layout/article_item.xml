@@ -19,7 +19,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/item_home_author"
+            android:id="@+id/item_article_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/safe_padding"
@@ -32,7 +32,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/item_home_top_article"
+            android:id="@+id/item_article_top_article"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/safe_padding"
@@ -44,12 +44,12 @@
             android:textColor="@color/holo_red_light"
             android:textSize="10dp"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/item_home_author"
-            app:layout_constraintStart_toEndOf="@id/item_home_author"
-            app:layout_constraintTop_toTopOf="@id/item_home_author" />
+            app:layout_constraintBottom_toBottomOf="@id/item_article_author"
+            app:layout_constraintStart_toEndOf="@id/item_article_author"
+            app:layout_constraintTop_toTopOf="@id/item_article_author" />
 
         <TextView
-            android:id="@+id/item_home_new"
+            android:id="@+id/item_article_new"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/safe_padding"
@@ -61,12 +61,12 @@
             android:textColor="@color/holo_red_light"
             android:textSize="10dp"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/item_home_author"
-            app:layout_constraintStart_toEndOf="@+id/item_home_top_article"
-            app:layout_constraintTop_toTopOf="@+id/item_home_author" />
+            app:layout_constraintBottom_toBottomOf="@+id/item_article_author"
+            app:layout_constraintStart_toEndOf="@+id/item_article_top_article"
+            app:layout_constraintTop_toTopOf="@+id/item_article_author" />
 
         <TextView
-            android:id="@+id/item_home_question"
+            android:id="@+id/item_article_question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/safe_padding"
@@ -78,25 +78,26 @@
             android:textColor="@color/holo_green_dark"
             android:textSize="10dp"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/item_home_author"
-            app:layout_constraintStart_toEndOf="@+id/item_home_new"
-            app:layout_constraintTop_toTopOf="@+id/item_home_author" />
+            app:layout_constraintBottom_toBottomOf="@+id/item_article_author"
+            app:layout_constraintStart_toEndOf="@+id/item_article_new"
+            app:layout_constraintTop_toTopOf="@+id/item_article_author" />
 
 
         <TextView
-            android:id="@+id/item_home_date"
+            android:id="@+id/item_article_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/safe_padding"
             android:text="1小时前"
             android:textColor="@color/colorGray666"
             android:textSize="13dp"
-            app:layout_constraintBottom_toBottomOf="@+id/item_home_author"
+            app:layout_constraintBottom_toBottomOf="@+id/item_article_author"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/item_home_author" />
+            app:layout_constraintTop_toTopOf="@+id/item_article_author" />
+
 
         <TextView
-            android:id="@+id/item_home_content"
+            android:id="@+id/item_article_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/safe_padding"
@@ -108,7 +109,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/item_home_author" />
+            app:layout_constraintTop_toBottomOf="@+id/item_article_author" />
 
         <TextView
             android:id="@+id/item_article_type"
@@ -123,7 +124,7 @@
             android:textSize="13dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_home_content" />
+            app:layout_constraintTop_toBottomOf="@id/item_article_title" />
 
         <ImageView
             android:id="@+id/item_list_collect"

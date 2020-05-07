@@ -26,15 +26,15 @@ open class ArticleAdapter (layoutId : Int, listData : MutableList<Article>?)
             holder.itemView.article_material_card.strokeColor = ColorUtil.getColor(mContext)
             article?.let {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    holder.setText(R.id.item_home_author, handleAuthor(it))
-                        .setText(R.id.item_home_content, handleTitle(it))
-                        .setText(R.id.item_home_date, it.niceDate)
+                    holder.setText(R.id.item_article_author, handleAuthor(it))
+                        .setText(R.id.item_article_title, handleTitle(it))
+                        .setText(R.id.item_article_date, it.niceDate)
                         .setText(R.id.item_article_type, handleCategory(it))
                         .setImageResource(R.id.item_list_collect, isCollect(it))
                         .addOnClickListener(R.id.item_list_collect)
-                        .setVisible(R.id.item_home_new, it.fresh)
-                        .setVisible(R.id.item_home_top_article, it.top)
-                        .setGone(R.id.item_home_top_article, it.top)
+                        .setVisible(R.id.item_article_new, it.fresh)
+                        .setVisible(R.id.item_article_top_article, it.top)
+                        .setGone(R.id.item_article_top_article, it.top)
                 }
             }
         }

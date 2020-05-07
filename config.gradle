@@ -36,6 +36,7 @@ ext {
     circular_avatar = 'v1.0.0'
     easypermissions_version = '3.0.0'
     zxing_version = '2.2.5'
+    work_manager_version = '2.3.0'
 
 
     appId = [
@@ -87,7 +88,8 @@ ext {
             "easypermissions"            : "pub.devrel:easypermissions:$easypermissions_version",
             "bugly_crashreport"          : "com.tencent.bugly:crashreport_upgrade:latest.release",
             "bugly_nativecrashreport"    : "com.tencent.bugly:nativecrashreport:latest.release",
-            "zxing"                      : "com.github.yuzhiqiang1993:zxing:$zxing_version"
+            "zxing"                      : "com.github.yuzhiqiang1993:zxing:$zxing_version",
+            "work_manager"               : "androidx.work:work-runtime:$work_manager_version"
     ]
 
     processor = [

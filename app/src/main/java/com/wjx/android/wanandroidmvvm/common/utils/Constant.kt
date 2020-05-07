@@ -59,4 +59,7 @@ object Constant {
     const val CODED_CONTENT = "codedContent"
 
     const val INTENT_ZXING_CONFIG = "zxingConfig"
+
+    // 应用更新
+    const val UPDATEAPK = "update_apk"
 }
