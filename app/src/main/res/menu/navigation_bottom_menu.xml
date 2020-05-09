@@ -3,24 +3,24 @@
     <item
         android:id="@+id/menu_home"
         android:checked="true"
-        android:icon="@mipmap/navigation_home"
+        android:icon="@drawable/navigation_home"
         android:title="@string/navigation_home" />
 
     <item
         android:id="@+id/menu_system"
-        android:icon="@mipmap/navigation_system"
+        android:icon="@drawable/navigation_system"
         android:title="@string/navigation_system" />
     <item
         android:id="@+id/menu_wechat"
-        android:icon="@mipmap/navigation_wechat"
+        android:icon="@drawable/navigation_wechat"
         android:title="@string/navigation_wechat" />
     <item
         android:id="@+id/menu_navigation"
-        android:icon="@mipmap/navigation_navigation"
+        android:icon="@drawable/navigation_navigation"
         android:title="@string/navigation_navigation" />
 
     <item
         android:id="@+id/menu_project"
-        android:icon="@mipmap/navigation_project"
+        android:icon="@drawable/navigation_project"
         android:title="@string/navigation_project" />
 </menu>

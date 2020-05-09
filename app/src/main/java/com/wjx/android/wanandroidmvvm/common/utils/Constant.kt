@@ -22,8 +22,8 @@ object Constant {
     const val NIGHT_MODE = "night_mode"
 
     const val HOME = 0
-    const val WECHAT = 1
-    const val SYSTEM = 2
+    const val SYSTEM = 1
+    const val WECHAT = 2
     const val NAVIGATION = 3
     const val PROJECT = 4
 

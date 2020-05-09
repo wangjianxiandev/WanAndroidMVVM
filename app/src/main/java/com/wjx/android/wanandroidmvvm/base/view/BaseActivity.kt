@@ -9,7 +9,6 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.core.graphics.ColorUtils
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
@@ -111,23 +110,8 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
-
     fun setUpReveal(savedInstanceState: Bundle?) {
         setReveal(savedInstanceState)
-    }
-
-    /**
-     *  设置标题
-     */
-    fun setToolBarTitle(toolbar: Toolbar, title: String) {
-        toolbar.title = title
-        setSupportActionBar(toolbar)
-        val supportActionBar = supportActionBar
-
-        supportActionBar?.let {
-            it.setDisplayHomeAsUpEnabled(true)
-            it.setDisplayShowHomeEnabled(true)
-        }
     }
 
     /**

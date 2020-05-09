@@ -16,6 +16,7 @@ import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -66,9 +67,12 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
         Manifest.permission.READ_EXTERNAL_STORAGE
     )
 
+    private lateinit var mToolbarTitles: List<String>
+
     override fun getLayoutId(): Int = R.layout.activity_main
 
     override fun initView() {
+        initToolbarTitles()
         initToolBar()
         initDrawerLayout()
         initFabButton()
@@ -97,9 +101,17 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
         switchFragment(mLastIndex)
     }
 
+    private fun initToolbarTitles() {
+        mToolbarTitles = arrayListOf(
+            getString(R.string.navigation_home),
+            getString(R.string.navigation_system),
+            getString(R.string.navigation_wechat),
+            getString(R.string.navigation_navigation),
+            getString(R.string.navigation_project)
+        )
+    }
+
     private fun initToolBar() {
-        // 设置标题
-        setToolBarTitle(toolbar, getString(R.string.navigation_home))
         //设置导航图标、按钮有旋转特效
         val toggle = ActionBarDrawerToggle(
             this, drawer_main, toolbar, R.string.app_name, R.string.app_name
@@ -207,42 +219,32 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
             when (menuItem.itemId) {
                 R.id.menu_home -> {
                     fab_add.visibility = View.VISIBLE
-                    setToolBarTitle(toolbar, getString(R.string.navigation_home))
                     switchFragment(Constant.HOME)
-                    return@setOnNavigationItemSelectedListener true
-                }
-                R.id.menu_wechat -> {
-                    fab_add.visibility = View.GONE
-                    setToolBarTitle(toolbar, getString(R.string.navigation_wechat))
-                    switchFragment(Constant.WECHAT)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.menu_system -> {
                     fab_add.visibility = View.GONE
-                    setToolBarTitle(toolbar, getString(R.string.navigation_system))
                     switchFragment(Constant.SYSTEM)
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.menu_wechat -> {
+                    fab_add.visibility = View.GONE
+                    switchFragment(Constant.WECHAT)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.menu_navigation -> {
                     fab_add.visibility = View.GONE
-                    setToolBarTitle(toolbar, getString(R.string.navigation_navigation))
                     switchFragment(Constant.NAVIGATION)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.menu_project -> {
                     fab_add.visibility = View.GONE
-                    setToolBarTitle(toolbar, getString(R.string.navigation_project))
                     switchFragment(Constant.PROJECT)
                     return@setOnNavigationItemSelectedListener true
                 }
                 else -> return@setOnNavigationItemSelectedListener false
             }
         }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.search_menu, menu)
-        return super.onCreateOptionsMenu(menu)
     }
 
     private fun switchFragment(index: Int) {
@@ -275,6 +277,7 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
         }
         transaction.commit()
         mLastIndex = index
+        setToolBarTitle(toolbar, mToolbarTitles[mLastIndex])
     }
 
     private fun getFragment(index: Int): Fragment {
@@ -290,6 +293,21 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
             mFragmentSparseArray.put(index, fragment)
         }
         return fragment!!
+    }
+
+    fun setToolBarTitle(toolbar: Toolbar, title: String) {
+        toolbar.title = title
+        setSupportActionBar(toolbar)
+        val supportActionBar = supportActionBar
+        supportActionBar?.let {
+            it.setDisplayHomeAsUpEnabled(true)
+            it.setDisplayShowHomeEnabled(true)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.search_menu, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 
     @SuppressLint("WrongConstant")
