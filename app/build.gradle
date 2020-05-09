@@ -42,6 +42,8 @@ dependencies {
     implementation support.appcompat
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    kapt "androidx.room:room-compiler:2.2.5"
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
     support.each { k, v -> implementation v }
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'

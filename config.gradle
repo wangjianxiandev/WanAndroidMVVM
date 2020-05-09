@@ -19,7 +19,6 @@ ext {
     glide_version = '4.9.0'
     banner_version = '1.4.10'
     agentweb_version = '4.1.2'
-    room_version = '2.2.2'
     about_fragment_version = '6.1.0'
     coroutines_version = "1.3.2"
     event_bus_version = "3.1.1"
@@ -37,6 +36,7 @@ ext {
     easypermissions_version = '3.0.0'
     zxing_version = '2.2.5'
     work_manager_version = '2.3.0'
+    room_version = '2.2.5'
 
 
     appId = [
@@ -63,7 +63,6 @@ ext {
             "glide"                      : "com.github.bumptech.glide:glide:$glide_version",
             "banner"                     : "com.youth.banner:banner:$banner_version",
             "agentweb"                   : "com.just.agentweb:agentweb:$agentweb_version",
-            "room"                       : "androidx.room:room-runtime:$room_version",
             "license-fragment"           : "com.mikepenz:aboutlibraries:$about_fragment_version",
             "defaultlifecycleobserver"   : "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version",
             "lifecycle-viewmodel"        : "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version",
@@ -86,14 +85,14 @@ ext {
             "litepal"                    : "org.litepal.android:kotlin:$litepal_version",
             "circular_avatar"            : "com.github.wangjianxiandev:CircularAvatar:$circular_avatar",
             "easypermissions"            : "pub.devrel:easypermissions:$easypermissions_version",
-            "bugly_crashreport"          : "com.tencent.bugly:crashreport_upgrade:latest.release",
-            "bugly_nativecrashreport"    : "com.tencent.bugly:nativecrashreport:latest.release",
             "zxing"                      : "com.github.yuzhiqiang1993:zxing:$zxing_version",
-            "work_manager"               : "androidx.work:work-runtime:$work_manager_version"
+            "work_manager"               : "androidx.work:work-runtime:$work_manager_version",
+            "room_runtime"               : "androidx.room:room-runtime:$room_version",
+            "room_ktx"                   : "androidx.room:room-ktx:$room_version"
     ]
 
     processor = [
             "lifecycle"     : "androidx.lifecycle:lifecycle-compiler:$lifecycle_version",
-            "glide_compiler": "com.github.bumptech.glide:compiler:$glide_version"
+            "glide_compiler": "com.github.bumptech.glide:compiler:$glide_version",
     ]
 }

@@ -35,6 +35,7 @@ class MeShareActivity : BaseLifeCycleActivity<MeShareViewModel>() {
         mAdapter.setOnItemClickListener { _, _, position ->
             val article = mAdapter.getItem(position)
             article?.let {
+                mViewModel.addFootPrint(article)
                 CommonUtil.startWebView(this, it.link, it.title)
             }
         }

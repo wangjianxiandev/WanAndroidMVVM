@@ -4,14 +4,14 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.wjx.android.wanandroidmvvm.ui.common.repository.ArticleRepository
-import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.network.response.EmptyResponse
 import com.wjx.android.wanandroidmvvm.base.viewmodel.BaseViewModel
+import com.wjx.android.wanandroidmvvm.common.utils.RoomHelper
 import com.wjx.android.wanandroidmvvm.network.initiateRequest
+import com.wjx.android.wanandroidmvvm.ui.common.data.Article
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.lang.Exception
 
 /**
  * Created with Android Studio.
@@ -44,5 +44,13 @@ abstract class ArticleViewModel<T : ArticleRepository>(application: Application)
 
     fun unCollectCo(id: Int) {
         initiateRequest({mCollectData.value = mRepository.unCollectCo(id)}, loadState)
+    }
+
+    fun addFootPrint(article: Article) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                RoomHelper.insertFootPrint(article)
+            }
+        }
     }
 }

@@ -10,8 +10,6 @@ import com.wjx.android.wanandroidmvvm.ui.account.data.LoginResponse
 import com.wjx.android.wanandroidmvvm.ui.account.data.RegisterResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
 /**
  * Created with Android Studio.

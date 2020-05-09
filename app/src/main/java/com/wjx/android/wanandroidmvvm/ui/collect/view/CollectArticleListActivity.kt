@@ -79,7 +79,6 @@ class CollectArticleListActivity : ArticleListActivity<CollectViewModel>() {
 
     override fun collect(position: Int) {
         val article = mAdapter.getItem(position)
-
         article?.let {
             mCurrentItem = position
             mViewModel.unCollect(it.id, it.originId)

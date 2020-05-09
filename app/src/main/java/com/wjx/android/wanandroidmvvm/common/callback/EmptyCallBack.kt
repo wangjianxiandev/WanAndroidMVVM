@@ -12,5 +12,5 @@ import com.wjx.android.wanandroidmvvm.R
  */
 
 class EmptyCallBack : Callback() {
-    override fun onCreateView(): Int = R.layout.layout_error
+    override fun onCreateView(): Int = R.layout.layout_empty
 }

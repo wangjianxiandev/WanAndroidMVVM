@@ -3,7 +3,6 @@ package com.wjx.android.wanandroidmvvm.base.view
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import com.kingja.loadsir.core.LoadSir
-import com.tencent.bugly.Bugly
 import com.wjx.android.wanandroidmvvm.common.callback.EmptyCallBack
 import com.wjx.android.wanandroidmvvm.common.callback.ErrorCallBack
 import com.wjx.android.wanandroidmvvm.common.callback.LoadingCallBack
@@ -19,12 +18,14 @@ import org.litepal.LitePal
  * Time: 14:27
  */
 open class BaseApplication : Application() {
+    companion object {
+        lateinit var instance : BaseApplication
+    }
     override fun onCreate() {
         super.onCreate()
+        instance = this
         LitePal.initialize(this)
         SPreference.setContext(applicationContext)
-        // 集成bugly
-        Bugly.init(applicationContext, "7c31dd2361", false)
         initMode()
         LoadSir.beginBuilder()
             .addCallback(ErrorCallBack())

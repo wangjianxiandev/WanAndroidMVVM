@@ -14,6 +14,10 @@ import com.wjx.android.wanandroidmvvm.common.state.callback.LoginSuccessState
 import com.wjx.android.wanandroidmvvm.common.utils.*
 import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
 import kotlinx.android.synthetic.main.fragment_article_list.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.greenrobot.eventbus.Subscribe
 
 /**
@@ -49,6 +53,7 @@ abstract class ArticleListFragment<VM : ArticleViewModel<*>> : BaseLifeCycleFrag
             val article = mAdapter.getItem(position)
 
             article?.let {
+                mViewModel.addFootPrint(article)
                 CommonUtil.startWebView(activity!!, it.link, it.title)
             }
         }

@@ -65,6 +65,7 @@ class ProjectArticleFragment : BaseLifeCycleFragment<ProjectViewModel>(), LoginS
             val article = mAdapter.getItem(position)
 
             article?.let {
+                mViewModel.addFootPrint(article)
                 CommonUtil.startWebView(activity!!, it.link, it.title)
             }
         }

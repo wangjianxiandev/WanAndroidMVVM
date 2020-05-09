@@ -4,7 +4,7 @@ package com.wjx.android.wanandroidmvvm.base.view
 import android.text.TextUtils
 import android.widget.Toast
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.kingja.loadsir.callback.SuccessCallback
 import com.wjx.android.wanandroidmvvm.base.viewmodel.BaseViewModel
 import com.wjx.android.wanandroidmvvm.common.callback.EmptyCallBack
@@ -29,7 +29,7 @@ abstract class BaseLifeCycleFragment<VM : BaseViewModel<*>> : BaseFragment() {
 
         showLoading()
 
-        mViewModel = ViewModelProviders.of(this).get(CommonUtil.getClass(this))
+        mViewModel = ViewModelProvider(this).get(CommonUtil.getClass(this))
 
         mViewModel.loadState.observe(this, observer)
 

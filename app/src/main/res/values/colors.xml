@@ -23,7 +23,7 @@
     <color name="primary_text">#212121</color>
     <color name="always_white_text">#FFFFFF</color>
     <color name="primary_red">#F44336</color>
-    <color name="primary_grey_dark">#666</color>
+    <color name="primary_grey_dark">#707070</color>
     <color name="button_bg">#06B3ED</color>
     <color name="button_border">#06B3ED</color>
     <color name="holo_green_dark">#ff669900</color>

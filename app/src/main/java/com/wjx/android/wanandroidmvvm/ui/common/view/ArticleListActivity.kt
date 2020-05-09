@@ -11,6 +11,10 @@ import com.wjx.android.wanandroidmvvm.common.state.UserInfo
 import com.wjx.android.wanandroidmvvm.common.state.callback.CollectListener
 import com.wjx.android.wanandroidmvvm.common.utils.*
 import kotlinx.android.synthetic.main.fragment_article_list.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.greenrobot.eventbus.Subscribe
 
 /**
@@ -45,8 +49,8 @@ abstract class ArticleListActivity<VM : ArticleViewModel<*>> : BaseLifeCycleActi
 
         mAdapter.setOnItemClickListener { _, _, position ->
             val article = mAdapter.getItem(position)
-
             article?.let {
+                mViewModel.addFootPrint(article)
                 CommonUtil.startWebView(this, it.link, it.title)
             }
         }

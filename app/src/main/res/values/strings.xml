@@ -26,6 +26,9 @@
     <string name="question">每日一问</string>
     <string name="theme">主题</string>
     <string name="theme_color">主题颜色</string>
+    <string name="footprint">足迹</string>
+    <string name="long_to_delete">长按删除历史</string>
+    <string name="clear_all">清空历史记录？</string>
     <string name="setting">设置</string>
     <string name="mine_about">关于我的</string>
     <string name="rank_rule">积分规则</string>

@@ -1,18 +1,12 @@
 package com.wjx.android.wanandroidmvvm.ui.account.viewmodel
 
 import android.app.Application
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
-import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.viewmodel.BaseViewModel
 import com.wjx.android.wanandroidmvvm.network.initiateRequest
-import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.ui.account.data.LoginResponse
 import com.wjx.android.wanandroidmvvm.ui.account.data.RegisterResponse
 import com.wjx.android.wanandroidmvvm.ui.account.repository.AccountRepository
-import kotlinx.coroutines.launch
-import java.lang.Exception
 
 /**
  * Created with Android Studio.

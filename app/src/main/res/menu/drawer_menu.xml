@@ -37,6 +37,11 @@
             android:id="@+id/nav_menu_theme"
             android:icon="@drawable/ic_theme"
             android:title="@string/theme" />
+
+        <item
+            android:id="@+id/nav_menu_footprint"
+            android:icon="@drawable/ic_footprint"
+            android:title="@string/footprint"/>
         <item
             android:id="@+id/nav_menu_setting"
             android:icon="@drawable/ic_setting"
