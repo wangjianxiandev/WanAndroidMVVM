@@ -3,6 +3,6 @@
     <dbname value="history" />
     <version value="1" />
     <list>
-        <mapping class="com.wjx.android.wanandroidmvvm.ui.search.data.db.SearchHistory" />
+        <mapping class="com.wjx.android.wanandroidmvvm.module.search.data.db.SearchHistory" />
     </list>
 </litepal>

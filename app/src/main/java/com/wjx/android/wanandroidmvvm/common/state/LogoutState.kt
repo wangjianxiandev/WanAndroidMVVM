@@ -4,7 +4,7 @@ import android.content.Context
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.common.state.callback.CollectListener
 import com.wjx.android.wanandroidmvvm.common.utils.startActivity
-import com.wjx.android.wanandroidmvvm.ui.account.view.LoginActivity
+import com.wjx.android.wanandroidmvvm.module.account.view.LoginActivity
 import org.jetbrains.anko.toast
 
 /**

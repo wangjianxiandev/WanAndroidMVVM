@@ -2,7 +2,7 @@ package com.wjx.android.wanandroidmvvm.common.utils
 
 import android.content.Context
 import android.content.Intent
-import com.wjx.android.wanandroidmvvm.ui.activity.ArticleDetailActivity
+import com.wjx.android.wanandroidmvvm.module.activity.ArticleDetailActivity
 import java.lang.reflect.ParameterizedType
 
 

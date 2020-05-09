@@ -10,7 +10,7 @@
         <intent
             android:action="android.intent.action.VIEW"
             android:targetPackage="com.wjx.android.wanandroidmvvm"
-            android:targetClass="com.wjx.android.wanandroidmvvm.ui.search.view.SearchActivity" />
+            android:targetClass="com.wjx.android.wanandroidmvvm.module.search.view.SearchActivity" />
         <categories android:name="android.shortcut.conversation" />
     </shortcut>
     <shortcut
@@ -21,7 +21,7 @@
         <intent
             android:action="android.intent.action.VIEW"
             android:targetPackage="com.wjx.android.wanandroidmvvm"
-            android:targetClass="com.wjx.android.wanandroidmvvm.ui.question.view.QuestionArticleListActivity" />
+            android:targetClass="com.wjx.android.wanandroidmvvm.module.question.view.QuestionArticleListActivity" />
         <categories android:name="android.shortcut.conversation" />
     </shortcut>
 

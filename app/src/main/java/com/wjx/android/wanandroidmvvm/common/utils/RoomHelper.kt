@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.base.view.BaseApplication
 import com.wjx.android.wanandroidmvvm.common.state.State
 import com.wjx.android.wanandroidmvvm.common.state.StateType
-import com.wjx.android.wanandroidmvvm.ui.common.data.Article
-import com.wjx.android.wanandroidmvvm.ui.footprint.data.database.FootPrintDataBase
+import com.wjx.android.wanandroidmvvm.module.common.data.Article
+import com.wjx.android.wanandroidmvvm.module.footprint.data.database.FootPrintDataBase
 
 /**
  * Created with Android Studio.

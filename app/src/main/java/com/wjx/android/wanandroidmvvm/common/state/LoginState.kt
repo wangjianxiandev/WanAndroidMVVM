@@ -4,12 +4,12 @@ import android.content.Context
 import com.wjx.android.wanandroidmvvm.common.state.callback.CollectListener
 import com.wjx.android.wanandroidmvvm.common.utils.Constant
 import com.wjx.android.wanandroidmvvm.common.utils.startActivity
-import com.wjx.android.wanandroidmvvm.ui.collect.view.CollectArticleListActivity
-import com.wjx.android.wanandroidmvvm.ui.meshare.view.MeShareActivity
-import com.wjx.android.wanandroidmvvm.ui.rank.view.RankActivity
-import com.wjx.android.wanandroidmvvm.ui.square.view.ShareArticleActivity
-import com.wjx.android.wanandroidmvvm.ui.todo.view.EditTodoActivity
-import com.wjx.android.wanandroidmvvm.ui.todo.view.TodoActivity
+import com.wjx.android.wanandroidmvvm.module.collect.view.CollectArticleListActivity
+import com.wjx.android.wanandroidmvvm.module.meshare.view.MeShareActivity
+import com.wjx.android.wanandroidmvvm.module.rank.view.RankActivity
+import com.wjx.android.wanandroidmvvm.module.square.view.ShareArticleActivity
+import com.wjx.android.wanandroidmvvm.module.todo.view.EditTodoActivity
+import com.wjx.android.wanandroidmvvm.module.todo.view.TodoActivity
 
 /**
  * Created with Android Studio.
