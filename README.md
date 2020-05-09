@@ -4,13 +4,14 @@
 ## 项目地址
 [WanAndroid(github)](https://github.com/wangjianxiandev/WanAndroidMvvm)  （:heart_eyes: ️:heart_eyes: ️:heart_eyes: ️如果觉得项目对你有帮助，留下你的star啦~ (๑• . •๑))
 ## 下载体验
-## 当前版本（2.0）
+## 当前版本（2.1）
 - **修复首页文章重复加载的bug**
+- 使用Room增加使用足迹模块
 - 使用Coroutines + Retrofit 替换RxJava2 + Retrofit，并对数据解析进行封装(因为是自己学习的项目，所以两种方法都用了(๑• . •๑) 可以选择自己习惯的方法进行使用)
 - 增加排行榜内容
 - 提高稳定性
-- 修复更换主题以及设置夜间模式的细节问题
 - 加入shortcuts快捷入口
+- 修复更换主题以及设置夜间模式的细节问题
 <table>
     <tr>
         <td>
