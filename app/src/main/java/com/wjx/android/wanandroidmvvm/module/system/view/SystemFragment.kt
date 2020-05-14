@@ -11,7 +11,7 @@ import com.wjx.android.wanandroidmvvm.module.system.adapter.SystemAdapter
 import com.wjx.android.wanandroidmvvm.module.system.data.SystemLabelResponse
 import com.wjx.android.wanandroidmvvm.module.system.data.SystemTabNameResponse
 import com.wjx.android.wanandroidmvvm.module.system.viewmodel.SystemViewModel
-import kotlinx.android.synthetic.main.fragment_system.*
+import kotlinx.android.synthetic.main.fragment_article_list.*
 import org.greenrobot.eventbus.Subscribe
 
 /**
@@ -42,14 +42,14 @@ class SystemFragment : BaseLifeCycleFragment<SystemViewModel>() {
         mViewModel.loadSystemTab()
     }
 
-    override fun getLayoutId(): Int = R.layout.fragment_system
+    override fun getLayoutId(): Int = R.layout.fragment_article_list
 
     override fun initView() {
         super.initView()
         initRefresh()
-        recycler_view?.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        mRvArticle?.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         mAdapter = SystemAdapter(R.layout.system_item, null)
-        recycler_view.adapter = mAdapter
+        mRvArticle.adapter = mAdapter
         mAdapter.setOnItemChildClickListener { _, _, position ->
             val item = mAdapter.getItem(position)
             item?.let {
@@ -59,9 +59,9 @@ class SystemFragment : BaseLifeCycleFragment<SystemViewModel>() {
 
     private fun initRefresh() {
         // 设置下拉刷新的loading颜色
-        system_refresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(activity!!))
-        system_refresh.setColorSchemeColors(Color.WHITE)
-        system_refresh.setOnRefreshListener { onRefreshData() }
+        mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(activity!!))
+        mSrlRefresh.setColorSchemeColors(Color.WHITE)
+        mSrlRefresh.setOnRefreshListener { onRefreshData() }
     }
 
     private fun onRefreshData() {
@@ -77,8 +77,8 @@ class SystemFragment : BaseLifeCycleFragment<SystemViewModel>() {
         }
 
         // 如果是下拉刷新状态，直接设置数据
-        if (system_refresh.isRefreshing) {
-            system_refresh.isRefreshing = false
+        if (mSrlRefresh.isRefreshing) {
+            mSrlRefresh.isRefreshing = false
             mAdapter.setNewData(systemListName)
             mAdapter.loadMoreComplete()
             return
@@ -91,7 +91,7 @@ class SystemFragment : BaseLifeCycleFragment<SystemViewModel>() {
 
     @Subscribe
     fun settingEvent(event: ChangeThemeEvent) {
-        system_refresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(activity!!))
+        mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(activity!!))
         mAdapter.notifyDataSetChanged()
     }
 }

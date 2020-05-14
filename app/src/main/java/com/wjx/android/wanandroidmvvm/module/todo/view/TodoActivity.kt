@@ -15,8 +15,8 @@ import com.wjx.android.wanandroidmvvm.common.utils.*
 import com.wjx.android.wanandroidmvvm.module.todo.adapter.TodoAdapter
 import com.wjx.android.wanandroidmvvm.module.todo.data.TodoResponse
 import com.wjx.android.wanandroidmvvm.module.todo.viewmodel.TodoViewModel
-import kotlinx.android.synthetic.main.activity_todo.*
 import kotlinx.android.synthetic.main.custom_bar.view.*
+import kotlinx.android.synthetic.main.fragment_article_list.*
 import org.greenrobot.eventbus.Subscribe
 
 class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
@@ -46,13 +46,13 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
         mAdapter = TodoAdapter(R.layout.todo_item, null)
         initHeadView()
         initRefresh()
-        recycler_view?.layoutManager =
+        mRvArticle?.layoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        recycler_view?.adapter = mAdapter
+        mRvArticle?.adapter = mAdapter
         mAdapter.setEnableLoadMore(true)
         mAdapter.setOnLoadMoreListener(
             { mViewModel.loadTodoList(++mCurrentPageNum) },
-            recycler_view
+            mRvArticle
         )
         mAdapter.setOnItemClickListener { adapter, view, position ->
             var todo = mAdapter.getItem(position)
@@ -122,7 +122,7 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
         }
     }
 
-    override fun getLayoutId(): Int = R.layout.activity_todo
+    override fun getLayoutId(): Int = R.layout.fragment_article_list
 
     private fun initHeadView() {
         headerView = View.inflate(this, R.layout.custom_bar, null)
@@ -144,9 +144,9 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
 
     private fun initRefresh() {
         // 设置下拉刷新的loading颜色
-        todo_refresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(this))
-        todo_refresh.setColorSchemeColors(Color.WHITE)
-        todo_refresh.setOnRefreshListener {
+        mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(this))
+        mSrlRefresh.setColorSchemeColors(Color.WHITE)
+        mSrlRefresh.setOnRefreshListener {
             onRefreshData()
         }
     }
@@ -159,8 +159,8 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
         }
 
         // 如果是下拉刷新状态，直接设置数据
-        if (todo_refresh.isRefreshing) {
-            todo_refresh.isRefreshing = false
+        if (mSrlRefresh.isRefreshing) {
+            mSrlRefresh.isRefreshing = false
             mAdapter.setNewData(systemListName)
             mAdapter.loadMoreComplete()
             return
@@ -192,7 +192,7 @@ class TodoActivity : BaseLifeCycleActivity<TodoViewModel>() {
 
     @Subscribe
     fun settingEvent(event: ChangeThemeEvent) {
-        todo_refresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(this))
+        mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(this))
         initColor()
     }
 }
