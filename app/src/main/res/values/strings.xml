@@ -52,7 +52,12 @@
     <string name="cancel">取消</string>
     <string name="setting_about">关于</string>
     <string name="setting_project">开源项目</string>
-    <string name="setting_version">版本</string>
+    <string name="setting_version">检查更新</string>
+    <string name="no_version">已经是最新版本啦~</string>
+    <string name="new_version">有最新版本可更新：</string>
+    <string name="check_update_fail">检查新版本失败</string>
+    <string name="down_load_fail">下载安装包失败</string>
+    <string name="updating">正在更新</string>
     <string name="setting_exit">退出</string>
     <string name="night_mode">夜间模式</string>
     <string name="clear_cache">清除缓存</string>

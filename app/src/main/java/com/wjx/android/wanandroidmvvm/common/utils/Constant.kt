@@ -10,6 +10,8 @@ package com.wjx.android.wanandroidmvvm.common.utils
 object Constant {
     const val BASE_URL = "https://www.wanandroid.com"
 
+    const val APK_JSON_URL = "https://raw.githubusercontent.com/wangjianxiandev/WanAndroidMVVM/master/app/release/output.json"
+
     const val USERNAME_KEY = "username"
     const val USERID_KEY = "userid"
     const val LOGIN_KEY = "login"
