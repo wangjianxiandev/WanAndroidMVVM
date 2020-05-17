@@ -6,7 +6,7 @@ ext {
             minSdkVersion    : 26,
             targetSdkVersion : 29,
             versionCode      : 2,
-            versionName      : "2.2.0",
+            versionName      : "2.3.0",
     ]
 
     retrofit_version = '2.6.2'
@@ -31,7 +31,6 @@ ext {
     preference_version = "1.1.0-alpha04"
     material_dialog_version = "3.1.1"
     material_dialog_color_version = "3.1.1"
-    litepal_version = '3.0.0'
     circular_avatar = 'v1.0.0'
     easypermissions_version = '3.0.0'
     zxing_version = '2.2.5'
@@ -82,7 +81,6 @@ ext {
             "preference"                 : "androidx.preference:preference:$preference_version",
             "material_dialog"            : "com.afollestad.material-dialogs:core:$material_dialog_version",
             "materiaal_dialog_color"     : "com.afollestad.material-dialogs:color:$material_dialog_color_version",
-            "litepal"                    : "org.litepal.android:kotlin:$litepal_version",
             "circular_avatar"            : "com.github.wangjianxiandev:CircularAvatar:$circular_avatar",
             "easypermissions"            : "pub.devrel:easypermissions:$easypermissions_version",
             "zxing"                      : "com.github.yuzhiqiang1993:zxing:$zxing_version",

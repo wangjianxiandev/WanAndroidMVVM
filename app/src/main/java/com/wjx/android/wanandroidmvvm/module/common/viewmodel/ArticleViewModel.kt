@@ -49,7 +49,7 @@ abstract class ArticleViewModel<T : ArticleRepository>(application: Application)
     fun addFootPrint(article: Article) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                RoomHelper.insertFootPrint(article)
+                mRepository.insertFootPrint(article)
             }
         }
     }

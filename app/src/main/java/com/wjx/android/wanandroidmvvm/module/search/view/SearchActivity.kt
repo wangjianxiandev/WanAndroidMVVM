@@ -16,6 +16,7 @@ import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.common.utils.KeyBoardUtil.hideKeyboard
 import com.wjx.android.wanandroidmvvm.module.search.adapter.SearchHistoryAdapter
 import com.wjx.android.wanandroidmvvm.module.search.data.HotKeyResponse
+import com.wjx.android.wanandroidmvvm.module.search.data.bean.SearchHistory
 import com.wjx.android.wanandroidmvvm.module.search.viewmodel.SearchViewModel
 import com.zhy.view.flowlayout.FlowLayout
 import com.zhy.view.flowlayout.TagAdapter
@@ -78,7 +79,7 @@ class SearchActivity : ArticleListActivity<SearchViewModel>() {
             response?.let {
                 showSearchResultList(it.data.datas)
                 if (!search_input.text.toString().isEmpty()) {
-                    mViewModel.addSearchHistory(search_input.text.toString())
+                    mViewModel.insertSearchHistory(SearchHistory(search_input.text.toString()))
                 }
             }
         })
@@ -91,6 +92,9 @@ class SearchActivity : ArticleListActivity<SearchViewModel>() {
 
         mViewModel.mAddSearchHistory.observe(this, Observer {
             updateRecordPosition(search_input.text.toString())
+            if (mSearchHistoryAdapter.data.isNotEmpty()) {
+                mHistoryFootView.visibility = View.VISIBLE
+            }
         })
         mViewModel.mSearchHistory.observe(this, Observer { history ->
             var historyNames = history?.map { it.name }?.toList()
@@ -122,12 +126,12 @@ class SearchActivity : ArticleListActivity<SearchViewModel>() {
             LayoutInflater.from(this).inflate(R.layout.history_foot, activity_search, false)
         mSearchHistoryAdapter.setFooterView(mHistoryFootView)
         mHistoryFootView.history_clear.setOnClickListener {
-            mViewModel.clearSearchHistory()
+            mViewModel.deleteAllSearchHistory()
         }
         mSearchHistoryAdapter.setOnItemChildClickListener { _, view, position ->
             if (view.id == R.id.history_delete) {
                 mHistoryIndex = position
-                mViewModel.deleteSearchHistory(mSearchHistoryAdapter.data[position])
+                mViewModel.deleteSearchHistory(SearchHistory(mSearchHistoryAdapter.data[position]))
             }
         }
         mSearchHistoryAdapter.setOnItemClickListener { _, _, position ->

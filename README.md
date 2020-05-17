@@ -4,9 +4,9 @@
 ## 项目地址
 [WanAndroid(github)](https://github.com/wangjianxiandev/WanAndroidMvvm)  （:heart_eyes: ️:heart_eyes: ️:heart_eyes: ️如果觉得项目对你有帮助，留下你的star啦~ (๑• . •๑))
 ## 下载体验
-## 当前版本（2.1）
+## 当前版本（2.3）
 - **修复首页文章重复加载的bug**
-- 使用Room增加使用足迹模块
+- 使用Room增加使用足迹模块并重构搜索历史部分
 - 集成蒲公英在线更新sdk
 - 使用Coroutines + Retrofit 替换RxJava2 + Retrofit，并对数据解析进行封装(因为是自己学习的项目，所以两种方法都用了(๑• . •๑) 可以选择自己习惯的方法进行使用)
 - 增加排行榜内容
@@ -27,35 +27,60 @@
 ## 项目展示
 <table>
     <tr>
-        <td ><center><img src="https://img-blog.csdnimg.cn/2020033012513741.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+        <td>
+            <center>
+            <img src="https://img-blog.csdnimg.cn/2020032821192381.png">
+            </center>
+        </td>
+    </tr>
+</table>
+##### 密码：123456
+
+## 项目展示
+<table>
+    <tr>
+        <td ><center><img src="https://img-blog.csdnimg.cn/20200517153029831.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
         <td ><center><img src="https://img-blog.csdnimg.cn/20200328205327145.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
         <td ><center><img src="https://img-blog.csdnimg.cn/20200328205339358.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
     </tr>
 </table>
-
 <table>
     <tr>
-        <td ><center><img src="https://img-blog.csdnimg.cn/20200328205346494.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
-        <td ><center><img src="https://img-blog.csdnimg.cn/2020032820535557.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
-        <td ><center><img src="https://img-blog.csdnimg.cn/20200328205401611.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+        <td><center><img src="https://img-blog.csdnimg.cn/20200328205346494.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+        <td><center><img src="https://img-blog.csdnimg.cn/2020032820535557.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+        <td><center><img src="https://img-blog.csdnimg.cn/20200328205401611.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
     </tr>
 </table>
-
 <table>
      <tr>
-        <td ><center><img src="https://img-blog.csdnimg.cn/20200328205407997.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
-        <td ><center><img src="https://img-blog.csdnimg.cn/20200330110235512.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
-        <td ><center><img src="https://img-blog.csdnimg.cn/20200330125154357.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
-    </tr>
+        <td><center><img src="https://img-blog.csdnimg.cn/20200328205407997.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+        <td><center><img src="https://img-blog.csdnimg.cn/20200330110235512.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+        <td><center><img src="https://img-blog.csdnimg.cn/20200330125154357.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+     </tr>
 </table>
 
 <table>
     <tr>
-        <td ><center><img src="https://img-blog.csdnimg.cn/20200330125216370.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
-        <td ><center><img src="https://img-blog.csdnimg.cn/2020032820543845.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
-        <td ><center><img src="https://img-blog.csdnimg.cn/20200328205451624.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+        <td><center><img src="https://img-blog.csdnimg.cn/20200330125216370.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+        <td><center><img src="https://img-blog.csdnimg.cn/20200517153029826.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+        <td><center><img src="https://img-blog.csdnimg.cn/20200517153137532.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
     </tr>
 </table>
+<table>
+     <tr>
+        <td><center><img src="https://img-blog.csdnimg.cn/20200517153029828.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+        <td><center><img src="https://img-blog.csdnimg.cn/2020032820543845.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+        <td><center><img src="https://img-blog.csdnimg.cn/20200328205451624.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+     </tr>
+</table>
+<table>
+     <tr>
+        <td><center><img src="https://img-blog.csdnimg.cn/20200517153239880.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+        <td><center><img src="https://img-blog.csdnimg.cn/20200517125535671.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+        <td><center><img src="https://img-blog.csdnimg.cn/20200517125535651.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDI0MTQz,size_16,color_FFFFFF,t_70"></center></td>
+    </tr>
+</table>
+
 
 ## 项目功能
 ### 首页
@@ -107,6 +132,11 @@
 - 完成Todo
 - 更新Todo
 - 删除Todo
+
+### 足迹
+- 记录浏览历史
+- 删除浏览历史
+- 清空浏览历史
 
 ### 设置
 - 更换主题

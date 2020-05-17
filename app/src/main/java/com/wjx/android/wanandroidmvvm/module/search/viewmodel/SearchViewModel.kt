@@ -2,12 +2,17 @@ package com.wjx.android.wanandroidmvvm.module.search.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.wjx.android.wanandroidmvvm.common.utils.RoomHelper
 import com.wjx.android.wanandroidmvvm.module.common.viewmodel.ArticleViewModel
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.module.search.data.HotKeyResponse
 import com.wjx.android.wanandroidmvvm.module.search.data.SearchResultResponse
-import com.wjx.android.wanandroidmvvm.module.search.data.db.SearchHistory
+import com.wjx.android.wanandroidmvvm.module.search.data.bean.SearchHistory
 import com.wjx.android.wanandroidmvvm.module.search.repository.SearchRepostiory
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * Created with Android Studio.
@@ -16,41 +21,51 @@ import com.wjx.android.wanandroidmvvm.module.search.repository.SearchRepostiory
  * @date: 2020/03/05
  * Time: 17:49
  */
-class SearchViewModel (application: Application) : ArticleViewModel<SearchRepostiory>(application) {
+class SearchViewModel(application: Application) : ArticleViewModel<SearchRepostiory>(application) {
     val mHotKeyData = MutableLiveData<BaseResponse<List<HotKeyResponse>>>()
     val mSearResultData = MutableLiveData<BaseResponse<SearchResultResponse>>()
     val mDeleteHistory = MutableLiveData<Int>()
     val mSearchHistory = MutableLiveData<List<SearchHistory>>()
-    val mAddSearchHistory = MutableLiveData<Boolean>()
+    val mAddSearchHistory = MutableLiveData<Long>()
     val mClearHistory = MutableLiveData<Int>()
 
     fun loadHotkey() {
         mRepository.loadHotKey(mHotKeyData)
     }
 
-    fun loadSearchResult(pageNum : Int, key : String) {
+    fun loadSearchResult(pageNum: Int, key: String) {
         mRepository.loadSearchResult(pageNum, key, mSearResultData)
     }
 
     fun loadSearchHistory() {
-        mSearchHistory.value = mRepository.loadSearchHistory()
+        viewModelScope.launch {
+            mSearchHistory.value = withContext(Dispatchers.IO) {
+                mRepository.loadSearchHistory()
+            }
+        }
     }
 
-    fun clearSearchHistory() {
-        mClearHistory.value = mRepository.clearSearchHistory()
+    fun insertSearchHistory(searchHistory: SearchHistory) {
+        viewModelScope.launch {
+            mAddSearchHistory.value = withContext(Dispatchers.IO) {
+                mRepository.insertSearchHistory(searchHistory)
+            }
+        }
     }
 
-    fun addSearchHistory(name : String) {
-        var history = mRepository.loadSearchHistory()
-        history.filter { history ->
-            return@filter history.name == name
-        }.getOrElse(0) {
-            return@getOrElse if (history.size >= SearchHistory.MAX_HISTORY) history[9] else SearchHistory()
-        }.delete()
-        mAddSearchHistory.value = mRepository.addSearchHistory(name)
+    fun deleteSearchHistory(searchHistory: SearchHistory) {
+        viewModelScope.launch {
+            mDeleteHistory.value = withContext(Dispatchers.IO) {
+                mRepository.deleteSearchHistory(searchHistory)
+            }
+        }
     }
 
-    fun deleteSearchHistory(name : String) {
-        mDeleteHistory.value = mRepository.deleteSearchHistory(name)
+    fun deleteAllSearchHistory() {
+        viewModelScope.launch {
+            mClearHistory.value = withContext(Dispatchers.IO) {
+                mRepository.deleteAllSearchHistory()
+            }
+        }
     }
 }

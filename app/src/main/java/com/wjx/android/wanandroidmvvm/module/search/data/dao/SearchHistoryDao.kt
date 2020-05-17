@@ -1,9 +1,8 @@
 package com.wjx.android.wanandroidmvvm.module.search.data.dao
 
-import com.wjx.android.wanandroidmvvm.module.search.data.db.SearchHistory
-import org.litepal.LitePal
-import org.litepal.extension.deleteAll
-import org.litepal.extension.find
+import androidx.room.*
+import com.wjx.android.wanandroidmvvm.module.search.data.bean.SearchHistory
+
 
 /**
  * Created with Android Studio.
@@ -12,20 +11,25 @@ import org.litepal.extension.find
  * @date: 2020/03/05
  * Time: 17:36
  */
-object SearchHistoryDao {
-    fun loadSearchHistory(): List<SearchHistory> {
-        return LitePal.select("name").order("id desc").find()
-    }
+@Dao
+interface SearchHistoryDao {
+    @Transaction
+    @Query("SELECT * FROM searchhistory")
+    suspend fun queryAllSearchHistory(): List<SearchHistory>
 
-    fun addSearchHistory(name: String): Boolean {
-        return SearchHistory().also { it.name = name }.save()
-    }
+    @Transaction
+    @Insert(entity = SearchHistory::class)
+    suspend fun insertSearchHistory(searchHistory: SearchHistory): Long
 
-    fun deleteHistory(name: String): Int {
-        return LitePal.deleteAll(SearchHistory::class.java, "name=?", name)
-    }
+    @Transaction
+    @Query("SELECT * FROM searchhistory WHERE name = (:name)")
+    suspend fun querySearchHistoryByName(name: String): SearchHistory?
 
-    fun clearSearchHistory(): Int {
-        return LitePal.deleteAll<SearchHistory>()
-    }
+    @Transaction
+    @Delete(entity = SearchHistory::class)
+    suspend fun deleteSearchHistory(searchHistory: SearchHistory) : Int
+
+    @Transaction
+    @Query("DELETE FROM searchhistory")
+    suspend fun deleteAllSearchHistory() : Int
 }

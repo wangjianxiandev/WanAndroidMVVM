@@ -6,6 +6,8 @@ import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.network.response.EmptyResponse
 import com.wjx.android.wanandroidmvvm.base.repository.ApiRepository
 import com.wjx.android.wanandroidmvvm.common.state.State
+import com.wjx.android.wanandroidmvvm.common.utils.RoomHelper
+import com.wjx.android.wanandroidmvvm.module.common.data.Article
 import com.wjx.android.wanandroidmvvm.network.dataConvert
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -56,4 +58,6 @@ abstract class ArticleRepository(val loadState: MutableLiveData<State>) : ApiRep
             apiService.unCollectCo(id).dataConvert(loadState)
         }
     }
+
+    suspend fun insertFootPrint(article: Article) = RoomHelper.insertFootPrint(article)
 }

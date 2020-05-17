@@ -27,10 +27,9 @@ class FootPrintViewModel(application: Application) :
     fun loadFootPrint() {
         viewModelScope.launch {
             try {
-                val footPrintData = withContext(Dispatchers.IO) {
+                mFootPrintData.value = withContext(Dispatchers.IO) {
                     mRepository.loadFootPrint()
                 }
-                mFootPrintData.value = footPrintData
             } catch (e: Exception) {
                 loadState.postValue(State(StateType.ERROR))
             }

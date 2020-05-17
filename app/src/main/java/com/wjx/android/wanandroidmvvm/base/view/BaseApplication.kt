@@ -8,7 +8,6 @@ import com.wjx.android.wanandroidmvvm.common.callback.ErrorCallBack
 import com.wjx.android.wanandroidmvvm.common.callback.LoadingCallBack
 import com.wjx.android.wanandroidmvvm.common.utils.Constant
 import com.wjx.android.wanandroidmvvm.common.utils.SPreference
-import org.litepal.LitePal
 
 /**
  * Created with Android Studio.
@@ -24,7 +23,6 @@ open class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-        LitePal.initialize(this)
         SPreference.setContext(applicationContext)
         initMode()
         LoadSir.beginBuilder()
