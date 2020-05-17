@@ -23,7 +23,6 @@ import com.wjx.android.wanandroidmvvm.module.square.data.SquareResponse
 import com.wjx.android.wanandroidmvvm.module.system.data.SystemArticleResponse
 import com.wjx.android.wanandroidmvvm.module.system.data.SystemTabNameResponse
 import com.wjx.android.wanandroidmvvm.module.todo.data.TodoPageResponse
-import com.wjx.android.wanandroidmvvm.module.update.ApkInfoResponse
 import com.wjx.android.wanandroidmvvm.module.wechat.data.WeChatArticleResponse
 import com.wjx.android.wanandroidmvvm.module.wechat.data.WeChatTabNameResponse
 import io.reactivex.Observable
@@ -238,8 +237,4 @@ interface ApiService {
 
     @GET("/lg/collect/list/{pageNum}/json")
     suspend fun loadCollectArticleCo(@Path("pageNum") page: Int): BaseResponse<CollectResponse>
-
-    // apk更新
-    @GET("/wangjianxiandev/WanAndroidMVVM/master/app/release/output.json")
-     fun getVersionInfo() : Observable<List<ApkInfoResponse>>
 }

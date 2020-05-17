@@ -87,6 +87,7 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
         if (savedInstanceState == null) {
             switchFragment(Constant.HOME)
         }
+        checkUpdate(this, false)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -402,6 +403,5 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
                 }
             }
         )
-
     }
 }
