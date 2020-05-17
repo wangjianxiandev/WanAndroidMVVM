@@ -86,8 +86,8 @@ class MainActivity : BaseActivity(), LoginSuccessListener {
         // 判断当前是recreate还是新启动
         if (savedInstanceState == null) {
             switchFragment(Constant.HOME)
+            checkUpdate(this, false)
         }
-        checkUpdate(this, false)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
