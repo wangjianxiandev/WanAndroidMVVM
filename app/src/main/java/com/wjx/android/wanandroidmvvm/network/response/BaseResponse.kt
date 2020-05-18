@@ -8,4 +8,4 @@ package com.wjx.android.wanandroidmvvm.network.response
  * Time: 16:04
  */
 
-open class BaseResponse<T>(var data: T, var errorCode: Int = -1, var errorMessage: String = "")
+open class BaseResponse<T>(var data: T, var errorCode: Int = -1, var errorMsg: String = "")

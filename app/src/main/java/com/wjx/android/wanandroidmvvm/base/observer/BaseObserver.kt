@@ -40,7 +40,7 @@ class BaseObserver<T : BaseResponse<*>>(
                 loadState.postValue(State(StateType.ERROR, message = "请重新登录"))
             }
             else -> {
-                loadState.postValue(State(StateType.ERROR, message = response.errorMessage))
+                loadState.postValue(State(StateType.ERROR, message = response.errorMsg))
             }
         }
     }

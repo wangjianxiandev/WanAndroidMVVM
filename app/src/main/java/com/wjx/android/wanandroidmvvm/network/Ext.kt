@@ -37,8 +37,8 @@ fun <T> BaseResponse<T>.dataConvert(
             return data
         }
         else -> {
-            loadState.postValue(State(StateType.ERROR, message = errorMessage))
-            throw Exception(errorMessage)
+            loadState.postValue(State(StateType.ERROR, message = errorMsg))
+            return data
         }
     }
 }

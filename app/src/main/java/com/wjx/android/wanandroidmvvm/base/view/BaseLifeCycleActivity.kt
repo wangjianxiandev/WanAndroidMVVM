@@ -2,9 +2,12 @@ package com.wjx.android.wanandroidmvvm.base.view
 
 
 import android.text.TextUtils
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.afollestad.materialdialogs.MaterialDialog
 import com.kingja.loadsir.callback.SuccessCallback
+import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.base.viewmodel.BaseViewModel
 import com.wjx.android.wanandroidmvvm.common.callback.EmptyCallBack
 import com.wjx.android.wanandroidmvvm.common.callback.ErrorCallBack
@@ -12,7 +15,6 @@ import com.wjx.android.wanandroidmvvm.common.callback.LoadingCallBack
 import com.wjx.android.wanandroidmvvm.common.state.State
 import com.wjx.android.wanandroidmvvm.common.state.StateType
 import com.wjx.android.wanandroidmvvm.common.utils.CommonUtil
-import org.jetbrains.anko.toast
 
 /**
  * Created with Android Studio.
@@ -48,14 +50,20 @@ abstract class BaseLifeCycleActivity<VM : BaseViewModel<*>> : BaseActivity() {
 
     open fun showError(msg: String) {
         if (!TextUtils.isEmpty(msg)) {
-            toast(msg)
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
         }
         loadService.showCallback(ErrorCallBack::class.java)
     }
 
     open fun showTip(msg: String) {
         if (!TextUtils.isEmpty(msg)) {
-            toast(msg)
+            MaterialDialog(this).show {
+                title(R.string.title)
+                message(text = msg)
+                cornerRadius(8.0f)
+                negativeButton(R.string.done)
+            }
+            false
         }
         loadService.showCallback(SuccessCallback::class.java)
     }
