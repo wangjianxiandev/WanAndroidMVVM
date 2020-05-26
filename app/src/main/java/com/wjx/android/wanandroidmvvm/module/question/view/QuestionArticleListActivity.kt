@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.custom_bar.view.*
 import org.greenrobot.eventbus.Subscribe
 
 class QuestionArticleListActivity : ArticleListActivity<QuestionViewModel>() {
-    private var mCurrentPage: Int = 0
+    private var mCurrentPage: Int = 1
 
     private lateinit var headerView: View
 
@@ -31,12 +31,12 @@ class QuestionArticleListActivity : ArticleListActivity<QuestionViewModel>() {
 
     override fun initData() {
         super.initData()
-        mCurrentPage = 0
+        mCurrentPage = 1
         mViewModel.loadQuestionList(mCurrentPage)
     }
 
     override fun onRefreshData() {
-        mCurrentPage = 0
+        mCurrentPage = 1
         mViewModel.loadQuestionList(mCurrentPage)
     }
 
