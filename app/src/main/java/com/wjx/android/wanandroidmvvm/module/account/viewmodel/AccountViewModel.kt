@@ -4,8 +4,8 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.base.viewmodel.BaseViewModel
 import com.wjx.android.wanandroidmvvm.network.initiateRequest
-import com.wjx.android.wanandroidmvvm.module.account.data.LoginResponse
-import com.wjx.android.wanandroidmvvm.module.account.data.RegisterResponse
+import com.wjx.android.wanandroidmvvm.module.account.model.LoginResponse
+import com.wjx.android.wanandroidmvvm.module.account.model.RegisterResponse
 import com.wjx.android.wanandroidmvvm.module.account.repository.AccountRepository
 
 /**

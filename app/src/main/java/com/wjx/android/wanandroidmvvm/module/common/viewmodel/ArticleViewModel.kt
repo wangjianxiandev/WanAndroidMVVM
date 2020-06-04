@@ -6,9 +6,8 @@ import androidx.lifecycle.viewModelScope
 import com.wjx.android.wanandroidmvvm.module.common.repository.ArticleRepository
 import com.wjx.android.wanandroidmvvm.network.response.EmptyResponse
 import com.wjx.android.wanandroidmvvm.base.viewmodel.BaseViewModel
-import com.wjx.android.wanandroidmvvm.common.utils.RoomHelper
 import com.wjx.android.wanandroidmvvm.network.initiateRequest
-import com.wjx.android.wanandroidmvvm.module.common.data.Article
+import com.wjx.android.wanandroidmvvm.module.common.model.Article
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

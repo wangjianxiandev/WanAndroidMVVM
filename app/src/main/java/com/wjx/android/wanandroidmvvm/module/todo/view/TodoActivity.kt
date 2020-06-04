@@ -13,7 +13,7 @@ import com.wjx.android.wanandroidmvvm.base.view.BaseLifeCycleActivity
 import com.wjx.android.wanandroidmvvm.common.state.UserInfo
 import com.wjx.android.wanandroidmvvm.common.utils.*
 import com.wjx.android.wanandroidmvvm.module.todo.adapter.TodoAdapter
-import com.wjx.android.wanandroidmvvm.module.todo.data.TodoResponse
+import com.wjx.android.wanandroidmvvm.module.todo.model.TodoResponse
 import com.wjx.android.wanandroidmvvm.module.todo.viewmodel.TodoViewModel
 import kotlinx.android.synthetic.main.custom_bar.view.*
 import kotlinx.android.synthetic.main.fragment_article_list.*

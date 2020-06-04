@@ -3,7 +3,7 @@ package com.wjx.android.wanandroidmvvm.module.footprint.repository
 import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.common.state.State
 import com.wjx.android.wanandroidmvvm.common.utils.RoomHelper
-import com.wjx.android.wanandroidmvvm.module.common.data.Article
+import com.wjx.android.wanandroidmvvm.module.common.model.Article
 import com.wjx.android.wanandroidmvvm.module.common.repository.ArticleRepository
 
 /**

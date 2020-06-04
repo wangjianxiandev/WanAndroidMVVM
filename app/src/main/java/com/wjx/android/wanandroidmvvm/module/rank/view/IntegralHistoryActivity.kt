@@ -11,7 +11,7 @@ import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.common.utils.CommonUtil
 import com.wjx.android.wanandroidmvvm.common.utils.DisplayUtil
 import com.wjx.android.wanandroidmvvm.module.rank.adapter.IntegralHistoryAdapter
-import com.wjx.android.wanandroidmvvm.module.rank.data.IntegralHistoryResponse
+import com.wjx.android.wanandroidmvvm.module.rank.model.IntegralHistoryResponse
 import com.wjx.android.wanandroidmvvm.module.rank.viewmodel.RankViewModel
 import kotlinx.android.synthetic.main.fragment_article_list.mRvArticle
 import kotlinx.android.synthetic.main.fragment_article_list.mSrlRefresh

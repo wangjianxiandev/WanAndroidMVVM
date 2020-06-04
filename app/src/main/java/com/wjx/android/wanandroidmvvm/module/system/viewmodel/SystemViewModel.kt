@@ -4,8 +4,8 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.network.initiateRequest
 import com.wjx.android.wanandroidmvvm.module.common.viewmodel.ArticleViewModel
-import com.wjx.android.wanandroidmvvm.module.system.data.SystemArticleResponse
-import com.wjx.android.wanandroidmvvm.module.system.data.SystemTabNameResponse
+import com.wjx.android.wanandroidmvvm.module.system.model.SystemArticleResponse
+import com.wjx.android.wanandroidmvvm.module.system.model.SystemTabNameResponse
 import com.wjx.android.wanandroidmvvm.module.system.repository.SystemRepository
 
 /**

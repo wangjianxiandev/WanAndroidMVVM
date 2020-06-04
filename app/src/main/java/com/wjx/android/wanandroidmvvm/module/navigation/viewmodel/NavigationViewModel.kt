@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.base.viewmodel.BaseViewModel
 import com.wjx.android.wanandroidmvvm.network.initiateRequest
-import com.wjx.android.wanandroidmvvm.module.navigation.data.NavigationTabNameResponse
+import com.wjx.android.wanandroidmvvm.module.navigation.model.NavigationTabNameResponse
 import com.wjx.android.wanandroidmvvm.module.navigation.repository.NavigationRepository
 
 /**

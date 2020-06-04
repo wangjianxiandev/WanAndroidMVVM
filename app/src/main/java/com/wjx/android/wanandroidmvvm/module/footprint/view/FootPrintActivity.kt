@@ -7,7 +7,7 @@ import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.common.utils.CommonUtil
-import com.wjx.android.wanandroidmvvm.module.common.data.Article
+import com.wjx.android.wanandroidmvvm.module.common.model.Article
 import com.wjx.android.wanandroidmvvm.module.common.view.ArticleListActivity
 import com.wjx.android.wanandroidmvvm.module.footprint.viewmodel.FootPrintViewModel
 import kotlinx.android.synthetic.main.custom_bar.view.*
@@ -29,9 +29,7 @@ class FootPrintActivity : ArticleListActivity<FootPrintViewModel>() {
                 .setPositiveButton(R.string.done) { _, _ ->
                     mViewModel.deleteFootPrint(mAdapter.getItem(position) as Article)
                     mAdapter.remove(position)
-                    onRefreshData()
                 }.show()
-            mViewModel.deleteFootPrint(mAdapter.getItem(position) as Article)
             true
         }
 
@@ -94,7 +92,6 @@ class FootPrintActivity : ArticleListActivity<FootPrintViewModel>() {
             .setNegativeButton(R.string.cancel) { _, _ -> }
             .setPositiveButton(R.string.done) { _, _ ->
                 mViewModel.deleteAll()
-                onRefreshData()
             }.show()
     }
 

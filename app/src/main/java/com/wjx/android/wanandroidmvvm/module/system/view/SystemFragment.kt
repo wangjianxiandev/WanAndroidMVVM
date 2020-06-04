@@ -8,8 +8,8 @@ import com.wjx.android.wanandroidmvvm.base.view.BaseLifeCycleFragment
 import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.module.system.adapter.SystemAdapter
-import com.wjx.android.wanandroidmvvm.module.system.data.SystemLabelResponse
-import com.wjx.android.wanandroidmvvm.module.system.data.SystemTabNameResponse
+import com.wjx.android.wanandroidmvvm.module.system.model.SystemLabelResponse
+import com.wjx.android.wanandroidmvvm.module.system.model.SystemTabNameResponse
 import com.wjx.android.wanandroidmvvm.module.system.viewmodel.SystemViewModel
 import kotlinx.android.synthetic.main.fragment_article_list.*
 import org.greenrobot.eventbus.Subscribe

@@ -5,9 +5,9 @@ import com.wjx.android.wanandroidmvvm.base.observer.BaseObserver
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.base.repository.ApiRepository
 import com.wjx.android.wanandroidmvvm.common.state.State
-import com.wjx.android.wanandroidmvvm.module.rank.data.IntegralHistoryListResponse
-import com.wjx.android.wanandroidmvvm.module.rank.data.IntegralResponse
-import com.wjx.android.wanandroidmvvm.module.rank.data.RankResponse
+import com.wjx.android.wanandroidmvvm.module.rank.model.IntegralHistoryListResponse
+import com.wjx.android.wanandroidmvvm.module.rank.model.IntegralResponse
+import com.wjx.android.wanandroidmvvm.module.rank.model.RankResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 

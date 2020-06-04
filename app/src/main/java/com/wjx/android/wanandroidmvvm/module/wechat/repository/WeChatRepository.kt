@@ -6,8 +6,8 @@ import com.wjx.android.wanandroidmvvm.base.observer.BaseObserver
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.common.state.State
 import com.wjx.android.wanandroidmvvm.network.dataConvert
-import com.wjx.android.wanandroidmvvm.module.wechat.data.WeChatArticleResponse
-import com.wjx.android.wanandroidmvvm.module.wechat.data.WeChatTabNameResponse
+import com.wjx.android.wanandroidmvvm.module.wechat.model.WeChatArticleResponse
+import com.wjx.android.wanandroidmvvm.module.wechat.model.WeChatTabNameResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 

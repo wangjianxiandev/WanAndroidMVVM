@@ -5,7 +5,7 @@ import com.wjx.android.wanandroidmvvm.module.common.repository.ArticleRepository
 import com.wjx.android.wanandroidmvvm.base.observer.BaseObserver
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.common.state.State
-import com.wjx.android.wanandroidmvvm.module.question.data.QuestionResponse
+import com.wjx.android.wanandroidmvvm.module.question.model.QuestionResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 

@@ -6,7 +6,7 @@ import com.wjx.android.wanandroidmvvm.base.observer.BaseObserver
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.common.state.State
 import com.wjx.android.wanandroidmvvm.network.dataConvert
-import com.wjx.android.wanandroidmvvm.module.navigation.data.NavigationTabNameResponse
+import com.wjx.android.wanandroidmvvm.module.navigation.model.NavigationTabNameResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 

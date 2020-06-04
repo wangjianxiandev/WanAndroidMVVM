@@ -11,7 +11,7 @@ import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.module.navigation.adapter.NavigationLabelAdapter
 import com.wjx.android.wanandroidmvvm.module.navigation.adapter.NavigationTabAdapter
-import com.wjx.android.wanandroidmvvm.module.navigation.data.NavigationTabNameResponse
+import com.wjx.android.wanandroidmvvm.module.navigation.model.NavigationTabNameResponse
 import com.wjx.android.wanandroidmvvm.module.navigation.viewmodel.NavigationViewModel
 import kotlinx.android.synthetic.main.fragment_navigation.*
 import org.greenrobot.eventbus.Subscribe

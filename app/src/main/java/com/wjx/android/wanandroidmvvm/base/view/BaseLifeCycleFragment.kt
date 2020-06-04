@@ -57,7 +57,7 @@ abstract class BaseLifeCycleFragment<VM : BaseViewModel<*>> : BaseFragment() {
 
     open fun showTip(msg: String) {
         if (!TextUtils.isEmpty(msg)) {
-            MaterialDialog(activity!!).show {
+            MaterialDialog(requireActivity()).show {
                 title(R.string.title)
                 message(text = msg)
                 cornerRadius(8.0f)

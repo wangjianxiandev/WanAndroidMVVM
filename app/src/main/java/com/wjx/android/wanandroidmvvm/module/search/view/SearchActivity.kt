@@ -10,13 +10,13 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.module.common.view.ArticleListActivity
-import com.wjx.android.wanandroidmvvm.module.common.data.Article
+import com.wjx.android.wanandroidmvvm.module.common.model.Article
 import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.common.utils.KeyBoardUtil.hideKeyboard
 import com.wjx.android.wanandroidmvvm.module.search.adapter.SearchHistoryAdapter
-import com.wjx.android.wanandroidmvvm.module.search.data.HotKeyResponse
-import com.wjx.android.wanandroidmvvm.module.search.data.bean.SearchHistory
+import com.wjx.android.wanandroidmvvm.module.search.model.HotKeyResponse
+import com.wjx.android.wanandroidmvvm.module.search.model.bean.SearchHistory
 import com.wjx.android.wanandroidmvvm.module.search.viewmodel.SearchViewModel
 import com.zhy.view.flowlayout.FlowLayout
 import com.zhy.view.flowlayout.TagAdapter

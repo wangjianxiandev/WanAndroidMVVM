@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.module.common.viewmodel.ArticleViewModel
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.module.question.questionrepository.QuestionRepository
-import com.wjx.android.wanandroidmvvm.module.question.data.QuestionResponse
+import com.wjx.android.wanandroidmvvm.module.question.model.QuestionResponse
 
 /**
  * Created with Android Studio.

@@ -4,9 +4,9 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.base.viewmodel.BaseViewModel
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
-import com.wjx.android.wanandroidmvvm.module.rank.data.IntegralHistoryListResponse
-import com.wjx.android.wanandroidmvvm.module.rank.data.IntegralResponse
-import com.wjx.android.wanandroidmvvm.module.rank.data.RankResponse
+import com.wjx.android.wanandroidmvvm.module.rank.model.IntegralHistoryListResponse
+import com.wjx.android.wanandroidmvvm.module.rank.model.IntegralResponse
+import com.wjx.android.wanandroidmvvm.module.rank.model.RankResponse
 import com.wjx.android.wanandroidmvvm.module.rank.repository.RankRepository
 
 /**

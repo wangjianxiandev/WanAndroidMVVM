@@ -5,7 +5,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.common.utils.DateUtil
-import com.wjx.android.wanandroidmvvm.module.rank.data.IntegralHistoryResponse
+import com.wjx.android.wanandroidmvvm.module.rank.model.IntegralHistoryResponse
 import kotlinx.android.synthetic.main.integral_history_item.view.*
 
 /**

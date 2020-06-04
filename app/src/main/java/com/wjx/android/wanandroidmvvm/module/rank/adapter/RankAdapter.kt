@@ -5,7 +5,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
-import com.wjx.android.wanandroidmvvm.module.rank.data.IntegralResponse
+import com.wjx.android.wanandroidmvvm.module.rank.model.IntegralResponse
 import kotlinx.android.synthetic.main.rank_item.view.*
 
 /**

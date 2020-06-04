@@ -10,7 +10,7 @@ import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.common.utils.startActivity
 import com.wjx.android.wanandroidmvvm.module.rank.adapter.RankAdapter
-import com.wjx.android.wanandroidmvvm.module.rank.data.IntegralResponse
+import com.wjx.android.wanandroidmvvm.module.rank.model.IntegralResponse
 import com.wjx.android.wanandroidmvvm.module.rank.viewmodel.RankViewModel
 import kotlinx.android.synthetic.main.activity_rank.*
 import kotlinx.android.synthetic.main.custom_bar.view.*

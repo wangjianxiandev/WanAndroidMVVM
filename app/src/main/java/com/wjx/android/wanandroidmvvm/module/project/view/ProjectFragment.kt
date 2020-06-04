@@ -7,7 +7,7 @@ import com.wjx.android.wanandroidmvvm.base.view.BaseLifeCycleFragment
 import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.module.project.adapter.ProjectTabAdapter
-import com.wjx.android.wanandroidmvvm.module.project.data.ProjectTabResponse
+import com.wjx.android.wanandroidmvvm.module.project.model.ProjectTabResponse
 import com.wjx.android.wanandroidmvvm.module.project.viewmodel.ProjectViewModel
 import kotlinx.android.synthetic.main.fragment_project.*
 import org.greenrobot.eventbus.Subscribe

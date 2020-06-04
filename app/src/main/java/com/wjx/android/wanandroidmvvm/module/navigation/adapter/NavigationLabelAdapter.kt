@@ -8,8 +8,8 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.common.utils.CommonUtil
-import com.wjx.android.wanandroidmvvm.module.navigation.data.NavigationLabelResponse
-import com.wjx.android.wanandroidmvvm.module.navigation.data.NavigationTabNameResponse
+import com.wjx.android.wanandroidmvvm.module.navigation.model.NavigationLabelResponse
+import com.wjx.android.wanandroidmvvm.module.navigation.model.NavigationTabNameResponse
 import com.zhy.view.flowlayout.FlowLayout
 import com.zhy.view.flowlayout.TagAdapter
 import kotlinx.android.synthetic.main.navigation_label_item.view.*

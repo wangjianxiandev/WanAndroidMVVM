@@ -6,9 +6,9 @@ import com.wjx.android.wanandroidmvvm.base.observer.BaseObserver
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.common.state.State
 import com.wjx.android.wanandroidmvvm.common.utils.RoomHelper
-import com.wjx.android.wanandroidmvvm.module.search.data.HotKeyResponse
-import com.wjx.android.wanandroidmvvm.module.search.data.SearchResultResponse
-import com.wjx.android.wanandroidmvvm.module.search.data.bean.SearchHistory
+import com.wjx.android.wanandroidmvvm.module.search.model.HotKeyResponse
+import com.wjx.android.wanandroidmvvm.module.search.model.SearchResultResponse
+import com.wjx.android.wanandroidmvvm.module.search.model.bean.SearchHistory
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 

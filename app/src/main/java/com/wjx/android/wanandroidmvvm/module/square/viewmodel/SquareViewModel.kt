@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.module.common.viewmodel.ArticleViewModel
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.network.response.EmptyResponse
-import com.wjx.android.wanandroidmvvm.module.square.data.SquareResponse
+import com.wjx.android.wanandroidmvvm.module.square.model.SquareResponse
 import com.wjx.android.wanandroidmvvm.module.square.repository.SquareRepository
 
 /**

@@ -6,8 +6,8 @@ import com.wjx.android.wanandroidmvvm.base.observer.BaseObserver
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.common.state.State
 import com.wjx.android.wanandroidmvvm.network.dataConvert
-import com.wjx.android.wanandroidmvvm.module.project.data.ProjectResponse
-import com.wjx.android.wanandroidmvvm.module.project.data.ProjectTabResponse
+import com.wjx.android.wanandroidmvvm.module.project.model.ProjectResponse
+import com.wjx.android.wanandroidmvvm.module.project.model.ProjectTabResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 

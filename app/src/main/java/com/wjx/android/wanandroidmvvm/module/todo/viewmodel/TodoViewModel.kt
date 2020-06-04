@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.base.viewmodel.BaseViewModel
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.network.response.EmptyResponse
-import com.wjx.android.wanandroidmvvm.module.todo.data.TodoPageResponse
+import com.wjx.android.wanandroidmvvm.module.todo.model.TodoPageResponse
 import com.wjx.android.wanandroidmvvm.module.todo.repository.TodoRepository
 
 /**

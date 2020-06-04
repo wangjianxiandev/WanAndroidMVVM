@@ -15,8 +15,8 @@ import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.common.utils.startActivity
 import com.wjx.android.wanandroidmvvm.module.system.view.SystemArticleListActivity
-import com.wjx.android.wanandroidmvvm.module.system.data.SystemLabelResponse
-import com.wjx.android.wanandroidmvvm.module.system.data.SystemTabNameResponse
+import com.wjx.android.wanandroidmvvm.module.system.model.SystemLabelResponse
+import com.wjx.android.wanandroidmvvm.module.system.model.SystemTabNameResponse
 import com.zhy.view.flowlayout.FlowLayout
 import com.zhy.view.flowlayout.TagAdapter
 import kotlinx.android.synthetic.main.system_item.view.*

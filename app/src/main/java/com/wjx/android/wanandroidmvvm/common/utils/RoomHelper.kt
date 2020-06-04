@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.base.view.BaseApplication
 import com.wjx.android.wanandroidmvvm.common.state.State
 import com.wjx.android.wanandroidmvvm.common.state.StateType
-import com.wjx.android.wanandroidmvvm.module.common.data.Article
-import com.wjx.android.wanandroidmvvm.module.footprint.data.database.FootPrintDataBase
-import com.wjx.android.wanandroidmvvm.module.search.data.bean.SearchHistory
-import com.wjx.android.wanandroidmvvm.module.search.data.db.SearchHistoryDataBase
+import com.wjx.android.wanandroidmvvm.module.common.model.Article
+import com.wjx.android.wanandroidmvvm.module.footprint.model.database.FootPrintDataBase
+import com.wjx.android.wanandroidmvvm.module.search.model.bean.SearchHistory
+import com.wjx.android.wanandroidmvvm.module.search.model.db.SearchHistoryDataBase
 
 /**
  * Created with Android Studio.

@@ -6,7 +6,7 @@ import com.wjx.android.wanandroidmvvm.base.observer.BaseObserver
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.network.response.EmptyResponse
 import com.wjx.android.wanandroidmvvm.common.state.State
-import com.wjx.android.wanandroidmvvm.module.square.data.SquareResponse
+import com.wjx.android.wanandroidmvvm.module.square.model.SquareResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 

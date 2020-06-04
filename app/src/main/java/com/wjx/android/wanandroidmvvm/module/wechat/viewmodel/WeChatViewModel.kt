@@ -4,8 +4,8 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.network.initiateRequest
 import com.wjx.android.wanandroidmvvm.module.common.viewmodel.ArticleViewModel
-import com.wjx.android.wanandroidmvvm.module.wechat.data.WeChatArticleResponse
-import com.wjx.android.wanandroidmvvm.module.wechat.data.WeChatTabNameResponse
+import com.wjx.android.wanandroidmvvm.module.wechat.model.WeChatArticleResponse
+import com.wjx.android.wanandroidmvvm.module.wechat.model.WeChatTabNameResponse
 import com.wjx.android.wanandroidmvvm.module.wechat.repository.WeChatRepository
 
 /**

@@ -5,9 +5,9 @@ import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.common.utils.CommonUtil
 import com.wjx.android.wanandroidmvvm.module.common.view.ArticleListFragment
-import com.wjx.android.wanandroidmvvm.module.common.data.Article
+import com.wjx.android.wanandroidmvvm.module.common.model.Article
 import com.wjx.android.wanandroidmvvm.common.utils.GlideImageLoader
-import com.wjx.android.wanandroidmvvm.module.home.data.BannerResponse
+import com.wjx.android.wanandroidmvvm.module.home.model.BannerResponse
 import com.wjx.android.wanandroidmvvm.module.home.viewmodel.HomeViewModel
 import com.youth.banner.Banner
 import com.youth.banner.BannerConfig
@@ -50,7 +50,7 @@ class HomeFragment : ArticleListFragment<HomeViewModel>() {
         mBanner = headView.mBanner
         mBanner.apply {
             setOnBannerListener { position ->
-                CommonUtil.startWebView(activity!!, urls[position], titles[position])
+                CommonUtil.startWebView(requireActivity(), urls[position], titles[position])
             }
             setImageLoader(GlideImageLoader())
             setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)

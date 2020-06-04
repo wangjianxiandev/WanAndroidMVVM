@@ -8,7 +8,7 @@ import com.wjx.android.wanandroidmvvm.base.view.BaseLifeCycleFragment
 import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.module.wechat.adapter.WeChatTabAdapter
-import com.wjx.android.wanandroidmvvm.module.wechat.data.WeChatTabNameResponse
+import com.wjx.android.wanandroidmvvm.module.wechat.model.WeChatTabNameResponse
 import com.wjx.android.wanandroidmvvm.module.wechat.viewmodel.WeChatViewModel
 import kotlinx.android.synthetic.main.fragment_wechat.*
 import org.greenrobot.eventbus.Subscribe

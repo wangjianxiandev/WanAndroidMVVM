@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.wjx.android.wanandroidmvvm.common.state.State
 import com.wjx.android.wanandroidmvvm.common.state.StateType
-import com.wjx.android.wanandroidmvvm.module.common.data.Article
+import com.wjx.android.wanandroidmvvm.module.common.model.Article
 import com.wjx.android.wanandroidmvvm.module.common.viewmodel.ArticleViewModel
 import com.wjx.android.wanandroidmvvm.module.footprint.repository.FootPrintRepository
 import kotlinx.coroutines.Dispatchers
@@ -54,6 +54,7 @@ class FootPrintViewModel(application: Application) :
                 withContext(Dispatchers.IO) {
                     mRepository.deleteAll()
                 }
+                loadFootPrint()
             } catch (e: Exception) {
                 loadState.postValue(State(StateType.ERROR))
             }

@@ -19,7 +19,6 @@ import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.common.utils.RevealUtil.circularFinishReveal
 import com.wjx.android.wanandroidmvvm.common.utils.RevealUtil.setReveal
-import io.reactivex.disposables.Disposable
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.jetbrains.anko.toast
@@ -36,8 +35,6 @@ import java.util.*
 abstract class BaseActivity : AppCompatActivity() {
 
     private var mExitTime: Long = 0
-
-    protected var mDisposable: Disposable? = null
 
     lateinit var mRootView: View
 
@@ -129,7 +126,6 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        mDisposable?.dispose()
         EventBus.getDefault().unregister(this)
         AppManager.instance.removeActivity(this)
     }

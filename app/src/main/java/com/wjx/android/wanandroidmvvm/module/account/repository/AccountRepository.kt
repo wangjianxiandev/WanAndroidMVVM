@@ -6,8 +6,8 @@ import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.base.repository.ApiRepository
 import com.wjx.android.wanandroidmvvm.common.state.State
 import com.wjx.android.wanandroidmvvm.network.dataConvert
-import com.wjx.android.wanandroidmvvm.module.account.data.LoginResponse
-import com.wjx.android.wanandroidmvvm.module.account.data.RegisterResponse
+import com.wjx.android.wanandroidmvvm.module.account.model.LoginResponse
+import com.wjx.android.wanandroidmvvm.module.account.model.RegisterResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 

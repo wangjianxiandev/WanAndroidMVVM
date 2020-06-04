@@ -7,7 +7,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.wjx.android.wanandroidmvvm.R
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
 import com.wjx.android.wanandroidmvvm.common.utils.DateUtil
-import com.wjx.android.wanandroidmvvm.module.todo.data.TodoResponse
+import com.wjx.android.wanandroidmvvm.module.todo.model.TodoResponse
 import kotlinx.android.synthetic.main.todo_item.view.*
 
 /**

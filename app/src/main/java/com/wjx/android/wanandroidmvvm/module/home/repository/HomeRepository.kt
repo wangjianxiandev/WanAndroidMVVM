@@ -2,13 +2,13 @@ package com.wjx.android.wanandroidmvvm.module.home.repository
 
 import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.module.common.repository.ArticleRepository
-import com.wjx.android.wanandroidmvvm.module.common.data.Article
+import com.wjx.android.wanandroidmvvm.module.common.model.Article
 import com.wjx.android.wanandroidmvvm.base.observer.BaseObserver
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
 import com.wjx.android.wanandroidmvvm.common.state.State
 import com.wjx.android.wanandroidmvvm.network.dataConvert
-import com.wjx.android.wanandroidmvvm.module.home.data.BannerResponse
-import com.wjx.android.wanandroidmvvm.module.home.data.HomeArticleResponse
+import com.wjx.android.wanandroidmvvm.module.home.model.BannerResponse
+import com.wjx.android.wanandroidmvvm.module.home.model.HomeArticleResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
