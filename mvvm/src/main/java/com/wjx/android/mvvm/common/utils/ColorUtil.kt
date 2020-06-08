@@ -244,7 +244,7 @@ object ColorUtil {
      * @return
      */
     fun getColor(context: Context): Int {
-        val defaultColor = ContextCompat.getColor(context!!, R.color.colorPrimaryDark)
+        val defaultColor = 0
         var colorTheme: Int by SPreference("color", defaultColor)
         return if (colorTheme != 0 && Color.alpha(colorTheme) != 255) {
             defaultColor
@@ -314,7 +314,7 @@ object ColorUtil {
      * @return
      */
     fun getLastColor(context: Context): Int {
-        val defaultColor = ContextCompat.getColor(context, R.color.colorPrimary)
+        val defaultColor = 0
         var lastColor: Int by SPreference("lastColor", defaultColor)
         return if (lastColor != 0 && Color.alpha(lastColor) != 255) {
             defaultColor

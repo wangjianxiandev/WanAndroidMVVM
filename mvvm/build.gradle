@@ -1,36 +1,42 @@
-apply plugin: 'com.android.library'
+apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.github.dcendents.android-maven'
-group='com.github.wangjianxiandev'
-
-def rootAndroidId = rootProject.ext.android
-def support = rootProject.ext.dependencies
 
 android {
-    compileSdkVersion rootAndroidId.compileSdkVersion
-    buildToolsVersion rootAndroidId.buildToolsVersion
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
     defaultConfig {
-        minSdkVersion rootAndroidId.minSdkVersion
-        targetSdkVersion rootAndroidId.targetSdkVersion
-        versionCode rootAndroidId.versionCode
-        versionName rootAndroidId.versionName
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        ndk {
-            //设置支持的SO库架构
-            abiFilters "armeabi-v7a", "arm64-v8a"
-        }
+        applicationId "com.wjx.android.myapplication"
+        minSdkVersion 26
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     dataBinding {
         enabled = true
     }
+
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
-    support.each { k, v -> implementation v }
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api "androidx.appcompat:appcompat:1.1.0"
+    api "com.android.support:design:29.0.0"
+    //kotlin
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api "androidx.core:core-ktx:1.2.0"
+    // liveData
+    api "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+    // viewModel
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    api "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    //glide
+    api 'com.github.bumptech.glide:glide:4.11.0'
+    //retrofit
+    api "com.squareup.retrofit2:retrofit:2.6.2"
+    api "com.squareup.retrofit2:converter-gson:2.6.2"
+    api "com.squareup.retrofit2:adapter-rxjava2:2.6.2"
 }

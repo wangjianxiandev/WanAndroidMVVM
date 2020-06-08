@@ -5,8 +5,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.wjx.android.mvvm.repository.BaseRepository
 import com.wjx.android.mvvm.common.*
-import com.wjx.android.wanandroidmvvm.common.state.State
-import com.wjx.android.wanandroidmvvm.common.utils.CommonUtil
+import com.wjx.android.mvvm.common.state.State
+import com.wjx.android.mvvm.common.utils.CommonUtil
 
 /**
  * Created with Android Studio.

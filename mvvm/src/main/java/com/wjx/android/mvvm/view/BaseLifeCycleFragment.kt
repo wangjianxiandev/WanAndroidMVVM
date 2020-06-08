@@ -4,7 +4,6 @@ import android.text.TextUtils
 import android.widget.Toast
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
-import com.kingja.loadsir.callback.SuccessCallback
 import com.wjx.android.mvvm.viewmodel.BaseViewModel
 import com.wjx.android.mvvm.common.state.State
 import com.wjx.android.mvvm.common.state.StateType
@@ -29,9 +28,7 @@ abstract class BaseLifeCycleFragment<VM : BaseViewModel<*>, DB : ViewDataBinding
 
     open fun showLoading() {}
 
-    open fun showSuccess() {
-        loadService.showCallback(SuccessCallback::class.java)
-    }
+    open fun showSuccess() {}
 
     open fun showError(msg: String) {
         if (!TextUtils.isEmpty(msg)) {
