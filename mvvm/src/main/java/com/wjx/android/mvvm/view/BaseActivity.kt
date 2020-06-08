@@ -58,20 +58,4 @@ abstract class BaseActivity<VM : BaseViewModel<*>, DB : ViewDataBinding> : AppCo
         super.onDestroy()
         AppManager.instance.removeActivity(this)
     }
-
-    private fun initStatusColor(color: Int) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            window.statusBarColor = ContextCompat.getColor(this,
-                R.color.always_white_text
-            )
-        }
-        if (ColorUtils.calculateLuminance(getColor(R.color.always_white_text)) >= 0.5) {
-            // 设置状态栏中字体的颜色为黑色
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-        } else {
-            // 跟随系统
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-        }
-    }
-
 }

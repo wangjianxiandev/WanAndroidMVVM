@@ -49,11 +49,11 @@ abstract class ArticleListFragment<VM : ArticleViewModel<*>> : BaseLifeCycleFrag
 
             article?.let {
                 mViewModel.addFootPrint(article)
-                CommonUtil.startWebView(activity!!, it.link, it.title)
+                CommonUtil.startWebView(requireActivity()!!, it.link, it.title)
             }
         }
         mAdapter.setOnItemChildClickListener { _, _, position ->
-            UserInfo.instance.collect(activity!!, position, this)
+            UserInfo.instance.collect(requireActivity()!!, position, this)
         }
         mAdapter.setEnableLoadMore(true)
         mAdapter.setOnLoadMoreListener({ onLoadMoreData() }, mRvArticle)
@@ -63,7 +63,7 @@ abstract class ArticleListFragment<VM : ArticleViewModel<*>> : BaseLifeCycleFrag
 
     private fun initRefresh() {
         // 设置下拉刷新的loading颜色
-        mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(activity!!))
+        mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(requireActivity()!!))
         mSrlRefresh.setColorSchemeColors(Color.WHITE)
         mSrlRefresh.setOnRefreshListener { onRefreshData() }
     }
@@ -140,7 +140,7 @@ abstract class ArticleListFragment<VM : ArticleViewModel<*>> : BaseLifeCycleFrag
 
     @Subscribe
     fun settingEvent(event: ChangeThemeEvent) {
-        mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(activity!!))
+        mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(requireActivity()!!))
         mAdapter.notifyDataSetChanged()
     }
 }

@@ -65,7 +65,6 @@ class HomeRepository(loadState: MutableLiveData<State>) : ArticleRepository(load
     // 使用协程 + Retrofit2.6
     suspend fun loadBannerCo(): List<BannerResponse> {
         return apiService.loadBannerCo().dataConvert(loadState)
-
     }
 
     suspend fun loadTopArticleCo(): List<Article> {

@@ -2,9 +2,8 @@ package com.wjx.android.mvvm
 
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
-import com.kingja.loadsir.core.LoadSir
-import com.wjx.android.wanandroidmvvm.common.utils.Constant
-import com.wjx.android.wanandroidmvvm.common.utils.SPreference
+import com.wjx.android.mvvm.common.utils.Constant
+import com.wjx.android.mvvm.common.utils.SPreference
 
 /**
  * Created with Android Studio.
@@ -20,11 +19,5 @@ open class BaseApplication : Application() {
         super.onCreate()
         instance = this
         SPreference.setContext(applicationContext)
-        initMode()
-    }
-
-    private fun initMode() {
-        var isNightMode: Boolean by SPreference(Constant.NIGHT_MODE, false)
-        AppCompatDelegate.setDefaultNightMode(if (isNightMode) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO)
     }
 }
