@@ -1,20 +1,16 @@
-apply plugin: 'com.android.application'
-
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
-apply plugin: 'kotlin-kapt'
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.wangjianxiandev'
 
 def rootAndroidId = rootProject.ext.android
-def appId = rootProject.ext.appId
 def support = rootProject.ext.dependencies
 
 android {
     compileSdkVersion rootAndroidId.compileSdkVersion
     buildToolsVersion rootAndroidId.buildToolsVersion
     defaultConfig {
-        applicationId appId.app
         minSdkVersion rootAndroidId.minSdkVersion
         targetSdkVersion rootAndroidId.targetSdkVersion
         versionCode rootAndroidId.versionCode
@@ -30,20 +26,10 @@ android {
     }
 }
 
-kapt {
-    useBuildCache = true
-    javacOptions {
-        option("-Xmaxerrs", 500)
-    }
-}
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation support.appcompat
-    kapt "androidx.room:room-compiler:2.2.5"
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
     support.each { k, v -> implementation v }
-    implementation project(':mvvm')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
