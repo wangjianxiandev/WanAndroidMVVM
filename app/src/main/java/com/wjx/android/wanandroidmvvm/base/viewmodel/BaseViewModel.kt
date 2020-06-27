@@ -1,8 +1,7 @@
 package com.wjx.android.wanandroidmvvm.base.viewmodel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.wjx.android.wanandroidmvvm.base.repository.BaseRepository
 import com.wjx.android.wanandroidmvvm.common.state.State
 import com.wjx.android.wanandroidmvvm.common.utils.CommonUtil
@@ -15,7 +14,7 @@ import com.wjx.android.wanandroidmvvm.common.utils.CommonUtil
  * Time: 15:26
  */
 
-open class BaseViewModel<T : BaseRepository>(application : Application) : AndroidViewModel(application) {
+open class BaseViewModel<T : BaseRepository> : ViewModel() {
     val loadState by lazy {
         MutableLiveData<State>()
     }

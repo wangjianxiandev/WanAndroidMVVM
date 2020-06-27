@@ -1,6 +1,5 @@
 package com.wjx.android.wanandroidmvvm.module.collect.viewmodel
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.module.common.viewmodel.ArticleViewModel
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
@@ -15,8 +14,8 @@ import com.wjx.android.wanandroidmvvm.module.collect.repository.CollectRepositor
  * @date: 2020/03/03
  * Time: 14:48
  */
-class CollectViewModel(application: Application) :
-    ArticleViewModel<CollectRepository>(application) {
+class CollectViewModel :
+    ArticleViewModel<CollectRepository>() {
     val mCollectArticleData: MutableLiveData<BaseResponse<CollectResponse>> = MutableLiveData()
     val mAddCollectData: MutableLiveData<BaseResponse<EmptyResponse>> = MutableLiveData()
     val mUnCollectData: MutableLiveData<BaseResponse<EmptyResponse>> = MutableLiveData()

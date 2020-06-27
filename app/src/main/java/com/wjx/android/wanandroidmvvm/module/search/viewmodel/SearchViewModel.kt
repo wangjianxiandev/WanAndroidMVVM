@@ -1,6 +1,5 @@
 package com.wjx.android.wanandroidmvvm.module.search.viewmodel
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.wjx.android.wanandroidmvvm.module.common.viewmodel.ArticleViewModel
@@ -20,7 +19,7 @@ import kotlinx.coroutines.withContext
  * @date: 2020/03/05
  * Time: 17:49
  */
-class SearchViewModel(application: Application) : ArticleViewModel<SearchRepostiory>(application) {
+class SearchViewModel : ArticleViewModel<SearchRepostiory>() {
     val mHotKeyData = MutableLiveData<BaseResponse<List<HotKeyResponse>>>()
     val mSearResultData = MutableLiveData<BaseResponse<SearchResultResponse>>()
     val mDeleteHistory = MutableLiveData<Int>()

@@ -1,6 +1,5 @@
 package com.wjx.android.wanandroidmvvm.module.common.viewmodel
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.wjx.android.wanandroidmvvm.module.common.repository.ArticleRepository
@@ -20,8 +19,8 @@ import kotlinx.coroutines.withContext
  * Time: 20:39
  */
 
-abstract class ArticleViewModel<T : ArticleRepository>(application: Application) :
-    BaseViewModel<T>(application) {
+abstract class ArticleViewModel<T : ArticleRepository> :
+    BaseViewModel<T>() {
     // RxJava2
 //    var mCollectData: MutableLiveData<BaseResponse<EmptyResponse>> = MutableLiveData()
 
@@ -35,14 +34,14 @@ abstract class ArticleViewModel<T : ArticleRepository>(application: Application)
 //    }
 
     // 使用协程 + Retrofit2.6以上版本
-    var mCollectData : MutableLiveData<EmptyResponse> = MutableLiveData()
+    var mCollectData: MutableLiveData<EmptyResponse> = MutableLiveData()
 
     fun collectCo(id: Int) {
-        initiateRequest({mCollectData.value = mRepository.collectCo(id)},loadState)
+        initiateRequest({ mCollectData.value = mRepository.collectCo(id) }, loadState)
     }
 
     fun unCollectCo(id: Int) {
-        initiateRequest({mCollectData.value = mRepository.unCollectCo(id)}, loadState)
+        initiateRequest({ mCollectData.value = mRepository.unCollectCo(id) }, loadState)
     }
 
     fun addFootPrint(article: Article) {

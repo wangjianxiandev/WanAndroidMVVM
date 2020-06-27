@@ -1,6 +1,5 @@
 package com.wjx.android.wanandroidmvvm.module.account.viewmodel
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.base.viewmodel.BaseViewModel
 import com.wjx.android.wanandroidmvvm.network.initiateRequest
@@ -15,7 +14,7 @@ import com.wjx.android.wanandroidmvvm.module.account.repository.AccountRepositor
  * @date: 2020/03/01
  * Time: 19:58
  */
-class AccountViewModel(application: Application) : BaseViewModel<AccountRepository>(application) {
+class AccountViewModel : BaseViewModel<AccountRepository>() {
     // RxJava2
 //    val mLoginData : MutableLiveData<BaseResponse<LoginResponse>> = MutableLiveData()
 //    val mRegisterData : MutableLiveData<BaseResponse<RegisterResponse>> = MutableLiveData()

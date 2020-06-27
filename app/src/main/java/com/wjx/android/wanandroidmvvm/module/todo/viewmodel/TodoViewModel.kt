@@ -1,6 +1,5 @@
 package com.wjx.android.wanandroidmvvm.module.todo.viewmodel
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.base.viewmodel.BaseViewModel
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
@@ -15,7 +14,7 @@ import com.wjx.android.wanandroidmvvm.module.todo.repository.TodoRepository
  * @date: 2020/03/04
  * Time: 15:39
  */
-class TodoViewModel(application: Application) : BaseViewModel<TodoRepository>(application) {
+class TodoViewModel : BaseViewModel<TodoRepository>() {
     val mTodoListData: MutableLiveData<BaseResponse<TodoPageResponse>> = MutableLiveData()
     val mTodoAddData: MutableLiveData<BaseResponse<EmptyResponse>> = MutableLiveData()
     val mTodoUpdateData: MutableLiveData<BaseResponse<EmptyResponse>> = MutableLiveData()

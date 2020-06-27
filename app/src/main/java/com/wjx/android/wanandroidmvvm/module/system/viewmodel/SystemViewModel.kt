@@ -1,6 +1,5 @@
 package com.wjx.android.wanandroidmvvm.module.system.viewmodel
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.network.initiateRequest
 import com.wjx.android.wanandroidmvvm.module.common.viewmodel.ArticleViewModel
@@ -15,7 +14,7 @@ import com.wjx.android.wanandroidmvvm.module.system.repository.SystemRepository
  * @date: 2020/02/27
  * Time: 17:09
  */
-class SystemViewModel(application: Application) : ArticleViewModel<SystemRepository>(application) {
+class SystemViewModel : ArticleViewModel<SystemRepository>() {
 //    val mSystemTabNameData : MutableLiveData<BaseResponse<List<SystemTabNameResponse>>> = MutableLiveData()
 //    val mSystemArticleData : MutableLiveData<BaseResponse<SystemArticleResponse>> = MutableLiveData()
 //

@@ -1,6 +1,5 @@
 package com.wjx.android.wanandroidmvvm.module.project.viewmodel
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.network.initiateRequest
 import com.wjx.android.wanandroidmvvm.module.common.viewmodel.ArticleViewModel
@@ -15,8 +14,8 @@ import com.wjx.android.wanandroidmvvm.module.project.repository.ProjectResposito
  * @date: 2020/02/28
  * Time: 15:48
  */
-class ProjectViewModel(application: Application) :
-    ArticleViewModel<ProjectRespository>(application) {
+class ProjectViewModel :
+    ArticleViewModel<ProjectRespository>() {
 //    val mProjectTabData : MutableLiveData<BaseResponse<List<ProjectTabResponse>>> = MutableLiveData()
 //    val mProjectArticleData : MutableLiveData<BaseResponse<ProjectResponse>> = MutableLiveData()
 //

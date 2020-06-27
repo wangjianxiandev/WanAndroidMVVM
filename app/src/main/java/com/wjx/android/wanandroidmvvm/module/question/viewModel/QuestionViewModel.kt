@@ -1,6 +1,5 @@
 package com.wjx.android.wanandroidmvvm.module.question.viewModel
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.module.common.viewmodel.ArticleViewModel
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
@@ -15,11 +14,11 @@ import com.wjx.android.wanandroidmvvm.module.question.model.QuestionResponse
  * Time: 15:41
  */
 
-class QuestionViewModel(application: Application) :
-    ArticleViewModel<QuestionRepository>(application) {
-    var mQuestionData : MutableLiveData<BaseResponse<QuestionResponse>> = MutableLiveData()
+class QuestionViewModel :
+    ArticleViewModel<QuestionRepository>() {
+    var mQuestionData: MutableLiveData<BaseResponse<QuestionResponse>> = MutableLiveData()
 
-    fun loadQuestionList(pageNum : Int) {
+    fun loadQuestionList(pageNum: Int) {
         mRepository.loadQuestionList(pageNum, mQuestionData)
     }
 }

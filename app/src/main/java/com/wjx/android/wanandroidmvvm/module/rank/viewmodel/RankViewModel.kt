@@ -1,6 +1,5 @@
 package com.wjx.android.wanandroidmvvm.module.rank.viewmodel
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.base.viewmodel.BaseViewModel
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
@@ -15,7 +14,7 @@ import com.wjx.android.wanandroidmvvm.module.rank.repository.RankRepository
  * @author: Wangjianxian
  * @CreateDate: 2020/3/29 18:13
  */
-class RankViewModel(application: Application) : BaseViewModel<RankRepository>(application) {
+class RankViewModel : BaseViewModel<RankRepository>() {
     val mRankListData: MutableLiveData<BaseResponse<RankResponse>> = MutableLiveData()
     val mMeRankInfo: MutableLiveData<BaseResponse<IntegralResponse>> = MutableLiveData()
     val mIntegralHistoryListData: MutableLiveData<BaseResponse<IntegralHistoryListResponse>> =

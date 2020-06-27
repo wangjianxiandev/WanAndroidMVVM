@@ -1,6 +1,5 @@
 package com.wjx.android.wanandroidmvvm.module.meshare.viewmodel
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.module.common.viewmodel.ArticleViewModel
 import com.wjx.android.wanandroidmvvm.network.response.BaseResponse
@@ -16,8 +15,7 @@ import com.wjx.android.wanandroidmvvm.module.meshare.repository.MeShareRepositor
  * @date: 2020/03/26
  * Time: 17:36
  */
-class MeShareViewModel(application: Application) :
-    ArticleViewModel<MeShareRepository>(application) {
+class MeShareViewModel : ArticleViewModel<MeShareRepository>() {
     var mMeShareData: MutableLiveData<BaseResponse<MeShareResponse<MeShareArticleResponse>>> =
         MutableLiveData()
     var mDeleteMeShareData: MutableLiveData<BaseResponse<EmptyResponse>> = MutableLiveData()

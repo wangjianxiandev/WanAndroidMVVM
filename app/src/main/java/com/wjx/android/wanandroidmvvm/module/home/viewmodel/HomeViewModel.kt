@@ -1,6 +1,5 @@
 package com.wjx.android.wanandroidmvvm.module.home.viewmodel
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.network.initiateRequest
 import com.wjx.android.wanandroidmvvm.module.common.model.Article
@@ -16,8 +15,8 @@ import com.wjx.android.wanandroidmvvm.module.home.repository.HomeRepository
  * @date: 2020/02/26
  * Time: 10:49
  */
-class HomeViewModel(application: Application) :
-    ArticleViewModel<HomeRepository>(application) {
+class HomeViewModel :
+    ArticleViewModel<HomeRepository>() {
     // Rxjava2版本
 //    val mBannerData: MutableLiveData<BaseResponse<List<BannerResponse>>> = MutableLiveData()
 //    val mHomeArticleData: MutableLiveData<BaseResponse<HomeArticleResponse>> = MutableLiveData()

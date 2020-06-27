@@ -1,6 +1,5 @@
 package com.wjx.android.wanandroidmvvm.module.footprint.viewmodel
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.wjx.android.wanandroidmvvm.common.state.State
@@ -19,8 +18,8 @@ import java.lang.Exception
  * @author: Wangjianxian
  * @CreateDate: 2020/5/9 17:13
  */
-class FootPrintViewModel(application: Application) :
-    ArticleViewModel<FootPrintRepository>(application) {
+class FootPrintViewModel :
+    ArticleViewModel<FootPrintRepository>() {
 
     var mFootPrintData: MutableLiveData<List<Article>> = MutableLiveData()
 

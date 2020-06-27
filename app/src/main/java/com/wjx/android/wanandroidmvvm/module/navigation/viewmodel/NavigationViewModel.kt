@@ -1,6 +1,5 @@
 package com.wjx.android.wanandroidmvvm.module.navigation.viewmodel
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.wjx.android.wanandroidmvvm.base.viewmodel.BaseViewModel
 import com.wjx.android.wanandroidmvvm.network.initiateRequest
@@ -14,8 +13,8 @@ import com.wjx.android.wanandroidmvvm.module.navigation.repository.NavigationRep
  * @date: 2020/02/29
  * Time: 20:10
  */
-class NavigationViewModel(application: Application) :
-    BaseViewModel<NavigationRepository>(application) {
+class NavigationViewModel :
+    BaseViewModel<NavigationRepository>() {
 //    val mNavigationTabData : MutableLiveData<BaseResponse<List<NavigationTabNameResponse>>> = MutableLiveData()
 //
 //    fun loadNavigationTab() {
