@@ -1,4 +1,4 @@
-package com.wjx.android.wanandroidmvvm.network
+package com.wjx.android.mvvm.network
 
 /**
  * Created with Android Studio.

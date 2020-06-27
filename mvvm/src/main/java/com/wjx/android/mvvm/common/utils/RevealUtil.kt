@@ -1,4 +1,4 @@
-package com.wjx.android.wanandroidmvvm.common.utils
+package com.wjx.android.mvvm.common.utils
 
 import android.app.Activity
 import android.os.Bundle

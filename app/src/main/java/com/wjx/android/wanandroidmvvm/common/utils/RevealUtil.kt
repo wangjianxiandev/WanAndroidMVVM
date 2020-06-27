@@ -35,7 +35,7 @@ object RevealUtil{
         }
     }
 
-    inline fun <T : View> T.onPreDrawLayout(crossinline  onLayout: T.()->Unit){
+    private inline fun <T : View> T.onPreDrawLayout(crossinline  onLayout: T.()->Unit){
         if (viewTreeObserver.isAlive) {
             viewTreeObserver.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
 
@@ -48,7 +48,7 @@ object RevealUtil{
         }
     }
 
-    fun circularReveal(rootLayout : CircularRevealFrameLayout) {
+    private fun circularReveal(rootLayout : CircularRevealFrameLayout) {
         val centerX = rootLayout.width.toFloat() / 2
         val centerY = rootLayout.height.toFloat() / 2
         val finalRadius = hypot(
