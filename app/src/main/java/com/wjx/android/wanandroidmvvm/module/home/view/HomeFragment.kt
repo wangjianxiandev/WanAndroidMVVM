@@ -50,7 +50,7 @@ class HomeFragment : ArticleListFragment<HomeViewModel>() {
         mBanner = headView.mBanner
         mBanner.apply {
             setOnBannerListener { position ->
-                CommonUtil.startWebView(requireActivity(), urls[position], titles[position])
+                CommonUtil.startWebView(requireContext(), urls[position], titles[position])
             }
             setImageLoader(GlideImageLoader())
             setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)

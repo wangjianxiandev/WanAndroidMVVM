@@ -7,6 +7,7 @@ import com.wjx.android.wanandroidmvvm.module.common.view.ArticleListActivity
 import com.wjx.android.wanandroidmvvm.common.state.UserInfo
 import com.wjx.android.wanandroidmvvm.common.utils.ChangeThemeEvent
 import com.wjx.android.wanandroidmvvm.common.utils.ColorUtil
+import com.wjx.android.wanandroidmvvm.common.utils.CommonUtil
 import com.wjx.android.wanandroidmvvm.module.system.viewmodel.SystemViewModel
 import kotlinx.android.synthetic.main.custom_bar.view.*
 import org.greenrobot.eventbus.Subscribe
@@ -24,6 +25,7 @@ class SystemArticleListActivity : ArticleListActivity<SystemViewModel>() {
         super.initView()
         initHeaderView()
         mAdapter.setOnItemChildClickListener{_,_,position ->
+            CommonUtil.Vibrate(this, 50)
             UserInfo.instance.collect(this, position, this)
         }
     }

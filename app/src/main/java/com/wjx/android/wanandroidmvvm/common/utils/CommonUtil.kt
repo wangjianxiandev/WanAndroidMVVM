@@ -1,7 +1,9 @@
 package com.wjx.android.wanandroidmvvm.common.utils
 
+import android.app.Service
 import android.content.Context
 import android.content.Intent
+import android.os.Vibrator
 import com.wjx.android.wanandroidmvvm.module.activity.ArticleDetailActivity
 import java.lang.reflect.ParameterizedType
 
@@ -24,5 +26,17 @@ object CommonUtil {
             putExtra("title", title)
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         }
+    }
+
+    /**
+     * 设置震动
+     *
+     * @param context
+     * @param milliseconds
+     */
+    fun Vibrate(context: Context, milliseconds: Long) {
+        val vibrator =
+            context.getSystemService(Service.VIBRATOR_SERVICE) as Vibrator
+        vibrator.vibrate(milliseconds)
     }
 }

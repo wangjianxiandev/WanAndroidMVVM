@@ -59,7 +59,7 @@ class SystemFragment : BaseLifeCycleFragment<SystemViewModel>() {
 
     private fun initRefresh() {
         // 设置下拉刷新的loading颜色
-        mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(activity!!))
+        mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(requireContext()))
         mSrlRefresh.setColorSchemeColors(Color.WHITE)
         mSrlRefresh.setOnRefreshListener { onRefreshData() }
     }
@@ -91,7 +91,7 @@ class SystemFragment : BaseLifeCycleFragment<SystemViewModel>() {
 
     @Subscribe
     fun settingEvent(event: ChangeThemeEvent) {
-        mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(activity!!))
+        mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(requireContext()))
         mAdapter.notifyDataSetChanged()
     }
 }

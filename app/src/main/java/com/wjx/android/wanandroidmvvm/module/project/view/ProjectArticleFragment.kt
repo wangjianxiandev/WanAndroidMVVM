@@ -66,11 +66,12 @@ class ProjectArticleFragment : BaseLifeCycleFragment<ProjectViewModel>(), LoginS
 
             article?.let {
                 mViewModel.addFootPrint(article)
-                CommonUtil.startWebView(activity!!, it.link, it.title)
+                CommonUtil.startWebView(requireContext(), it.link, it.title)
             }
         }
         mAdapter.setOnItemChildClickListener { _, _, position ->
-            UserInfo.instance.collect(activity!!, position, this)
+            CommonUtil.Vibrate(requireContext(), 50)
+            UserInfo.instance.collect(requireContext(), position, this)
         }
         mAdapter.setEnableLoadMore(true)
         mAdapter.setOnLoadMoreListener({ onLoadMoreData() }, mRvArticle)
@@ -86,7 +87,7 @@ class ProjectArticleFragment : BaseLifeCycleFragment<ProjectViewModel>(), LoginS
 
     private fun initRefresh() {
         // 设置下拉刷新的loading颜色
-        mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(activity!!))
+        mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(requireContext()))
         mSrlRefresh.setColorSchemeColors(Color.WHITE)
         mSrlRefresh.setOnRefreshListener { onRefreshData() }
     }
@@ -172,7 +173,7 @@ class ProjectArticleFragment : BaseLifeCycleFragment<ProjectViewModel>(), LoginS
 
     @Subscribe
     fun settingEvent(event: ChangeThemeEvent) {
-        mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(activity!!))
+        mSrlRefresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(requireContext()))
         mAdapter.notifyDataSetChanged()
     }
 }

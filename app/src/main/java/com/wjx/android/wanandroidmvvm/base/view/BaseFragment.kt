@@ -43,7 +43,7 @@ abstract class BaseFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         if (Date().month + 1 == 4 && Date().date == 4) {
-            initStatusColor(getColor(requireActivity(), R.color.colorGray666))
+            initStatusColor(getColor(requireContext(), R.color.colorGray666))
         } else {
             initStatusColor(0)
         }
@@ -63,7 +63,7 @@ abstract class BaseFragment : Fragment() {
 
     private fun initStatusColor(color: Int) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            requireActivity().window.statusBarColor = if (color == 0) ColorUtil.getColor(activity!!) else color
+            requireActivity().window.statusBarColor = if (color == 0) ColorUtil.getColor(requireContext()) else color
         }
         if (ColorUtils.calculateLuminance(Color.TRANSPARENT) >= 0.5) {
             // 设置状态栏中字体的颜色为黑色

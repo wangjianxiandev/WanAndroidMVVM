@@ -52,6 +52,7 @@ abstract class ArticleListActivity<VM : ArticleViewModel<*>> : BaseLifeCycleActi
         }
 
         mAdapter.setOnItemChildClickListener { _, _, position ->
+            CommonUtil.Vibrate(this, 50)
             UserInfo.instance.collect(this, position, this)
         }
         mAdapter.setEnableLoadMore(isLoadMore)

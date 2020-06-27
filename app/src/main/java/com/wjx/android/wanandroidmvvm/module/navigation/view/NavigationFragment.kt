@@ -96,7 +96,7 @@ class NavigationFragment : BaseLifeCycleFragment<NavigationViewModel>() {
 
     private fun initRefresh() {
         // 设置下拉刷新的loading颜色
-        nav_refresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(activity!!))
+        nav_refresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(requireContext()))
         nav_refresh.setColorSchemeColors(Color.WHITE)
         nav_refresh.setOnRefreshListener { onRefreshData() }
     }
@@ -131,7 +131,7 @@ class NavigationFragment : BaseLifeCycleFragment<NavigationViewModel>() {
 
     @Subscribe
     fun settingEvent(event: ChangeThemeEvent) {
-        nav_refresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(activity!!))
+        nav_refresh.setProgressBackgroundColorSchemeColor(ColorUtil.getColor(requireContext()))
         mNavigationTabAdapter.notifyDataSetChanged()
         mNavigationLabelAdapter.notifyDataSetChanged()
     }

@@ -36,8 +36,8 @@ class WeChatFragment : BaseLifeCycleFragment<WeChatViewModel>() {
     }
 
     private fun initColor() {
-        wechat_tab.dividerColor = ColorUtil.getColor(activity!!)
-        wechat_tab.indicatorColor = ColorUtil.getColor(activity!!)
+        wechat_tab.dividerColor = ColorUtil.getColor(requireContext())
+        wechat_tab.indicatorColor = ColorUtil.getColor(requireContext())
     }
 
     override fun initData() {

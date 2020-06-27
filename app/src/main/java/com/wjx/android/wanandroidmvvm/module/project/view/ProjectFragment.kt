@@ -34,8 +34,8 @@ class ProjectFragment : BaseLifeCycleFragment<ProjectViewModel>() {
     }
 
     private fun initColor() {
-        project_tab.dividerColor = ColorUtil.getColor(activity!!)
-        project_tab.indicatorColor = ColorUtil.getColor(activity!!)
+        project_tab.dividerColor = ColorUtil.getColor(requireContext())
+        project_tab.indicatorColor = ColorUtil.getColor(requireContext())
     }
 
     override fun initData() {
