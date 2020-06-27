@@ -1,5 +1,6 @@
 package com.wjx.android.wanandroidmvvm.module.home.view
 
+import android.text.Html
 import android.view.View
 import androidx.lifecycle.Observer
 import com.wjx.android.wanandroidmvvm.R
@@ -107,7 +108,7 @@ class HomeFragment : ArticleListFragment<HomeViewModel>() {
         titles.clear()
         for (bannerItem in bannerList) {
             images.add(bannerItem.imagePath)
-            titles.add(bannerItem.title)
+            titles.add(Html.fromHtml(bannerItem.title, Html.FROM_HTML_MODE_COMPACT).toString())
             urls.add(bannerItem.url)
         }
         mBanner.setImages(images)
