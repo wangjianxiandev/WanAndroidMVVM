@@ -39,6 +39,7 @@ ext {
     pgyersdk_version = '3.0.10'
     navigation_version = '2.2.2'
     palette_version = '1.0.0'
+    viewpager2_version = "1.1.0-alpha01"
 
     appId = [
             "app": "com.wjx.android.wanandroidmvvm",
@@ -92,7 +93,8 @@ ext {
             "pgyer_sdk"                  : "com.pgyersdk:sdk:$pgyersdk_version",
             "navigation_fragment"        : "androidx.navigation:navigation-fragment-ktx:$navigation_version",
             "navigation_ui"              : "androidx.navigation:navigation-ui-ktx:$navigation_version",
-            "palette_ktx"                : "androidx.palette:palette-ktx:$palette_version"
+            "palette_ktx"                : "androidx.palette:palette-ktx:$palette_version",
+            "viewpager"                  : "androidx.viewpager2:viewpager2:$viewpager2_version"
     ]
 
     processor = [

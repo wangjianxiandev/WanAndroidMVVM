@@ -50,10 +50,10 @@ class HomeViewModel :
 
     fun loadHomeArticleDataCo(pageNum: Int) {
         initiateRequest({
+            mHomeArticleData.value = mRepository.loadHomeArticleCo(pageNum)
             if (pageNum == 0) {
                 mTopArticleData.value = mRepository.loadTopArticleCo()
             }
-            mHomeArticleData.value = mRepository.loadHomeArticleCo(pageNum)
         }, loadState)
     }
 }

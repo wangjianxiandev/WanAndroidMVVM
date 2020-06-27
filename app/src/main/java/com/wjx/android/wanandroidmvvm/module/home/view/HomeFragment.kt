@@ -118,8 +118,8 @@ class HomeFragment : ArticleListFragment<HomeViewModel>() {
     override fun onRefreshData() {
         mCurrentPage = 0
         mTopArticlesLoadTimes = 0
-        mViewModel.loadHomeArticleDataCo(mCurrentPage)
         mViewModel.loadBannerCo()
+        mViewModel.loadHomeArticleDataCo(mCurrentPage)
     }
 
     override fun onLoadMoreData() {
