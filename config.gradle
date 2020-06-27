@@ -93,8 +93,7 @@ ext {
             "pgyer_sdk"                  : "com.pgyersdk:sdk:$pgyersdk_version",
             "navigation_fragment"        : "androidx.navigation:navigation-fragment-ktx:$navigation_version",
             "navigation_ui"              : "androidx.navigation:navigation-ui-ktx:$navigation_version",
-            "palette_ktx"                : "androidx.palette:palette-ktx:$palette_version",
-            "viewpager"                  : "androidx.viewpager2:viewpager2:$viewpager2_version"
+            "palette_ktx"                : "androidx.palette:palette-ktx:$palette_version"
     ]
 
     processor = [

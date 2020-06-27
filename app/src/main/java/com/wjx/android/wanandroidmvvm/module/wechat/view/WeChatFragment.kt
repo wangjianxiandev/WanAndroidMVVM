@@ -63,6 +63,7 @@ class WeChatFragment : BaseLifeCycleFragment<WeChatViewModel>() {
             fragments.add(WeChatArticleFragment.newInstance(data.id))
         }
         wechat_viewpager.adapter = WeChatTabAdapter(childFragmentManager, tabs, fragments)
+        wechat_viewpager.offscreenPageLimit = tabs.size
         wechat_tab.setViewPager(wechat_viewpager)
     }
 
