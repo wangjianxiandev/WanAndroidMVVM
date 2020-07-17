@@ -4,7 +4,7 @@
 ## 项目地址
 [WanAndroid(github)](https://github.com/wangjianxiandev/WanAndroidMvvm)  （:heart_eyes: ️:heart_eyes: ️:heart_eyes: ️如果觉得项目对你有帮助，留下你的star啦~ (๑• . •๑))
 ## 下载体验
-## 当前版本（2.3）
+## 当前版本（3.0）
 - **修复首页文章重复加载的bug**
 - 使用Room增加使用足迹模块并重构搜索历史部分
 - 集成蒲公英在线更新sdk
