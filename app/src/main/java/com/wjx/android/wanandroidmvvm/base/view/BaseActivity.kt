@@ -45,6 +45,17 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val modes = window.windowManager.defaultDisplay.supportedModes
+            modes.sortBy {
+                it.refreshRate
+            }
+            window.let {
+                val layoutParam = it.attributes
+                layoutParam.preferredDisplayModeId = modes.last().modeId
+                it.attributes = layoutParam
+            }
+        }
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())
         mRootView = (findViewById(android.R.id.content) as ViewGroup).getChildAt(0)
